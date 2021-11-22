@@ -1,0 +1,140 @@
+{{ 'section-video-banner.css' | asset_url | stylesheet_tag }}
+
+<div id="section-video-banner" class="">
+  <div class="section-video-banner-background">
+    {% if section.settings.show_overlay_1 %}
+          <div style="background-color: {{section.settings.background_overlay_1}}" class="section-video-banner-overlay"></div>
+    {% endif %}
+
+    {% if section.settings.show_overlay_2 %}
+        <div style="background: {{section.settings.background_overlay_2}}" class="section-video-banner-overlay overlay-2"></div>
+    {% endif %}
+
+    <video class="section-video-banner-video" src="{{section.settings.video_url}}" autoplay loop muted />
+  </div>
+  <div class="section-video-banner-content page-width">
+    <div class="section-video-banner-content-left">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading'-%}
+            <h1 class="color-{{block.settings.heading_color}}">{{ block.settings.heading}}</h1>
+          {%- when 'subheading' -%}
+            <p class="section-video-banner-subheadline subheadline-{{block.settings.color}}">{{block.settings.subheading}}</p>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Video Banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "default": "https://gutsy-website.s3.eu-west-3.amazonaws.com/Dog+Running.mp4",
+      "label": "Video URL"
+    },
+    {
+      "type": "color_background",
+      "id": "background_overlay_1",
+      "label": "Background Overlay 1",
+      "default": "#1A3C32"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay_1",
+      "label": "Show Background Overlay 1",
+      "default": true
+    },
+    {
+      "type": "color_background",
+      "id": "background_overlay_2",
+      "label": "Background Overlay 2",
+      "default": "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 10%, rgba(255,255,255,0) 100%)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay_2",
+      "label": "Show Background Overlay 2",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "heading",
+          "default": "Video Banner",
+          "label": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "heading_color",
+          "label": "Color",
+          "default": "primary-1",
+          "options": [
+              {
+                "value": "primary-1",
+                "label": "Gutsy Green"
+              },
+              {
+                "value": "primary-2",
+                "label": "Gutsy Orange"
+              },
+              {
+                "value": "primary-3",
+                "label": "Gutsy Beige"
+              }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "subheading",
+          "default": "Our amazing subheading goes here!",
+          "label": "Subheading"
+        },
+        {
+          "type": "select",
+          "id": "color",
+          "default": "white",
+          "label": "Color",
+          "options": [
+            {
+              "value": "white",
+              "label": "White"
+            },
+            {
+              "value": "black",
+              "label": "Black"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Banner"
+    }
+  ]
+}
+{% endschema %}

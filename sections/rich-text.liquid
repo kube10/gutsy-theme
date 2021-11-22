@@ -14,7 +14,7 @@
           {%- when 'text' -%}
             <div class="rich-text__text rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
           {%- when 'button' -%}
-            <a{% if block.settings.button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.button_link }}"{% endif %} class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}" {{ block.shopify_attributes }}>
+            <a{% if block.settings.button_link == blank %} role="link" {% else %} href="{{ block.settings.button_link }}"{% endif %} class="button button-{{block.settings.button_style}}" {{ block.shopify_attributes }}>
               {{ block.settings.button_label | escape }}
             </a>
         {%- endcase -%}
@@ -140,10 +140,20 @@
           "label": "t:sections.rich-text.blocks.button.settings.button_link.label"
         },
         {
-          "type": "checkbox",
-          "id": "button_style_secondary",
-          "default": false,
-          "label": "t:sections.rich-text.blocks.button.settings.button_style_secondary.label"
+          "type": "select",
+          "id": "button_style",
+          "label": "Button Style",
+          "default": "primary",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            }
+          ]
         }
       ]
     }
