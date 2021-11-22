@@ -13,17 +13,30 @@
     <video class="section-video-banner-video" src="{{section.settings.video_url}}" autoplay loop muted />
   </div>
   <div class="section-video-banner-content page-width">
-    <div class="section-video-banner-content-left">
+    <div style="max-width: {{section.settings.content-width}}px" class="section-video-banner-content-left">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading'-%}
-            <h1 class="color-{{block.settings.heading_color}}">{{ block.settings.heading}}</h1>
+            <h1 class="section-video-banner-heading color-{{block.settings.heading_color}}">{{ block.settings.heading}}</h1>
           {%- when 'subheading' -%}
             <p class="section-video-banner-subheadline subheadline-{{block.settings.color}}">{{block.settings.subheading}}</p>
+          {%- when 'buttons' -%}
+              <div class="section-video-banner-button-group button-group" {{ block.shopify_attributes }}>
+                {%- if block.settings.button_label_1 != blank -%}
+                  <a{% if block.settings.button_link_1 == blank %} role="link" {% else %} href="{{ block.settings.button_link }}"{% endif %} class="button button-{{block.settings.button_style_1}}">
+                    {{ block.settings.button_label_1 | escape }}
+                  </a>
+                {%- endif -%}
+
+                {%- if block.settings.button_label_2 != blank -%}
+                  <a{% if block.settings.button_link_2 == blank %} role="link" {% else %} href="{{ block.settings.button_link }}"{% endif %} class="button button-{{block.settings.button_style_2}} {% if block.settings.button_style_2 == 'secondary' %} color-{{block.settings.button_secondary_color}} {% endif %} ">
+                    {{ block.settings.button_label_2 | escape }}
+                  </a>
+                {%- endif -%}
+              </div>
         {%- endcase -%}
       {%- endfor -%}
     </div>
-
   </div>
 </div>
 
@@ -65,6 +78,16 @@
       "id": "show_overlay_2",
       "label": "Show Background Overlay 2",
       "default": true
+    },
+    {
+      "type": "range",
+      "id": "content-width",
+      "label": "Content width (Left)",
+      "default": 450,
+      "min": 200,
+      "max": 750,
+      "step": 10,
+      "unit": "px"
     }
   ],
   "blocks": [
@@ -126,6 +149,86 @@
               "value": "black",
               "label": "Black"
             }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.image-banner.blocks.buttons.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label_1",
+          "default": "Button label",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_label_1.label",
+          "info": "t:sections.image-banner.blocks.buttons.settings.button_label_1.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link_1",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_link_1.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style_1",
+          "label": "Button 1 Style",
+          "default": "primary",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "button_label_2",
+          "default": "Button label",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_label_2.label",
+          "info": "t:sections.image-banner.blocks.buttons.settings.button_label_2.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link_2",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_link_2.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style_2",
+          "label": "Button 2 Style",
+          "default": "primary",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "button_secondary_color",
+          "label": "Secondary Button Color",
+          "default": "white",
+          "info": "Only applies to secondary buttons.",
+          "options": [
+              {
+                "value": "white",
+                "label": "White"
+              },
+              {
+                "value": "black",
+                "label": "Black"
+              }
           ]
         }
       ]

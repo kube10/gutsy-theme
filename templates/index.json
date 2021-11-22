@@ -1,5 +1,35 @@
 {
   "sections": {
+    "163758556420562ce4": {
+      "type": "video-banner",
+      "blocks": {
+        "ca143f79-6dd8-4aee-ba33-f316e3f9a16b": {
+          "type": "heading",
+          "settings": {
+            "heading": "Make memories, not footprints",
+            "heading_color": "primary-3"
+          }
+        },
+        "910e615d-0291-475b-b2d2-3ddd8275bedf": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Our insect-based dog food is the fuel for your dogs’ next adventure.",
+            "color": "white"
+          }
+        }
+      },
+      "block_order": [
+        "ca143f79-6dd8-4aee-ba33-f316e3f9a16b",
+        "910e615d-0291-475b-b2d2-3ddd8275bedf"
+      ],
+      "settings": {
+        "video_url": "https:\/\/gutsy-website.s3.eu-west-3.amazonaws.com\/Dog+Running.mp4",
+        "background_overlay_1": "#1A3C32",
+        "show_overlay_1": true,
+        "background_overlay_2": "linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 10%, rgba(255, 255, 255, 0) 100%)",
+        "show_overlay_2": true
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -60,7 +90,7 @@
           "settings": {
             "button_label": "Button label",
             "button_link": "",
-            "button_style_secondary": false
+            "button_style": "primary"
           }
         }
       },
@@ -188,6 +218,7 @@
     }
   },
   "order": [
+    "163758556420562ce4",
     "image_banner",
     "rich_text",
     "featured_products",

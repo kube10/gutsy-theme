@@ -44,6 +44,10 @@
   align-self: center;
 }
 
+.section-video-banner-heading {
+  margin-bottom: 0.5rem;
+}
+
 .section-video-banner-subheadline {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -55,4 +59,22 @@
 
 .subheadline-white {
   color: rgb(var(--color-base-text-white));
+}
+
+.button-secondary.color-white {
+  color: rgb(var(--color-base-text-white));
+  border: 2px solid rgb(var(--color-base-text-white));
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+}
+
+.button-group > .button {
+  margin-right: 2rem;
+}
+
+.section-video-banner-button-group {
+  margin-top: 2rem;
 }
