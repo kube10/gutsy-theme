@@ -23,18 +23,39 @@
           {%- when 'buttons' -%}
               <div class="section-video-banner-button-group button-group" {{ block.shopify_attributes }}>
                 {%- if block.settings.button_label_1 != blank -%}
-                  <a{% if block.settings.button_link_1 == blank %} role="link" {% else %} href="{{ block.settings.button_link }}"{% endif %} class="button button-{{block.settings.button_style_1}}">
+                  <a{% if block.settings.button_link_1 == blank %} role="link" {% else %} href="{{ block.settings.button_link }}"{% endif %} class="button button-{{block.settings.button_style_1}} {% if block.settings.button_style_1 == 'secondary' %} color-{{block.settings.button_secondary_color}} {% endif %}">
                     {{ block.settings.button_label_1 | escape }}
                   </a>
                 {%- endif -%}
 
                 {%- if block.settings.button_label_2 != blank -%}
-                  <a{% if block.settings.button_link_2 == blank %} role="link" {% else %} href="{{ block.settings.button_link }}"{% endif %} class="button button-{{block.settings.button_style_2}} {% if block.settings.button_style_2 == 'secondary' %} color-{{block.settings.button_secondary_color}} {% endif %} ">
+                  <a{% if block.settings.button_link_2 == blank %} role="link" {% else %} href="{{ block.settings.button_link }}"{% endif %} class="button button-{{block.settings.button_style_2}} {% if block.settings.button_style_2 == 'secondary' %} color-{{block.settings.button_secondary_color}} {% endif %}">
                     {{ block.settings.button_label_2 | escape }}
                   </a>
                 {%- endif -%}
               </div>
         {%- endcase -%}
+      {%- endfor -%}
+    </div>
+    <div class="section-video-banner-content-right">
+      {%- for block in section.blocks -%}
+        {%- if block.type == "blog_feature" -%}
+          {%- if block.settings.blog != blank -%}
+            {%- for article in block.settings.blog.articles limit: 3 -%}
+            <div class="section-video-banner-blog-feature-card">
+              <div class="blog-feature-title">
+                <h3 class="blog-feature-count">0{{forloop.index}}</h3>
+                <h3>{{article.title | escape}}</h3>
+              </div>
+                <div class="blog-feature-line"></div>
+                <a href="{{article.url}}" target="_blank" class="blog-feature-card-button">
+                  <span>Discover</span>
+                  {% render 'icon-arrow-right-white.liquid' %}
+                </a>
+            </div>
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endif -%}
       {%- endfor -%}
     </div>
   </div>
@@ -230,6 +251,18 @@
                 "label": "Black"
               }
           ]
+        }
+      ]
+    },
+    {
+      "type": "blog_feature",
+      "limit": 1,
+      "name": "Blog Features",
+      "settings": [
+        {
+          "type": "blog",
+          "id": "blog",
+          "label": "Blog"
         }
       ]
     }
