@@ -24,14 +24,14 @@ svg {
 .color-bg-green {
   --color-foreground: var(--color-base-text-white);
   --color-background: var(--color-base-primary-1);
-  --color-link: var(--color-base-primary-2);
+  --color-link: var(--color-base-primary-3);
   --color-svg: var(--color-base-primary-3);
 }
 
 .color-bg-beige {
   --color-foreground: var(--color-base-text);
   --color-background: var(--color-base-primary-3);
-  --color-link: var(--color-base-primary-2);
+  --color-link: var(--color-base-primary-1);
   --color-svg: var(--color-base-primary-1);
 }
 
@@ -1941,6 +1941,17 @@ input[type="checkbox"] {
 
 .header__icon--cart {
   position: relative;
+  transition: transform 0.3s ease;
+}
+
+.header__icon--cart:hover {
+  transform: scale(1.2);
+}
+
+@media screen and (min-width: 990px) {
+  .header__icon--cart {
+    margin-left: 1rem;
+  }
 }
 
 @media screen and (max-width: 989px) {
