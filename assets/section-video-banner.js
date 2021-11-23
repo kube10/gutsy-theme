@@ -40,4 +40,6 @@ function initUI() {
   console.log("init UI");
   const content = document.querySelector(".section-video-banner-content");
   content.style.opacity = 1;
+  const header = document.querySelector(".header-wrapper.transparent");
+  header.style.opacity = 1;
 }
