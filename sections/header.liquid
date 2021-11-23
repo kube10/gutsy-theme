@@ -14,6 +14,8 @@
 <noscript>{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}</noscript>
 
+
+
 <style>
   header-drawer {
     justify-self: start;
@@ -69,16 +71,7 @@
 <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 
-<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
-  <symbol id="icon-search" viewbox="0 0 18 19" fill="none">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.03 11.68A5.784 5.784 0 112.85 3.5a5.784 5.784 0 018.18 8.18zm.26 1.12a6.78 6.78 0 11.72-.7l5.4 5.4a.5.5 0 11-.71.7l-5.41-5.4z" fill="currentColor"/>
-  </symbol>
-
-  <symbol id="icon-close" class="icon icon-close" fill="none" viewBox="0 0 18 17">
-    <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
-  </symbol>
-</svg>
-<div class="header-wrapper color-{{ section.settings.color_scheme }}">
+<div class="header-wrapper color-{{ section.settings.color_scheme }} transparent">
   <header class="header page-width{% if section.settings.menu != blank %} header--has-menu{% endif %}">
     {%- if section.settings.menu != blank -%}
       <header-drawer data-breakpoint="tablet">
@@ -254,18 +247,22 @@
       <h1 class="header__heading">
     {%- endif -%}
         <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-          {%- if section.settings.logo != blank -%}
-            {%- assign image_size = section.settings.logo_width | append: 'x' -%}
-            <img srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-              src="{{ section.settings.logo | img_url: image_size }}"
-              loading="lazy"
-              class="header__heading-logo"
-              width="{{ section.settings.logo.width }}"
-              height="{{ section.settings.logo.height }}"
-              alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
-            >
-          {%- else -%}
-            <span class="h2">{{ shop.name }}</span>
+          {%- if section.settings.logo_svg != blank -%}
+            <div class="header__logo_svg">
+              {{ section.settings.logo_svg | replace: 'fill="#FBEDDA"', 'fill="currentColor"'}}
+            </div>
+            {%- elsif section.settings.logo != blank -%}
+              {%- assign image_size = section.settings.logo_width | append: 'x' -%}
+              <img srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                src="{{ section.settings.logo | img_url: image_size }}"
+                loading="lazy"
+                class="header__heading-logo"
+                width="{{ section.settings.logo.width }}"
+                height="{{ section.settings.logo.height }}"
+                alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+              >
+            {%- else -%}
+              <span class="h2">{{ shop.name }}</span>
           {%- endif -%}
         </a>
     {%- if request.page_type == 'index' -%}
@@ -406,6 +403,8 @@
   </script>
 {%- endif -%}
 
+{{ 'section-header.js' | asset_url | script_tag }}
+
 {% schema %}
 {
   "name": "t:sections.header.name",
@@ -434,6 +433,11 @@
       "type": "image_picker",
       "id": "logo",
       "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "textarea",
+      "id": "logo_svg",
+      "label": "Logo SVG"
     },
     {
       "type": "range",
