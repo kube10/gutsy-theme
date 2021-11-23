@@ -1,5 +1,4 @@
 #section-video-banner {
-  min-height: 100vh;
   position: relative;
   overflow-x: hidden;
 }
@@ -7,7 +6,8 @@
 .section-video-banner-background {
   position: absolute;
   width: 100vw;
-  min-height: 100vh;
+  object-fit: cover;
+  height: 100%;
 }
 
 .section-video-banner-video {
@@ -34,12 +34,18 @@
 .section-video-banner-content {
   position: relative;
   z-index: 4;
-  height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   opacity: 0;
   transition: opacity 0.3s ease;
+  min-height: calc(100vh - 106px);
+}
+
+@media (min-width: 990px) {
+  .section-video-banner-content {
+    min-height: calc(100vh - 111px);
+  }
 }
 
 .section-video-banner-content-left {

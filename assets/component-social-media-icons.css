@@ -1,5 +1,5 @@
 .social-media-icon-list {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   float: right;
@@ -16,4 +16,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .social-media-icon-list {
+    display: flex;
+  }
 }
