@@ -1,0 +1,19 @@
+.social-media-icon-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
+}
+
+.social-media-icon-list > a > svg {
+  width: 1rem;
+  height: 1rem;
+  color: rgba(var(--color-foreground));
+}
+
+.social-media-icon-list > a {
+  padding: 0rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
