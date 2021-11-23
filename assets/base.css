@@ -1690,7 +1690,6 @@ input[type="checkbox"] {
 }
 
 .announcement-bar {
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
   color: rgb(var(--color-foreground));
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1756,7 +1755,7 @@ input[type="checkbox"] {
   top: 42px;
   z-index: 998;
   width: 100%;
-  transition: top 0.3s ease;
+  transition: top 0.2s ease;
 }
 
 .header-wrapper {
