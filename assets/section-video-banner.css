@@ -40,11 +40,13 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   min-height: calc(100vh - 42px);
+  padding-top: 7.5rem;
+  padding-bottom: 7.5rem;
 }
 
 @media (min-width: 990px) {
   .section-video-banner-content {
-    min-height: calc(100vh - 111px);
+    min-height: calc(100vh - 42px);
   }
 }
 
@@ -64,11 +66,30 @@
 
 .section-video-banner-heading {
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .section-video-banner-subheadline {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+  font-size: 1rem;
+  line-height: 1.3em;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .section-video-banner-subheadline {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 990px) {
+  .section-video-banner-subheadline {
+    text-align: left;
+  }
+
+  .section-video-banner-heading {
+    text-align: left;
+  }
 }
 
 .subheadline-black {

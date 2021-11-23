@@ -310,7 +310,7 @@ h5,
   font-style: normal;
   letter-spacing: calc(var(--font-heading-scale) * 0.06rem);
   color: rgb(var(--color-foreground));
-  line-height: calc(1 + 0.3 / max(1, var(--font-heading-scale)));
+  line-height: 1.2em;
   margin: 0;
 }
 
@@ -1765,6 +1765,7 @@ input[type="checkbox"] {
 .header-wrapper.transparent {
   background-color: transparent;
   --color-svg: 251, 237, 218;
+  --color-link: 251, 237, 218;
 }
 
 .shopify-section-header-sticky {
@@ -1800,11 +1801,21 @@ input[type="checkbox"] {
   padding-bottom: 0.5rem;
 }
 
+.header__menu-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 @media screen and (min-width: 990px) {
   .header {
-    grid-template-areas: "heading navigation icons";
-    grid-template-columns: auto auto 1fr;
-    column-gap: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header__menu-right {
+    justify-content: flex-start;
   }
 }
 
@@ -1848,8 +1859,12 @@ input[type="checkbox"] {
   width: 100%;
 }
 
+.header__logo-link {
+  padding: 0.5rem;
+}
+
 .header__logo_svg > svg {
-  height: 24px;
+  height: 32px;
 }
 
 @media screen and (max-width: 989px) {
@@ -1999,9 +2014,6 @@ details[open] .modal-overlay::after {
 .no-js details[open] > .header__icon--search {
   top: 1rem;
   right: 0.5rem;
-}
-
-.search-modal {
   opacity: 0;
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
   height: 100%;
@@ -2117,31 +2129,27 @@ details[open] > .header__icon--menu .icon-hamburger {
 .header__menu-item {
   padding: 1rem;
   text-decoration: none;
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgb(var(--color-link));
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .header__menu-item:hover {
-  color: rgb(var(--color-foreground));
+  color: rgba(var(--color-link), 0.75);
 }
 
 .header__menu-item span {
-  transition: text-decoration var(--duration-short) ease;
 }
 
 .header__menu-item:hover span {
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
 }
 
 .header__active-menu-item {
-  transition: text-decoration-thickness var(--duration-short) ease;
-  color: rgb(var(--color-foreground));
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
+  color: rgb(var(--color-base-primary-2));
 }
 
 .header__menu-item:hover .header__active-menu-item {
-  text-decoration-thickness: 0.2rem;
 }
 
 .header__submenu {

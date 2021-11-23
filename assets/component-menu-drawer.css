@@ -4,7 +4,7 @@
 
 .js menu-drawer > details > summary::before,
 .js menu-drawer > details[open]:not(.menu-opening) > summary::before {
-  content: '';
+  content: "";
   position: absolute;
   cursor: default;
   width: 100%;
@@ -35,11 +35,11 @@ menu-drawer > details[open] > summary::before {
   z-index: 3;
   left: 0;
   top: 100%;
-  width: calc(100vw - 4rem);
+  width: 100vw;
   padding: 0;
   border: 0.1rem solid rgba(var(--color-foreground), 0.2);
   border-left: 0;
-  background-color: rgb(var(--color-background));
+  background-color: rgb(var(--color-base-primary-1));
   overflow-x: hidden;
 }
 
@@ -116,6 +116,9 @@ details[open].menu-opening > .menu-drawer__submenu {
   padding: 1.1rem 3.2rem;
   text-decoration: none;
   font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .no-js .menu-drawer__menu-item {
@@ -138,17 +141,21 @@ details[open].menu-opening > .menu-drawer__submenu {
   right: 3rem;
 }
 
+.menu-drawer__menu-item {
+  color: rgb(var(--color-base-primary-3));
+}
+
 .menu-drawer__menu-item--active,
 .menu-drawer__menu-item:focus,
 .menu-drawer__close-button:focus,
 .menu-drawer__menu-item:hover,
 .menu-drawer__close-button:hover {
-  color: rgb(var(--color-foreground));
-  background-color: rgba(var(--color-foreground), 0.04);
+  color: rgb(var(--color-base-primary-3));
+  background-color: rgba(var(--color-base-primary-2));
 }
 
 .menu-drawer__menu-item--active:hover {
-  background-color: rgba(var(--color-foreground), 0.08);
+  background-color: rgba(var(--color-base-primary-3), 0.08);
 }
 
 .js .menu-drawer__menu-item .icon-caret,
@@ -228,8 +235,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer .list-social {
-  justify-content: flex-start;
-  margin-left: -1.25rem;
+  justify-content: center;
   margin-top: 2rem;
 }
 
