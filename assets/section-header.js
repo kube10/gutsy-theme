@@ -7,11 +7,13 @@ window.addEventListener("scroll", (e) => {
     header.style.top = "0px";
     if (window.location.pathname === "/") {
       headerWrapper.classList.remove("transparent");
+      headerWrapper.style.opacity = 1;
     }
   } else {
     header.style.top = "42px";
     if (window.location.pathname === "/") {
       headerWrapper.classList.add("transparent");
+      headerWrapper.style.opacity = 1;
     }
   }
 });
