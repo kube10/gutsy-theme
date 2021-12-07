@@ -63,7 +63,10 @@
     },
     "details": {
       "type": "details-product"
+    },
+    "buy-section": {
+      "type": "buy-section-product"
     }
   },
-  "order": ["details", "main"]
+  "order": ["details", "buy-section", "main"]
 }

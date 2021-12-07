@@ -1,0 +1,25 @@
+{{ 'section-buy-product.css' | asset_url | stylesheet_tag }}
+
+<section class="page-width">
+  <div class="buy-section-content">
+    <h1>{{section.settings.headline}}</h1>
+    <h3>Try {{product.title | escape}} today</h3>
+    {% render 'product-form' %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Buy Section",
+  "tag": "section",
+  "class": "product-buy-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Convinced?"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,186 @@
+<style>
+.product-form > h2 {
+  color: #1A3C32;
+  margin-bottom: 2rem;
+}
+
+.product-form > h2 > span {
+  color: #EE704B;
+}
+
+.size-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas: "left right" "calculator calculator" "actions actions" "icons icons"
+}
+
+.calculator {
+  grid-area: calculator;
+  margin-bottom: 2rem;
+}
+
+.calculator > a {
+  font-weight: bold;
+  color: rgb(var(--color-base-primary-2))
+}
+
+.product-form__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.product-form__buttons > .button-secondary {
+  margin-right: 1rem;
+}
+
+.usp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-area: icons;
+  margin-top: 2rem;
+}
+
+.usp {
+  display: flex;
+  align-items: center;
+}
+
+.usp > span {
+  margin-left: .5rem;
+}
+
+.rc-option--active {
+  --rc-active-bg: rgba(var(--color-base-primary-2), 0.3);
+  border-radius: 2rem;
+}
+
+</style>
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+<div class="product-form">
+  <h2>Get <span>one bag</span> or <span>subscribe and save!</span></h2>
+
+
+
+  <product-form class="product-form">
+    <div class="product-form__error-message-wrapper" role="alert" hidden>
+      <span class="product-form__error-message"></span>
+    </div>
+
+    {%- form 'product', product, data-productid: product.id, id: product_form_id, class: 'form-grid', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+
+    <div class="size-quantity">
+      {%- unless product.has_only_default_variant -%}
+        <variant-selects class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+          {%- for option in product.options_with_values -%}
+            <div class="product-form__input product-form__input--dropdown">
+              <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                {{ option.name }}
+              </label>
+              <div class="select">
+                <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                  class="select__select"
+                  name="options[{{ option.name | escape }}]"
+                  form="{{ product_form_id }}"
+                >
+                  {%- for value in option.values -%}
+                    <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                      {{ value }}
+                    </option>
+                  {%- endfor -%}
+                </select>
+                {% render 'icon-caret' %}
+              </div>
+            </div>
+          {%- endfor -%}
+
+          <script type="application/json">
+            {{ product.variants | json }}
+          </script>
+        </variant-selects>
+      {%- endunless -%}
+      <div class="product-form__input product-form__quantity" {{ block.shopify_attributes }}>
+        <label class="form__label" for="Quantity-{{ section.id }}">
+          {{ 'products.product.quantity.label' | t }}
+        </label>
+
+        <quantity-input class="quantity">
+          <button class="quantity__button no-js-hidden" name="minus" type="button">
+            <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+            {% render 'icon-minus' %}
+          </button>
+          <input class="quantity__input"
+              type="number"
+              name="quantity"
+              id="Quantity-{{ section.id }}"
+              min="1"
+              value="1"
+              form="{{ product_form_id }}"
+            >
+          <button class="quantity__button no-js-hidden" name="plus" type="button">
+            <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+            {% render 'icon-plus' %}
+          </button>
+        </quantity-input>
+      </div>
+    </div>
+
+    <div class="calculator">
+        Not sure how much your pet needs? <a href="">Try our calculator!</a>
+    </div>
+
+    <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+        {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
+      </div>
+
+      <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+      <div class="product-form__buttons">
+        <button
+          type="submit"
+          name="add"
+          class="product-form__submit button button-secondary {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+        {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+        >
+            <span>
+              {%- if product.selected_or_first_available_variant.available -%}
+                {{ 'products.product.add_to_cart' | t }}
+              {%- else -%}
+                {{ 'products.product.sold_out' | t }}
+              {%- endif -%}
+            </span>
+            <div class="loading-overlay__spinner hidden">
+              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+              </svg>
+            </div>
+        </button>
+        {{ form | payment_button }}
+      </div>
+
+    <div class="usp-row">
+      <div class="usp">
+        <img class="usp-icon" src="{{'secure-payment.svg' | asset_url}}" alt="">
+        <span>Secure payment</span>
+      </div>
+      <div class="usp">
+        <img class="usp-icon" src="{{'delivery.svg' | asset_url}}" alt="">
+        <span>Fast delivery</span>
+      </div>
+      <div class="usp">
+        <img class="usp-icon" src="{{'cancel.svg' | asset_url}}" alt="">
+        <span>Cancel subscription anytime</span>
+      </div>
+
+    </div>
+    {%- endform -%}
+  </product-form>
+</div>
