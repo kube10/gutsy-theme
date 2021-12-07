@@ -1,0 +1,48 @@
+{{ 'section-details-product.css' | asset_url | stylesheet_tag }}
+{% assign type = "" %}
+{% for tag in product.tags %}
+  {% case tag %}
+    {% when "puppy" %}
+    {% assign type = "puppy" %}
+    {% when "adult-s" %}
+    {% assign type = "adult-s" %}
+    {% when "adult-l" %}
+    {% assign type = "adult-l" %}
+  {% endcase %}
+{% endfor %}
+
+<section class="product-details-section-inner {{type}}">
+  <div class="product-details-grid">
+    <div class="product-details-img">
+        <img class="product-details-img-tag" src="{{ product | image_url: width: 500 }}" alt="">
+    </div>
+    <div class="product-details-content {{type}}">
+      <div class="product-details-content-inner">
+        <div class="product-details-text-content">
+          <h1>{{ product.title | escape }}</h1>
+          {% if product.metafields.custom_fields["tagline"] != blank %}
+          <h3>{{ product.metafields.custom_fields["tagline"] }}</h3>
+          {% endif %}
+          <p>{{product.content}}</p>
+        </div>
+        {% render 'product-usp-icons' %}
+        <div class="product-details-actions">
+          <button class="button button-primary">More info <img src="{{'arrow-down-white.svg' | asset_url }}" alt=""></button>
+          <button class="button button-download-recipe" href="">Download full recipe
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.92969 13.4857H13.263V12.1523H3.92969V13.4857ZM13.263 6.15234H10.5964V2.15234H6.59635V6.15234H3.92969L8.59635 10.819L13.263 6.15234Z" fill="black"/>
+          </svg>
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product details",
+  "tag": "section",
+  "class": "product-details-section"
+}
+{% endschema %}

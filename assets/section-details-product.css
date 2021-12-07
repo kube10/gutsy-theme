@@ -1,0 +1,235 @@
+.product-details-section-inner {
+  margin-top: 64px;
+}
+
+.product-details-section-inner.puppy,
+.product-details-section-inner.adult-l {
+  background-color: rgba(238, 112, 75, 0.28);
+}
+
+.product-details-section-inner.adult-s {
+  background-color: #1a3c32;
+}
+
+/* COLORS PUPPY */
+.product-details-content.puppy {
+  background-color: #1a3c32;
+}
+
+.product-details-content.puppy
+  > .product-details-content-inner
+  > .product-details-text-content
+  > h1 {
+  color: #ee704b;
+}
+
+.product-details-content.puppy
+  > .product-details-content-inner
+  > .product-details-text-content
+  > h3 {
+  color: #fbedda;
+}
+
+.product-details-content.puppy
+  > .product-details-content-inner
+  > .product-details-text-content
+  > p {
+  color: white;
+}
+
+.product-details-content.puppy
+  > .product-details-content-inner
+  .product-usp
+  > span {
+  color: #fbedda;
+}
+
+.product-details-content.puppy
+  > .product-details-content-inner
+  .button-download-recipe {
+  color: white;
+}
+
+.product-details-content.puppy
+  > .product-details-content-inner
+  .button-download-recipe
+  > svg
+  > path {
+  fill: white;
+}
+
+/* COLORS ADULT S */
+.product-details-content.adult-s {
+  background-color: #fbedda;
+}
+
+.product-details-content.adult-s
+  > .product-details-content-inner
+  > .product-details-text-content
+  > h1 {
+  color: #1a3c32;
+}
+
+.product-details-content.adult-s
+  > .product-details-content-inner
+  > .product-details-text-content
+  > h3 {
+  color: #ee704b;
+}
+
+.product-details-content.adult-s
+  > .product-details-content-inner
+  > .product-details-text-content
+  > p {
+  color: #3b4240;
+}
+
+.product-details-content.adult-s
+  > .product-details-content-inner
+  .product-usp
+  > span {
+  color: #3b4240;
+}
+
+.product-details-content.adult-s
+  > .product-details-content-inner
+  .button-download-recipe {
+  color: #1a3c32;
+}
+
+.product-details-content.adult-s
+  > .product-details-content-inner
+  .button-download-recipe
+  > svg
+  > path {
+  fill: #1a3c32;
+}
+
+/* COLORS ADULT L */
+.product-details-content.adult-l {
+  background-color: #1a3c32;
+}
+
+.product-details-content.adult-l
+  > .product-details-content-inner
+  > .product-details-text-content
+  > h1 {
+  color: #fbedda;
+}
+
+.product-details-content.adult-l
+  > .product-details-content-inner
+  > .product-details-text-content
+  > h3 {
+  color: #ee704b;
+}
+
+.product-details-content.adult-l
+  > .product-details-content-inner
+  > .product-details-text-content
+  > p {
+  color: white;
+}
+
+.product-details-content.adult-l
+  > .product-details-content-inner
+  .product-usp
+  > span {
+  color: #fbedda;
+}
+
+.product-details-content.adult-l
+  > .product-details-content-inner
+  .button-download-recipe {
+  color: white;
+}
+
+.product-details-content.adult-l
+  > .product-details-content-inner
+  .button-download-recipe
+  > svg
+  > path {
+  fill: white;
+}
+
+.product-details-img-tag {
+  width: 100%;
+  max-width: 500px;
+}
+
+.product-details-actions > .button-primary {
+  display: none;
+}
+
+.product-details-grid {
+  display: grid;
+  width: 100%;
+}
+
+.product-details-content {
+  padding: 1rem;
+}
+
+.product-details-text-content {
+  margin-bottom: 2.75rem;
+}
+
+.product-details-text-content > h1 {
+  margin-bottom: 1rem;
+}
+
+.product-details-text-content > h3 {
+  margin-bottom: 1.5rem;
+}
+
+.product-details-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.product-details-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .product-details-content {
+    padding: 4rem;
+  }
+
+  .product-details-actions {
+    margin-top: 2rem;
+  }
+}
+
+@media (min-width: 1080px) {
+  .spacer {
+    margin-top: 76px;
+  }
+
+  .product-details-grid {
+    display: grid;
+    grid-template-columns: auto 60%;
+  }
+
+  .product-details-content {
+    padding: 7.5rem;
+  }
+
+  .product-details-content-inner {
+    max-width: calc(var(--page-width) * 0.5);
+  }
+
+  .product-details-actions {
+    margin-top: 3.75rem;
+    justify-content: space-between;
+  }
+
+  .product-details-actions > .button-primary {
+    display: flex;
+  }
+}

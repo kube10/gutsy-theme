@@ -1,0 +1,51 @@
+<style>
+.product-usp-icons {
+  display: grid;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .product-usp-icons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: left;
+  }
+}
+
+.product-usp-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.product-usp {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.product-usp > span {
+  margin-left: .5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+</style>
+
+<div class="product-usp-icons">
+  <div class="product-usp">
+    <img class="product-usp-icon" src="{{'product-usp-planet-friendly.svg' | asset_url}}" alt="">
+    <span>Planet-friendly</span>
+  </div>
+  <div class="product-usp">
+    <img class="product-usp-icon" src="{{'product-usp-local.svg' | asset_url}}" alt="">
+    <span>Locally produced</span>
+  </div>
+  <div class="product-usp">
+    <img class="product-usp-icon" src="{{'product-usp-recycle.svg' | asset_url}}" alt="">
+    <span>100% Recycable</span>
+  </div>
+  <div class="product-usp">
+    <img class="product-usp-icon" src="{{'product-usp-taste.svg' | asset_url}}" alt="">
+    <span>Ridiculously tasty</span>
+  </div>
+</div>
