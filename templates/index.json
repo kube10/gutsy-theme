@@ -6,14 +6,14 @@
         "ca143f79-6dd8-4aee-ba33-f316e3f9a16b": {
           "type": "heading",
           "settings": {
-            "heading": "Make memories, not footprints",
+            "heading": "Gutsy, conscious dog food for everyday adventures",
             "heading_color": "primary-3"
           }
         },
         "910e615d-0291-475b-b2d2-3ddd8275bedf": {
           "type": "subheading",
           "settings": {
-            "subheading": "Our insect-based dog food is the fuel for your dogs’ next adventure.",
+            "subheading": "<b>Have you ever thought about reducing your dog's ecological pawprint?<\/b>\n<br><br>\nThis hybrid dog food with insects and chicken is stuffed with flavour and high-quality proteins. By feeding your pet Gutsy you can keep your dog, yourself and our planet happy at the same time.",
             "color": "white"
           }
         },
@@ -23,24 +23,17 @@
             "button_label_1": "Shop NOW",
             "button_link_1": "",
             "button_style_1": "primary",
-            "button_label_2": "About Gutsy",
+            "button_label_2": "Why Gutsy",
             "button_link_2": "",
             "button_style_2": "secondary",
             "button_secondary_color": "white"
-          }
-        },
-        "65d3619e-8df2-4170-9277-b850d8dc86cc": {
-          "type": "blog_feature",
-          "settings": {
-            "blog": "nieuws"
           }
         }
       },
       "block_order": [
         "ca143f79-6dd8-4aee-ba33-f316e3f9a16b",
         "910e615d-0291-475b-b2d2-3ddd8275bedf",
-        "914139b2-f4af-477b-847c-125f35684b4c",
-        "65d3619e-8df2-4170-9277-b850d8dc86cc"
+        "914139b2-f4af-477b-847c-125f35684b4c"
       ],
       "settings": {
         "video_url": "https:\/\/gutsy-website.s3.eu-west-3.amazonaws.com\/Dog+Running.mp4",
@@ -48,7 +41,7 @@
         "show_overlay_1": true,
         "background_overlay_2": "linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 10%, rgba(255, 255, 255, 0) 100%)",
         "show_overlay_2": true,
-        "content-width": 450
+        "content-width": 750
       }
     },
     "image_banner": {

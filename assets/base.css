@@ -1755,7 +1755,7 @@ input[type="checkbox"] {
   top: 42px;
   z-index: 998;
   width: 100%;
-  transition: top 0.2s ease;
+  transition: top 0.2 s ease;
 }
 
 .header-wrapper {

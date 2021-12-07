@@ -1,0 +1,7 @@
+{% if product.metafields.custom_fields["tagline"] != blank %}
+  <div class="custom-field custom-field__tagline custom-field__type--text">
+    <div class="custom-field--value">
+      {{ product.metafields.custom_fields["tagline"] }}
+    </div>
+  </div>
+{% endif %}
