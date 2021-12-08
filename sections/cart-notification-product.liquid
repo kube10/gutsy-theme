@@ -10,8 +10,12 @@
           loading="lazy"
         >
       {% endif %}
-      <div>
+      <div class="cart-notification-product__content">
         <h3 class="cart-notification-product__name h4">{{ item.product.title | escape }}</h3>
+        <div class="cart-notification-product__details">
+          <span>{{ 'sections.cart.headings.quantity' | t }}: {{ item.quantity }}</span>
+          <span class="cart-notification-product__price"><strong>{{ item.final_line_price | money }}</strong></span>
+        </div>
           <dl>
             {%- unless item.product.has_only_default_variant -%}
               {%- for option in item.options_with_values -%}

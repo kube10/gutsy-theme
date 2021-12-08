@@ -52,9 +52,9 @@
     {%- endform -%}
   </div>
 
-  <h1 id="login" tabindex="-1">
+  <h2 id="login" tabindex="-1">
     {{ 'customer.login_page.title' | t }}
-  </h1>
+  </h2>
   <div>
     {%- if recover_success == true -%}
       <h3 class="form__message" tabindex="-1" autofocus>
@@ -81,7 +81,7 @@
         {{ form.errors | default_errors }}
       {%- endif -%}
 
-      <div class="field">        
+      <div class="field">
         <input
           type="email"
           name="customer[email]"
@@ -100,7 +100,7 @@
       </div>
 
       {%- if form.password_needed -%}
-        <div class="field">          
+        <div class="field">
           <input
             type="password"
             value=""
@@ -122,17 +122,17 @@
         </a>
       {%- endif -%}
 
-      <button>
+      <button class="button button-primary">
         {{ 'customer.login_page.sign_in' | t }}
       </button>
 
       <a href="{{ routes.account_register_url }}">
         {{ 'customer.login_page.create_account' | t }}
       </a>
-      
+
     {%- endform -%}
   </div>
-  
+
   {%- if shop.checkout.guest_login -%}
     <div>
       <hr>

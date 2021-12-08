@@ -1,80 +1,89 @@
 <style>
-.product-form > h2 {
-  color: #1A3C32;
-  margin-bottom: 2rem;
-}
+  .product-form > h2 {
+    color: #1A3C32;
+    margin-bottom: 2rem;
+  }
 
-.product-form > h2 > span {
-  color: #EE704B;
-}
+  .product-form > h2 > span {
+    color: #EE704B;
+  }
 
-.size-quantity {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
+  .size-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 
-.form-grid {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-areas: "left right" "calculator calculator" "actions actions" "icons icons"
-}
+  .form-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas: "left right" "calculator calculator" "actions actions" "icons icons";
+    grid-column-gap: 2rem;
+  }
 
-.calculator {
-  grid-area: calculator;
-  margin-bottom: 2rem;
-}
+  .calculator {
+    grid-area: calculator;
+    margin-bottom: 2rem;
+  }
 
-.calculator > a {
-  font-weight: bold;
-  color: rgb(var(--color-base-primary-2))
-}
+  .calculator > a {
+    font-weight: bold;
+    color: rgb(var(--color-base-primary-2))
+  }
 
-.product-form__buttons {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
+  .product-form__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 
-.product-form__buttons > .button-secondary {
-  margin-right: 1rem;
-}
+  .product-form__buttons > .button-secondary {
+    margin-right: 1rem;
+  }
 
-.usp-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  grid-area: icons;
-  margin-top: 2rem;
-}
+  .usp-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-area: icons;
+    margin-top: 2rem;
+  }
 
-.usp {
-  display: flex;
-  align-items: center;
-}
+  .usp {
+    display: flex;
+    align-items: center;
+  }
 
-.usp > span {
-  margin-left: .5rem;
-}
+  .usp > span {
+    margin-left: .5rem;
+  }
 
-.rc-option--active {
-  --rc-active-bg: rgba(var(--color-base-primary-2), 0.3);
-  border-radius: 2rem;
-}
+  .rc-option--active {
+    --rc-active-bg: rgba(var(--color-base-primary-2), 0.3);
+    border-radius: 1rem;
+  }
+
+  .rc-template__legacy-radio .rc-radio.rc-option__subsave {
+    padding: 1rem;
+  }
 
 </style>
+
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 <div class="product-form">
   <h2>Get <span>one bag</span> or <span>subscribe and save!</span></h2>
 
-
+  {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
   <product-form class="product-form">
     <div class="product-form__error-message-wrapper" role="alert" hidden>
       <span class="product-form__error-message"></span>
     </div>
+
+
 
     {%- form 'product', product, data-productid: product.id, id: product_form_id, class: 'form-grid', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
 
@@ -163,7 +172,32 @@
               </svg>
             </div>
         </button>
-        {{ form | payment_button }}
+
+        <button
+          id="directCheckout"
+          type="submit"
+          name="add"
+          directCheckout
+          class="product-form__submit button button-primary {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+        {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+        >
+            <span>
+              {%- if product.selected_or_first_available_variant.available -%}
+                Buy now
+              {%- else -%}
+                {{ 'products.product.sold_out' | t }}
+              {%- endif -%}
+            </span>
+            <div class="loading-overlay__spinner hidden">
+              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+              </svg>
+            </div>
+        </button>
+      {% comment %}
+
+              {{ form | payment_button }}
+      {% endcomment %}
       </div>
 
     <div class="usp-row">
@@ -184,3 +218,14 @@
     {%- endform -%}
   </product-form>
 </div>
+
+<script type="text/javascript">
+  const checkoutBtn = document.querySelector('#directCheckout');
+
+  checkoutBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const form = document.querySelector('.form-grid');
+    form.setAttribute('checkout', true);
+    form.submit();
+  });
+</script>

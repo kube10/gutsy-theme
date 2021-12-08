@@ -1,0 +1,44 @@
+{{ "section-cta" | asset_url | stylesheet_tag }}
+
+<div class="cta">
+  <div class="left"></div>
+  <div class="right"></div>
+</div>
+
+{% schema %}
+{
+  "name": "Call To Action Section",
+  "tag": "section",
+  "class": "cta-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Visit the shop today!"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "We have amazing stuff."
+    },
+    {
+      "type": "text",
+      "id": "button-text",
+      "label": "Button text",
+      "default": "To the shop"
+    },
+    {
+      "type": "url",
+      "id": "button-href",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ]
+}
+{% endschema %}
