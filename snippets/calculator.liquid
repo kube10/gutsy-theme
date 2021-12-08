@@ -1,0 +1,474 @@
+<style>
+  .calculator-modal {
+    position: fixed;
+    min-height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 30%;
+    background-color: rgba(28, 28, 28, 0.6);
+    padding: 1rem;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+
+  .calculator-modal.open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .calculator-modal-inner {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 2rem;
+    position: relative;
+    top: 100px;
+    max-height: calc(100vh - 2rem);
+    overflow-y: scroll;
+  }
+
+  .calculator-modal.open > .calculator-modal-inner {
+    top: 0px;
+    transition: top .3s ease .1s;
+  }
+
+  .calculator-close {
+    position: fixed;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background-color: rgb(var(--color-base-primary-3));
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 999;
+  }
+
+
+  .calculator-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0rem;
+    max-width: 760px;
+  }
+
+  .calculator-modal-heading {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .calculator-form {
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .calculator-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  .calculator-form-group > .quantity {
+    width: 100%;
+  }
+
+  .calculator-form-group > label {
+    font-weight: 600;
+    margin-bottom: .5rem;
+  }
+
+  .calculator-modal-results {
+    width: 100%;
+    margin-bottom: 2rem;
+    font-weight: bold;
+  }
+
+  .calculator-modal-results span {
+    font-weight: normal;
+  }
+
+  .calculator-modal-actions {
+    margin-bottom: 2rem;
+  }
+
+  .calculator-modal-info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .calculator-modal-info > svg {
+    margin-right: 0rem;
+    margin-bottom: 1rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  @media (min-width: 1080px) {
+
+    .calculator-modal {
+      padding: 2rem;
+    }
+
+    .calculator-modal-inner {
+      padding: 2rem;
+      max-height: auto;
+      overflow-y: auto;
+    }
+
+    .calculator-form {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .calculator-modal-content {
+      padding: 4rem;
+    }
+
+    .calculator-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+      background-color: transparent;
+      width: auto;
+      height: auto;
+      display: block;
+      border-radius: 0;
+      z-index: auto;
+    }
+
+    .calculator-form-group {
+      margin-bottom: 0rem;
+    }
+
+    .calculator-form-group > .quantity {
+      width: calc(14rem / var(--font-body-scale));
+    }
+
+    .calculator-modal-info {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      text-align: left;
+    }
+
+    .calculator-modal-info > svg {
+      margin-right: 1rem;
+      margin-bottom: 0rem;
+      width: auto;
+      height: auto;
+    }
+  }
+</style>
+
+<div class="calculator-modal">
+  <div class="calculator-modal-inner">
+    <div class="calculator-close">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M25.3332 8.54602L23.4532 6.66602L15.9998 14.1193L8.5465 6.66602L6.6665 8.54602L14.1198 15.9993L6.6665 23.4527L8.5465 25.3327L15.9998 17.8793L23.4532 25.3327L25.3332 23.4527L17.8798 15.9993L25.3332 8.54602Z" fill="#1A3C32"/>
+      </svg>
+    </div>
+    <div class="calculator-modal-content">
+      <div class="calculator-modal-heading">
+        <h2 class="color-primary-2">Gutsy bag calculator</h2>
+        <p>Calculate the amount of Gutsy bags you’ll need per month!</p>
+      </div>
+      <div class="calculator-form">
+        <div class="calculator-form-group">
+          <label for="breed">Breed</label>
+          <div class="select">
+            <select class="select__select" name="breed" id="breed">
+              <option value="mini">Mini</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+            </select>
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+            </path></svg>
+          </div>
+        </div>
+        <div class="calculator-form-group">
+          <label for="breed">Weight (kg)</label>
+          <div class="select">
+            <select id="weight" class="select__select">
+            </select>
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+            </path></svg>
+          </div>
+        </div>
+        <div class="calculator-form-group">
+          <label for="breed">Age (years)</label>
+          <quantity-input class="quantity">
+            <button class="quantity__button no-js-hidden" name="minus" type="button">
+              {% render 'icon-minus' %}
+            </button>
+            <input class="quantity__input"
+                type="number"
+                name="quantity"
+                min="1"
+                value="1"
+              >
+            <button class="quantity__button no-js-hidden" name="plus" type="button">
+              {% render 'icon-plus' %}
+            </button>
+          </quantity-input>
+        </div>
+      </div>
+      <div class="calculator-modal-results">
+        <p>Recommended daily dose: <span id="results1"></span></p>
+        <p>Kg/month: <span id="results2"></span></p>
+      </div>
+      <div class="calculator-modal-actions">
+        <p style="text-align: center">Click to apply!</p>
+        <button id="bagsBtn" class="button button-primary"><span>1&nbsp;</span> Gutsy Bag (6KG)</button>
+      </div>
+      <div class="calculator-modal-info">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10.9998 9H12.9998V7H10.9998V9ZM11.9998 20C7.58976 20 3.99976 16.41 3.99976 12C3.99976 7.59 7.58976 4 11.9998 4C16.4098 4 19.9998 7.59 19.9998 12C19.9998 16.41 16.4098 20 11.9998 20ZM11.9998 2C10.6865 2 9.38618 2.25866 8.17292 2.7612C6.95967 3.26375 5.85727 4.00035 4.92869 4.92893C3.05332 6.8043 1.99976 9.34784 1.99976 12C1.99976 14.6522 3.05332 17.1957 4.92869 19.0711C5.85727 19.9997 6.95967 20.7362 8.17292 21.2388C9.38618 21.7413 10.6865 22 11.9998 22C14.6519 22 17.1955 20.9464 19.0708 19.0711C20.9462 17.1957 21.9998 14.6522 21.9998 12C21.9998 10.6868 21.7411 9.38642 21.2386 8.17317C20.736 6.95991 19.9994 5.85752 19.0708 4.92893C18.1422 4.00035 17.0398 3.26375 15.8266 2.7612C14.6133 2.25866 13.313 2 11.9998 2ZM10.9998 17H12.9998V11H10.9998V17Z" fill="#1A3C32"/>
+        </svg>
+        <i>This calculation is based on recommended doses in accordance with EU regulation N° 767/2009.</i>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  const mini = [
+    {
+      weight: "1-2",
+      dose: "29 - 48"
+    },
+    {
+      weight: "2-3",
+      dose: "48 - 65"
+    },
+    {
+      weight: "3-4",
+      dose: "65 - 81"
+    },
+    {
+      weight: "4-5",
+      dose: "81 - 95"
+    },
+    {
+      weight: "5-6",
+      dose: "95 - 109"
+    },
+    {
+      weight: "6-8",
+      dose: "109 - 136"
+    },
+    {
+      weight: "8-10",
+      dose: "136 - 161"
+    }
+  ]
+  const medium = [
+    {
+      weight: "8-10",
+      dose: "136 - 161"
+    },
+    {
+      weight: "10-15",
+      dose: "161 - 218"
+    },
+    {
+      weight: "15-20",
+      dose: "218 - 270"
+    },
+    {
+      weight: "20-25",
+      dose: "270 - 319"
+    },
+    {
+      weight: "25-30",
+      dose: "319 - 366"
+    },
+    {
+      weight: "30-40",
+      dose: "366 - 454"
+    },
+    {
+      weight: "40-50",
+      dose: "454 - 537"
+    }
+  ]
+  const large = [
+    {
+      weight: "30 - 35",
+      dose: "366 - 411"
+    },
+    {
+      weight: "35 - 40",
+      dose: "411 - 454"
+    },
+    {
+      weight: "40 - 50",
+      dose: "454 - 537"
+    },
+    {
+      weight: "50 - 60",
+      dose: "537 - 616"
+    },
+    {
+      weight: "60 - 70",
+      dose: "616 - 691"
+    },
+    {
+      weight: "70 - 80",
+      dose: "691 - 764"
+    },
+    {
+      weight: "80 - 90",
+      dose: "764 - 834"
+    }
+  ]
+
+const weightField = document.querySelector('#weight');
+const breedField = document.querySelector('#breed');
+const result1Field = document.querySelector('#results1');
+const result2Field = document.querySelector('#results2');
+const bagsBtn = document.querySelector('#bagsBtn');
+const bagsBtnSpan = document.querySelector('#bagsBtn > span');
+
+let amount, bagSize;
+
+
+bagsBtn.addEventListener('click', function() {
+  document.querySelector('.calculator-modal').classList.remove('open');
+  const variantSelector = document.querySelector('.variantSelector');
+  const quantityInput = document.querySelector('.quantity__input');
+  console.log(variantSelector.childNodes[1]);
+  variantSelector.childNodes[1].click();
+  quantityInput.value = amount;
+})
+
+result1Field.innerHTML = mini[0].dose + "g";
+calcMonthly(mini[0].dose)
+
+mini.forEach((item, i) => {
+  weightField.innerHTML += "<option value='"+ item.weight +"'>"+ item.weight +"</option>"
+});
+
+breedField.addEventListener('change', (e) => {
+  const value = breedField.value;
+  console.log(value);
+  if (value === 'mini') {
+    weightField.innerHTML = "";
+    mini.forEach((item, i) => {
+      weightField.innerHTML += "<option value='"+ item.weight +"'>"+ item.weight +"</option>"
+    });
+    result1Field.innerHTML = mini[0].dose + "g";
+    calcMonthly(mini[0].dose)
+  } else if (value === 'medium') {
+    weightField.innerHTML = "";
+    medium.forEach((item, i) => {
+      weightField.innerHTML += "<option value='"+ item.weight +"'>"+ item.weight +"</option>"
+    });
+    result1Field.innerHTML = medium[0].dose + "g";
+    calcMonthly(medium[0].dose)
+  } else {
+    weightField.innerHTML = "";
+    large.forEach((item, i) => {
+      weightField.innerHTML += "<option value='"+ item.weight +"'>"+ item.weight +"</option>"
+    });
+    result1Field.innerHTML = large[0].dose + "g";
+    calcMonthly(large[0].dose)
+  }
+})
+
+weightField.addEventListener('change', (e) => {
+  const breed = breedField.value;
+  const weightValue = weightField.value;
+  console.log(weightValue);
+  if (breed === 'mini') {
+    let result;
+    mini.forEach((item, i) => {
+      if (item.weight == weightValue) {
+        result = item.dose;
+      }
+    });
+    result1Field.innerHTML = result + "g";
+    calcMonthly(result)
+  } else if (breed === "medium") {
+    let result;
+    medium.forEach((item, i) => {
+      if (item.weight == weightValue) {
+        result = item.dose;
+      }
+    });
+    result1Field.innerHTML = result + "g";
+    calcMonthly(result)
+  } else {
+    let result;
+    large.forEach((item, i) => {
+      if (item.weight == weightValue) {
+        result = item.dose;
+      }
+    });
+    result1Field.innerHTML = result + "g";
+    calcMonthly(result)
+  }
+})
+
+function calcMonthly(dose) {
+  const min = parseInt(dose.substr(0, dose.indexOf('-')));
+  const max = parseInt(dose.substr(dose.indexOf('-') + 1));
+  const minMonthly = (min * 30) / 1000;
+  const maxMonthly = (max * 30) / 1000;
+  result2Field.innerHTML = minMonthly + " - " + maxMonthly + "kg";
+  calcBags(maxMonthly);
+}
+
+function calcBags(monthly) {
+  let bags;
+  let bagText;
+  if (monthly > 6) {
+    bagText = "Gutsy bag (6kg)"
+    bags = Math.ceil(parseInt(monthly) / 6);
+    amount = bags;
+    bagSize = "6kg";
+  } else {
+    bagText = "Gutsy bag (2kg)"
+    bags = Math.ceil(parseInt(monthly) / 2);
+    amount = bags;
+    bagSize = "2kg";
+  }
+  bagsBtn.innerHTML = bags + "&nbsp;" + bagText;
+}
+
+jQuery("#bagsBtn").click(function() {
+  if (bagSize === "6kg") {
+    jQuery(".variantSelector").val("6kg");
+  } else {
+    jQuery(".variantSelector").val("2kg");
+  }
+
+  const event = new Event("change", {
+    view: window,
+    bubbles: true,
+    cancelable: true
+  });
+
+  document.querySelector(".variantSelector").dispatchEvent(event);
+});
+
+</script>

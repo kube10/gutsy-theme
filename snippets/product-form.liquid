@@ -2,6 +2,11 @@
   .product-form > h2 {
     color: #1A3C32;
     margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .buy-section-content > h3 {
+    text-align:center;
   }
 
   .product-form > h2 > span {
@@ -11,7 +16,133 @@
   .size-quantity {
     display: flex;
     align-items: center;
+    justify-content: center;
+  }
+
+  .after-form {
+    margin-top: 2rem;
+    grid-area: calculator;
+    margin-bottom: 2rem;
+  }
+
+  .calculator {
+    margin-top: 1rem;
+  }
+
+  .calculator > span {
+    font-weight: bold;
+    color: rgb(var(--color-base-primary-2));
+    cursor: pointer;
+  }
+
+  .product-form__buttons {
+    display: flex;
+    align-items: center;
     justify-content: flex-end;
+    flex-direction: column;
+  }
+
+  .product-form__buttons > .button-secondary {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .product-form__buttons > .button-primary {
+    width: 100%;
+  }
+
+  .product-form__buttons > .button-secondary {
+    margin-right: 1rem;
+  }
+
+  .prices {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+
+  .totalPrice {
+    margin-left: 1rem;
+  }
+
+  .totalPrice > h2 {
+    color: rgb(var(--color-base-primary-2))
+  }
+
+  .usp-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    grid-area: icons;
+    margin-top: 2rem;
+    flex-direction: column;
+  }
+
+  .usp {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  .usp > span {
+    margin-left: .5rem;
+  }
+
+  div.rc_popup {
+    display: none;
+  }
+
+  .rc-radio {
+    cursor: default;
+  }
+
+  .rc-option--active {
+    --rc-active-bg: rgba(var(--color-base-primary-2), 0.3);
+    border-radius: 1rem;
+  }
+
+  .rc-template__legacy-radio .rc-radio {
+    padding: 1rem !important;
+  }
+
+  input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+    cursor: pointer;
+  }
+
+  input[type='radio']:checked:after {
+      width: 15px;
+      height: 15px;
+      border-radius: 15px;
+      top: -2px;
+      left: -1px;
+      position: relative;
+      background-color: rgba(var(--color-base-primary-2));
+      content: '';
+      display: inline-block;
+      visibility: visible;
+      border: 2px solid white;
+  }
+
+@media (min-width: 1080px) {
+
+  .product-form > h2 {
+    text-align: left;
+  }
+
+  .buy-section-content > h3 {
+    text-align: left;
   }
 
   .form-grid {
@@ -21,24 +152,29 @@
     grid-column-gap: 2rem;
   }
 
-  .calculator {
-    grid-area: calculator;
-    margin-bottom: 2rem;
-  }
-
-  .calculator > a {
-    font-weight: bold;
-    color: rgb(var(--color-base-primary-2))
-  }
-
-  .product-form__buttons {
-    display: flex;
-    align-items: center;
+  .size-quantity {
     justify-content: flex-end;
   }
 
+  .after-form {
+    margin-top: 0;
+  }
+
+  .prices {
+    justify-content: flex-start;
+  }
+
+  .product-form__buttons {
+    flex-direction: row;
+  }
+
   .product-form__buttons > .button-secondary {
-    margin-right: 1rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+  }
+
+  .product-form__buttons > .button-primary {
+    width: auto;
   }
 
   .usp-row {
@@ -47,26 +183,14 @@
     justify-content: space-between;
     grid-area: icons;
     margin-top: 2rem;
+    flex-direction: row;
   }
 
   .usp {
-    display: flex;
-    align-items: center;
+    margin-bottom: 0rem;
+    margin-top: 0rem;
   }
-
-  .usp > span {
-    margin-left: .5rem;
-  }
-
-  .rc-option--active {
-    --rc-active-bg: rgba(var(--color-base-primary-2), 0.3);
-    border-radius: 1rem;
-  }
-
-  .rc-template__legacy-radio .rc-radio.rc-option__subsave {
-    padding: 1rem;
-  }
-
+}
 </style>
 
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
@@ -97,7 +221,7 @@
               </label>
               <div class="select">
                 <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
-                  class="select__select"
+                  class="select__select variantSelector"
                   name="options[{{ option.name | escape }}]"
                   form="{{ product_form_id }}"
                 >
@@ -143,13 +267,25 @@
       </div>
     </div>
 
-    <div class="calculator">
-        Not sure how much your pet needs? <a href="">Try our calculator!</a>
+    <div class="after-form">
+      <a class="link" href="">More information about our subscriptions.</a>
+      <div class="calculator">
+          Not sure how much your pet needs? <span id="openCalculator">Try our calculator!</span>
+      </div>
     </div>
 
-    <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
-        {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
+    <div class="prices">
+      <div class="unitPrice">
+        <span>Price per bag</span>
+        <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+          {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
+        </div>
       </div>
+      <div class="totalPrice">
+        <span>Total price</span>
+        <h2 class="price--large"></h2>
+      </div>
+    </div>
 
       <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}" disabled>
       <div class="product-form__buttons">
@@ -219,6 +355,9 @@
   </product-form>
 </div>
 
+
+{% render "calculator" %}
+
 <script type="text/javascript">
   const checkoutBtn = document.querySelector('#directCheckout');
 
@@ -228,4 +367,68 @@
     form.setAttribute('checkout', true);
     form.submit();
   });
+
+  const openCalculator = document.querySelector('#openCalculator')
+
+  openCalculator.addEventListener('click', function() {
+    const calculatorModal = document.querySelector('.calculator-modal');
+    calculatorModal.classList.add('open');
+  })
+
+  const closeCalculator = document.querySelector('.calculator-close');
+
+  closeCalculator.addEventListener('click', function() {
+    const calculatorModal = document.querySelector('.calculator-modal');
+    calculatorModal.classList.remove('open');
+  })
+
+  const quantityPicker = document.querySelector('.quantity__input');
+  const variantSelector = document.querySelector('.variantSelector');
+
+  quantityPicker.addEventListener('change', (e) => {
+     setTotalPrice();
+  })
+
+  variantSelector.addEventListener('change', (e) => {
+    console.log("change");
+    setTotalPrice();
+  })
+
+  document.querySelector('.totalPrice > h2').innerHTML = document.querySelector('.price-item').innerHTML;
+
+  document.body.addEventListener('change', function(e) {
+    if (e.target.classList.contains('rc_widget__option__input--subsave')) {
+      console.log("subscribe selected");
+      document.querySelector('.totalPrice').innerHTML += "<span class='perMonthInfo'>Per month</span>";
+      setTotalPrice();
+    } else if (e.target.classList.contains('rc_widget__option__input--onetime')) {
+      document.querySelector('.perMonthInfo').remove();
+      setTotalPrice();
+    }
+  });
+
+  function setTotalPrice() {
+    setTimeout(function () {
+      const unitPriceStr = document.querySelector('.price-item').innerHTML.replace(/\s+/g, '');
+      const unitPrice = parseFloat(unitPriceStr.substr(1).replace(',','.'));
+      console.log("unitPrice: " + unitPrice);
+      const totalPrice = parseFloat(unitPrice * parseFloat(quantityPicker.value));
+      console.log(totalPrice);
+      const euroLocale = Intl.NumberFormat('en-EU', {
+        style: "currency",
+        currency: "EUR"
+      });
+      const totalPriceEU = euroLocale.format(totalPrice);
+      document.querySelector('.totalPrice > h2').innerHTML = totalPriceEU.replace('.', ',');
+      // document.querySelector('.rc_widget__price--onetime').innerHTML = totalPriceEU.replace('.', ',');
+      const discountStr = document.querySelector('.rc_widget__option__discount').innerHTML;
+      const discount = discountStr.substr(0, discountStr.indexOf('%'));
+      const discountPrice = totalPrice - ((totalPrice * discount) / 100);
+      const discountPriceEU = euroLocale.format(discountPrice);
+      // document.querySelector('.rc_widget__price--subsave').innerHTML = discountPriceEU.replace('.', ',');
+    }, 100);
+  }
+
+
+
 </script>
