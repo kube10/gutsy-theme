@@ -1,0 +1,119 @@
+{{ "section-detail-usp.css" | asset_url | stylesheet_tag }}
+
+<div id="section-product-detail-usp">
+  <div class="page-width">
+    <div class="headings-center">
+      <h1 class="color-{{ section.settings.headline_color}}">{{section.settings.headline}}</h1>
+      <h3 class="color-{{ section.settings.subheadline_color}}">{{section.settings.subheadline}}</h3>
+    </div>
+    <div class="product-detail-usp__grid">
+      {% for block in section.blocks %}
+        <div class="product-detail-usp__card">
+            {{block.settings.svg}}
+            <h2 class="color-primary-1">{{block.settings.title}}</h2>
+            <p>{{block.settings.text}}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Detail USPs",
+  "tag": "section",
+  "class": "section-padding",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text"
+    },
+
+    {
+      "type": "text",
+      "id": "headline",
+      "default": "Headline!",
+      "label": "Headline"
+    },
+    {
+      "type": "select",
+      "id": "headline_color",
+      "label": "Headline color",
+      "default": "primary-2",
+      "options": [
+        {
+          "value": "primary-1",
+          "label": "Gutsy Green"
+        },
+        {
+          "value": "primary-2",
+          "label": "Gutsy Orange"
+        },
+        {
+          "value": "primary-3",
+          "label": "Gutsy Beige"
+        }
+      ]
+    },
+    {
+      "type": "textarea",
+      "id": "subheadline",
+      "default": "Subheadline",
+      "label": "Subheadline"
+    },
+
+    {
+      "type": "select",
+      "id": "subheadline_color",
+      "label": "Subheadline Color",
+      "default": "primary-1",
+      "options": [
+        {
+          "value": "primary-1",
+          "label": "Gutsy Green"
+        },
+        {
+          "value": "primary-2",
+          "label": "Gutsy Orange"
+        },
+        {
+          "value": "primary-3",
+          "label": "Gutsy Beige"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "USP",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "USP",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "default": "Text comes here.",
+          "label": "Text"
+        },
+        {
+          "type": "textarea",
+          "id": "svg",
+          "default": "<svg></svg>",
+          "label": "SVG Icon code"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Detail USP"
+    }
+  ]
+}
+{% endschema %}

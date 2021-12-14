@@ -1,4 +1,13 @@
 <style>
+  .product-form {
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+
+  .product-form.show {
+    opacity: 1;
+  }
+
   .product-form > h2 {
     color: #1A3C32;
     margin-bottom: 2rem;
@@ -10,7 +19,7 @@
   }
 
   .product-form > h2 > span {
-    color: #EE704B;
+    color: #F47F36;
   }
 
   .size-quantity {
@@ -23,6 +32,7 @@
     margin-top: 2rem;
     grid-area: calculator;
     margin-bottom: 2rem;
+    text-align: center;
   }
 
   .calculator {
@@ -135,62 +145,67 @@
       border: 2px solid white;
   }
 
-@media (min-width: 1080px) {
+  @media (min-width: 1080px) {
 
-  .product-form > h2 {
-    text-align: left;
-  }
+    .product-form > h2 {
+      text-align: left;
+    }
 
-  .buy-section-content > h3 {
-    text-align: left;
-  }
+    .buy-section-content > h3 {
+      text-align: left;
+    }
 
-  .form-grid {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-areas: "left right" "calculator calculator" "actions actions" "icons icons";
-    grid-column-gap: 2rem;
-  }
+    .form-grid {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-areas: "left right" "calculator calculator" "actions actions" "icons icons";
+      grid-column-gap: 2rem;
+    }
 
-  .size-quantity {
-    justify-content: flex-end;
-  }
+    .size-quantity {
+      justify-content: flex-end;
+    }
 
-  .after-form {
-    margin-top: 0;
-  }
+    .after-form {
+      margin-top: 0;
+      text-align: left;
+    }
 
-  .prices {
-    justify-content: flex-start;
-  }
+    .prices {
+      justify-content: flex-start;
+    }
 
-  .product-form__buttons {
-    flex-direction: row;
-  }
+    .product-form__buttons {
+      flex-direction: row;
+    }
 
-  .product-form__buttons > .button-secondary {
-    margin-top: 0rem;
-    margin-bottom: 0rem;
-  }
+    .product-form__buttons > .button-secondary {
+      margin-top: 0rem;
+      margin-bottom: 0rem;
+    }
 
-  .product-form__buttons > .button-primary {
-    width: auto;
-  }
+    .product-form__buttons > .button-primary {
+      width: auto;
+    }
 
-  .usp-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    grid-area: icons;
-    margin-top: 2rem;
-    flex-direction: row;
-  }
+    .usp-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      grid-area: icons;
+      margin-top: 2rem;
+      flex-direction: row;
+    }
 
-  .usp {
-    margin-bottom: 0rem;
-    margin-top: 0rem;
+    .usp {
+      margin-bottom: 0rem;
+      margin-top: 0rem;
+    }
+
+    .hide-desktop {
+      display: none;
+    }
   }
-}
 </style>
 
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
@@ -270,7 +285,7 @@
     <div class="after-form">
       <a class="link" href="">More information about our subscriptions.</a>
       <div class="calculator">
-          Not sure how much your pet needs? <span id="openCalculator">Try our calculator!</span>
+          Not sure how much your pet needs? <br class="hide-desktop"/><span id="openCalculator">Try our calculator!</span>
       </div>
     </div>
 
@@ -360,6 +375,11 @@
 
 <script type="text/javascript">
   const checkoutBtn = document.querySelector('#directCheckout');
+  const productForm = document.querySelector('.product-form');
+
+  setTimeout(function(){
+    productForm.classList.add('show');
+  }, 1000)
 
   checkoutBtn.addEventListener('click', function(e) {
     e.preventDefault();

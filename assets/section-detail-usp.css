@@ -1,0 +1,32 @@
+.product-detail-usp__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+  margin-top: 2rem;
+}
+
+.product-detail-usp__card {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .product-detail-usp__grid {
+    margin-top: 3rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .product-detail-usp__grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    column-gap: 3.75rem;
+    row-gap: 3rem;
+    max-width: 1080px;
+    margin: auto;
+    margin-top: 5rem;
+  }
+}

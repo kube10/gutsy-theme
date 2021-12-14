@@ -1,7 +1,7 @@
 .product-buy-section {
   background-color: #fbedda;
-  padding-top: 7.5rem;
-  padding-bottom: 7.5rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .buy-section-content {
@@ -12,7 +12,7 @@
 }
 
 .buy-section-content > h1 {
-  color: #ee704b;
+  color: #f47f36;
   margin-bottom: 0.5rem;
 }
 
@@ -20,4 +20,11 @@
   text-transform: uppercase;
   color: #1a3c32;
   margin-bottom: 60px;
+}
+
+@media screen and (min-width: 1080px) {
+  .product-buy-section {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+  }
 }

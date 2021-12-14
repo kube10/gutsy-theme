@@ -20,7 +20,7 @@
   > .product-details-content-inner
   > .product-details-text-content
   > h1 {
-  color: #ee704b;
+  color: #f47f36;
 }
 
 .product-details-content.puppy
@@ -74,7 +74,7 @@
   > .product-details-content-inner
   > .product-details-text-content
   > h3 {
-  color: #ee704b;
+  color: #f47f36;
 }
 
 .product-details-content.adult-s
@@ -121,7 +121,7 @@
   > .product-details-content-inner
   > .product-details-text-content
   > h3 {
-  color: #ee704b;
+  color: #f47f36;
 }
 
 .product-details-content.adult-l
@@ -168,6 +168,8 @@
 
 .product-details-content {
   padding: 1rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .product-details-text-content {

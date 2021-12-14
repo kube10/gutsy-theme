@@ -104,14 +104,14 @@ svg {
   padding-bottom: 4rem;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .section-padding {
     padding-top: 6rem;
     padding-bottom: 6rem;
   }
 }
 
-@media (min-width: 1080px) {
+@media screen and (min-width: 1080px) {
   .section-padding {
     padding-top: 7.5rem;
     padding-bottom: 7.5rem;
@@ -311,6 +311,10 @@ body,
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
   font-weight: var(--font-body-weight);
+}
+
+.headings-center {
+  text-align: center;
 }
 
 h1,
@@ -1746,9 +1750,24 @@ input[type="checkbox"] {
   justify-content: center;
 }
 
+.announcement-bar__right {
+  display: flex;
+  align-items: center;
+}
+
+.announcement-bar__right > .announcement-bar__link {
+  color: white;
+  font-size: 0.82rem;
+  display: none;
+}
+
 @media (min-width: 768px) {
   .announcement-bar-inner {
     justify-content: space-between;
+  }
+
+  .announcement-bar__right > .announcement-bar__link {
+    display: block;
   }
 
   .announcement-bar-inner.justify-end {
@@ -2003,6 +2022,12 @@ input[type="checkbox"] {
 @media screen and (max-width: 989px) {
   menu-drawer ~ .header__icons .header__icon--account {
     display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header__icon--account {
+    margin-right: 1rem;
   }
 }
 

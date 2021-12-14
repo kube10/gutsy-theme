@@ -1,5 +1,6 @@
 {
   "current": {
+    "primary_2": "#f47f36",
     "colors_text": "#121212",
     "colors_background_1": "#FFFFFF",
     "type_header_font": "poppins_n4",
@@ -44,29 +45,9 @@
       },
       "footer": {
         "type": "footer",
-        "blocks": {
-          "footer-0": {
-            "type": "link_list",
-            "settings": {
-              "heading": "Quick links",
-              "menu": "footer"
-            }
-          },
-          "footer-1": {
-            "type": "text",
-            "settings": {
-              "heading": "Heading",
-              "subtext": "<p>Share store details, promotions, or brand content with your customers.<\/p>"
-            }
-          }
-        },
-        "block_order": [
-          "footer-0",
-          "footer-1"
-        ],
         "settings": {
-          "color_scheme": "bg-white",
-          "newsletter_enable": true,
+          "color_scheme": "bg-green",
+          "newsletter_enable": false,
           "newsletter_heading": "Subscribe to our emails",
           "show_social": false,
           "enable_country_selector": true,
