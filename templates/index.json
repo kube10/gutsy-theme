@@ -43,9 +43,24 @@
         "show_overlay_2": true,
         "content-width": 750
       }
+    },
+    "1639573073ed81e81f": {
+      "type": "cta-section",
+      "settings": {
+        "color_scheme": "bg-green",
+        "headline": "DO YOU WANT TO BE PART OF THE SOLUTION?",
+        "heading_color": "primary-2",
+        "subheadline": "Check out our ecological, insect-based dog food range.",
+        "subheading_color": "primary-3",
+        "buttonText": "To the shop",
+        "button-href": "",
+        "button_color": "primary-2",
+        "image": "shopify:\/\/shop_images\/1212981_1.jpg"
+      }
     }
   },
   "order": [
-    "163758556420562ce4"
+    "163758556420562ce4",
+    "1639573073ed81e81f"
   ]
 }

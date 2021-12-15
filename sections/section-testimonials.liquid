@@ -1,0 +1,109 @@
+{{ "section-testimonials.css" | asset_url | stylesheet_tag }}
+
+<div class="section-testimonials-inner color-{{section.settings.color_scheme}} section-padding">
+  <div class="page-width">
+    <div class="content-centered">
+        <h1 class="h2 color-{{section.settings.heading_color}}">{{section.settings.headline}}</h1>
+        <div class="testimonials-wrap">
+          {% for block in section.blocks %}
+              <div class="testimonial-card">
+                <img src="{{ block.settings.testimonial_image | image_url: width: 250 }}" alt="">
+                <p>{{block.settings.testimonial_content}}</p>
+                <div class="testimonial-name__wrap">
+                  <div class="testimonial-name__line"></div>
+                  <strong>{{block.settings.testimonial_name}}</strong>
+                  <div class="testimonial-name__line"></div>
+                </div>
+              </div>
+          {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Section Testimonials",
+  "tag": "section",
+  "class": "section-testimonials",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "bg-green",
+          "label": "Green Background"
+        },
+        {
+          "value": "bg-beige",
+          "label": "Beige Background"
+        },
+        {
+          "value": "bg-white",
+          "label": "White Background"
+        }
+      ],
+      "default": "bg-beige",
+      "label": "t:sections.rich-text.settings.color_scheme.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_color",
+      "label": "Kleur heading",
+      "default": "primary-1",
+      "options": [
+        {
+          "value": "primary-1",
+          "label": "Gutsy Green"
+        },
+        {
+          "value": "primary-2",
+          "label": "Gutsy Orange"
+        },
+        {
+          "value": "primary-3",
+          "label": "Gutsy Beige"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Dog lovers love us!"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section Testimonials"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "testimonial_content",
+          "default": "What a great product!",
+          "label": "Testimonial Content"
+        },
+        {
+          "type": "text",
+          "id": "testimonial_name",
+          "default": "Lisa",
+          "label": "Testimonial Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "testimonial_image",
+          "label": "Image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
