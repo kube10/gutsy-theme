@@ -11,6 +11,14 @@
   background-color: #1a3c32;
 }
 
+.button-download-recipe > svg {
+  transition: transform 0.3s ease;
+}
+
+.button-download-recipe:hover > svg {
+  transform: translateY(4px);
+}
+
 /* COLORS PUPPY */
 .product-details-content.puppy {
   background-color: #1a3c32;

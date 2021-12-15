@@ -7,7 +7,7 @@
 
 @media screen and (min-width: 750px) {
   .customer:not(.account):not(.order) {
-    max-width: 47.8rem;
+    max-width: 28rem;
   }
 }
 

@@ -1,21 +1,78 @@
-{{ "section-cta" | asset_url | stylesheet_tag }}
+{{ "section-cta.css" | asset_url | stylesheet_tag }}
 
-<div class="cta">
-  <div class="left"></div>
-  <div class="right"></div>
+<div class="cta-section-inner color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="cta-section__left section-padding">
+      <h1 class="color-{{ section.settings.heading_color}}">{{section.settings.headline}}</h1>
+      <h3 class="color-{{ section.settings.subheading_color}}">{{section.settings.subheadline}}</h3>
+      <button class="button button-borderless color-{{section.settings.button_color}}" href="{{button-href}}">
+        {{section.settings.buttonText}}
+        <svg class="horizontal" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_1251_51674" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="12" height="11">
+            <path d="M4.43815 8.73614H11.8848L8.63148 11.9895C8.37148 12.2495 8.37148 12.6761 8.63148 12.9361C8.89148 13.1961 9.31148 13.1961 9.57148 12.9361L13.9648 8.5428C14.2248 8.2828 14.2248 7.8628 13.9648 7.6028L9.57815 3.2028C9.4536 3.07797 9.2845 3.00781 9.10815 3.00781C8.93181 3.00781 8.76271 3.07797 8.63815 3.2028C8.37815 3.4628 8.37815 3.8828 8.63815 4.1428L11.8848 7.4028H4.43815C4.07148 7.4028 3.77148 7.7028 3.77148 8.06947C3.77148 8.43614 4.07148 8.73614 4.43815 8.73614Z" fill="black"/>
+            </mask>
+            <g mask="url(#mask0_1251_51674)">
+            <rect x="0.96582" y="0.0703125" width="16" height="16" fill="currentColor"/>
+            </g>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="cta-section__right" style="background-image: url({{section.settings.image | image_url: width: 1080}})">
+  </div>
 </div>
 
 {% schema %}
 {
   "name": "Call To Action Section",
   "tag": "section",
-  "class": "cta-section",
+  "class": "section-cta",
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "bg-green",
+          "label": "Green Background"
+        },
+        {
+          "value": "bg-beige",
+          "label": "Beige Background"
+        },
+        {
+          "value": "bg-white",
+          "label": "White Background"
+        }
+      ],
+      "default": "bg-green",
+      "label": "t:sections.rich-text.settings.color_scheme.label"
+    },
     {
       "type": "text",
       "id": "headline",
       "label": "Headline",
       "default": "Visit the shop today!"
+    },
+    {
+      "type": "select",
+      "id": "heading_color",
+      "label": "Kleur Headline",
+      "default": "primary-2",
+      "options": [
+        {
+          "value": "primary-1",
+          "label": "Gutsy Green"
+        },
+        {
+          "value": "primary-2",
+          "label": "Gutsy Orange"
+        },
+        {
+          "value": "primary-3",
+          "label": "Gutsy Beige"
+        }
+      ]
     },
     {
       "type": "text",
@@ -24,8 +81,28 @@
       "default": "We have amazing stuff."
     },
     {
+      "type": "select",
+      "id": "subheading_color",
+      "label": "Kleur Subheadline",
+      "default": "primary-3",
+      "options": [
+        {
+          "value": "primary-1",
+          "label": "Gutsy Green"
+        },
+        {
+          "value": "primary-2",
+          "label": "Gutsy Orange"
+        },
+        {
+          "value": "primary-3",
+          "label": "Gutsy Beige"
+        }
+      ]
+    },
+    {
       "type": "text",
-      "id": "button-text",
+      "id": "buttonText",
       "label": "Button text",
       "default": "To the shop"
     },
@@ -34,10 +111,36 @@
       "id": "button-href",
       "label": "Button link"
     },
+
+    {
+      "type": "select",
+      "id": "button_color",
+      "label": "Kleur Button",
+      "default": "primary-2",
+      "options": [
+        {
+          "value": "primary-1",
+          "label": "Gutsy Green"
+        },
+        {
+          "value": "primary-2",
+          "label": "Gutsy Orange"
+        },
+        {
+          "value": "primary-3",
+          "label": "Gutsy Beige"
+        }
+      ]
+    },
     {
       "type": "image_picker",
       "id": "image",
       "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Call To Action"
     }
   ]
 }

@@ -217,6 +217,11 @@ html.no-js .no-js-hidden {
   margin-bottom: 0;
 }
 
+body {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
 body,
 .color-bg-green,
 .color-bg-beige,
@@ -341,12 +346,27 @@ h5,
   color: rgba(var(--color-base-primary-1));
 }
 
+.button.color-primary-1 {
+  color: rgba(var(--color-base-primary-1));
+  --color-svg: var(--color-base-primary-1);
+}
+
 .color-primary-2 {
   color: rgba(var(--color-base-primary-2));
 }
 
+.button.color-primary-2 {
+  color: rgba(var(--color-base-primary-2));
+  --color-svg: var(--color-base-primary-2);
+}
+
 .color-primary-3 {
   color: rgba(var(--color-base-primary-3));
+}
+
+.button.color-primary-3 {
+  color: rgba(var(--color-base-primary-3));
+  --color-svg: var(--color-base-primary-3);
 }
 
 .h0 {
@@ -356,16 +376,18 @@ h5,
 h1,
 .h1 {
   font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 h3,
 .h3 {
   font-family: var(--font-body-family);
-  font-size: 29px;
-  line-height: 32px;
+  font-size: 1.2rem;
+  line-height: 1.3;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.002em;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -373,16 +395,23 @@ h3,
   .h1 {
     font-size: 4rem;
   }
+
+  h3,
+  .h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1080px) {
+  h3,
+  .h3 {
+    font-size: 2rem;
+  }
 }
 
 h2,
 .h2 {
   font-size: 2.25rem;
-}
-
-h3,
-.h3 {
-  font-size: 1.5rem;
 }
 
 h4,
@@ -438,7 +467,6 @@ blockquote {
 .form__label,
 .select__select {
   font-size: 1rem;
-  line-height: calc(1 + 0.5 / var(--font-body-scale));
   letter-spacing: 0.04rem;
 }
 
@@ -1145,7 +1173,7 @@ deferred-media {
   background-color: rgba(var(--color-button), var(--alpha-button-background));
   box-shadow: 0 0 0 0.1rem rgba(var(--color-button), var(--alpha-button-border));
   color: rgb(var(--color-button-text));
-  transition: transform 0.3s ease;
+  transition: background-color 0.3s ease;
   -webkit-appearance: none;
   appearance: none;
 }
@@ -1155,16 +1183,46 @@ deferred-media {
   margin-left: 0.5rem;
 }
 
+.button-borderless {
+  border: 0;
+  padding-left: 0;
+  padding-right: 0;
+  color: rgb(var(--color-foreground));
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.button-borderless > svg {
+  transition: transform 0.3s ease;
+}
+
+.button-borderless:hover > svg.horizontal {
+  transform: translateX(0.5rem);
+}
+
+.button-borderless:hover > svg.vertical {
+  transform: translateY(4px);
+}
+
 .button-secondary {
   color: rgb(var(--color-foreground));
   border: 2px solid rgb(var(--color-foreground));
   font-size: 1rem;
+  transition: background-color 0.3 ease;
+}
+
+.button-secondary:hover {
+  background-color: rgba(var(--color-foreground), 0.2);
+}
+
+.button-secondary.color-white:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Button - hover */
 
 .button-primary:hover {
-  transform: scale(1.05);
+  background-color: rgb(var(--color-base-primary-1));
 }
 
 .button-primary:not([disabled]):hover,
@@ -1331,7 +1389,9 @@ details[open] > .share-button__fallback {
   border-radius: 0;
   color: rgb(var(--color-foreground));
   font-size: 1rem;
-  height: 48px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 0.75rem;
   width: 100%;
   transition: box-shadow var(--duration-short) ease;
 }
@@ -1380,9 +1440,9 @@ details[open] > .share-button__fallback {
 .select__select,
 .customer select {
   cursor: pointer;
-  line-height: calc(1 + 0.6 / var(--font-body-scale));
   padding-left: 1.5rem;
   padding-right: 4rem;
+  height: 50px;
 }
 
 .button-primary,
@@ -1418,19 +1478,18 @@ details[open] > .share-button__fallback {
 .customer .field input {
   flex-grow: 1;
   text-align: left;
-  padding: 1.5rem;
 }
 
 .field__label,
 .customer .field label {
   font-size: 1rem;
-  left: 1.5rem;
-  top: 1rem;
+  left: 0.75rem;
+  top: 0.75rem;
   margin-bottom: 0;
   pointer-events: none;
   position: absolute;
   transition: top var(--duration-short) ease,
-    font-size var(--duration-short) ease;
+    font-size var(--duration-short) ease, opacity 0.3s ease;
   color: rgba(var(--color-foreground), 0.75);
   letter-spacing: 0.1rem;
   line-height: 1.5;
@@ -1442,18 +1501,7 @@ details[open] > .share-button__fallback {
 .customer .field input:focus ~ label,
 .customer .field input:not(:placeholder-shown) ~ label,
 .customer .field input:-webkit-autofill ~ label {
-  font-size: 1rem;
-  top: 0.3em;
-  letter-spacing: 0.04rem;
-}
-
-.field__input:focus,
-.field__input:not(:placeholder-shown),
-.field__input:-webkit-autofill,
-.customer .field input:focus,
-.customer .field input:not(:placeholder-shown),
-.customer .field input:-webkit-autofill {
-  padding: 2.2rem 1.5rem 0.8rem;
+  opacity: 0;
 }
 
 .field__input::-webkit-search-cancel-button,
@@ -1583,7 +1631,7 @@ input[type="checkbox"] {
   position: relative;
   width: calc(14rem / var(--font-body-scale));
   display: flex;
-  height: 48px;
+  height: 50px;
 }
 
 .quantity__input {
