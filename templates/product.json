@@ -116,12 +116,40 @@
         "heading_color": "primary-2",
         "headline": "Dog lovers love us!"
       }
+    },
+    "1639579029d31473ae": {
+      "type": "apps",
+      "blocks": {
+        "92811e94-a9eb-4c74-83a4-8b1c4f2a39e5": {
+          "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "heading_font": "helvetica_n4",
+            "heading_size": 20,
+            "feed_width": 100,
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "92811e94-a9eb-4c74-83a4-8b1c4f2a39e5"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "16395790392dec3340": {
+      "type": "instagram-link",
+      "settings": {
+        "instagram_url": "https:\/\/instagram.com"
+      }
     }
   },
   "order": [
     "details",
     "1639486633a23c94b9",
     "buy-section",
-    "1639575113515162c3"
+    "1639575113515162c3",
+    "1639579029d31473ae",
+    "16395790392dec3340"
   ]
 }

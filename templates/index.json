@@ -116,12 +116,19 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "163957879347b59527": {
+      "type": "instagram-link",
+      "settings": {
+        "instagram_url": "https:\/\/instagram.com"
+      }
     }
   },
   "order": [
     "163758556420562ce4",
     "1639573073ed81e81f",
     "16395750350bfa8123",
-    "16395754318a175f7a"
+    "16395754318a175f7a",
+    "163957879347b59527"
   ]
 }
