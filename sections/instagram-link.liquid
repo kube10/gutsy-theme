@@ -1,0 +1,37 @@
+<style>
+  .instagram-link-inner {
+    display: flex;
+    aling-items: center;
+    justify-content: center;
+    padding-top: 0 !important;
+  }
+
+  .instagram-link-inner > .button {
+    margin-top: 3.75rem;
+  }
+</style>
+
+<div class="instagram-link-inner section-padding">
+<button class="button button-secondary" href="{{section.settings.instagram_url}}" target="_blank">Follow us on Instagram</button>
+</div>
+
+{% schema %}
+{
+  "name": "Instagram Link",
+  "tag": "div",
+  "class": "instagram-link-section",
+  "presets": [
+    {
+      "name": "Instagram Link"
+    }
+  ],
+  "settings": [
+    {
+      "type":"text",
+      "label": "Instagram Page URL",
+      "id": "instagram_url",
+      "default": "https://instagram.com"
+    }
+  ]
+}
+{% endschema %}

@@ -57,10 +57,71 @@
         "button_color": "primary-2",
         "image": "shopify:\/\/shop_images\/1212981_1.jpg"
       }
+    },
+    "16395750350bfa8123": {
+      "type": "section-testimonials",
+      "blocks": {
+        "940a5fb9-0506-4abf-8d0d-b4f8a590ed86": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "My BFF Jacky has had stomach troubles for years. Thanks to gutsy’s hypo-allergenic trekker fuel, those issues are in the past!",
+            "testimonial_name": "Lisa, Antwerp",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25.png"
+          }
+        },
+        "174d2fdb-5aca-49d5-87a8-0431c9dded58": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "It’s funny how we always consider our own footprint when thinking about sustainability. Gutsy reduces our pet’s paw print too!",
+            "testimonial_name": "Ben, Brugge",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-1.png"
+          }
+        },
+        "7b34592d-6116-4a5d-9233-fb761c1355ea": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "My border collie is a real hiker, he’s more wolf than dog! A nutritious meal that’s rich in proteins is exactly what she needed.",
+            "testimonial_name": "Michael, Brussels",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-2.png"
+          }
+        }
+      },
+      "block_order": [
+        "940a5fb9-0506-4abf-8d0d-b4f8a590ed86",
+        "174d2fdb-5aca-49d5-87a8-0431c9dded58",
+        "7b34592d-6116-4a5d-9233-fb761c1355ea"
+      ],
+      "settings": {
+        "color_scheme": "bg-beige",
+        "heading_color": "primary-1",
+        "headline": "Dog lovers love us!"
+      }
+    },
+    "16395754318a175f7a": {
+      "type": "apps",
+      "blocks": {
+        "d50ba9fb-b0e7-46f5-8cbf-39beb1927ad9": {
+          "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "heading_font": "poppins_n4",
+            "heading_size": 20,
+            "feed_width": 100,
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "d50ba9fb-b0e7-46f5-8cbf-39beb1927ad9"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "163758556420562ce4",
-    "1639573073ed81e81f"
+    "1639573073ed81e81f",
+    "16395750350bfa8123",
+    "16395754318a175f7a"
   ]
 }
