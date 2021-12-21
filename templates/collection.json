@@ -1,14 +1,90 @@
 {
   "sections": {
-    "banner": {
-      "type": "main-collection-banner"
-    },
     "product-grid": {
-      "type": "main-collection-product-grid"
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_image_outline": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_filtering": false,
+        "enable_sorting": false,
+        "collapse_on_larger_devices": false
+      }
+    },
+    "1640091719605276eb": {
+      "type": "section-testimonials",
+      "blocks": {
+        "9cc76495-f0a2-434b-bc6a-7331a58c4c35": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "My BFF Jacky has had stomach troubles for years. Thanks to gutsy’s hypo-allergenic trekker fuel, those issues are in the past!",
+            "testimonial_name": "Lisa, Antwerp",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25.png"
+          }
+        },
+        "a9738073-5cd7-4860-9bdc-c3d6c6f9988f": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "It’s funny how we always consider our own footprint when thinking about sustainability. Gutsy reduces our pet’s paw print too!",
+            "testimonial_name": "Ben, Brugge",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-1.png"
+          }
+        },
+        "50570bfe-2d64-4093-a7ed-8f8757d44017": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "My border collie is a real hiker, he’s more wolf than dog! A nutritious meal that’s rich in proteins is exactly what she needed.",
+            "testimonial_name": "Michael, Brussels",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-2.png"
+          }
+        }
+      },
+      "block_order": [
+        "9cc76495-f0a2-434b-bc6a-7331a58c4c35",
+        "a9738073-5cd7-4860-9bdc-c3d6c6f9988f",
+        "50570bfe-2d64-4093-a7ed-8f8757d44017"
+      ],
+      "settings": {
+        "color_scheme": "bg-beige",
+        "heading_color": "primary-1",
+        "headline": "Dog lovers love us!"
+      }
+    },
+    "16400917719f152aa0": {
+      "type": "apps",
+      "blocks": {
+        "ecea42aa-c160-4812-b067-5244acee9f93": {
+          "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "heading_font": "helvetica_n4",
+            "heading_size": 20,
+            "feed_width": 100,
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "ecea42aa-c160-4812-b067-5244acee9f93"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "1640091772fb7e0f68": {
+      "type": "instagram-link",
+      "settings": {
+        "instagram_url": "https:\/\/instagram.com"
+      }
     }
   },
   "order": [
-    "banner",
-    "product-grid"
+    "product-grid",
+    "1640091719605276eb",
+    "16400917719f152aa0",
+    "1640091772fb7e0f68"
   ]
 }

@@ -1,11 +1,11 @@
 const video = document.querySelector(".section-video-banner-video");
 const discoverBtns = document.querySelectorAll(".blog-feature-card-button");
 
-video.addEventListener("loadeddata", (e) => {
-  if (video.readyState >= 3) {
-    initUI();
-  }
-});
+// video.addEventListener("loadeddata", (e) => {
+//   if (video.readyState >= 3) {
+//     initUI();
+//   }
+// });
 
 discoverBtns.forEach((btn) => {
   btn.addEventListener("mouseenter", (e) => {

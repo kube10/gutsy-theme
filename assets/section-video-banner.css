@@ -37,8 +37,6 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  opacity: 0;
-  transition: opacity 0.3s ease;
   min-height: calc(100vh - 42px);
   padding-top: 7.5rem;
   padding-bottom: 7.5rem;

@@ -1884,8 +1884,6 @@ input[type="checkbox"] {
   --color-link: 251, 237, 218;
   --color-button: var(--color-base-primary-3);
   --color-button-text: var(--color-base-primary-1);
-  opacity: 0;
-  transition: opacity 0.5s ease;
 }
 
 .shopify-section-header-sticky {

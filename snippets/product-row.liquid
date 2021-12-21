@@ -1,0 +1,45 @@
+{{ 'section-details-product.css' | asset_url | stylesheet_tag }}
+
+<style>
+.product-details-section-inner {
+  margin: 0;
+}
+</style>
+
+{% assign type = "" %}
+{% for tag in product_row_product.tags %}
+  {% case tag %}
+    {% when "puppy" %}
+    {% assign type = "puppy" %}
+    {% when "adult-s" %}
+    {% assign type = "adult-s" %}
+    {% when "adult-l" %}
+    {% assign type = "adult-l" %}
+  {% endcase %}
+{% endfor %}
+
+<section class="product-details-section-inner {{type}}">
+  <div class="product-details-grid">
+    <div class="product-details-img">
+        <img class="product-details-img-tag" src="{{ product_row_product | image_url: width: 500 }}" alt="">
+    </div>
+    <div class="product-details-content {{type}}">
+      <div class="product-details-content-inner">
+        <div class="product-details-text-content">
+          <h1>{{ product_row_product.title | escape }}</h1>
+          {% if product_row_product.metafields.custom_fields["tagline"] != blank %}
+          <h3>{{ product_row_product.metafields.custom_fields["tagline"] }}</h3>
+          {% endif %}
+          <p>{{product_row_product.content}}</p>
+        </div>
+        <div class="product-details-actions">
+          <h2>{% render 'price', product: product_row_product, price_class: '' %}</h2>
+          <div class="button-group">
+            <a href="{{product_row_product.url}}" class="button button-secondary">MORE INFO</a>
+            <a href="" class="button button-primary">BUY NOW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
