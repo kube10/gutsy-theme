@@ -5,7 +5,7 @@
     <div class="cta-section__left section-padding">
       <h1 class="color-{{ section.settings.heading_color}}">{{section.settings.headline}}</h1>
       <h3 class="color-{{ section.settings.subheading_color}}">{{section.settings.subheadline}}</h3>
-      <button class="button button-borderless color-{{section.settings.button_color}}" href="{{button-href}}">
+      <a class="button button-borderless color-{{section.settings.button_color}}" href="{{section.settings.button_href}}">
         {{section.settings.buttonText}}
         <svg class="horizontal" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
             <mask id="mask0_1251_51674" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="12" height="11">
@@ -15,7 +15,7 @@
             <rect x="0.96582" y="0.0703125" width="16" height="16" fill="currentColor"/>
             </g>
         </svg>
-      </button>
+      </a>
     </div>
   </div>
   <div class="cta-section__right" style="background-image: url({{section.settings.image | image_url: width: 1080}})">
@@ -108,7 +108,7 @@
     },
     {
       "type": "url",
-      "id": "button-href",
+      "id": "button_href",
       "label": "Button link"
     },
 

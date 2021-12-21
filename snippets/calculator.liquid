@@ -82,6 +82,14 @@
     margin-bottom: 1rem;
   }
 
+  .warning {
+    font-weight: 400;
+  }
+
+  .warning a {
+    color: rgb(var(--color-base-primary-2))
+  }
+
   .calculator-form-group > .quantity {
     width: 100%;
   }
@@ -189,11 +197,12 @@
         <h2 class="color-primary-2">Gutsy bag calculator</h2>
         <p>Calculate the amount of Gutsy bags you’ll need per month!</p>
       </div>
-      <div class="calculator-form">
+      <div id="form-{{productTitle}}" class="calculator-form">
         <div class="calculator-form-group">
-          <label for="breed">Breed</label>
+          <label for="breed">Dog type</label>
           <div class="select">
             <select class="select__select" name="breed" id="breed">
+              <option value="puppy">Puppy</option>
               <option value="mini">Mini</option>
               <option value="medium">Medium</option>
               <option value="large">Large</option>
@@ -213,25 +222,20 @@
             </path></svg>
           </div>
         </div>
-        <div class="calculator-form-group">
-          <label for="breed">Age (years)</label>
-          <quantity-input class="quantity">
-            <button class="quantity__button no-js-hidden" name="minus" type="button">
-              {% render 'icon-minus' %}
-            </button>
-            <input class="quantity__input"
-                type="number"
-                name="quantity"
-                min="1"
-                value="1"
-              >
-            <button class="quantity__button no-js-hidden" name="plus" type="button">
-              {% render 'icon-plus' %}
-            </button>
-          </quantity-input>
+        <div class="calculator-form-group age-form-group hidden">
+          <label for="breed">Age (months)</label>
+          <div class="select">
+            <select id="age" class="select__select">
+            </select>
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+            </path></svg>
+          </div>
         </div>
       </div>
       <div class="calculator-modal-results">
+        <div class="warning">
+        </div>
         <p>Recommended daily dose: <span id="results1"></span></p>
         <p>Kg/month: <span id="results2"></span></p>
       </div>
@@ -249,8 +253,59 @@
   </div>
 </div>
 
-
 <script type="text/javascript">
+  const puppy = [
+    { "weight": 1, "age": 2, "dose": 60, "mpd": 3 },
+    { "weight": 1, "age": 3, "dose": 70, "mpd": 3 },
+    { "weight": 1, "age": 6, "dose": 65, "mpd": 3 },
+    { "weight": 1, "age": 9, "dose": 60, "mpd": 2 },
+    { "weight": 1, "age": 12, "dose": "Combinatie niet beschikbaar", "mpd": 2 },
+    { "weight": 2, "age": 2, "dose": 60, "mpd": 3 },
+    { "weight": 2, "age": 3, "dose": 70, "mpd": 3 },
+    { "weight": 2, "age": 6, "dose": 65, "mpd": 3 },
+    { "weight": 2, "age": 9, "dose": 60, "mpd": 2 },
+    { "weight": 2, "age": 12, "dose": "Combinatie niet beschikbaar", "mpd": 2 },
+    { "weight": 5, "age": 2, "dose": 110, "mpd": 3 },
+    { "weight": 5, "age": 3, "dose": 120, "mpd": 3 },
+    { "weight": 5, "age": 6, "dose": 120, "mpd": 3 },
+    { "weight": 5, "age": 9, "dose": 115, "mpd": 2 },
+    { "weight": 5, "age": 12, "dose": "Combinatie niet beschikbaar", "mpd": 2 },
+    { "weight": 10, "age": 2, "dose": 165, "mpd": 3 },
+    { "weight": 10, "age": 3, "dose": 190, "mpd": 3 },
+    { "weight": 10, "age": 6, "dose": 200, "mpd": 3 },
+    { "weight": 10, "age": 9, "dose": 190, "mpd": 2 },
+    { "weight": 10, "age": 12, "dose": 180, "mpd": 2 },
+    { "weight": 15, "age": 2, "dose": 215, "mpd": 3 },
+    { "weight": 15, "age": 3, "dose": 245, "mpd": 3 },
+    { "weight": 15, "age": 6, "dose": 265, "mpd": 3 },
+    { "weight": 15, "age": 9, "dose": 250, "mpd": 2 },
+    { "weight": 15, "age": 12, "dose": 235, "mpd": 2 },
+    { "weight": 20, "age": 2, "dose": 255, "mpd": 3 },
+    { "weight": 20, "age": 3, "dose": 295, "mpd": 3 },
+    { "weight": 20, "age": 6, "dose": 320, "mpd": 3 },
+    { "weight": 20, "age": 9, "dose": 310, "mpd": 2 },
+    { "weight": 20, "age": 12, "dose": 285, "mpd": 2 },
+    { "weight": 25, "age": 2, "dose": 290, "mpd": 3 },
+    { "weight": 25, "age": 3, "dose": 340, "mpd": 3 },
+    { "weight": 25, "age": 6, "dose": 370, "mpd": 3 },
+    { "weight": 25, "age": 9, "dose": 365, "mpd": 2 },
+    { "weight": 25, "age": 12, "dose": 345, "mpd": 2 },
+    { "weight": 30, "age": 2, "dose": 325, "mpd": 3 },
+    { "weight": 30, "age": 3, "dose": 380, "mpd": 3 },
+    { "weight": 30, "age": 6, "dose": 420, "mpd": 3 },
+    { "weight": 30, "age": 9, "dose": 415, "mpd": 2 },
+    { "weight": 30, "age": 12, "dose": 400, "mpd": 2 },
+    { "weight": 40, "age": 2, "dose": 385, "mpd": 3 },
+    { "weight": 40, "age": 3, "dose": 455, "mpd": 3 },
+    { "weight": 40, "age": 6, "dose": 510, "mpd": 3 },
+    { "weight": 40, "age": 9, "dose": 505, "mpd": 2 },
+    { "weight": 40, "age": 12, "dose": 480, "mpd": 2 },
+    { "weight": 50, "age": 2, "dose": 440, "mpd": 3 },
+    { "weight": 50, "age": 3, "dose": 520, "mpd": 3 },
+    { "weight": 50, "age": 6, "dose": 590, "mpd": 3 },
+    { "weight": 50, "age": 9, "dose": 590, "mpd": 2 },
+    { "weight": 50, "age": 12, "dose": 565, "mpd": 2 }
+  ]
   const mini = [
     {
       weight: "1-2",
@@ -344,6 +399,7 @@
 
 const weightField = document.querySelector('#weight');
 const breedField = document.querySelector('#breed');
+const ageField = document.querySelector('#age');
 const result1Field = document.querySelector('#results1');
 const result2Field = document.querySelector('#results2');
 const bagsBtn = document.querySelector('#bagsBtn');
@@ -351,6 +407,29 @@ const bagsBtnSpan = document.querySelector('#bagsBtn > span');
 
 let amount, bagSize;
 
+const init = () => {
+  if (document.querySelector('.calculator-form').getAttribute('id').indexOf('puppy') > -1) {
+    setResult(puppy[0])
+    fillWeightField(puppy)
+    fillAgeField();
+    document.querySelector('.age-form-group').classList.remove('hidden');
+    breedField.value = "puppy";
+  } else if (document.querySelector('.calculator-form').getAttribute('id').indexOf('(s)') > -1) {
+    fillAgeField();
+    breedField.value = "mini";
+    setResult(mini[0])
+    fillWeightField(mini)
+    document.querySelector('.age-form-group').classList.add('hidden');
+  } else {
+    fillAgeField();
+    breedField.value = "medium";
+    setResult(medium[0])
+    fillWeightField(medium)
+    document.querySelector('.age-form-group').classList.add('hidden');
+  }
+}
+
+init();
 
 bagsBtn.addEventListener('click', function() {
   document.querySelector('.calculator-modal').classList.remove('open');
@@ -361,81 +440,130 @@ bagsBtn.addEventListener('click', function() {
   quantityInput.value = amount;
 })
 
-result1Field.innerHTML = mini[0].dose + "g";
-calcMonthly(mini[0].dose)
-
-mini.forEach((item, i) => {
-  weightField.innerHTML += "<option value='"+ item.weight +"'>"+ item.weight +"</option>"
-});
-
 breedField.addEventListener('change', (e) => {
   const value = breedField.value;
   console.log(value);
-  if (value === 'mini') {
-    weightField.innerHTML = "";
-    mini.forEach((item, i) => {
-      weightField.innerHTML += "<option value='"+ item.weight +"'>"+ item.weight +"</option>"
-    });
-    result1Field.innerHTML = mini[0].dose + "g";
-    calcMonthly(mini[0].dose)
-  } else if (value === 'medium') {
-    weightField.innerHTML = "";
-    medium.forEach((item, i) => {
-      weightField.innerHTML += "<option value='"+ item.weight +"'>"+ item.weight +"</option>"
-    });
-    result1Field.innerHTML = medium[0].dose + "g";
-    calcMonthly(medium[0].dose)
-  } else {
-    weightField.innerHTML = "";
-    large.forEach((item, i) => {
-      weightField.innerHTML += "<option value='"+ item.weight +"'>"+ item.weight +"</option>"
-    });
-    result1Field.innerHTML = large[0].dose + "g";
-    calcMonthly(large[0].dose)
+  if (value === "puppy") {
+    fillWeightField(puppy);
+    setResult(puppy[0])
+    if (document.querySelector('.calculator-form').getAttribute('id').indexOf('puppy') > -1) {
+      document.querySelector('.warning').classList.remove('hidden');
+    }
+    document.querySelector('.age-form-group').classList.remove('hidden');
   }
+  else if (value === 'mini') {
+    fillWeightField(mini);
+    setResult(mini[0])
+    document.querySelector('.age-form-group').classList.add('hidden');
+  } else if (value === 'medium') {
+    fillWeightField(medium);
+    setResult(medium[0])
+    document.querySelector('.age-form-group').classList.add('hidden');
+  } else {
+    fillWeightField(large);
+    setResult(large[0])
+    document.querySelector('.age-form-group').classList.add('hidden');
+  }
+
+  setWarning(breedField.value)
 })
 
 weightField.addEventListener('change', (e) => {
   const breed = breedField.value;
   const weightValue = weightField.value;
-  console.log(weightValue);
-  if (breed === 'mini') {
+  if (breed === 'puppy') {
     let result;
-    mini.forEach((item, i) => {
+    puppy.forEach((item, i) => {
       if (item.weight == weightValue) {
-        result = item.dose;
+        result = item;
       }
     });
-    result1Field.innerHTML = result + "g";
-    calcMonthly(result)
+    setResult(result)
+
+  } else if (breed === 'mini') {
+      let result;
+      mini.forEach((item, i) => {
+        if (item.weight == weightValue) {
+          result = item
+        }
+      });
+      setResult(result)
   } else if (breed === "medium") {
     let result;
     medium.forEach((item, i) => {
       if (item.weight == weightValue) {
-        result = item.dose;
+        result = item
       }
     });
-    result1Field.innerHTML = result + "g";
-    calcMonthly(result)
+    setResult(result)
   } else {
     let result;
     large.forEach((item, i) => {
       if (item.weight == weightValue) {
-        result = item.dose;
+        result = item
       }
     });
-    result1Field.innerHTML = result + "g";
-    calcMonthly(result)
+    setResult(result)
   }
 })
 
+ageField.addEventListener('change', (e) => {
+  console.log(ageField.value);
+  if (breedField.value === "puppy") {
+    let result;
+    puppy.forEach((item) => {
+      if (ageField.value === item.age.toString() && weightField.value === item.weight.toString()) {
+        result = item;
+      }
+    })
+    setResult(result)
+  }
+})
+
+function setResult(resultItem) {
+  if (resultItem.dose === "Combinatie niet beschikbaar") {
+    result1Field.innerHTML = resultItem.dose;
+  } else {
+    if (breedField.value === "puppy") {
+      result1Field.innerHTML = resultItem.dose + "g " + "(" + resultItem.mpd + " meals per day)";
+    } else {
+      result1Field.innerHTML = resultItem.dose + "g";
+    }
+    calcMonthly(resultItem.dose)
+  }
+}
+
+function fillAgeField() {
+  ageField.innerHTML = "";
+  const ages = puppy.map(item => {return item.age});
+  const uniq = [... new Set(ages)];
+  uniq.forEach((item, i) => {
+    ageField.innerHTML += "<option value='"+ item +"'>"+ item +"</option>"
+  });
+}
+
+function fillWeightField(breed) {
+  weightField.innerHTML = "";
+  const kgs = breed.map(item => {return item.weight});
+  const uniq = [... new Set(kgs)];
+  uniq.forEach((item, i) => {
+    weightField.innerHTML += "<option value='"+ item +"'>"+ item +"</option>"
+  });
+}
+
 function calcMonthly(dose) {
-  const min = parseInt(dose.substr(0, dose.indexOf('-')));
-  const max = parseInt(dose.substr(dose.indexOf('-') + 1));
-  const minMonthly = (min * 30) / 1000;
-  const maxMonthly = (max * 30) / 1000;
-  result2Field.innerHTML = minMonthly + " - " + maxMonthly + "kg";
-  calcBags(maxMonthly);
+  if (breedField.value === "puppy") {
+    const monthly = (dose * 30) / 1000;
+    result2Field.innerHTML = monthly + "kg";
+    calcBags(monthly)
+  } else {
+    const min = parseInt(dose.substr(0, dose.indexOf('-')));
+    const max = parseInt(dose.substr(dose.indexOf('-') + 1));
+    const minMonthly = (min * 30) / 1000;
+    const maxMonthly = (max * 30) / 1000;
+    result2Field.innerHTML = minMonthly + " - " + maxMonthly + "kg";
+    calcBags(maxMonthly);
+  }
 }
 
 function calcBags(monthly) {
@@ -453,6 +581,45 @@ function calcBags(monthly) {
     bagSize = "2kg";
   }
   bagsBtn.innerHTML = bags + "&nbsp;" + bagText;
+}
+
+function setWarning(breed) {
+  if (document.querySelector('.calculator-form').getAttribute('id').indexOf(breed) == -1) {
+    const warnings = [
+      {
+        tag: "puppy",
+        plural: "puppies",
+        href: "/products/trekker-fuel-puppy"
+      },
+      {
+        tag: "mini",
+        plural: "small adults",
+        href: "/products/trekker-fuel-adult-s"
+      },
+      {
+        tag: "medium",
+        plural: "medium & large adults",
+        href: "/products/trekker-fuel-adult-l"
+      },
+      {
+        tag: "large",
+        plural: "medium & large adults",
+        href: "/products/trekker-fuel-adult-l"
+      }
+    ]
+
+    let warning;
+    warnings.forEach(item => {
+      if (item.tag === breed) {
+        warning = item;
+      }
+    })
+
+    document.querySelector('.warning').innerHTML = `
+      <p><strong>Hold on!</strong> This is not the recommended kibble for ${warning.plural}. <br><a class="link" href="${warning.href}">Click here</a> for our ${warning.plural} chicken munchies</p>`
+  } else {
+    document.querySelector('.warning').innerHTML = "";
+  }
 }
 
 jQuery("#bagsBtn").click(function() {

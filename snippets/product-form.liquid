@@ -369,8 +369,8 @@
   </product-form>
 </div>
 
-
-{% render "calculator" %}
+{% assign productTitle = product.title | replace: " ", "_" | downcase %}
+{% render "calculator" productTitle: productTitle %}
 
 <script type="text/javascript">
   const checkoutBtn = document.querySelector('#directCheckout');
@@ -378,6 +378,8 @@
 
   setTimeout(function(){
     productForm.classList.add('show');
+    setTotalPrice();
+    document.querySelector('.totalPrice').innerHTML += "<span class='perMonthInfo'>Per month</span>";
   }, 1000)
 
   checkoutBtn.addEventListener('click', function(e) {
@@ -439,15 +441,12 @@
       });
       const totalPriceEU = euroLocale.format(totalPrice);
       document.querySelector('.totalPrice > h2').innerHTML = totalPriceEU.replace('.', ',');
-      // document.querySelector('.rc_widget__price--onetime').innerHTML = totalPriceEU.replace('.', ',');
       const discountStr = document.querySelector('.rc_widget__option__discount').innerHTML;
       const discount = discountStr.substr(0, discountStr.indexOf('%'));
       const discountPrice = totalPrice - ((totalPrice * discount) / 100);
       const discountPriceEU = euroLocale.format(discountPrice);
-      // document.querySelector('.rc_widget__price--subsave').innerHTML = discountPriceEU.replace('.', ',');
     }, 100);
   }
-
 
 
 </script>
