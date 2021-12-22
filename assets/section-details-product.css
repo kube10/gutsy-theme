@@ -24,6 +24,10 @@
   background-color: #1a3c32;
 }
 
+.product-details-section-inner.puppy .count {
+  color: #1a3c32;
+}
+
 .product-details-content.puppy
   > .product-details-content-inner
   > .product-details-text-content
@@ -80,6 +84,10 @@
   background-color: #fbedda;
 }
 
+.product-details-section-inner.adult-s .count {
+  color: #fbedda;
+}
+
 .product-details-content.adult-s
   > .product-details-content-inner
   > .product-details-text-content
@@ -134,6 +142,10 @@
 /* COLORS ADULT L */
 .product-details-content.adult-l {
   background-color: #1a3c32;
+}
+
+.product-details-section-inner.adult-l .count {
+  color: #1a3c32;
 }
 
 .product-details-content.adult-l
@@ -238,11 +250,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.product-details-actions > .button-group {
+  margin-top: 1rem;
 }
 
 @media (min-width: 768px) {
   .product-details-content {
-    padding: 4rem;
+    padding: 3rem;
   }
 
   .product-details-actions {
@@ -255,13 +272,21 @@
     margin-top: 76px;
   }
 
+  .product-details-actions {
+    flex-direction: row;
+  }
+
+  .product-details-actions > .button-group {
+    margin-top: 0rem;
+  }
+
   .product-details-grid {
     display: grid;
     grid-template-columns: auto 60%;
   }
 
   .product-details-content {
-    padding: 5.5rem;
+    padding: 7.5rem 5.5rem;
   }
 
   .product-details-content-inner {

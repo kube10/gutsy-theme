@@ -3,6 +3,7 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-product-grid.css' | asset_url | stylesheet_tag }}
+{{ 'section-details-product.css' | asset_url | stylesheet_tag }}
 
 <link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
@@ -51,6 +52,75 @@
     {%- endif -%}
   {%- endpaginate -%}
 </div>
+
+<script type="text/javascript">
+
+  const slideshow = document.querySelectorAll('.product-media-slideshow');
+
+  slideshow.forEach(slideshow => {
+    const slides = slideshow.querySelectorAll('.product-details-slide-img');
+
+      slides[0].style.opacity = 1;
+
+      let currentSlide = 0;
+      let maxSlide = slides.length - 1;
+
+      slideshow.querySelector(".slideshow-dot:nth-child(1)").style.opacity = 1;
+
+      setInterval(function () {
+        slides[currentSlide].style.opacity = 0;
+        if (currentSlide != maxSlide) {
+          const nextSlide = currentSlide + 1;
+          slides[nextSlide].style.opacity = 1;
+          currentSlide = nextSlide;
+          slideshow.querySelector('.currentSlideNo').innerHTML = nextSlide + 1;
+          slideshowDots.forEach(dot => dot.style.opacity = .6)
+          slideshow.querySelector(".slideshow-dot:nth-child("+(nextSlide + 1) +")").style.opacity = 1;
+        } else {
+          slides[0].style.opacity = 1;
+          currentSlide = 0;
+          slideshowDots.forEach(dot => dot.style.opacity = .6)
+          slideshow.querySelector(".slideshow-dot:nth-child(1)").style.opacity = 1;
+          slideshow.querySelector('.currentSlideNo').innerHTML = 1;
+        }
+      }, 5000);
+
+      const nextSlideBtn = slideshow.querySelector('.next-slide-btn');
+      nextSlideBtn.addEventListener('click', () => {
+        slides[currentSlide].style.opacity = 0;
+        if (currentSlide != maxSlide) {
+          const nextSlide = currentSlide + 1;
+          slides[nextSlide].style.opacity = 1;
+          currentSlide = nextSlide;
+          slideshow.querySelector('.currentSlideNo').innerHTML = nextSlide + 1;
+          slideshowDots.forEach(dot => dot.style.opacity = .6)
+          slideshow.querySelector(".slideshow-dot:nth-child("+(nextSlide + 1) +")").style.opacity = 1;
+        } else {
+          slides[0].style.opacity = 1;
+          currentSlide = 0;
+          slideshowDots.forEach(dot => dot.style.opacity = .6)
+          slideshow.querySelector(".slideshow-dot:nth-child(1)").style.opacity = 1;
+          slideshow.querySelector('.currentSlideNo').innerHTML = 1;
+        }
+      })
+
+      const slideshowDots = slideshow.querySelectorAll('.slideshow-dot');
+      slideshowDots.forEach(slideshowDot => {
+        slideshowDot.addEventListener('click', function(e) {
+          const id = e.target.getAttribute('id')
+          slideshowDots.forEach(dot => dot.style.opacity = .7)
+          e.target.style.opacity = 1;
+          slides.forEach(slide => {
+            slide.style.opacity = 0;
+          });
+          slides[parseInt(id) - 1].style.opacity = 1;
+          slideshow.querySelector('.currentSlideNo').innerHTML = id;
+        })
+      })
+  })
+</script>
+
+{{ 'component-product-modal.js' | asset_url | script_tag }}
 
 {% schema %}
 {

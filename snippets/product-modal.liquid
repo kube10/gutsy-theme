@@ -8,7 +8,7 @@
   bottom: 0;
   padding: 30%;
   background-color: rgba(28, 28, 28, 0.6);
-  padding: 2rem;
+  padding: 1rem;
   z-index: 999;
   display: flex;
   align-items: stretch;
@@ -19,11 +19,30 @@
 .product-modal-content {
   background-color: white;
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  position: relative;
+  overflow-y: scroll;
 }
 
 .product-modal.open {
   visibility: visible;
+}
+
+.modal-text-content {
+  text-align: center;
+}
+
+.close-product-modal-btn {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.product-img-modal {
+  width: 100%;
 }
 </style>
 
@@ -31,40 +50,19 @@
 
 <div id="product-modal-{{product.id}}" class="product-modal">
   <div class="product-modal-content">
-    <h1>{{product.id}}</h1>
-    <button class="close-product-modal-btn" id="{{product.id}}">Close</button>
-    <product-form class="product-form">
-      <div class="product-form__error-message-wrapper" role="alert" hidden>
-        <span class="product-form__error-message"></span>
-      </div>
-
-      {%- form 'product', product, data-productid: product.id, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-        <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}" disabled>
-        <div class="product-form__buttons">
-          <button
-            type="submit"
-            name="add"
-            class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
-          {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
-          >
-              <span>
-                {%- if product.selected_or_first_available_variant.available -%}
-                  {{ 'products.product.add_to_cart' | t }}
-                {%- else -%}
-                  {{ 'products.product.sold_out' | t }}
-                {%- endif -%}
-              </span>
-              <div class="loading-overlay__spinner hidden">
-                <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                </svg>
-              </div>
-          </button>
-          {%- if block.settings.show_dynamic_checkout -%}
-            {{ form | payment_button }}
-          {%- endif -%}
-        </div>
-      {%- endform -%}
-    </product-form>
+    <div class="close-product-modal-btn" id="{{product.id}}">{% render "icon-close-modal" %}
+    </div>
+    <div>
+      <img class="product-img-modal" src="{{ product | image_url: width: 500 }}" alt="">
+    </div>
+    <div class="modal-text-content">
+      <h2>{{product.title}}</h2>
+      {% if product.metafields.custom_fields["tagline"] != blank %}
+      <h3>{{ product.metafields.custom_fields["tagline"] }}</h3>
+      {% endif %}
+    </div>
+      {% render "product-form", product: product %}
   </div>
 </div>
+
+{{ 'component-product-modal.js' | asset_url | script_tag }}

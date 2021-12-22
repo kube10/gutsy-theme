@@ -1,9 +1,97 @@
-{{ 'section-details-product.css' | asset_url | stylesheet_tag }}
-
 <style>
 .product-details-section-inner {
   margin: 0;
 }
+
+.product-media-slideshow {
+  position: relative;
+  height: 60vh;
+}
+
+.media-wrap {
+  position: relative;
+}
+
+.product-details-slide-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity .5s ease;
+  max-width: 100%;
+  max-height: 60vh;
+}
+
+.next-slide-btn {
+  position: absolute;
+  top: 50%;
+  right: calc(1rem - 7.5px);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.product-media-slideshow > .controls {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+
+.dummy {
+  display: block !important;
+}
+
+.count {
+  position: absolute;
+  bottom: 1.75rem;
+  right: 2rem;
+}
+
+.slideshow-dots {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.slideshow-dot {
+  width: .75em;
+  height: .75rem;
+  border-radius: 50%;
+  margin-left: .25rem;
+  margin-right: .25rem;
+  background-color: white;
+  opacity: .6;
+  transition: opacity .3s ease;
+  display: block !important;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 6px 6px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 6px 6px 0px rgba(0,0,0,0.2);
+};
+
+@media screen and (min-width: 768px) {
+
+}
+
+@media screen and (min-width: 1080px) {
+  .product-details-slide-img {
+    max-width: auto;
+    max-height: auto;
+  }
+
+  .product-media-slideshow {
+    position: relative;
+    height: auto;
+  }
+
+  .next-slide-btn {
+    right: -32px;
+  }
+}
+
 </style>
 
 {% assign type = "" %}
@@ -20,8 +108,27 @@
 
 <section class="product-details-section-inner {{type}}">
   <div class="product-details-grid">
-    <div class="product-details-img">
-        <img class="product-details-img-tag" src="{{ product_row_product | image_url: width: 500 }}" alt="">
+    <div class="product-media-slideshow">
+      <div class="controls">
+          <div class="next-slide-btn">
+              {% render 'icon-arrow-right-orange' %}
+          </div>
+          <div class="controls-bottom-row">
+            <div class="dummy"></div>
+            <div class="slideshow-dots">
+              {%- for media in product_row_product.media -%}
+                  <div id="{{forloop.index}}" class="slideshow-dot"></div>
+              {%- endfor -%}
+            </div>
+            <div class="count">
+              {%- assign count = product_row_product.media | size -%}
+              <span class="currentSlideNo">1</span>/<span>{{ count }}</span>
+            </div>
+          </div>
+      </div>
+        {% for media in product_row_product.media %}
+          <img class="product-details-slide-img" src="{{ media | image_url: width: 500 }}" alt="">
+        {% endfor %}
     </div>
     <div class="product-details-content {{type}}">
       <div class="product-details-content-inner">
@@ -36,9 +143,11 @@
           <h2>{% render 'price', product: product_row_product, price_class: '' %}</h2>
           <div class="button-group">
             <a href="{{product_row_product.url}}" class="button button-secondary">MORE INFO</a>
-            <a href="" class="button button-primary">BUY NOW</a>
+            <button id="{{product_row_product.id}}" class="open-product-modal-btn button button-primary">BUY NOW</button>
           </div>
         </div>
+        {% render "product-usp-icons-small" %}
+        {% render 'product-modal', product: product_row_product %}
       </div>
     </div>
   </div>

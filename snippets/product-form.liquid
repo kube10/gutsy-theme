@@ -1,6 +1,6 @@
 <style>
   .product-form {
-    opacity: 0;
+    opacity: 1;
     transition: opacity .3s ease;
   }
 
@@ -372,7 +372,7 @@
 {% assign productTitle = product.title | replace: " ", "_" | downcase %}
 {% render "calculator" productTitle: productTitle %}
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   const checkoutBtn = document.querySelector('#directCheckout');
   const productForm = document.querySelector('.product-form');
 
@@ -449,4 +449,4 @@
   }
 
 
-</script>
+</script> -->
