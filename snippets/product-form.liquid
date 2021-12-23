@@ -8,7 +8,7 @@
     opacity: 1;
   }
 
-  .product-form > h2 {
+  .product-form-wrap > h2 {
     color: #1A3C32;
     margin-bottom: 2rem;
     text-align: center;
@@ -18,7 +18,7 @@
     text-align:center;
   }
 
-  .product-form > h2 > span {
+  .product-form-wrap > h2 > span {
     color: #F47F36;
   }
 
@@ -150,7 +150,7 @@
 
   @media (min-width: 1080px) {
 
-    .product-form > h2 {
+    .product-form-wrap > h2 {
       text-align: left;
     }
 
@@ -219,12 +219,12 @@
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
-<div class="product-form">
+<div class="product-form-wrap">
   <h2>Get <span>one bag</span> or <span>subscribe and save!</span></h2>
 
   {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
-  <product-form class="product-form">
+  <product-form productId="{{product.id}}" class="product-form">
     <div class="product-form__error-message-wrapper" role="alert" hidden>
       <span class="product-form__error-message"></span>
     </div>
@@ -246,6 +246,7 @@
                   class="select__select variantSelector"
                   name="options[{{ option.name | escape }}]"
                   form="{{ product_form_id }}"
+                  productId="{{product.id}}"
                 >
                   {%- for value in option.values -%}
                     <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
@@ -276,10 +277,11 @@
           <input class="quantity__input"
               type="number"
               name="quantity"
-              id="Quantity-{{ section.id }}"
+              id="quantity-picker-{{product.id}}"
               min="1"
               value="1"
               form="{{ product_form_id }}"
+              productId="{{product.id}}"
             >
           <button class="quantity__button no-js-hidden" name="plus" type="button">
             <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
@@ -297,15 +299,16 @@
     </div>
 
     <div class="prices">
-      <div class="unitPrice">
+      <div id="unitPrice-{{product.id}}"class="unitPrice">
         <span>Price per bag</span>
         <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
           {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
         </div>
       </div>
-      <div class="totalPrice">
+      <div id="totalPrice-{{product.id}}" class="totalPrice">
         <span>Total price</span>
         <h2 class="price--large"></h2>
+        <span id="perMonthInfo-{{product.id}}" class='perMonthInfo'>Per month</span>
       </div>
     </div>
 
@@ -378,82 +381,3 @@
 
 {% assign productTitle = product.title | replace: " ", "_" | downcase %}
 {% render "calculator", productTitle: productTitle, id: product.id %}
-
-<!-- <script type="text/javascript">
-  const checkoutBtn = document.querySelector('#directCheckout');
-  const productForm = document.querySelector('.product-form');
-
-  setTimeout(function(){
-    productForm.classList.add('show');
-    setTotalPrice();
-    document.querySelector('.totalPrice').innerHTML += "<span class='perMonthInfo'>Per month</span>";
-  }, 1000)
-
-  checkoutBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const form = document.querySelector('.form-grid');
-    form.setAttribute('checkout', true);
-    form.submit();
-  });
-
-  const openCalculator = document.querySelector('#openCalculator')
-
-  openCalculator.addEventListener('click', function() {
-    const calculatorModal = document.querySelector('.calculator-modal');
-    calculatorModal.classList.add('open');
-  })
-
-  const closeCalculator = document.querySelector('.calculator-close');
-
-  closeCalculator.addEventListener('click', function() {
-    const calculatorModal = document.querySelector('.calculator-modal');
-    calculatorModal.classList.remove('open');
-  })
-
-  const quantityPicker = document.querySelector('.quantity__input');
-  const variantSelector = document.querySelector('.variantSelector');
-
-  quantityPicker.addEventListener('change', (e) => {
-     setTotalPrice();
-  })
-
-  variantSelector.addEventListener('change', (e) => {
-    console.log("change");
-    setTotalPrice();
-  })
-
-  document.querySelector('.totalPrice > h2').innerHTML = document.querySelector('.price-item').innerHTML;
-
-  document.body.addEventListener('change', function(e) {
-    if (e.target.classList.contains('rc_widget__option__input--subsave')) {
-      console.log("subscribe selected");
-      document.querySelector('.totalPrice').innerHTML += "<span class='perMonthInfo'>Per month</span>";
-      setTotalPrice();
-    } else if (e.target.classList.contains('rc_widget__option__input--onetime')) {
-      document.querySelector('.perMonthInfo').remove();
-      setTotalPrice();
-    }
-  });
-
-  function setTotalPrice() {
-    setTimeout(function () {
-      const unitPriceStr = document.querySelector('.price-item').innerHTML.replace(/\s+/g, '');
-      const unitPrice = parseFloat(unitPriceStr.substr(1).replace(',','.'));
-      console.log("unitPrice: " + unitPrice);
-      const totalPrice = parseFloat(unitPrice * parseFloat(quantityPicker.value));
-      console.log(totalPrice);
-      const euroLocale = Intl.NumberFormat('en-EU', {
-        style: "currency",
-        currency: "EUR"
-      });
-      const totalPriceEU = euroLocale.format(totalPrice);
-      document.querySelector('.totalPrice > h2').innerHTML = totalPriceEU.replace('.', ',');
-      const discountStr = document.querySelector('.rc_widget__option__discount').innerHTML;
-      const discount = discountStr.substr(0, discountStr.indexOf('%'));
-      const discountPrice = totalPrice - ((totalPrice * discount) / 100);
-      const discountPriceEU = euroLocale.format(discountPrice);
-    }, 100);
-  }
-
-
-</script> -->

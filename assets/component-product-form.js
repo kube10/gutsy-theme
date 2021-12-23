@@ -1,6 +1,8 @@
 const productForms = document.querySelectorAll(".product-form");
 const calculators = document.querySelectorAll(".calculator-modal");
 
+let subscriptionSelected = true;
+
 productForms.forEach((form) => {
   const openCalculator = form.querySelector(".open-calculator-link");
 
@@ -20,6 +22,28 @@ productForms.forEach((form) => {
     formGrid.setAttribute("checkout", true);
     formGrid.submit();
   });
+
+  const quantityPicker = form.querySelector(".quantity__input");
+
+  quantityPicker.addEventListener("change", (e) => {
+    setTotalPrice();
+  });
+
+  const variantSelector = form.querySelector(".variantSelector");
+
+  variantSelector.addEventListener("change", (e) => {
+    setTotalPrice();
+  });
+});
+
+document.body.addEventListener("change", function (e) {
+  if (e.target.classList.contains("rc_widget__option__input--subsave")) {
+    console.log("subscribe selected");
+    subscriptionSelected = true;
+  } else if (e.target.classList.contains("rc_widget__option__input--onetime")) {
+    subscriptionSelected = false;
+  }
+  setTotalPrice();
 });
 
 calculators.forEach((calculator) => {
@@ -34,69 +58,62 @@ calculators.forEach((calculator) => {
   });
 });
 
-// const productForm = document.querySelector(".product-form");
-
-const quantityPicker = document.querySelector(".quantity__input");
-const variantSelector = document.querySelector(".variantSelector");
-
 function setTotalPrice() {
   setTimeout(function () {
-    const unitPriceStr = document
-      .querySelector(".price-item")
-      .innerHTML.replace(/\s+/g, "");
-    const unitPrice = parseFloat(unitPriceStr.substr(1).replace(",", "."));
-    console.log("unitPrice: " + unitPrice);
-    const totalPrice = parseFloat(unitPrice * parseFloat(quantityPicker.value));
-    console.log(totalPrice);
-    const euroLocale = Intl.NumberFormat("en-EU", {
-      style: "currency",
-      currency: "EUR",
+    productForms.forEach((form) => {
+      //get product ID from form element
+      const productId = form.getAttribute("productId");
+
+      //get quantitypicker element
+      const quantityPicker = form.querySelector(
+        "#quantity-picker-" + productId
+      );
+
+      //get unit price in string from Shopify's price component
+      const unitPriceStr = form
+        .querySelector("#unitPrice-" + productId)
+        .querySelector(".price-item")
+        .innerHTML.replace(/\s+/g, "");
+
+      //make float
+      const unitPrice = parseFloat(unitPriceStr.substr(1).replace(",", "."));
+
+      //get quantity values
+      const quantity = parseFloat(quantityPicker.value);
+
+      //total price calulcations
+      const totalPrice = parseFloat(unitPrice * quantity);
+
+      const euroLocale = Intl.NumberFormat("en-EU", {
+        style: "currency",
+        currency: "EUR",
+      });
+
+      const totalPriceEU = euroLocale.format(totalPrice);
+
+      //set total price in wrapper element
+      form
+        .querySelector("#totalPrice-" + productId)
+        .querySelector(".price--large").innerHTML = totalPriceEU;
+
+      if (subscriptionSelected) {
+        form.querySelector("#perMonthInfo-" + productId).innerHTML =
+          "Per month";
+      } else {
+        form.querySelector("#perMonthInfo-" + productId).innerHTML = "";
+      }
     });
-    const totalPriceEU = euroLocale.format(totalPrice);
-    document.querySelector(".totalPrice > h2").innerHTML = totalPriceEU.replace(
-      ".",
-      ","
-    );
-    const discountStr = document.querySelector(".rc_widget__option__discount")
-      .innerHTML;
-    const discount = discountStr.substr(0, discountStr.indexOf("%"));
-    const discountPrice = totalPrice - (totalPrice * discount) / 100;
-    const discountPriceEU = euroLocale.format(discountPrice);
   }, 100);
 }
 
 setTimeout(function () {
   // productForm.classList.add("show");
   setTotalPrice();
-  // document.querySelector(".totalPrice").innerHTML +=
-  //   "<span class='perMonthInfo'>Per month</span>";
 }, 1000);
 
-//
-
-//
-// quantityPicker.addEventListener("change", (e) => {
-//   setTotalPrice();
-// });
-//
-// variantSelector.addEventListener("change", (e) => {
-//   console.log("change");
-//   setTotalPrice();
-// });
-//
-// document.querySelector(".totalPrice > h2").innerHTML = document.querySelector(
-//   ".price-item"
-// ).innerHTML;
-//
-// document.body.addEventListener("change", function (e) {
-//   if (e.target.classList.contains("rc_widget__option__input--subsave")) {
-//     console.log("subscribe selected");
-//     document.querySelector(".totalPrice").innerHTML +=
-//       "<span class='perMonthInfo'>Per month</span>";
-//     setTotalPrice();
-//   } else if (e.target.classList.contains("rc_widget__option__input--onetime")) {
-//     document.querySelector(".perMonthInfo").remove();
-//     setTotalPrice();
-//   }
-// });
-//
+function resetForm() {
+  productForms.forEach((form, i) => {
+    const baseURI = window.location.origin;
+    window.history.replaceState({}, "", baseURI + "/collections/all");
+  });
+}
