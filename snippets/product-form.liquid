@@ -26,6 +26,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .size-quantity .form__label {
+    margin-top: 1rem;
   }
 
   .after-form {
@@ -55,14 +60,12 @@
   .product-form__buttons > .button-secondary {
     margin-top: 2rem;
     margin-bottom: 2rem;
+    border-color: rgb(var(--color-base-primary-1)) !important;
+    color: rgb(var(--color-base-primary-1)) !important;
   }
 
   .product-form__buttons > .button-primary {
     width: 100%;
-  }
-
-  .product-form__buttons > .button-secondary {
-    margin-right: 1rem;
   }
 
   .prices {
@@ -116,7 +119,7 @@
     padding: 1rem !important;
   }
 
-  input[type='radio']:after {
+  /* input[type='radio']:after {
     width: 15px;
     height: 15px;
     border-radius: 15px;
@@ -143,12 +146,16 @@
       display: inline-block;
       visibility: visible;
       border: 2px solid white;
-  }
+  } */
 
   @media (min-width: 1080px) {
 
     .product-form > h2 {
       text-align: left;
+    }
+
+    .product-form__buttons > .button-secondary {
+    margin-right: 1rem;
     }
 
     .buy-section-content > h3 {
@@ -285,7 +292,7 @@
     <div class="after-form">
       <a class="link" href="">More information about our subscriptions.</a>
       <div class="calculator">
-          Not sure how much your pet needs? <br class="hide-desktop"/><span id="openCalculator">Try our calculator!</span>
+          Not sure how much your pet needs? <br class="hide-desktop"/><span class="open-calculator-link" calculatorId="{{product.id}}" >Try our calculator!</span>
       </div>
     </div>
 
@@ -370,7 +377,7 @@
 </div>
 
 {% assign productTitle = product.title | replace: " ", "_" | downcase %}
-{% render "calculator" productTitle: productTitle %}
+{% render "calculator", productTitle: productTitle, id: product.id %}
 
 <!-- <script type="text/javascript">
   const checkoutBtn = document.querySelector('#directCheckout');

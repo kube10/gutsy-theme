@@ -6,6 +6,7 @@ openModalBtn.forEach((btn, i) => {
       "#product-modal-" + btn.getAttribute("id")
     );
     modal.classList.add("open");
+    document.body.style.overflow = "hidden";
   });
 });
 
@@ -17,5 +18,6 @@ closeModalBtn.forEach((btn, i) => {
       "#product-modal-" + btn.getAttribute("id")
     );
     modal.classList.remove("open");
+    document.body.style.overflow = "auto";
   });
 });

@@ -185,15 +185,15 @@
   }
 </style>
 
-<div class="calculator-modal">
+<div id="calculator-{{id}}" class="calculator-modal">
   <div class="calculator-modal-inner">
-    <div class="calculator-close">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M25.3332 8.54602L23.4532 6.66602L15.9998 14.1193L8.5465 6.66602L6.6665 8.54602L14.1198 15.9993L6.6665 23.4527L8.5465 25.3327L15.9998 17.8793L23.4532 25.3327L25.3332 23.4527L17.8798 15.9993L25.3332 8.54602Z" fill="#1A3C32"/>
-      </svg>
+    <div calculatorId="{{id}}" class="calculator-close">
+      <img src="
+      {{ 'close-calculator-icon.svg' | asset_url }}" alt="">
     </div>
     <div class="calculator-modal-content">
       <div class="calculator-modal-heading">
+        {{id}}
         <h2 class="color-primary-2">Gutsy bag calculator</h2>
         <p>Calculate the amount of Gutsy bags you’ll need per month!</p>
       </div>

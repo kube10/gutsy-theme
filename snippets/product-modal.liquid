@@ -1,49 +1,89 @@
 <style>
-.product-modal {
-  position: fixed;
-  min-height: 100vh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 30%;
-  background-color: rgba(28, 28, 28, 0.6);
-  padding: 1rem;
-  z-index: 999;
-  display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-  visibility: hidden;
-}
+  .product-modal {
+    position: fixed;
+    min-height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 30%;
+    background-color: rgba(28, 28, 28, 0.6);
+    padding: 1rem;
+    z-index: 999;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    visibility: hidden;
+  }
 
-.product-modal-content {
-  background-color: white;
-  width: 100%;
-  padding: 1rem;
-  border-radius: 1rem;
-  position: relative;
-  overflow-y: scroll;
-}
+  .product-modal-content {
+    background-color: white;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    position: relative;
+    overflow-y: scroll;
+  }
 
-.product-modal.open {
-  visibility: visible;
-}
+  .product-modal.open {
+    visibility: visible;
+  }
 
-.modal-text-content {
-  text-align: center;
-}
+  .modal-text-content {
+    text-align: center;
+  }
 
-.close-product-modal-btn {
-  width: 2rem;
-  height: 2rem;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
+  .close-product-modal-btn {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+  }
 
-.product-img-modal {
-  width: 100%;
-}
+  .product-img-modal {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .product-img-modal {
+      width: 50%;
+      margin-bottom: 2rem;
+    }
+
+    .product-modal-content {
+      text-align: center;
+      padding: 4rem;
+    }
+  }
+
+  @media screen and (min-width: 1080px) {
+    .product-modal-content {
+      display: grid;
+      grid-template-columns: .5fr 1fr;
+      align-items: center;
+      max-width: 1440px;
+      max-height: 720px;
+      overflow-y: auto;
+    }
+
+    .product-modal {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-img-modal {
+      width: 100%;
+      margin-bottom: 0rem;
+    }
+
+    .modal-text-content {
+      text-align: left;
+    }
+
+  }
+
 </style>
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -52,17 +92,15 @@
   <div class="product-modal-content">
     <div class="close-product-modal-btn" id="{{product.id}}">{% render "icon-close-modal" %}
     </div>
-    <div>
-      <img class="product-img-modal" src="{{ product | image_url: width: 500 }}" alt="">
+    <img class="product-img-modal" src="{{ product | image_url: width: 500 }}" alt="">
+    <div class="product-modal-content-right">
+      <div class="modal-text-content">
+        <h2 class="color-primary-1">{{product.title}}</h2>
+        {% if product.metafields.custom_fields["tagline"] != blank %}
+        <h3 class="color-primary-2">{{ product.metafields.custom_fields["tagline"] }}</h3>
+        {% endif %}
+      </div>
+        {% render "product-form", product: product %}
     </div>
-    <div class="modal-text-content">
-      <h2>{{product.title}}</h2>
-      {% if product.metafields.custom_fields["tagline"] != blank %}
-      <h3>{{ product.metafields.custom_fields["tagline"] }}</h3>
-      {% endif %}
-    </div>
-      {% render "product-form", product: product %}
   </div>
 </div>
-
-{{ 'component-product-modal.js' | asset_url | script_tag }}
