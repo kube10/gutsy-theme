@@ -201,7 +201,7 @@
         <div class="calculator-form-group">
           <label for="breed">Dog type</label>
           <div class="select">
-            <select class="select__select" name="breed" id="breed">
+            <select class="select__select" name="breed" id="breed-{{id}}">
               <option value="puppy">Puppy</option>
               <option value="mini">Mini</option>
               <option value="medium">Medium</option>
@@ -213,19 +213,19 @@
           </div>
         </div>
         <div class="calculator-form-group">
-          <label for="breed">Weight (kg)</label>
+          <label for="weight">Weight (kg)</label>
           <div class="select">
-            <select id="weight" class="select__select">
+            <select id="weight-{{id}}" class="select__select">
             </select>
             <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
             </path></svg>
           </div>
         </div>
-        <div class="calculator-form-group age-form-group hidden">
-          <label for="breed">Age (months)</label>
+        <div id="age-form-group-{{id}}" class="calculator-form-group age-form-group hidden">
+          <label for="age">Age (months)</label>
           <div class="select">
-            <select id="age" class="select__select">
+            <select id="age-{{id}}" class="select__select">
             </select>
             <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
@@ -236,12 +236,12 @@
       <div class="calculator-modal-results">
         <div class="warning">
         </div>
-        <p>Recommended daily dose: <span id="results1"></span></p>
-        <p>Kg/month: <span id="results2"></span></p>
+        <p>Recommended daily dose: <span id="results1-{{id}}"></span></p>
+        <p>Kg/month: <span id="results2-{{id}}"></span></p>
       </div>
       <div class="calculator-modal-actions">
         <p style="text-align: center">Click to apply!</p>
-        <button id="bagsBtn" class="button button-primary"><span>1&nbsp;</span> Gutsy Bag (6KG)</button>
+        <button id="bagsBtn-{{id}}" class="button button-primary"><span id="bagsbtn-span-{{id}}">1&nbsp;</span> Gutsy Bag (6KG)</button>
       </div>
       <div class="calculator-modal-info">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

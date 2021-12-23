@@ -141,270 +141,279 @@ const large = [
   },
 ];
 
-const weightField = document.querySelector("#weight");
-const breedField = document.querySelector("#breed");
-const ageField = document.querySelector("#age");
-const result1Field = document.querySelector("#results1");
-const result2Field = document.querySelector("#results2");
-const bagsBtn = document.querySelector("#bagsBtn");
-const bagsBtnSpan = document.querySelector("#bagsBtn > span");
-
 let amount, bagSize;
 
-const init = () => {
-  if (
-    document
-      .querySelector(".calculator-form")
-      .getAttribute("id")
-      .indexOf("puppy") > -1
-  ) {
-    setResult(puppy[0]);
-    fillWeightField(puppy);
-    fillAgeField();
-    document.querySelector(".age-form-group").classList.remove("hidden");
-    breedField.value = "puppy";
-  } else if (
-    document
-      .querySelector(".calculator-form")
-      .getAttribute("id")
-      .indexOf("(s)") > -1
-  ) {
-    fillAgeField();
-    breedField.value = "mini";
-    setResult(mini[0]);
-    fillWeightField(mini);
-    document.querySelector(".age-form-group").classList.add("hidden");
-  } else {
-    fillAgeField();
-    breedField.value = "medium";
-    setResult(medium[0]);
-    fillWeightField(medium);
-    document.querySelector(".age-form-group").classList.add("hidden");
-  }
-};
+//"calculaors" variable declared in 'component-product-form.js'
+calculators.forEach((calculator, i) => {
+  const productId = calculator.getAttribute("id").substr(11);
 
-init();
+  const weightField = calculator.querySelector("#weight-" + productId);
+  const breedField = calculator.querySelector("#breed-" + productId);
+  const ageField = calculator.querySelector("#age-" + productId);
+  const result1Field = calculator.querySelector("#results1-" + productId);
+  const result2Field = calculator.querySelector("#results2-" + productId);
+  const bagsBtn = calculator.querySelector("#bagsBtn-" + productId);
+  const bagsBtnSpan = calculator.querySelector("#bagsbtn-span-" + productId);
+  const ageFormGroup = calculator.querySelector("#age-form-group-" + productId);
 
-bagsBtn.addEventListener("click", function () {
-  document.querySelector(".calculator-modal").classList.remove("open");
-  const variantSelector = document.querySelector(".variantSelector");
-  const quantityInput = document.querySelector(".quantity__input");
-  console.log(variantSelector.childNodes[1]);
-  variantSelector.childNodes[1].click();
-  quantityInput.value = amount;
-});
+  bagsBtn.addEventListener("click", function () {
+    document.querySelector("#calculator-" + productId).classList.remove("open");
+    const quantityInput = document.querySelector(
+      "#quantity-picker-" + productId
+    );
+    quantityInput.value = amount;
+  });
 
-breedField.addEventListener("change", (e) => {
-  const value = breedField.value;
-  console.log(value);
-  if (value === "puppy") {
-    fillWeightField(puppy);
-    setResult(puppy[0]);
+  breedField.addEventListener("change", (e) => {
+    const value = breedField.value;
+    console.log(value);
+    if (value === "puppy") {
+      fillWeightField(puppy);
+      setResult(puppy[0]);
+      if (
+        document
+          .querySelector(".calculator-form")
+          .getAttribute("id")
+          .indexOf("puppy") > -1
+      ) {
+        document.querySelector(".warning").classList.remove("hidden");
+      }
+      ageFormGroup.classList.remove("hidden");
+    } else if (value === "mini") {
+      fillWeightField(mini);
+      setResult(mini[0]);
+      ageFormGroup.classList.add("hidden");
+    } else if (value === "medium") {
+      fillWeightField(medium);
+      setResult(medium[0]);
+      ageFormGroup.classList.add("hidden");
+    } else {
+      fillWeightField(large);
+      setResult(large[0]);
+      ageFormGroup.classList.add("hidden");
+    }
+
+    setWarning(breedField.value);
+  });
+
+  weightField.addEventListener("change", (e) => {
+    const breed = breedField.value;
+    const weightValue = weightField.value;
+    if (breed === "puppy") {
+      let result;
+      puppy.forEach((item, i) => {
+        if (item.weight == weightValue) {
+          result = item;
+        }
+      });
+      setResult(result);
+    } else if (breed === "mini") {
+      let result;
+      mini.forEach((item, i) => {
+        if (item.weight == weightValue) {
+          result = item;
+        }
+      });
+      setResult(result);
+    } else if (breed === "medium") {
+      let result;
+      medium.forEach((item, i) => {
+        if (item.weight == weightValue) {
+          result = item;
+        }
+      });
+      setResult(result);
+    } else {
+      let result;
+      large.forEach((item, i) => {
+        if (item.weight == weightValue) {
+          result = item;
+        }
+      });
+      setResult(result);
+    }
+  });
+
+  ageField.addEventListener("change", (e) => {
+    console.log(ageField.value);
+    if (breedField.value === "puppy") {
+      let result;
+      puppy.forEach((item) => {
+        if (
+          ageField.value === item.age.toString() &&
+          weightField.value === item.weight.toString()
+        ) {
+          result = item;
+        }
+      });
+      setResult(result);
+    }
+  });
+
+  const init = () => {
     if (
       document
         .querySelector(".calculator-form")
         .getAttribute("id")
         .indexOf("puppy") > -1
     ) {
-      document.querySelector(".warning").classList.remove("hidden");
-    }
-    document.querySelector(".age-form-group").classList.remove("hidden");
-  } else if (value === "mini") {
-    fillWeightField(mini);
-    setResult(mini[0]);
-    document.querySelector(".age-form-group").classList.add("hidden");
-  } else if (value === "medium") {
-    fillWeightField(medium);
-    setResult(medium[0]);
-    document.querySelector(".age-form-group").classList.add("hidden");
-  } else {
-    fillWeightField(large);
-    setResult(large[0]);
-    document.querySelector(".age-form-group").classList.add("hidden");
-  }
-
-  setWarning(breedField.value);
-});
-
-weightField.addEventListener("change", (e) => {
-  const breed = breedField.value;
-  const weightValue = weightField.value;
-  if (breed === "puppy") {
-    let result;
-    puppy.forEach((item, i) => {
-      if (item.weight == weightValue) {
-        result = item;
-      }
-    });
-    setResult(result);
-  } else if (breed === "mini") {
-    let result;
-    mini.forEach((item, i) => {
-      if (item.weight == weightValue) {
-        result = item;
-      }
-    });
-    setResult(result);
-  } else if (breed === "medium") {
-    let result;
-    medium.forEach((item, i) => {
-      if (item.weight == weightValue) {
-        result = item;
-      }
-    });
-    setResult(result);
-  } else {
-    let result;
-    large.forEach((item, i) => {
-      if (item.weight == weightValue) {
-        result = item;
-      }
-    });
-    setResult(result);
-  }
-});
-
-ageField.addEventListener("change", (e) => {
-  console.log(ageField.value);
-  if (breedField.value === "puppy") {
-    let result;
-    puppy.forEach((item) => {
-      if (
-        ageField.value === item.age.toString() &&
-        weightField.value === item.weight.toString()
-      ) {
-        result = item;
-      }
-    });
-    setResult(result);
-  }
-});
-
-function setResult(resultItem) {
-  if (resultItem.dose === "Combinatie niet beschikbaar") {
-    result1Field.innerHTML = resultItem.dose;
-  } else {
-    if (breedField.value === "puppy") {
-      result1Field.innerHTML =
-        resultItem.dose + "g " + "(" + resultItem.mpd + " meals per day)";
+      setResult(puppy[0]);
+      fillWeightField(puppy);
+      fillAgeField();
+      ageFormGroup.classList.remove("hidden");
+      breedField.value = "puppy";
+    } else if (
+      document
+        .querySelector(".calculator-form")
+        .getAttribute("id")
+        .indexOf("(s)") > -1
+    ) {
+      fillAgeField();
+      breedField.value = "mini";
+      setResult(mini[0]);
+      fillWeightField(mini);
+      ageFormGroup.classList.add("hidden");
     } else {
-      result1Field.innerHTML = resultItem.dose + "g";
+      fillAgeField();
+      breedField.value = "medium";
+      setResult(medium[0]);
+      fillWeightField(medium);
+      ageFormGroup.classList.add("hidden");
     }
-    calcMonthly(resultItem.dose);
-  }
-}
+  };
 
-function fillAgeField() {
-  ageField.innerHTML = "";
-  const ages = puppy.map((item) => {
-    return item.age;
-  });
-  const uniq = [...new Set(ages)];
-  uniq.forEach((item, i) => {
-    ageField.innerHTML += "<option value='" + item + "'>" + item + "</option>";
-  });
-}
+  init();
 
-function fillWeightField(breed) {
-  weightField.innerHTML = "";
-  const kgs = breed.map((item) => {
-    return item.weight;
-  });
-  const uniq = [...new Set(kgs)];
-  uniq.forEach((item, i) => {
-    weightField.innerHTML +=
-      "<option value='" + item + "'>" + item + "</option>";
-  });
-}
-
-function calcMonthly(dose) {
-  if (breedField.value === "puppy") {
-    const monthly = (dose * 30) / 1000;
-    result2Field.innerHTML = monthly + "kg";
-    calcBags(monthly);
-  } else {
-    const min = parseInt(dose.substr(0, dose.indexOf("-")));
-    const max = parseInt(dose.substr(dose.indexOf("-") + 1));
-    const minMonthly = (min * 30) / 1000;
-    const maxMonthly = (max * 30) / 1000;
-    result2Field.innerHTML = minMonthly + " - " + maxMonthly + "kg";
-    calcBags(maxMonthly);
-  }
-}
-
-function calcBags(monthly) {
-  let bags;
-  let bagText;
-  if (monthly > 6) {
-    bagText = "Gutsy bag (6kg)";
-    bags = Math.ceil(parseInt(monthly) / 6);
-    amount = bags;
-    bagSize = "6kg";
-  } else {
-    bagText = "Gutsy bag (2kg)";
-    bags = Math.ceil(parseInt(monthly) / 2);
-    amount = bags;
-    bagSize = "2kg";
-  }
-  bagsBtn.innerHTML = bags + "&nbsp;" + bagText;
-}
-
-function setWarning(breed) {
-  if (
-    document
-      .querySelector(".calculator-form")
-      .getAttribute("id")
-      .indexOf(breed) == -1
-  ) {
-    const warnings = [
-      {
-        tag: "puppy",
-        plural: "puppies",
-        href: "/products/trekker-fuel-puppy",
-      },
-      {
-        tag: "mini",
-        plural: "small adults",
-        href: "/products/trekker-fuel-adult-s",
-      },
-      {
-        tag: "medium",
-        plural: "medium & large adults",
-        href: "/products/trekker-fuel-adult-l",
-      },
-      {
-        tag: "large",
-        plural: "medium & large adults",
-        href: "/products/trekker-fuel-adult-l",
-      },
-    ];
-
-    let warning;
-    warnings.forEach((item) => {
-      if (item.tag === breed) {
-        warning = item;
+  function setResult(resultItem) {
+    if (resultItem.dose === "Combinatie niet beschikbaar") {
+      result1Field.innerHTML = resultItem.dose;
+    } else {
+      if (breedField.value === "puppy") {
+        result1Field.innerHTML =
+          resultItem.dose + "g " + "(" + resultItem.mpd + " meals per day)";
+      } else {
+        result1Field.innerHTML = resultItem.dose + "g";
       }
+      calcMonthly(resultItem.dose);
+    }
+  }
+
+  function fillAgeField() {
+    ageField.innerHTML = "";
+    const ages = puppy.map((item) => {
+      return item.age;
+    });
+    const uniq = [...new Set(ages)];
+    uniq.forEach((item, i) => {
+      ageField.innerHTML +=
+        "<option value='" + item + "'>" + item + "</option>";
+    });
+  }
+
+  function fillWeightField(breed) {
+    weightField.innerHTML = "";
+    const kgs = breed.map((item) => {
+      return item.weight;
+    });
+    const uniq = [...new Set(kgs)];
+    uniq.forEach((item, i) => {
+      weightField.innerHTML +=
+        "<option value='" + item + "'>" + item + "</option>";
+    });
+  }
+
+  function calcMonthly(dose) {
+    if (breedField.value === "puppy") {
+      const monthly = (dose * 30) / 1000;
+      result2Field.innerHTML = monthly + "kg";
+      calcBags(monthly);
+    } else {
+      const min = parseInt(dose.substr(0, dose.indexOf("-")));
+      const max = parseInt(dose.substr(dose.indexOf("-") + 1));
+      const minMonthly = (min * 30) / 1000;
+      const maxMonthly = (max * 30) / 1000;
+      result2Field.innerHTML = minMonthly + " - " + maxMonthly + "kg";
+      calcBags(maxMonthly);
+    }
+  }
+
+  function calcBags(monthly) {
+    let bags;
+    let bagText;
+    if (monthly > 6) {
+      bagText = "Gutsy bag (6kg)";
+      bags = Math.ceil(parseInt(monthly) / 6);
+      amount = bags;
+      bagSize = "6kg";
+    } else {
+      bagText = "Gutsy bag (2kg)";
+      bags = Math.ceil(parseInt(monthly) / 2);
+      amount = bags;
+      bagSize = "2kg";
+    }
+    bagsBtn.innerHTML = bags + "&nbsp;" + bagText;
+  }
+
+  function setWarning(breed) {
+    if (
+      document
+        .querySelector(".calculator-form")
+        .getAttribute("id")
+        .indexOf(breed) == -1
+    ) {
+      const warnings = [
+        {
+          tag: "puppy",
+          plural: "puppies",
+          href: "/products/trekker-fuel-puppy",
+        },
+        {
+          tag: "mini",
+          plural: "small adults",
+          href: "/products/trekker-fuel-adult-s",
+        },
+        {
+          tag: "medium",
+          plural: "medium & large adults",
+          href: "/products/trekker-fuel-adult-l",
+        },
+        {
+          tag: "large",
+          plural: "medium & large adults",
+          href: "/products/trekker-fuel-adult-l",
+        },
+      ];
+
+      let warning;
+      warnings.forEach((item) => {
+        if (item.tag === breed) {
+          warning = item;
+        }
+      });
+
+      document.querySelector(".warning").innerHTML = `
+        <p><strong>Hold on!</strong> This is not the recommended kibble for ${warning.plural}. <br><a class="link" href="${warning.href}">Click here</a> for our ${warning.plural} chicken munchies</p>`;
+    } else {
+      document.querySelector(".warning").innerHTML = "";
+    }
+  }
+
+  jQuery("#bagsBtn-" + productId).click(function () {
+    console.log("bagsbtn clicked for product: " + productId);
+    if (bagSize === "6kg") {
+      jQuery("#variantSelector-" + productId).val("6kg");
+    } else {
+      jQuery("#variantSelector-" + productId).val("2kg");
+    }
+
+    const event = new Event("change", {
+      view: window,
+      bubbles: true,
+      cancelable: true,
     });
 
-    document.querySelector(".warning").innerHTML = `
-      <p><strong>Hold on!</strong> This is not the recommended kibble for ${warning.plural}. <br><a class="link" href="${warning.href}">Click here</a> for our ${warning.plural} chicken munchies</p>`;
-  } else {
-    document.querySelector(".warning").innerHTML = "";
-  }
-}
-
-jQuery("#bagsBtn").click(function () {
-  if (bagSize === "6kg") {
-    jQuery(".variantSelector").val("6kg");
-  } else {
-    jQuery(".variantSelector").val("2kg");
-  }
-
-  const event = new Event("change", {
-    view: window,
-    bubbles: true,
-    cancelable: true,
+    document
+      .querySelector("#variantSelector-" + productId)
+      .dispatchEvent(event);
   });
-
-  document.querySelector(".variantSelector").dispatchEvent(event);
 });
