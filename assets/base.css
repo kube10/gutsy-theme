@@ -204,11 +204,6 @@ html.no-js .no-js-hidden {
   margin-bottom: 0;
 }
 
-body {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
 body,
 .color-bg-green,
 .color-bg-beige,
