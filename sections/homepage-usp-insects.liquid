@@ -1,36 +1,33 @@
-{{ "section-homepage-usp.css" | asset_url | stylesheet_tag }}
+{{ "section-homepage-usp-insects.css" | asset_url | stylesheet_tag }}
 
-<div class="section-homepage-usp-inner section-padding color-{{section.settings.color_scheme}}">
-  <div class="page-width section-homepage-usp-inner__grid">
-    <div class="homepage-usp-section__left">
-      <img class="homepage-usp-section__left-image" src="{{section.settings.image | image_url:width:1080 }}" alt="">
-    </div>
-      <div class="homepage-usp-section__right">
+<div class="section-homepage-usp-insects-inner color-{{section.settings.color_scheme}}">
+    <div class="homepage-usp-insects-section__left page-width">
+      <div class="section-padding">
         <h1 class="color-{{section.settings.heading_color}}">{{section.settings.headline}}</h1>
         {%- for block in section.blocks -%}
-            <div class="homepage-usp__card">
-              <div class="homepage-usp__card-heading">
+            <div class="homepage-usp-insects__card">
+              <div class="homepage-usp-insects__card-heading">
                 {{block.settings.svg_icon}}
                 <h2 class="color-{{section.settings.subheading_color}}">{{block.settings.title}}</h2>
               </div>
               <p>{{block.settings.content}}</p>
             </div>
         {%- endfor -%}
-
         <a href="{{section.settings.button_href}}" class="button button-secondary">{{section.settings.button_text}}</a>
       </div>
-  </div>
+    </div>
+    <div class="homepage-usp-insects-section__right" style="background-image: url({{section.settings.image | image_url: width: 1080}})"></div>
 </div>
 
 {% schema %}
 {
-  "name": "Homepage USPs",
+  "name": "Home USPs Insects",
   "tag": "section",
-  "class": "section-homepage-usps",
+  "class": "section-homepage-usp-insectss",
   "blocks": [
     {
-      "type": "usp",
-      "name": "USP",
+      "type": "usp-insects",
+      "name": "usp-insects",
       "limit": 3,
       "settings": [
         {
@@ -137,7 +134,7 @@
   ],
   "presets": [
     {
-      "name": "Homepage USPs"
+      "name": "Home USPs Insects"
     }
   ]
 }

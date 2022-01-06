@@ -1,5 +1,11 @@
-.homepage-usp__grid {
-  margin-top: 2rem;
+.homepage-usp-section__left,
+.homepage-usp-section__right {
+  text-align: center;
+}
+
+.homepage-usp-section__left-image {
+  max-width: 100%;
+  height: auto;
 }
 
 .homepage-usp__card {
@@ -27,10 +33,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .homepage-usp__grid {
-    margin-top: 4rem;
-  }
-
   .homepage-usp__card-heading > h2 {
     font-size: 2rem;
   }
@@ -54,21 +56,31 @@
 }
 
 @media screen and (min-width: 1080px) {
-  .homepage-usp__grid {
+  .section-homepage-usp-inner__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    justify-items: center;
+    grid-template-columns: 50% 50%;
   }
 
   .homepage-usp__card {
     align-items: flex-start;
     text-align: left;
     padding: 0;
-    max-width: 460px;
   }
 
   .homepage-usp__card > p {
+    margin-left: 3.5rem;
+  }
+
+  .homepage-usp-section__right {
+    padding-left: 2rem;
+    text-align: left;
+  }
+
+  .homepage-usp-section__right > h1 {
+    margin-bottom: 3rem;
+  }
+
+  .homepage-usp-section__right > .button-secondary {
     margin-left: 3.5rem;
   }
 }

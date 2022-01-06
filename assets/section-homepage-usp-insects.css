@@ -1,0 +1,108 @@
+.homepage-usp-insects-section__right {
+  display: block !important;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.homepage-usp-insects-section__left {
+  text-align: center;
+}
+
+.homepage-usp-insects-section__left-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.homepage-usp-insects__card {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.homepage-usp-insects__card-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.homepage-usp-insects__card-heading > svg {
+  margin-bottom: 1rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+.homepage-usp-insects__card-heading > h2 {
+  font-size: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .homepage-usp-insects__card-heading > h2 {
+    font-size: 2rem;
+  }
+
+  .homepage-usp-insects__card-heading {
+    flex-direction: row;
+  }
+
+  .homepage-usp-insects__card-heading > svg {
+    margin-bottom: 0rem;
+    margin-right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .homepage-usp-insects__card {
+    padding-left: 4rem;
+    padding-right: 4rem;
+    margin-bottom: 4rem;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .homepage-usp-insects-section__left {
+    text-align: left;
+  }
+
+  .section-homepage-usp-insects-inner {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  .section-homepage-usp-insects-inner > .page-width {
+    width: calc(100vw / 2);
+    justify-self: end;
+    margin: 0;
+  }
+
+  .homepage-usp-insects__card {
+    align-items: flex-start;
+    text-align: left;
+    padding: 0;
+  }
+
+  .homepage-usp-insects__card > p {
+    margin-left: 3.5rem;
+  }
+
+  .homepage-usp-insects-section__right {
+    padding-left: 2rem;
+  }
+
+  .homepage-usp-insects-section__right > h1 {
+    margin-bottom: 3rem;
+  }
+
+  .homepage-usp-insects-section__left .button-secondary {
+    margin-left: 3.5rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .section-homepage-usp-insects-inner > .page-width {
+    width: calc(var(--page-width) / 2);
+  }
+}

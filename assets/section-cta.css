@@ -11,6 +11,16 @@
   object-fit: cover;
 }
 
+.cta-section__home-cta {
+  display: flex;
+  align-items: center;
+}
+
+.cta-section__home-cta > h3 {
+  margin: 0;
+  margin-right: 1.5rem;
+}
+
 @media screen and (min-width: 768px) {
   .cta-section__left {
     padding-left: 4rem;
