@@ -55,6 +55,12 @@
         "image": "shopify:\/\/shop_images\/1212981_1.jpg"
       }
     },
+    "164156093350c034d1": {
+      "type": "homepage-products",
+      "settings": {
+        "collection": "all"
+      }
+    },
     "1641312336a418c8c5": {
       "type": "homepage-usp",
       "blocks": {
@@ -216,6 +222,7 @@
   "order": [
     "163758556420562ce4",
     "16413122942b6eaed8",
+    "164156093350c034d1",
     "1641312336a418c8c5",
     "1641312429be037db4",
     "1641461453d5d748a3",

@@ -1,0 +1,170 @@
+.sustainability-figures-section {
+  margin-top: 76px;
+}
+
+.text-center {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sustainability-figures__headlines,
+.sustainability-figures__row-1,
+.sustainability-figures__row-2 {
+  margin-bottom: 4rem;
+}
+
+.sustainability-figures__headlines {
+  text-align: center;
+}
+
+.sustainability-figures__subheadline {
+  font-size: 1.8rem;
+  text-transform: none;
+}
+
+.sustainability-figures__cards-1 {
+  margin-bottom: 2rem;
+}
+
+.sustainability-figures__cards-2 {
+  position: relative;
+}
+
+.sustainability-figures__overlay-text {
+  margin-left: 0rem;
+}
+
+.sustainability-figures__overlay-paragraph {
+  margin: 0;
+}
+
+.sustainability-figures__overlay-description {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.sustainability-figures__overlay {
+  background-color: white;
+  -webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sustainability-figures__overlay-icon > svg {
+  width: 4rem;
+  height: 4rem;
+}
+
+.sustainability-figures__headline-wrap {
+  text-align: center;
+}
+
+.sustainability-figures__jumbo {
+  font-size: 6rem;
+}
+
+.sustainability-figures__card-paragraph {
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.sustainability-figures__large {
+  display: flex;
+  align-items: center;
+}
+
+.sustainability-figures__large-percentage {
+  font-size: 4rem;
+  margin: 0;
+  line-height: 4rem;
+}
+
+.sustainability-figures__large-description {
+  line-height: 1.5rem;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .sustainability-figures__headlines,
+  .sustainability-figures__row-1,
+  .sustainability-figures__row-2 {
+    margin-bottom: 6rem;
+  }
+  .sustainability-figures__jumbo {
+    font-size: 11.25rem;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .sustainability-figures__headlines,
+  .sustainability-figures__row-1,
+  .sustainability-figures__row-2 {
+    margin-bottom: 7.5rem;
+  }
+
+  .sustainability-figures__card-paragraph {
+    width: 200px;
+  }
+
+  .sustainability-figures__row-1,
+  .sustainability-figures__row-2 {
+    display: flex;
+    justify-content: space-between;
+    width: 960px;
+  }
+
+  .sustainability-figures__cards-1 {
+    margin-bottom: 0rem;
+  }
+
+  .sustainability-figures__large-percentage {
+    font-size: 5.75rem;
+    line-height: 5.75rem;
+  }
+
+  .sustainability-figures__large-description {
+    line-height: 38px;
+    font-size: 36px;
+  }
+
+  .sustainability-figures__cards-2 {
+    cursor: crosshair;
+  }
+
+  .sustainability-figures__overlay {
+    padding: 2rem;
+    border-radius: 2rem;
+    position: absolute;
+    width: 475px;
+    left: -50%;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(50px);
+    transition: all 0.5s ease;
+    flex-direction: row;
+  }
+
+  .sustainability-figures__overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0px);
+  }
+
+  .sustainability-figures__overlay-text {
+    margin-left: 1rem;
+  }
+
+  .sustainability-figures__card-paragraph {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}

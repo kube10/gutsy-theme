@@ -1,0 +1,162 @@
+{{ 'section-sustainability-figures.css' | asset_url | stylesheet_tag }}
+
+<div class="sustainability-figures-section__inner section-padding color-bg-beige">
+  <div class="page-width text-center">
+    <div class="sustainability-figures__headlines">
+      <h1 class="color-primary-1">
+      {{section.settings.headline}}</h1>
+      <h3 class="color-primary-2 sustainability-figures__subheadline">
+      {{section.settings.subheadline}}</h3>
+    </div>
+    <div class="sustainability-figures__row-1">
+      {% for block in section.blocks %}
+        {% if block.type == "figures-row-1" %}
+          <div class="sustainability-figures__cards-1">
+            <p class="sustainability-figures__card-paragraph">{{block.settings.paragraph}}</p>
+            <div class="sustainability-figures__large">
+              <h1 class="sustainability-figures__large-percentage color-primary-2">{{block.settings.percentage}}</h1>
+              <h2 class="sustainability-figures__large-description color-primary-1">{{block.settings.description}}</h2>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="sustainability-figures__row-2">
+      {% for block in section.blocks %}
+        {% if block.type == "figures-row-2" %}
+          <div data-id="{{forloop.index}}" class="sustainability-figures__cards-2">
+            <p class="sustainability-figures__card-paragraph">{{block.settings.paragraph}}</p>
+              <h2 class="color-primary-1">{{block.settings.number}}</h2>
+              <h2 class="color-primary-2">{{block.settings.description}}</h2>
+              <div id="sustainability-overlay-{{forloop.index}}" class="sustainability-figures__overlay">
+                <div class="sustainability-figures__overlay-icon">
+                  {{block.settings.overlay-icon}}
+                </div>
+                <div class="sustainability-figures__overlay-text">
+                  <p class="sustainability-figures__overlay-paragraph">{{block.settings.overlay-paragraph}}</p>
+                  <h2 class="color-primary-2">{{block.settings.overlay-number}}</h2>
+                  <h3 class="sustainability-figures__overlay-description color-primary-1">{{block.settings.overlay-description}}</h3>
+                </div>
+              </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="sustainability-figures__headline-wrap">
+      <h1 class="sustainability-figures__jumbo color-primary-1">{{section.settings.jumbo-headline}}</h1>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  const cards = document.querySelectorAll('.sustainability-figures__cards-2');
+
+  cards.forEach((card, i) => {
+    card.addEventListener('mouseenter', (e) => {
+      const overlays = document.querySelectorAll('.sustainability-figures__overlay');
+      overlays.forEach((overlay, i) => {
+        overlay.classList.remove('open');
+      });
+      const id = card.getAttribute('data-id');
+      const overlay = document.querySelector('#sustainability-overlay-' + id);
+      overlay.classList.add('open');
+    })
+  });
+
+</script>
+
+{% schema %}
+{
+  "name": "Sustainability Figures",
+  "tag": "section",
+  "class": "sustainability-figures-section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Headline",
+      "id": "headline"
+    },
+    {
+      "type": "text",
+      "label": "Subheadline",
+      "id": "subheadline"
+    },
+    {
+      "type": "text",
+      "label": "Jumbo text",
+      "id": "jumbo-headline"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Figures Row 1",
+      "type": "figures-row-1",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "label": "Paragraph",
+          "id": "paragraph"
+        },
+        {
+          "type": "text",
+          "label": "Percentage",
+          "id": "percentage"
+        },
+        {
+          "type": "text",
+          "label": "Description",
+          "id": "description"
+        }
+      ]
+    },
+    {
+      "name": "Figures Row 2",
+      "type": "figures-row-2",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "label": "Paragraph",
+          "id": "paragraph"
+        },
+        {
+          "type": "text",
+          "label": "Number",
+          "id": "number"
+        },
+        {
+          "type": "text",
+          "label": "Description",
+          "id": "description"
+        },
+        {
+          "type": "text",
+          "label": "Overlay Paragraph",
+          "id": "overlay-paragraph"
+        },
+        {
+          "type": "text",
+          "label": "Overlay-Number",
+          "id": "overlay-number"
+        },
+        {
+          "type": "text",
+          "label": "Overlay Description",
+          "id": "overlay-description"
+        },
+        {
+          "type": "textarea",
+          "label": "Overlay Icon SVG Code",
+          "id": "overlay-icon"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sustainability Figures"
+    }
+  ]
+}
+{% endschema %}
