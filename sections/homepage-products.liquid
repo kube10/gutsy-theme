@@ -1,0 +1,111 @@
+{{ "section-homepage-products.css" | asset_url | stylesheet_tag }}
+
+<div class="homepage-products__inner section-padding color-bg-beige">
+  <div class="page-width">
+    <div class="homepage-products__grid">
+      {% for product in section.settings.collection.products %}
+      <div class="homepage-products__col {% if forloop.index == 2 %} reverse {% endif %}">
+          <a href="{{product.url}}"><img data-card="{{product.id}}" class="homepage-products__image" src="
+          {{ product.featured_image | image_url: width: 500 }}" alt=""></a>
+          <div id="homepage-products__card-{{product.id}}" class="homepage-products__card">
+            <h2 class="color-primary-1">{{product.title}}</h2>
+            <p class="homepage-products__card-description">{{product.description | truncatewords: 22 }}</p>
+            <div class="homepage-products__card-price-row">
+              <h5 class="color-primary-2">{{product.price | money}}</h5>
+              <div class="homepage-products__card-options">
+                Bags of
+                {% for option in product.options_with_values %}
+                  {% for value in option.values %}
+                    {% if forloop.last == true %}
+                      or
+                    {% endif %}
+                    {{ value }}
+                  {% endfor %}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="button-group">
+              <a id="{{product.id}}" class="button button-primary button-small open-product-modal-btn">BUY NOW</a>
+              <a href="" class="button color-primary-1 button-small">Discover all the benefits
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_1369_53673" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="11" height="11">
+                <path d="M3.96842 8.92754H11.4151L8.16176 12.1809C7.90176 12.4409 7.90176 12.8675 8.16176 13.1275C8.42176 13.3875 8.84176 13.3875 9.10176 13.1275L13.4951 8.73421C13.7551 8.47421 13.7551 8.05421 13.4951 7.79421L9.10842 3.39421C8.98387 3.26937 8.81477 3.19922 8.63842 3.19922C8.46208 3.19922 8.29298 3.26937 8.16842 3.39421C7.90842 3.65421 7.90842 4.07421 8.16842 4.33421L11.4151 7.59421H3.96842C3.60176 7.59421 3.30176 7.89421 3.30176 8.26088C3.30176 8.62754 3.60176 8.92754 3.96842 8.92754Z" fill="black"/>
+                </mask>
+                <g mask="url(#mask0_1369_53673)">
+                <rect x="0.496094" y="0.261719" width="16" height="16" fill="#1A3C32"/>
+                </g>
+                </svg>
+              </a>
+            </div>
+            <div class="usp-row">
+              <div class="usp">
+                <img class="usp-icon" src="{{'planet-friendly.svg' | asset_url}}" alt="">
+                <span>Planet-friendly</span>
+              </div>
+              <div class="usp">
+                <img class="usp-icon" src="{{'local-produced.svg' | asset_url}}" alt="">
+                <span>Locally produced</span>
+              </div>
+              <div class="usp">
+                <img class="usp-icon" src="{{'recycable.svg' | asset_url}}" alt="">
+                <span>100% recycable</span>
+              </div>
+            </div>
+          </div>
+      </div>
+      {% render 'product-modal', product: product %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  const productImages = document.querySelectorAll('.homepage-products__image');
+
+  const productCards = document.querySelectorAll('.homepage-products__card');
+
+  productImages.forEach((image, i) => {
+    image.addEventListener('mouseenter', () => {
+
+      productCards.forEach((item, i) => {
+        item.classList.remove('open');
+      });
+
+      productImages.forEach((item, i) => {
+        item.style.transform = 'scale(1)';
+      });
+
+
+      image.style.transform = 'scale(1.1)';
+
+
+      const id = image.getAttribute('data-card');
+      const productCard = document.querySelector('#homepage-products__card-' + id);
+      productCard.classList.add('open');
+    });
+  });
+
+</script>
+
+{{ 'component-product-form.js' | asset_url | script_tag }}
+{{ 'component-product-modal.js' | asset_url | script_tag }}
+{{ 'component-calculator.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Homepage Products",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage Products"
+    }
+  ]
+}
+{% endschema %}
