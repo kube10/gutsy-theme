@@ -69,7 +69,9 @@
         "a9236651-8160-4d7b-8146-d394fd060d1e"
       ],
       "settings": {
-        "jumbo-headline": "Every. Single. Year."
+        "headline": "Why, how, what?",
+        "subheadline": "Let’s drop some bombs …",
+        "jumbo-headline": "Every.<br>Single.<br>Year."
       }
     }
   },

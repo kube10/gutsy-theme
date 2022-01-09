@@ -104,7 +104,7 @@
   }
 }
 
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 1280px) {
   .sustainability-figures__headlines,
   .sustainability-figures__row-1,
   .sustainability-figures__row-2 {
@@ -144,7 +144,7 @@
     padding: 2rem;
     border-radius: 2rem;
     position: absolute;
-    width: 475px;
+    width: 452px;
     left: -50%;
     opacity: 0;
     pointer-events: none;

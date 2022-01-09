@@ -143,7 +143,7 @@
         "heading_color": "primary-2",
         "subheading_color": "primary-3",
         "button_text": "MORE ABOUT SUSTAINABILITY",
-        "button_href": "",
+        "button_href": "shopify:\/\/pages\/sustainability",
         "image": "shopify:\/\/shop_images\/Frame_207.jpg"
       }
     },
