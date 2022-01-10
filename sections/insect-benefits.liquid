@@ -1,0 +1,68 @@
+{{ 'section-insect-benefits.css' | asset_url | stylesheet_tag }}
+
+<div class="insect-benefits-section__inner section-padding color-bg-green">
+  <div class="page-width">
+    <div class="insect-benefits-section__content-wrap">
+      <div class="insect-benefits-section__headings">
+        <h1 class="color-primary-3">
+        {{section.settings.headline}}</h1>
+        <p class="paragraph-large">{{section.settings.paragraph}}</p>
+      </div>
+      <div class="insect-benefits-section__grid">
+            {% for block in section.blocks %}
+              {% if block.type == "insect-usp" %}
+              {% render 'insects-grid-paths', id: forloop.index %}
+              <div id="insect-benefits-card_{{forloop.index}}" class="insect-benefits-section__card">
+                  <h1 class="color-primary-2">{{block.settings.headline}}</h1>
+                  <p>{{block.settings.paragraph}}</p>
+              </div>
+              {% endif %}
+            {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Insect Benefits",
+  "tag": "section",
+  "class": "insect-benefits-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Paragraph"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "insect-usp",
+      "name": "Benefit Block",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Headline"
+        },
+        {
+          "type": "textarea",
+          "id": "paragraph",
+          "label": "Paragraph"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Insect Benefits"
+    }
+  ]
+}
+{% endschema %}

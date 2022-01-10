@@ -324,6 +324,11 @@ h5,
   margin: 0;
 }
 
+.paragraph-large {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 #insta-feed h2 {
   font-family: hwt-artz, sans-serif !important;
   font-weight: 700 !important;

@@ -1,0 +1,96 @@
+.insect-benefits-section__headings {
+  max-width: 420px;
+}
+
+.insect-benefits-section__content-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.insect-line {
+  display: none;
+}
+
+@media screen and (min-width: 1080px) {
+  .insect-benefits-section__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2rem;
+  }
+
+  .insect-benefits-section__card {
+    height: 434px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .insect-line {
+    display: block;
+    align-self: center;
+    justify-self: center;
+  }
+
+  #insect-line-1 {
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+
+  #insect-benefits-card_1 {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    height: auto;
+  }
+
+  #insect-line-2 {
+    grid-column-start: 1;
+    grid-row-start: 3;
+    justify-self: flex-end;
+    align-self: flex-start;
+  }
+
+  #insect-benefits-card_2 {
+    grid-column-start: 2;
+    grid-row-start: 3;
+  }
+
+  #insect-line-3 {
+    grid-column-start: 3;
+    grid-row-start: 3;
+    justify-self: flex-start;
+    align-self: flex-end;
+  }
+
+  #insect-benefits-card_3 {
+    grid-column-start: 3;
+    grid-row-start: 4;
+    height: auto;
+  }
+
+  #insect-line-4 {
+    grid-column-start: 3;
+    grid-row-start: 5;
+
+    justify-self: flex-start;
+    align-self: flex-start;
+  }
+
+  #insect-benefits-card_4 {
+    grid-column-start: 2;
+    grid-row-start: 5;
+  }
+
+  #insect-line-5 {
+    grid-column-start: 1;
+    grid-row-start: 5;
+
+    justify-self: flex-end;
+    align-self: flex-end;
+  }
+
+  #insect-benefits-card_5 {
+    grid-column-start: 1;
+    grid-row-start: 6;
+    height: auto;
+  }
+}

@@ -1,0 +1,45 @@
+{{ 'section-about-header.css' | asset_url | stylesheet_tag }}
+
+<div class="about-header-section__inner">
+  <div class="about-header-section__content-wrap page-width">
+    <div class="about-header-section__content">
+      <h1 class="color-primary-3">
+      {{section.settings.headline}}</h1>
+      <p class="about-header-section__paragraph">{{section.settings.paragraph}}</p>
+      <button class="button button-borderless color-primary-2">SCROLL DOWN {% render 'icon-arrow-down-orange' %}</button>
+    </div>
+  </div>
+  <div class="about-header-section__background">
+    <video class="about-header-section__background-video" src="{{section.settings.video_url}}"></video>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About Page Header",
+  "tag": "section",
+  "class": "about-header-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Paragraph"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Video URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Page Header"
+    }
+  ]
+}
+{% endschema %}

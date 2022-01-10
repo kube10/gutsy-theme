@@ -1,0 +1,70 @@
+{{ 'section-about-page-2.css' | asset_url | stylesheet_tag }}
+<div class="about-page-section-2__inner section-padding color-bg-beige">
+<div class="page-width text-center">
+  <div class="about-page-section-2__content-wrap">
+      <h1 class="color-primary-1">{{section.settings.headline}}</h1>
+      <p>{{section.settings.paragraph}}</p>
+      <h2 class="color-primary-2">{{section.settings.quote}}</h2>
+    <div class="about-page-section-2__images">
+      <div class="about-page-section-2__image">
+        <img src="{{section.settings.image_1 | image_url}}" alt="">
+        <h2 class="color-primary-1">{{section.settings.tag_1}}</h2>
+      </div>
+      <div class="about-page-section-2__image">
+        <img src="
+        {{section.settings.image_2 | image_url }}" alt="">
+        <h2 class="color-primary-1">{{section.settings.tag_1}}</h2>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% schema %}
+{
+  "name": "About Page Section_2",
+  "tag": "section",
+  "class": "about-page-section-2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline"
+    },
+    {
+      "type": "richtext",
+      "id": "paragraph",
+      "label": "Paragraph"
+    },
+    {
+      "type": "richtext",
+      "id": "quote",
+      "label": "Quote"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "tag_1",
+      "label": "Image Tag 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "tag_2",
+      "label": "Image Tag 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Page Section-2"
+    }
+  ]
+}
+{% endschema %}

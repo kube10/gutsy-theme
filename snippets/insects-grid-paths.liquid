@@ -1,0 +1,41 @@
+{% case id %}
+{% when 1 %}
+<div id="insect-line-{{id}}" class="insect-line">
+  <svg width="3" height="160" viewBox="0 0 3 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <line x1="1.00195" y1="1" x2="1.00196" y2="159" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+  </svg>
+</div>
+
+{% when 2 %}
+<div id="insect-line-{{id}}" class="insect-line">
+  <svg width="217" height="217" viewBox="0 0 217 217" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.00195 1.79102C1.00203 215.791 1.00237 215.791 215.502 215.791" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+  </svg>
+</div>
+
+
+{% when 3 %}
+<div id="insect-line-{{id}}" class="insect-line">
+  <svg width="217" height="217" viewBox="0 0 217 217" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M216 215.791C216 1.79101 216 1.79101 1.5 1.79101" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+  </svg>
+</div>
+
+
+{% when 4 %}
+<div id="insect-line-{{id}}" class="insect-line">
+  <svg width="217" height="218" viewBox="0 0 217 218" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.5 216.291C215.5 216.291 215.5 216.291 215.5 1.79101" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+  </svg>
+</div>
+
+
+{% when 5 %}
+<div id="insect-line-{{id}}" class="insect-line">
+  <svg width="217" height="217" viewBox="0 0 217 217" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M215.502 1.29102C1.50194 1.29113 1.50195 1.29147 1.50197 215.791" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+  </svg>
+
+</div>
+
+{% endcase %}

@@ -1,0 +1,38 @@
+.about-page-section-2__content-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.about-page-section-2__content-wrap > h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.about-page-section-2__images {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  flex-direction: column;
+}
+
+.about-page-section-2__image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.about-page-section-2__image > img {
+  border-radius: 50%;
+}
+
+@media screen and (min-width: 768px) {
+  .about-page-section-2__images {
+    flex-direction: row;
+  }
+
+  .about-page-section-2__image {
+    margin-top: 0rem;
+  }
+}

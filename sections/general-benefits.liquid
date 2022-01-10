@@ -1,0 +1,50 @@
+{{ 'section-general-benefits.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "General Benefits",
+  "tag": "section",
+  "class": "general-benefits-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "Benefit Block",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Headline"
+        },
+        {
+          "type": "textarea",
+          "id": "paragraph",
+          "label": "Paragraph"
+        },
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "SVG Icon Code"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Insect Benefits"
+    }
+  ]
+}
+{% endschema %}
