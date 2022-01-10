@@ -85,7 +85,7 @@
   height: 1px;
   width: 40px;
   display: block !important;
-  transition: height 4s linear;
+  transition: height 4s ease-out;
 }
 
 @media screen and (min-width: 768px) {

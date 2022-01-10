@@ -121,7 +121,7 @@
 
     const base = 250;
     const max = 200;
-    const time = 8000;
+    const time = 4000;
     const interval = 100;
 
     bars.forEach((bar, i) => {
@@ -131,7 +131,7 @@
 
       const span = bar.querySelector('span')
 
-      let increment = Math.ceil((interval/time)*parseInt(height));
+      let increment = Math.ceil(parseInt(height)/(time/interval));
       console.log(increment);
 
       if (parseInt(height) < 20) {
@@ -151,7 +151,7 @@
         } else {
           span.innerHTML = height;
         }
-      }, interval);
+      }, interval * 2);
 
     });
 
