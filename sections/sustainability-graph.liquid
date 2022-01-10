@@ -1,0 +1,180 @@
+{{ "section-sustainability-graph.css" | asset_url | stylesheet_tag }}
+
+<div class="sustainability-graph-section__inner section-padding">
+  <div class="page-width text-center">
+    <div class="sustainability_graph__text-content">
+      <p>{{section.settings.content}}</p>
+    </div>
+    <div class="sustainability-graph__wrap">
+      <div class="sustainability-graph__legend">
+        <div class="sustainability-graph__legend-item">
+          <div id="legend-land" class="sustainability-graph__legend-color"></div>
+          <span>Land (m²)</span>
+        </div>
+        <div class="sustainability-graph__legend-item">
+          <div id="legend-emissions" class="sustainability-graph__legend-color"></div>
+          <span>Emissions (Kg CO²)</span>
+        </div>
+        <div class="sustainability-graph__legend-item">
+          <div id="legend-water" class="sustainability-graph__legend-color"></div>
+          <span>Water (m³)</span>
+        </div>
+      </div>
+      <div class="sustainability-graph">
+        <div class="sustainability-graph__group">
+          <div class="sustainability-graph__bars">
+            <div data-value="200" class="sustainability-graph__bar">
+                <span>0</span>
+                <div class="sustainability-graph__bar-color color-land"></div>
+            </div>
+            <div data-value="125" class="sustainability-graph__bar ">
+                <span>0</span>
+                <div class="sustainability-graph__bar-color color-emissions"></div>
+            </div>
+            <div data-value="110" class="sustainability-graph__bar">
+                <span>0</span>
+                <div class="sustainability-graph__bar-color color-water"></div>
+            </div>
+          </div>
+          <div class="sustainability-graph__icon">
+            {% render 'graph-cow-icon' %}
+          </div>
+        </div>
+        <div class="sustainability-graph__group">
+          <div class="sustainability-graph__bars">
+            <div data-value="180" class="sustainability-graph__bar">
+                <span>0</span>
+                <div class="sustainability-graph__bar-color color-land"></div>
+            </div>
+            <div data-value="100" class="sustainability-graph__bar ">
+                <span>0</span>
+                <div class="sustainability-graph__bar-color color-emissions"></div>
+            </div>
+            <div data-value="90" class="sustainability-graph__bar">
+                <span>0</span>
+                <div class="sustainability-graph__bar-color color-water"></div>
+            </div>
+          </div>
+          <div class="sustainability-graph__icon">
+            {% render 'graph-sheep-icon' %}
+          </div>
+        </div>
+        <div class="sustainability-graph__group">
+          <div class="sustainability-graph__bars">
+            <div data-value="50" class="sustainability-graph__bar">
+                <span>0</span>
+                <div class="sustainability-graph__bar-color color-land"></div>
+            </div>
+            <div data-value="40" class="sustainability-graph__bar ">
+                <span>0</span>
+                <div class="sustainability-graph__bar-color color-emissions"></div>
+            </div>
+            <div data-value="35" class="sustainability-graph__bar">
+                <span>0</span>
+                <div class="sustainability-graph__bar-color color-water"></div>
+            </div>
+          </div>
+          <div class="sustainability-graph__icon">
+            {% render 'graph-chicken-icon' %}
+          </div>
+        </div>
+        <div class="sustainability-graph__group">
+          <div class="sustainability-graph__bars">
+            <div data-value="7.5" class="sustainability-graph__bar">
+                <span>0</span>
+                <div class="sustainability-graph__bar-color color-land"></div>
+            </div>
+            <div data-value="10" class="sustainability-graph__bar ">
+                <span>0</span>
+                <div class="sustainability-graph__bar-color color-emissions"></div>
+            </div>
+            <div data-value="5.5" class="sustainability-graph__bar">
+                <span>0</span>
+                <div class="sustainability-graph__bar-color color-water"></div>
+            </div>
+          </div>
+          <div class="sustainability-graph__icon">
+            {% render 'graph-insect-icon' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  const sectionScrollTop = document.querySelector('.sustainability-graph-section').offsetTop;
+
+  if(window.scrollY >= sectionScrollTop - 200) {
+    animateGraph();
+  }
+
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY >= sectionScrollTop - 200) {
+        animateGraph();
+    }
+  })
+
+  function animateGraph() {
+    const bars = document.querySelectorAll('.sustainability-graph__bar');
+
+    const base = 250;
+    const max = 200;
+    const time = 8000;
+    const interval = 100;
+
+    bars.forEach((bar, i) => {
+      const height = bar.getAttribute('data-value');
+
+      bar.querySelector('.sustainability-graph__bar-color').style.height = base / max * height + 'px';
+
+      const span = bar.querySelector('span')
+
+      let increment = Math.ceil((interval/time)*parseInt(height));
+      console.log(increment);
+
+      if (parseInt(height) < 20) {
+        console.log("height < 20");
+        increment = .5;
+      }
+
+      setInterval(function () {
+        let current = span.innerHTML;
+
+        if (parseFloat(height) > parseFloat(current)) {
+          if (increment === 0.5) {
+            span.innerHTML = (parseFloat(current) + increment).toFixed(1);
+          } else {
+            span.innerHTML = parseFloat(current) + increment;
+          }
+        } else {
+          span.innerHTML = height;
+        }
+      }, interval);
+
+    });
+
+  }
+
+</script>
+
+{% schema %}
+{
+  "name": "Sustainability Graph",
+  "tag": "section",
+  "class": "sustainability-graph-section",
+  "presets": [
+    {
+      "name": "Sustainability Graph"
+    }
+  ],
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Text content"
+    }
+  ]
+}
+{% endschema %}

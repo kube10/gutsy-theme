@@ -1,0 +1,101 @@
+.sustainability_graph__text-content {
+  max-width: 492px;
+  text-align: center;
+}
+
+.sustainability-graph__legend {
+  display: flex;
+  align-items: center;
+}
+
+.sustainability-graph__legend-item {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.sustainability-graph__legend-color {
+  height: 1rem;
+  width: 1rem;
+  display: block !important;
+  margin-right: 1rem;
+}
+
+#legend-land,
+.color-land {
+  background-color: rgb(var(--color-base-primary-2));
+}
+
+#legend-emissions,
+.color-emissions {
+  background-color: rgb(var(--color-base-primary-1));
+}
+
+#legend-water,
+.color-water {
+  background-color: rgb(var(--color-base-primary-3));
+}
+
+.sustainability-graph__wrap {
+  padding-top: 4rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sustainability-graph {
+  margin-top: 2rem;
+  display: flex;
+  align-items: flex-end;
+}
+
+.sustainability-graph__group {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.sustainability-graph__icon {
+  margin-top: 2rem;
+}
+
+.sustainability-graph__bars {
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  top: auto;
+  position: relative;
+  min-height: 290px;
+}
+
+.sustainability-graph__bar {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sustainability-graph__bar-color {
+  margin-top: 1rem;
+  height: 1px;
+  width: 40px;
+  display: block !important;
+  transition: height 4s linear;
+}
+
+@media screen and (min-width: 768px) {
+  .sustainability-graph__wrap {
+    padding-top: 6rem;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .sustainability-graph__wrap {
+    padding-top: 7.5rem;
+  }
+}

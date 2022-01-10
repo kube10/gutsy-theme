@@ -73,10 +73,100 @@
         "subheadline": "Let’s drop some bombs …",
         "jumbo-headline": "Every.<br>Single.<br>Year."
       }
+    },
+    "1641727605ae9469c2": {
+      "type": "sustainability-graph",
+      "settings": {
+        "content": "On this graph you see how much land, water and CO2 is consumed to produce 1 kg of edible protein from beef, lamb, chicken … and then our insects."
+      }
+    },
+    "1641817310b48162c1": {
+      "type": "cta-section",
+      "settings": {
+        "color_scheme": "bg-green",
+        "headline": "DO YOU WANT TO BE PART OF THE SOLUTION?",
+        "heading_color": "primary-2",
+        "subheadline": "",
+        "subheading_color": "primary-3",
+        "buttonText": "To the shop",
+        "button_href": "",
+        "button_color": "primary-3",
+        "image": "shopify:\/\/shop_images\/1212981_1.jpg"
+      }
+    },
+    "164181746851efd510": {
+      "type": "section-testimonials",
+      "blocks": {
+        "25080f37-fa63-410b-a561-35985113815d": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "My BFF Jacky has had stomach troubles for years. Thanks to gutsy’s hypo-allergenic trekker fuel, those issues are in the past!",
+            "testimonial_name": "Lisa, Antwerp",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25.png"
+          }
+        },
+        "995e276c-8f64-468e-b1ea-8bae2bb46153": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "It’s funny how we always consider our own footprint when thinking about sustainability. Gutsy reduces our pet’s paw print too!",
+            "testimonial_name": "Ben, Brugge",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-1.png"
+          }
+        },
+        "aa1bf053-eba2-4760-ae97-ca865c5e7690": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "My border collie is a real hiker, he’s more wolf than dog! A nutritious meal that’s rich in proteins is exactly what she needed.",
+            "testimonial_name": "Michael, Brussels",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-2.png"
+          }
+        }
+      },
+      "block_order": [
+        "25080f37-fa63-410b-a561-35985113815d",
+        "995e276c-8f64-468e-b1ea-8bae2bb46153",
+        "aa1bf053-eba2-4760-ae97-ca865c5e7690"
+      ],
+      "settings": {
+        "color_scheme": "bg-beige",
+        "heading_color": "primary-1",
+        "headline": "Dog lovers love us!"
+      }
+    },
+    "16418175466bfd235d": {
+      "type": "apps",
+      "blocks": {
+        "a729cb9b-ba5f-4b11-9cdc-097db1194320": {
+          "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "heading_font": "helvetica_n4",
+            "heading_size": 20,
+            "feed_width": 100,
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "a729cb9b-ba5f-4b11-9cdc-097db1194320"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "16418175577d645c9e": {
+      "type": "instagram-link",
+      "settings": {
+        "instagram_url": "https:\/\/instagram.com"
+      }
     }
   },
   "order": [
     "main",
-    "164156190741de324b"
+    "164156190741de324b",
+    "1641727605ae9469c2",
+    "1641817310b48162c1",
+    "164181746851efd510",
+    "16418175466bfd235d",
+    "16418175577d645c9e"
   ]
 }
