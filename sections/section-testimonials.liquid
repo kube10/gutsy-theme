@@ -6,7 +6,7 @@
         <h1 class="h2 color-{{section.settings.heading_color}}">{{section.settings.headline}}</h1>
         <div class="testimonials-wrap">
           {% for block in section.blocks %}
-              <div class="testimonial-card">
+              <div data-scroll class="testimonial-card">
                 <img src="{{ block.settings.testimonial_image | image_url: width: 250 }}" alt="">
                 <p>{{block.settings.testimonial_content}}</p>
                 <div class="testimonial-name__wrap">

@@ -1,4 +1,13 @@
 /* Color custom properties */
+[data-scroll] {
+  transition: opacity 1s;
+}
+[data-scroll="in"] {
+  opacity: 1;
+}
+[data-scroll="out"] {
+  opacity: 0;
+}
 
 .color_scheme {
   background: rgb(var(--color-background));

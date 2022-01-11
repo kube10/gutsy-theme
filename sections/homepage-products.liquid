@@ -4,7 +4,7 @@
   <div class="page-width">
     <div class="homepage-products__grid">
       {% for product in section.settings.collection.products %}
-      <div class="homepage-products__col {% if forloop.index == 2 %} reverse {% endif %}">
+      <div data-scroll class="homepage-products__col {% if forloop.index == 2 %} reverse {% endif %}">
           <a href="{{product.url}}"><img data-card="{{product.id}}" class="homepage-products__image" src="
           {{ product.featured_image | image_url: width: 500 }}" alt=""></a>
           <div id="homepage-products__card-{{product.id}}" class="homepage-products__card">
