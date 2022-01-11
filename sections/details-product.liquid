@@ -17,7 +17,7 @@
         <img class="product-details-img-tag" src="{{ product | image_url: width: 500 }}" alt="">
     </div>
     <div class="product-details-content {{type}}">
-      <div class="product-details-content-inner">
+      <div data-scroll class="product-details-content-inner">
         <div class="product-details-text-content">
           <h1>{{ product.title | escape }}</h1>
           {% if product.metafields.custom_fields["tagline"] != blank %}

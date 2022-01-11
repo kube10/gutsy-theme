@@ -11,7 +11,7 @@
     <div class="sustainability-figures__row-1">
       {% for block in section.blocks %}
         {% if block.type == "figures-row-1" %}
-          <div class="sustainability-figures__cards-1">
+          <div data-scroll class="sustainability-figures__cards-1">
             <p class="sustainability-figures__card-paragraph">{{block.settings.paragraph}}</p>
             <div class="sustainability-figures__large">
               <h1 class="sustainability-figures__large-percentage color-primary-2">{{block.settings.percentage}}</h1>
@@ -24,7 +24,7 @@
     <div class="sustainability-figures__row-2">
       {% for block in section.blocks %}
         {% if block.type == "figures-row-2" %}
-          <div data-id="{{forloop.index}}" class="sustainability-figures__cards-2">
+          <div data-scroll data-id="{{forloop.index}}" class="sustainability-figures__cards-2">
             <p class="sustainability-figures__card-paragraph">{{block.settings.paragraph}}</p>
               <h2 class="color-primary-1">{{block.settings.number}}</h2>
               <h2 class="color-primary-2">{{block.settings.description}}</h2>
@@ -43,7 +43,7 @@
       {% endfor %}
     </div>
     <div class="sustainability-figures__headline-wrap">
-      <h1 class="sustainability-figures__jumbo color-primary-1">{{section.settings.jumbo-headline}}</h1>
+      <h1 data-scroll class="sustainability-figures__jumbo color-primary-1">{{section.settings.jumbo-headline}}</h1>
     </div>
   </div>
 </div>
