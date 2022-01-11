@@ -79,12 +79,55 @@
       "settings": {
         "content-title": "Product"
       }
+    },
+    "16419065086c931769": {
+      "type": "cta-section",
+      "settings": {
+        "color_scheme": "bg-green",
+        "headline": "DO YOU WANT TO BE PART OF THE SOLUTION?",
+        "heading_color": "primary-2",
+        "subheadline": "",
+        "subheading_color": "primary-3",
+        "buttonText": "To the shop",
+        "button_href": "",
+        "button_color": "primary-3",
+        "image": "shopify:\/\/shop_images\/1212981_1.jpg"
+      }
+    },
+    "164190649345a43177": {
+      "type": "apps",
+      "blocks": {
+        "abea32fd-43c3-4ae7-a17c-c0219e7df303": {
+          "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "heading_font": "helvetica_n4",
+            "heading_size": 20,
+            "feed_width": 100,
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "abea32fd-43c3-4ae7-a17c-c0219e7df303"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "164190650402bbbb1a": {
+      "type": "instagram-link",
+      "settings": {
+        "instagram_url": "https:\/\/instagram.com"
+      }
     }
   },
   "order": [
     "main",
     "164182822092c993d4",
     "16418282293ad77c8a",
-    "164182880491c77dd0"
+    "164182880491c77dd0",
+    "16419065086c931769",
+    "164190649345a43177",
+    "164190650402bbbb1a"
   ]
 }
