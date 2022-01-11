@@ -2,23 +2,58 @@
 .faq-content-section__content-wrap {
   max-width: 740px;
   margin: 0 auto;
+  margin-bottom: 3rem;
 }
+
+.faq-content-section__content-wrap > h2 {
+  margin-bottom: 1rem;
+}
+
+.faq-content-section__question {
+  font-size: 1.5rem;
+}
+
+.faq-content-section__card-answer {
+  display: none;
+}
+
+.faq-content-section__card-heading {
+  cursor: pointer;
+}
+
 </style>
 
 <div class="faq-content-section__inner">
   <div class="page-width">
     <div class="faq-content-section__content-wrap">
-
-        <h2>{{section.settings.content-title}}</h2>
+      <h2>{{section.settings.content-title}}</h2>
       {%- for block in section.blocks -%}
          {%- if block.type == "faq" -%}
-          <h3>{{block.settings.question}}</h3>
-          <p>{{block.settings.answer}}</p>
+         <div data-id="{{forloop.index}}" class="faq-content-section__card">
+             <div class="faq-content-section__card-heading">
+                <h3 class="faq-content-section__question">{{block.settings.question}}</h3>
+             </div>
+             <div id="faq-answer_{{forloop.index}}" class="faq-content-section__card-answer">
+                <p>{{block.settings.answer}}</p>
+             </div>
+         </div>
          {%- endif -%}
       {%- endfor -%}
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+const headings = document.querySelectorAll('.faq-content-section__card-heading ');
+
+headings.forEach((heading, i) => {
+  heading.addEventListener('click', () => {
+    const id = heading.getAttribute('data-id');
+    // const content = 
+  })
+});
+
+</script>
 
 {%- schema -%}
 {
