@@ -1,0 +1,41 @@
+<style>
+.faq-top-section__content-wrap {
+  max-width: 740px;
+  text-align: center;
+  margin: 0 auto;
+}
+</style>
+
+<div class="faq-top-section__inner section-padding">
+  <div class="page-width text-center">
+    <div class="faq-top-section__content-wrap">
+      <h1 class="color-primary-1">{{section.settings.headline}}</h1>
+      <h3 class="color-primary-2">{{section.settings.subheadline}}</h3>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Top Section",
+  "tag": "section",
+  "class": "faq-top-section",
+  "presets": [
+    {
+      "name": "FAQ Top Section"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline"
+    }
+  ]
+}
+{% endschema %}

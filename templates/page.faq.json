@@ -4,9 +4,87 @@
       "type": "main-page",
       "settings": {
       }
+    },
+    "164182822092c993d4": {
+      "type": "faq-top-section",
+      "settings": {
+        "headline": "FAQ",
+        "subheadline": "Discover more about gutsy"
+      }
+    },
+    "16418282293ad77c8a": {
+      "type": "faq-content-section",
+      "blocks": {
+        "27e90d62-6b20-4e3a-a15a-738f11ed3c70": {
+          "type": "faq",
+          "settings": {
+            "question": "Why should you choose Gutsy’s dog food?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel dolor nulla. Nam sollicitudin lorem nec euismod pulvinar. Fusce fermentum elit odio, id maximus nibh facilisis ac. Fusce tortor eros, iaculis non tristique nec, condimentum vitae nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut luctus, nunc nec scelerisque dapibus, ipsum odio pellentesque velit, sed cursus sem est ut metus. Nulla facilisi. Sed accumsan a mauris sit amet vulputate. Quisque a lacus quis justo pellentesque interdum.<\/p>"
+          }
+        },
+        "5e3e71f6-b947-4cbe-806c-c499dc5d4a0a": {
+          "type": "faq",
+          "settings": {
+            "question": "What do you mean with sustainable dog food?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel dolor nulla. Nam sollicitudin lorem nec euismod pulvinar. Fusce fermentum elit odio, id maximus nibh facilisis ac. Fusce tortor eros, iaculis non tristique nec, condimentum vitae nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut luctus, nunc nec scelerisque dapibus, ipsum odio pellentesque velit, sed cursus sem est ut metus. Nulla facilisi. Sed accumsan a mauris sit amet vulputate. Quisque a lacus quis justo pellentesque interdum.<\/p>"
+          }
+        },
+        "c1114908-a9bc-4cc5-bbd4-82440460b0d2": {
+          "type": "faq",
+          "settings": {
+            "question": "Where can I buy Gutsy?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel dolor nulla. Nam sollicitudin lorem nec euismod pulvinar. Fusce fermentum elit odio, id maximus nibh facilisis ac. Fusce tortor eros, iaculis non tristique nec, condimentum vitae nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut luctus, nunc nec scelerisque dapibus, ipsum odio pellentesque velit, sed cursus sem est ut metus. Nulla facilisi. Sed accumsan a mauris sit amet vulputate. Quisque a lacus quis justo pellentesque interdum.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "27e90d62-6b20-4e3a-a15a-738f11ed3c70",
+        "5e3e71f6-b947-4cbe-806c-c499dc5d4a0a",
+        "c1114908-a9bc-4cc5-bbd4-82440460b0d2"
+      ],
+      "settings": {
+        "content-title": "Gutsy"
+      }
+    },
+    "164182880491c77dd0": {
+      "type": "faq-content-section",
+      "blocks": {
+        "c536ea57-0533-4e86-a514-eb8cb5941f69": {
+          "type": "faq",
+          "settings": {
+            "question": "How is Gutsy made?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel dolor nulla. Nam sollicitudin lorem nec euismod pulvinar. Fusce fermentum elit odio, id maximus nibh facilisis ac. Fusce tortor eros, iaculis non tristique nec, condimentum vitae nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut luctus, nunc nec scelerisque dapibus, ipsum odio pellentesque velit, sed cursus sem est ut metus. Nulla facilisi. Sed accumsan a mauris sit amet vulputate. Quisque a lacus quis justo pellentesque interdum.<\/p>"
+          }
+        },
+        "f1b44e6e-58ab-403a-9d94-62d0548e0650": {
+          "type": "faq",
+          "settings": {
+            "question": "Is our packaging recyclable?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel dolor nulla. Nam sollicitudin lorem nec euismod pulvinar. Fusce fermentum elit odio, id maximus nibh facilisis ac. Fusce tortor eros, iaculis non tristique nec, condimentum vitae nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut luctus, nunc nec scelerisque dapibus, ipsum odio pellentesque velit, sed cursus sem est ut metus. Nulla facilisi. Sed accumsan a mauris sit amet vulputate. Quisque a lacus quis justo pellentesque interdum.<\/p>"
+          }
+        },
+        "42ab05c3-7cba-4573-8825-2a0a4c78da7c": {
+          "type": "faq",
+          "settings": {
+            "question": "What insect do we use?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel dolor nulla. Nam sollicitudin lorem nec euismod pulvinar. Fusce fermentum elit odio, id maximus nibh facilisis ac. Fusce tortor eros, iaculis non tristique nec, condimentum vitae nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut luctus, nunc nec scelerisque dapibus, ipsum odio pellentesque velit, sed cursus sem est ut metus. Nulla facilisi. Sed accumsan a mauris sit amet vulputate. Quisque a lacus quis justo pellentesque interdum.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "c536ea57-0533-4e86-a514-eb8cb5941f69",
+        "f1b44e6e-58ab-403a-9d94-62d0548e0650",
+        "42ab05c3-7cba-4573-8825-2a0a4c78da7c"
+      ],
+      "settings": {
+        "content-title": "Product"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "164182822092c993d4",
+    "16418282293ad77c8a",
+    "164182880491c77dd0"
   ]
 }
