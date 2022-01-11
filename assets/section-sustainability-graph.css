@@ -48,6 +48,7 @@
   margin-top: 2rem;
   display: flex;
   align-items: flex-end;
+  flex-direction: column;
 }
 
 .sustainability-graph__group {
@@ -97,5 +98,9 @@
 @media screen and (min-width: 1080px) {
   .sustainability-graph__wrap {
     padding-top: 7.5rem;
+  }
+
+  .sustainability-graph {
+    flex-direction: row;
   }
 }
