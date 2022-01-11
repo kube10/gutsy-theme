@@ -2,14 +2,16 @@
 {% when 1 %}
 <div id="insect-line-{{id}}" class="insect-line">
   <svg width="3" height="160" viewBox="0 0 3 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <line x1="1.00195" y1="1" x2="1.00196" y2="159" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+  <line class="line" x1="1.00195" y1="1" x2="1.00196" y2="159" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round"/>
+  <line class="dashed" x1="1.00195" y1="1" x2="1.00196" y2="159" stroke="#1A3C32" stroke-width="4" stroke-linecap="round"/>
   </svg>
 </div>
 
 {% when 2 %}
 <div id="insect-line-{{id}}" class="insect-line">
   <svg width="217" height="217" viewBox="0 0 217 217" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M1.00195 1.79102C1.00203 215.791 1.00237 215.791 215.502 215.791" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+  <path class="insect-line-path" d="M1.00195 1.79102C1.00203 215.791 1.00237 215.791 215.502 215.791" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round" />
+  <path class="dashed" d="M1.00195 1.79102C1.00203 215.791 1.00237 215.791 215.502 215.791" stroke="#1A3C32" stroke-width="4" stroke-linecap="round" />
   </svg>
 </div>
 
@@ -17,7 +19,8 @@
 {% when 3 %}
 <div id="insect-line-{{id}}" class="insect-line">
   <svg width="217" height="217" viewBox="0 0 217 217" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M216 215.791C216 1.79101 216 1.79101 1.5 1.79101" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+  <path class="insect-line-path" d="M1,1C215.5,1,215.5,1,215.5,215" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round" />
+  <path class="dashed" d="M1,1C215.5,1,215.5,1,215.5,215" stroke="#1A3C32" stroke-width="4" stroke-linecap="round" />
   </svg>
 </div>
 
@@ -25,7 +28,8 @@
 {% when 4 %}
 <div id="insect-line-{{id}}" class="insect-line">
   <svg width="217" height="218" viewBox="0 0 217 218" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M1.5 216.291C215.5 216.291 215.5 216.291 215.5 1.79101" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+  <path class="insect-line-path" d="M215,1c0,214.5,0,214.5-214,214.5" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round" />
+  <path class="dashed" d="M215,1c0,214.5,0,214.5-214,214.5" stroke="#1A3C32" stroke-width="4" stroke-linecap="round"/>
   </svg>
 </div>
 
@@ -33,9 +37,42 @@
 {% when 5 %}
 <div id="insect-line-{{id}}" class="insect-line">
   <svg width="217" height="217" viewBox="0 0 217 217" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M215.502 1.29102C1.50194 1.29113 1.50195 1.29147 1.50197 215.791" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+  <path class="insect-line-path" d="M215.502 1.29102C1.50194 1.29113 1.50195 1.29147 1.50197 215.791" stroke="#FBEDDA" stroke-width="2" stroke-linecap="round"/>
+  <path class="dashed" d="M215.502 1.29102C1.50194 1.29113 1.50195 1.29147 1.50197 215.791" stroke="#1A3C32" stroke-width="4" stroke-linecap="round"/>
   </svg>
 
 </div>
 
 {% endcase %}
+
+<script type="text/javascript">
+  window.addEventListener('scroll', () => {
+    const lines = document.querySelectorAll('.insect-line');
+    lines.forEach((line, i) => {
+      if (isElementInViewport(line)) {
+        if (!line.classList.contains('animate')) {
+          line.classList.add('animate')
+        }
+      } else {
+        line.classList.remove('animate')
+      }
+    });
+  })
+
+  function isElementInViewport (el) {
+
+    // Special bonus for those using jQuery
+    if (typeof jQuery === "function" && el instanceof jQuery) {
+        el = el[0];
+    }
+
+    var rect = el.getBoundingClientRect();
+
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* or $(window).height() */
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+    );
+}
+</script>
