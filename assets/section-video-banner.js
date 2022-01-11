@@ -1,11 +1,17 @@
 const video = document.querySelector(".section-video-banner-video");
 const discoverBtns = document.querySelectorAll(".blog-feature-card-button");
 
-// video.addEventListener("loadeddata", (e) => {
-//   if (video.readyState >= 3) {
-//     initUI();
-//   }
-// });
+video.addEventListener("loadeddata", (e) => {
+  // if (video.readyState >= 3) {
+  //   initUI();
+  // }
+  setTimeout(function () {
+    document.querySelector("#overlay").style.opacity = "0";
+    setTimeout(function () {
+      document.querySelector("#overlay").style.display = "none";
+    }, 500);
+  }, 300);
+});
 
 discoverBtns.forEach((btn) => {
   btn.addEventListener("mouseenter", (e) => {
