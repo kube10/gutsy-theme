@@ -324,5 +324,15 @@
         "default": true
       }
     ]
+  },
+  {
+    "name": "Other settings",
+    "settings": [
+      {
+        "type": "url",
+        "id": "subscriptions_info_page",
+        "label": "Subscriptions Info page"
+      }
+    ]
   }
 ]

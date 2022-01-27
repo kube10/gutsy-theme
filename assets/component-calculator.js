@@ -166,7 +166,6 @@ calculators.forEach((calculator, i) => {
 
   breedField.addEventListener("change", (e) => {
     const value = breedField.value;
-    console.log(value);
     if (value === "puppy") {
       fillWeightField(puppy);
       setResult(puppy[0]);
@@ -235,7 +234,6 @@ calculators.forEach((calculator, i) => {
   });
 
   ageField.addEventListener("change", (e) => {
-    console.log(ageField.value);
     if (breedField.value === "puppy") {
       let result;
       puppy.forEach((item) => {
@@ -326,14 +324,14 @@ calculators.forEach((calculator, i) => {
     if (breedField.value === "puppy") {
       const monthly = (dose * 30) / 1000;
       result2Field.innerHTML = monthly + "kg";
-      calcBags(monthly);
+      divideBags(monthly);
     } else {
       const min = parseInt(dose.substr(0, dose.indexOf("-")));
       const max = parseInt(dose.substr(dose.indexOf("-") + 1));
       const minMonthly = (min * 30) / 1000;
       const maxMonthly = (max * 30) / 1000;
       result2Field.innerHTML = minMonthly + " - " + maxMonthly + "kg";
-      calcBags(maxMonthly);
+      divideBags(maxMonthly);
     }
   }
 
@@ -352,6 +350,97 @@ calculators.forEach((calculator, i) => {
       bagSize = "2kg";
     }
     bagsBtn.innerHTML = bags + "&nbsp;" + bagText;
+  }
+
+  function divideBags(monthly) {
+    let totalKg = Math.ceil(monthly);
+
+    const bagSizes = [
+      {
+        kg: 10,
+        count: 0,
+      },
+      {
+        kg: 6,
+        count: 0,
+      },
+      {
+        kg: 2,
+        count: 0,
+      },
+    ];
+
+    while (totalKg > 0) {
+      if (totalKg <= bagSizes[2].kg && totalKg > 0) {
+        totalKg = 0;
+        bagSizes[2].count += 1;
+      } else {
+        bagSizes.forEach((size, i) => {
+          do {
+            if (totalKg >= size.kg) {
+              totalKg = totalKg - size.kg;
+              size.count += 1;
+            }
+          } while (totalKg >= size.kg);
+        });
+      }
+    }
+
+    bagSizes.forEach((size, i) => {
+      // console.log("Bag " + size.kg + "kg: " + size.count);
+    });
+  }
+
+  function checkForWarnings() {
+    const breed = breedField.value;
+    let product;
+    if (breed == "mini") {
+      product == "adult-s";
+    } else if (breed == "medium" || breed == "large") {
+      product == "adult-l";
+    } else {
+      product == breed;
+    }
+
+    const warnings = [
+      {
+        tag: "puppy",
+        plural: "puppies",
+        href: "/products/trekker-fuel-puppy",
+      },
+      {
+        tag: "adult-s",
+        plural: "small adults",
+        href: "/products/trekker-fuel-adult-s",
+      },
+      {
+        tag: "adult-l",
+        plural: "medium & large adults",
+        href: "/products/trekker-fuel-adult-l",
+      },
+    ];
+
+    if (
+      document
+        .querySelector(".calculator-form")
+        .getAttribute("id")
+        .indexOf(product) == -1
+    ) {
+      let warning;
+      warnings.forEach((item) => {
+        if (item.tag === breed) {
+          warning = item;
+        }
+      });
+
+      document.querySelector(".warning").innerHTML = `
+          <p><strong>Hold on!</strong> This is not the recommended kibble for ${warning.plural}. <br><a class="link" href="${warning.href}">Click here</a> for our ${warning.plural} chicken munchies</p>`;
+      console.log("warning triggered: " + warning.plural);
+      document.querySelector(".warning").classList.remove("hidden");
+    } else {
+      document.querySelector(".warning").innerHTML = "";
+      document.querySelector(".warning").classList.add("hidden");
+    }
   }
 
   function setWarning(breed) {
@@ -393,13 +482,15 @@ calculators.forEach((calculator, i) => {
 
       document.querySelector(".warning").innerHTML = `
         <p><strong>Hold on!</strong> This is not the recommended kibble for ${warning.plural}. <br><a class="link" href="${warning.href}">Click here</a> for our ${warning.plural} chicken munchies</p>`;
+      console.log("warning triggered: " + warning.plural);
+      document.querySelector(".warning").classList.remove("hidden");
     } else {
       document.querySelector(".warning").innerHTML = "";
+      document.querySelector(".warning").classList.add("hidden");
     }
   }
 
   jQuery("#bagsBtn-" + productId).click(function () {
-    console.log("bagsbtn clicked for product: " + productId);
     if (bagSize === "6kg") {
       jQuery("#variantSelector-" + productId).val("6kg");
     } else {

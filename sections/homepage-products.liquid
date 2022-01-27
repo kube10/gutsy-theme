@@ -8,25 +8,36 @@
           <a href="{{product.url}}"><img data-card="{{product.id}}" class="homepage-products__image" src="
           {{ product.featured_image | image_url: width: 500 }}" alt=""></a>
           <div id="homepage-products__card-{{product.id}}" class="homepage-products__card">
-            <h2 class="color-primary-1">{{product.title}}</h2>
-            <p class="homepage-products__card-description">{{product.description | truncatewords: 22 }}</p>
+              <h2 class="homepage-products__card-title color-primary-1">{{product.title}}</h2>
+            <div class="homepage-products__card-header">
+              <p class="homepage-products__card-description">{{product.description | truncatewords: 22 }}</p>
+              {%- for tag in product.tags -%}
+                {%- if tag == "adult-l" or tag == "adult-s" or tag == "puppy" -%}
+                <div class="product-tag-badge">{{ tag | upcase }}</div>
+                {%- endif -%}
+              {%- endfor -%}
+
+            </div>
             <div class="homepage-products__card-price-row">
               <h5 class="color-primary-2">{{product.price | money}}</h5>
               <div class="homepage-products__card-options">
                 Bags of
-                {% for option in product.options_with_values %}
-                  {% for value in option.values %}
+                {%- for option in product.options_with_values -%}
+                  {%- for value in option.values -%}
                     {% if forloop.last == true %}
-                      or
+                      <span> or </span>
                     {% endif %}
-                    {{ value }}
-                  {% endfor %}
-                {% endfor %}
+                    {%- if forloop.last == false and forloop.first == false -%}
+                      <span>, </span>
+                    {%- endif -%}
+                    {{ value | strip }}
+                  {%- endfor -%}
+                {%- endfor -%}
               </div>
             </div>
             <div class="button-group">
               <a id="{{product.id}}" class="button button-primary button-small open-product-modal-btn">BUY NOW</a>
-              <a href="" class="button color-primary-1 button-small">Discover all the benefits
+              <a href="{{section.settings.benefits_link}}" class="button color-primary-1 button-small">Discover all the benefits
                 <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_1369_53673" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="11" height="11">
                 <path d="M3.96842 8.92754H11.4151L8.16176 12.1809C7.90176 12.4409 7.90176 12.8675 8.16176 13.1275C8.42176 13.3875 8.84176 13.3875 9.10176 13.1275L13.4951 8.73421C13.7551 8.47421 13.7551 8.05421 13.4951 7.79421L9.10842 3.39421C8.98387 3.26937 8.81477 3.19922 8.63842 3.19922C8.46208 3.19922 8.29298 3.26937 8.16842 3.39421C7.90842 3.65421 7.90842 4.07421 8.16842 4.33421L11.4151 7.59421H3.96842C3.60176 7.59421 3.30176 7.89421 3.30176 8.26088C3.30176 8.62754 3.60176 8.92754 3.96842 8.92754Z" fill="black"/>
@@ -100,6 +111,11 @@
       "type": "collection",
       "id": "collection",
       "label": "Collection"
+    },
+    {
+      "type": "url",
+      "id": "benefits_link",
+      "label": "Benefits link"
     }
   ],
   "presets": [

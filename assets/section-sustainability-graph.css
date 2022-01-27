@@ -70,7 +70,7 @@
   bottom: 0;
   top: auto;
   position: relative;
-  min-height: 290px;
+  min-height: 390px;
 }
 
 .sustainability-graph__bar {
@@ -91,13 +91,13 @@
 
 @media screen and (min-width: 768px) {
   .sustainability-graph__wrap {
-    padding-top: 6rem;
+    padding-top: 4rem;
   }
 }
 
 @media screen and (min-width: 1080px) {
   .sustainability-graph__wrap {
-    padding-top: 7.5rem;
+    padding-top: 5rem;
   }
 
   .sustainability-graph {

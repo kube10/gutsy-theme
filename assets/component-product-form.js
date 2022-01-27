@@ -1,5 +1,6 @@
 const productForms = document.querySelectorAll(".product-form");
 const calculators = document.querySelectorAll(".calculator-modal");
+const currentPage = window.location.pathname;
 
 let subscriptionSelected = true;
 
@@ -114,6 +115,6 @@ setTimeout(function () {
 function resetForm() {
   productForms.forEach((form, i) => {
     const baseURI = window.location.origin;
-    window.history.replaceState({}, "", baseURI + "/collections/all");
+    window.history.replaceState({}, "", baseURI + currentPage);
   });
 }

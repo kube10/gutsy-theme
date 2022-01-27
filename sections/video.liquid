@@ -1,7 +1,7 @@
 {{ 'video-section.css' | asset_url | stylesheet_tag }}
 
 <div class="video-section-inner">
-  <video class="video-section__video" src="{{section.settings.video_url}}" controls ></video>
+  <video class="video-section__video" src="{{section.settings.video_url}}" {% if section.settings.autoplay %}autoplay loop {% else %}controls{% endif %} ></video>
 </div>
 
 {% schema %}
@@ -16,6 +16,12 @@
       "default": "https://gutsy-website.s3.eu-west-3.amazonaws.com/UI_VID_FULL_HQ.mp4",
       "label": "t:sections.video.settings.video_url.label",
       "info": "t:sections.video.settings.video_url.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "default": true,
+      "label": "Autoplay?"
     }
   ],
   "presets": [

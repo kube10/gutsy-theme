@@ -3,6 +3,7 @@
 <div class="sustainability-graph-section__inner section-padding">
   <div class="page-width text-center">
     <div data-scroll class="sustainability_graph__text-content">
+      <h2 class="color-primary-1">{{section.settings.title}}</h2>
       <p>{{section.settings.content}}</p>
     </div>
     <div data-scroll class="sustainability-graph__wrap">
@@ -119,7 +120,7 @@
   function animateGraph() {
     const bars = document.querySelectorAll('.sustainability-graph__bar');
 
-    const base = 250;
+    const base = 350;
     const max = 200;
     const time = 4000;
     const interval = 100;
@@ -170,6 +171,12 @@
     }
   ],
   "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Section title"
+    },
     {
       "type": "textarea",
       "id": "content",

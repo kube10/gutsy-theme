@@ -95,6 +95,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  background-color: rgb(var(--color-base-primary-1));
 }
 
 .no-js .menu-drawer__navigation {
@@ -194,11 +195,14 @@ details[open].menu-opening > .menu-drawer__submenu {
   text-decoration: none;
   display: flex;
   align-items: center;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
   width: 100%;
   background-color: transparent;
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
+  color: rgb(var(--color-base-primary-2));
 }
 
 .no-js .menu-drawer__close-button {

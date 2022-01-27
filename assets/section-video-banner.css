@@ -115,6 +115,7 @@
 
 .section-video-banner-button-group {
   margin-top: 2rem;
+  grid-row-gap: 2rem;
 }
 
 .section-video-banner-blog-feature-card {

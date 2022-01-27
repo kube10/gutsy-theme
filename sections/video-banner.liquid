@@ -1,6 +1,4 @@
 {{ 'section-video-banner.css' | asset_url | stylesheet_tag }}
-
-
 <div id="section-video-banner" class="">
   <div class="section-video-banner-background">
     {% if section.settings.show_overlay_1 %}
@@ -22,7 +20,7 @@
           {%- when 'subheading' -%}
             <p class="section-video-banner-subheadline subheadline-{{block.settings.color}}">{{block.settings.subheading}}</p>
           {%- when 'buttons' -%}
-              <div class="section-video-banner-button-group button-group" {{ block.shopify_attributes }}>
+              <div style="max-width: {{section.settings.buttons-width}}px" class="section-video-banner-button-group button-group" {{ block.shopify_attributes }}>
                 {%- if block.settings.button_label_1 != blank -%}
                   <a{% if block.settings.button_link_1 == blank %} role="link" {% else %} href="{{ block.settings.button_link }}"{% endif %} class="button button-{{block.settings.button_style_1}} {% if block.settings.button_style_1 == 'secondary' %} color-{{block.settings.button_secondary_color}} {% endif %}">
                     {{ block.settings.button_label_1 | escape }}
@@ -107,6 +105,16 @@
       "type": "range",
       "id": "content-width",
       "label": "Content width (Left)",
+      "default": 450,
+      "min": 200,
+      "max": 750,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "buttons-width",
+      "label": "Buttons width (Left)",
       "default": 450,
       "min": 200,
       "max": 750,

@@ -21,10 +21,10 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop NOW",
-            "button_link_1": "",
+            "button_link_1": "shopify:\/\/collections\/all",
             "button_style_1": "primary",
             "button_label_2": "Why Gutsy",
-            "button_link_2": "",
+            "button_link_2": "shopify:\/\/pages\/all-benefits",
             "button_style_2": "secondary",
             "button_secondary_color": "white"
           }
@@ -38,8 +38,8 @@
       "settings": {
         "video_url": "https:\/\/gutsy-website.s3.eu-west-3.amazonaws.com\/Dog+Running.mp4",
         "background_overlay_1": "#1A3C32",
-        "show_overlay_1": true,
-        "background_overlay_2": "linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 10%, rgba(255, 255, 255, 0) 100%)",
+        "show_overlay_1": false,
+        "background_overlay_2": "linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 25%, rgba(255, 255, 255, 0) 100%)",
         "show_overlay_2": true,
         "content-width": 750
       }
@@ -50,7 +50,7 @@
         "color_scheme": "bg-green",
         "headline": "Do you have the guts to change the world?",
         "heading_color": "primary-2",
-        "subheadline": "DISCOVER OUR SOLUTION",
+        "subheadline": "Check out our sustainable and tasty dog food",
         "subheading_color": "primary-3",
         "image": "shopify:\/\/shop_images\/1212981_1.jpg"
       }
@@ -83,8 +83,8 @@
         "6120b691-7a15-4447-9563-7ffd90294964": {
           "type": "usp",
           "settings": {
-            "title": "Expert approved",
-            "content": "Through our collaboration with experts who have worked extremely hard to obtain a fantastic kibble that also achieves great results on taste and digestion tests.",
+            "title": "with the experts’ blessing",
+            "content": "Thanks to our collaboration with accredited experts, we are able to serve fantastic kibble which taste deliciously and digest wonderfully.",
             "svg_icon": "<svg width=\"48\" height=\"49\" viewbox=\"0 0 48 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10.7405 10.9113C9.50125 12.134 8.51614 13.5898 7.84185 15.1948C7.16757 16.7998 6.81743 18.5223 6.8116 20.2632C6.80577 22.0041 7.14435 23.7289 7.80787 25.3384C8.47138 26.9479 9.44672 28.4102 10.6777 29.6412C11.9087 30.8722 13.371 31.8476 14.9805 32.5111C16.59 33.1746 18.3149 33.5132 20.0557 33.5073C21.7966 33.5015 23.5192 33.1514 25.1242 32.4771C26.7292 31.8028 28.1849 30.8177 29.4077 29.5785C31.8557 27.0974 33.2231 23.7487 33.2115 20.2632C33.1998 16.7777 31.81 13.4383 29.3453 10.9736C26.8807 8.50897 23.5413 7.11917 20.0557 7.1075C16.5702 7.09582 13.2216 8.46321 10.7405 10.9113V10.9113ZM26.0141 26.1849C24.4387 27.7603 22.302 28.6453 20.0741 28.6453C17.8461 28.6453 15.7094 27.7603 14.1341 26.1849C12.5587 24.6095 11.6736 22.4728 11.6736 20.2449C11.6736 18.017 12.5587 15.8803 14.1341 14.3049C15.7094 12.7295 17.8461 11.8445 20.0741 11.8445C22.302 11.8445 24.4387 12.7295 26.0141 14.3049C27.5894 15.8803 28.4745 18.017 28.4745 20.2449C28.4745 22.4728 27.5894 24.6095 26.0141 26.1849V26.1849Z\" fill=\"#F47F36\"><\/path>\n<path d=\"M26.8614 32.1241C26.527 31.7897 26.2617 31.3927 26.0808 30.9558C25.8998 30.5189 25.8066 30.0506 25.8066 29.5777C25.8066 29.1048 25.8998 28.6365 26.0808 28.1996C26.2617 27.7627 26.527 27.3657 26.8614 27.0313C27.1958 26.6969 27.5928 26.4317 28.0297 26.2507C28.4666 26.0697 28.9349 25.9766 29.4078 25.9766C29.8807 25.9766 30.349 26.0697 30.7859 26.2507C31.2228 26.4317 31.6198 26.6969 31.9542 27.0313L40.4382 35.5177C40.782 35.8498 41.0563 36.247 41.245 36.6863C41.4336 37.1255 41.5329 37.5979 41.5371 38.0759C41.5412 38.5539 41.4502 39.0279 41.2692 39.4704C41.0881 39.9128 40.8208 40.3147 40.4828 40.6527C40.1448 40.9908 39.7429 41.2581 39.3004 41.4391C38.858 41.6201 38.384 41.7112 37.906 41.707C37.4279 41.7029 36.9556 41.6036 36.5163 41.4149C36.0771 41.2262 35.6799 40.952 35.3478 40.6081L26.8614 32.1241Z\" fill=\"#F47F36\"><\/path>\n<\/svg>"
           }
         }
@@ -100,7 +100,7 @@
         "heading_color": "primary-2",
         "subheading_color": "primary-1",
         "button_text": "Discover all the benefits",
-        "button_href": "",
+        "button_href": "shopify:\/\/pages\/all-benefits",
         "image": "shopify:\/\/shop_images\/image_4.jpg"
       }
     },

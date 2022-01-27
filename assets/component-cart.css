@@ -76,8 +76,7 @@ cart-items {
 .cart__footer > div:only-child {
   margin-left: auto;
 }
-
-.cart__footer > * + * {
+- .cart__footer > * + * {
   margin-top: 4rem;
 }
 
@@ -158,7 +157,7 @@ cart-items {
   margin-top: 1rem;
 }
 
-.cart__dynamic-checkout-buttons div[role='button'] {
+.cart__dynamic-checkout-buttons div[role="button"] {
   border-radius: 0 !important;
 }
 

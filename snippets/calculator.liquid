@@ -84,6 +84,9 @@
 
   .warning {
     font-weight: 400;
+    padding: .5rem;
+    background-color: rgba(255, 78, 78, 0.2);
+    color: rgba(255, 78, 78, 1)
   }
 
   .warning a {
@@ -193,7 +196,6 @@
     </div>
     <div class="calculator-modal-content">
       <div class="calculator-modal-heading">
-        {{id}}
         <h2 class="color-primary-2">Gutsy bag calculator</h2>
         <p>Calculate the amount of Gutsy bags you’ll need per month!</p>
       </div>
@@ -234,7 +236,7 @@
         </div>
       </div>
       <div class="calculator-modal-results">
-        <div class="warning">
+        <div class="warning hidden">
         </div>
         <p>Recommended daily dose: <span id="results1-{{id}}"></span></p>
         <p>Kg/month: <span id="results2-{{id}}"></span></p>
