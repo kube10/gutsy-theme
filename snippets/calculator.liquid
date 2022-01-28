@@ -90,7 +90,7 @@
   }
 
   .warning a {
-    color: rgb(var(--color-base-primary-2))
+    color: rgb(var(--color-base-primary-1))
   }
 
   .calculator-form-group > .quantity {
@@ -236,7 +236,7 @@
         </div>
       </div>
       <div class="calculator-modal-results">
-        <div class="warning hidden">
+        <div id="warning-{{id}}" class="warning hidden">
         </div>
         <p>Recommended daily dose: <span id="results1-{{id}}"></span></p>
         <p>Kg/month: <span id="results2-{{id}}"></span></p>

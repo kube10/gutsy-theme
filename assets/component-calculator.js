@@ -156,6 +156,12 @@ calculators.forEach((calculator, i) => {
   const bagsBtnSpan = calculator.querySelector("#bagsbtn-span-" + productId);
   const ageFormGroup = calculator.querySelector("#age-form-group-" + productId);
 
+  const calculatorForm = calculator.querySelector(".calculator-form");
+
+  const warning = calculator.querySelector("#warning-" + productId);
+
+  console.log(warning);
+
   bagsBtn.addEventListener("click", function () {
     document.querySelector("#calculator-" + productId).classList.remove("open");
     const quantityInput = document.querySelector(
@@ -169,14 +175,6 @@ calculators.forEach((calculator, i) => {
     if (value === "puppy") {
       fillWeightField(puppy);
       setResult(puppy[0]);
-      if (
-        document
-          .querySelector(".calculator-form")
-          .getAttribute("id")
-          .indexOf("puppy") > -1
-      ) {
-        document.querySelector(".warning").classList.remove("hidden");
-      }
       ageFormGroup.classList.remove("hidden");
     } else if (value === "mini") {
       fillWeightField(mini);
@@ -192,7 +190,8 @@ calculators.forEach((calculator, i) => {
       ageFormGroup.classList.add("hidden");
     }
 
-    setWarning(breedField.value);
+    // setWarning(breedField.value);
+    checkForWarnings();
   });
 
   weightField.addEventListener("change", (e) => {
@@ -249,23 +248,13 @@ calculators.forEach((calculator, i) => {
   });
 
   const init = () => {
-    if (
-      document
-        .querySelector(".calculator-form")
-        .getAttribute("id")
-        .indexOf("puppy") > -1
-    ) {
+    if (calculatorForm.getAttribute("id").indexOf("puppy") > -1) {
       setResult(puppy[0]);
       fillWeightField(puppy);
       fillAgeField();
       ageFormGroup.classList.remove("hidden");
       breedField.value = "puppy";
-    } else if (
-      document
-        .querySelector(".calculator-form")
-        .getAttribute("id")
-        .indexOf("(s)") > -1
-    ) {
+    } else if (calculatorForm.getAttribute("id").indexOf("(s)") > -1) {
       fillAgeField();
       breedField.value = "mini";
       setResult(mini[0]);
@@ -324,14 +313,14 @@ calculators.forEach((calculator, i) => {
     if (breedField.value === "puppy") {
       const monthly = (dose * 30) / 1000;
       result2Field.innerHTML = monthly + "kg";
-      divideBags(monthly);
+      calcBags(monthly);
     } else {
       const min = parseInt(dose.substr(0, dose.indexOf("-")));
       const max = parseInt(dose.substr(dose.indexOf("-") + 1));
       const minMonthly = (min * 30) / 1000;
       const maxMonthly = (max * 30) / 1000;
       result2Field.innerHTML = minMonthly + " - " + maxMonthly + "kg";
-      divideBags(maxMonthly);
+      calcBags(maxMonthly);
     }
   }
 
@@ -395,11 +384,11 @@ calculators.forEach((calculator, i) => {
     const breed = breedField.value;
     let product;
     if (breed == "mini") {
-      product == "adult-s";
+      product = "adult_(s)";
     } else if (breed == "medium" || breed == "large") {
-      product == "adult-l";
+      product = "adult_(l)";
     } else {
-      product == breed;
+      product = "puppy";
     }
 
     const warnings = [
@@ -409,47 +398,41 @@ calculators.forEach((calculator, i) => {
         href: "/products/trekker-fuel-puppy",
       },
       {
-        tag: "adult-s",
+        tag: "adult_(s)",
         plural: "small adults",
         href: "/products/trekker-fuel-adult-s",
       },
       {
-        tag: "adult-l",
+        tag: "adult_(l)",
         plural: "medium & large adults",
         href: "/products/trekker-fuel-adult-l",
       },
     ];
 
-    if (
-      document
-        .querySelector(".calculator-form")
-        .getAttribute("id")
-        .indexOf(product) == -1
-    ) {
-      let warning;
+    console.log("breed: " + breed);
+    console.log("product: " + product);
+    console.log("form id: " + calculatorForm.getAttribute("id"));
+
+    if (calculatorForm.getAttribute("id").indexOf(product) == -1) {
+      let warningObject;
       warnings.forEach((item) => {
-        if (item.tag === breed) {
-          warning = item;
+        if (item.tag === product) {
+          warningObject = item;
         }
       });
-
-      document.querySelector(".warning").innerHTML = `
-          <p><strong>Hold on!</strong> This is not the recommended kibble for ${warning.plural}. <br><a class="link" href="${warning.href}">Click here</a> for our ${warning.plural} chicken munchies</p>`;
-      console.log("warning triggered: " + warning.plural);
-      document.querySelector(".warning").classList.remove("hidden");
+      console.log("warningObject: " + warningObject);
+      warning.innerHTML = `
+          <p><strong>Hold on!</strong> This is not the recommended kibble for ${warningObject.plural}. <br><a class="link" href="${warningObject.href}">Click here</a> for our ${warningObject.plural} chicken munchies</p>`;
+      console.log("warning triggered: " + warningObject.plural);
+      warning.classList.remove("hidden");
     } else {
-      document.querySelector(".warning").innerHTML = "";
-      document.querySelector(".warning").classList.add("hidden");
+      warning.innerHTML = "";
+      warning.classList.add("hidden");
     }
   }
 
   function setWarning(breed) {
-    if (
-      document
-        .querySelector(".calculator-form")
-        .getAttribute("id")
-        .indexOf(breed) == -1
-    ) {
+    if (calculatorForm.getAttribute("id").indexOf(breed) == -1) {
       const warnings = [
         {
           tag: "puppy",
@@ -473,20 +456,20 @@ calculators.forEach((calculator, i) => {
         },
       ];
 
-      let warning;
+      let warningObject;
       warnings.forEach((item) => {
         if (item.tag === breed) {
-          warning = item;
+          warningObject = item;
         }
       });
 
-      document.querySelector(".warning").innerHTML = `
-        <p><strong>Hold on!</strong> This is not the recommended kibble for ${warning.plural}. <br><a class="link" href="${warning.href}">Click here</a> for our ${warning.plural} chicken munchies</p>`;
-      console.log("warning triggered: " + warning.plural);
-      document.querySelector(".warning").classList.remove("hidden");
+      warning.innerHTML = `
+        <p><strong>Hold on!</strong> This is not the recommended kibble for ${warningObject.plural}. <br><a class="link" href="${warningObject.href}">Click here</a> for our ${warningObject.plural} chicken munchies</p>`;
+      console.log("warning triggered: " + warningObject.plural);
+      warning.classList.remove("hidden");
     } else {
-      document.querySelector(".warning").innerHTML = "";
-      document.querySelector(".warning").classList.add("hidden");
+      warning.innerHTML = "";
+      warning.classList.add("hidden");
     }
   }
 

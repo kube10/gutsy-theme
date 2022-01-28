@@ -34,8 +34,13 @@
   > h1,
 .product-details-content.puppy
   > .product-details-content-inner
+  > .product-details-text-content
+  > h2,
+.product-details-content.puppy
+  > .product-details-content-inner
   > .product-details-actions
-  .price {
+  .price,
+.product-details-content.puppy .price {
   color: #f47f36;
 }
 
@@ -47,7 +52,11 @@
 .product-details-content.puppy
   > .product-details-content-inner
   > .product-details-text-content
-  > h3 {
+  > h3,
+.product-details-content.puppy
+  > .product-details-content-inner
+  > .product-details-text-content
+  > h4 {
   color: #fbedda;
 }
 
@@ -94,15 +103,24 @@
   > h1,
 .product-details-content.adult-s
   > .product-details-content-inner
+  > .product-details-text-content
+  > h2,
+.product-details-content.adult-s
+  > .product-details-content-inner
   > .product-details-actions
-  .price {
+  .price,
+.product-details-content.adult-s .price {
   color: #1a3c32;
 }
 
 .product-details-content.adult-s
   > .product-details-content-inner
   > .product-details-text-content
-  > h3 {
+  > h3,
+.product-details-content.adult-s
+  > .product-details-content-inner
+  > .product-details-text-content
+  > h4 {
   color: #f47f36;
 }
 
@@ -151,21 +169,30 @@
 .product-details-content.adult-l
   > .product-details-content-inner
   > .product-details-text-content
-  > h1 {
+  > h1,
+.product-details-content.adult-l
+  > .product-details-content-inner
+  > .product-details-text-content
+  > h2 {
   color: #fbedda;
 }
 
 .product-details-content.adult-l
   > .product-details-content-inner
   > .product-details-actions
-  .price {
+  .price,
+.product-details-content.adult-l .price {
   color: #f47f36;
 }
 
 .product-details-content.adult-l
   > .product-details-content-inner
   > .product-details-text-content
-  > h3 {
+  > h3,
+.product-details-content.adult-l
+  > .product-details-content-inner
+  > .product-details-text-content
+  > h4 {
   color: #f47f36;
 }
 
