@@ -1,0 +1,26 @@
+.sustainability-solution__grid {
+  display: block;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2rem;
+  align-items: center;
+}
+
+.sustainability-solution__content-wrap {
+  text-align: center;
+}
+
+.image-cover {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+@media screen and (min-width: 1080px) {
+  .sustainability-solution__grid {
+    display: grid;
+  }
+
+  .sustainability-solution__content-wrap {
+    text-align: left;
+  }
+}

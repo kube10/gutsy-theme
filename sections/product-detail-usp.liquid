@@ -2,21 +2,77 @@
 
 <div id="section-product-detail-usp">
   <div class="page-width">
-    <div class="headings-center">
-      <h1 class="color-{{ section.settings.headline_color}}">{{section.settings.headline}}</h1>
-      <h3 class="color-{{ section.settings.subheadline_color}}">{{section.settings.subheadline}}</h3>
+    <div class="product-detail-usp__heading">
+      <div class="button-group">
+        <button data-tab="1" class="tab-btn button button-secondary button-small active">Ingrediënts</button>
+        <button data-tab="2" class="tab-btn button button-secondary button-small">Nutrition</button>
+      </div>
     </div>
-    <div class="product-detail-usp__grid">
-      {% for block in section.blocks %}
-        <div data-scroll class="product-detail-usp__card">
-            {{block.settings.svg}}
-            <h2 class="color-primary-1">{{block.settings.title}}</h2>
-            <p>{{block.settings.text}}</p>
+    <div data-scroll class="product-detail-usp__tab-wrap">
+      <div id="tab-1" class="tab_open product-detail-usp__tab">
+        <div class="headings-center">
+          <h1 class="color-{{ section.settings.headline_color_tab_1}}">{{section.settings.headline_tab_1}}</h1>
+          <h3 class="color-{{ section.settings.subheadline_color_tab_1}}">{{section.settings.subheadline_tab_1}}</h3>
         </div>
-      {% endfor %}
+        <div class="product-detail-usp__grid">
+          {% for block in section.blocks %}
+            {%- if block.type == "usp" -%}
+              <div class="product-detail-usp__card">
+                  {{block.settings.svg}}
+                  <h2 class="color-primary-1">{{block.settings.title}}</h2>
+                  <p>{{block.settings.text}}</p>
+              </div>
+            {%- endif -%}
+          {% endfor %}
+        </div>
+      </div>
+      <div id="tab-2" class="product-detail-usp__tab">
+          <div class="headings-center">
+            <h1 class="color-{{ section.settings.headline_color_tab_2}}">{{section.settings.headline_tab_2}}</h1>
+            <h3 class="color-{{ section.settings.subheadline_color_tab_2}}">{{section.settings.subheadline_tab_2}}</h3>
+          </div>
+          <div class="product-detail-usp__tab_2-content">
+            {% for block in section.blocks %}
+              {%- if block.type == "nutrition" -%}
+                <div class="product-nutrition-info">
+                    <h3 class="color-primary-1">{{block.settings.title}}</h3>
+                    <p>{{block.settings.text}}</p>
+                </div>
+              {%- endif -%}
+            {% endfor %}
+          </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabs = document.querySelectorAll('.product-detail-usp__tab');
+
+  tabBtns.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      if (!btn.classList.contains('active')) {
+        tabBtns.forEach((btn, i) => {
+          btn.classList.remove('active')
+        });
+
+        const tab_id = "tab-" + btn.getAttribute('data-tab')
+
+        tabs.forEach((tab, i) => {
+          if (tab.getAttribute('id') == tab_id) {
+            tab.classList.add('tab_open');
+          } else {
+            tab.classList.remove('tab_open')
+          }
+        });
+
+        btn.classList.add('active');
+      }
+    })
+  });
+
+</script>
 
 {% schema %}
 {
@@ -28,17 +84,42 @@
       "type": "header",
       "content": "Text"
     },
-
     {
       "type": "text",
-      "id": "headline",
+      "id": "headline_tab_1",
       "default": "Headline!",
-      "label": "Headline"
+      "label": "Headline Tab 1"
+    },
+    {
+      "type": "text",
+      "id": "headline_tab_2",
+      "default": "Headline!",
+      "label": "Headline Tab 2"
     },
     {
       "type": "select",
-      "id": "headline_color",
-      "label": "Headline color",
+      "id": "headline_color_tab_1",
+      "label": "Headline color Tab 1",
+      "default": "primary-2",
+      "options": [
+        {
+          "value": "primary-1",
+          "label": "Gutsy Green"
+        },
+        {
+          "value": "primary-2",
+          "label": "Gutsy Orange"
+        },
+        {
+          "value": "primary-3",
+          "label": "Gutsy Beige"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "headline_color_tab_2",
+      "label": "Headline color Tab 2",
       "default": "primary-2",
       "options": [
         {
@@ -57,15 +138,40 @@
     },
     {
       "type": "textarea",
-      "id": "subheadline",
+      "id": "subheadline_tab_1",
       "default": "Subheadline",
-      "label": "Subheadline"
+      "label": "Subheadline Tab 1"
     },
-
+    {
+      "type": "textarea",
+      "id": "subheadline_tab_2",
+      "default": "Subheadline",
+      "label": "Subheadline Tab 2"
+    },
     {
       "type": "select",
-      "id": "subheadline_color",
-      "label": "Subheadline Color",
+      "id": "subheadline_color_tab_1",
+      "label": "Subheadline Color Tab 1",
+      "default": "primary-1",
+      "options": [
+        {
+          "value": "primary-1",
+          "label": "Gutsy Green"
+        },
+        {
+          "value": "primary-2",
+          "label": "Gutsy Orange"
+        },
+        {
+          "value": "primary-3",
+          "label": "Gutsy Beige"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "subheadline_color_tab_2",
+      "label": "Subheadline Color Tab 2",
       "default": "primary-1",
       "options": [
         {
@@ -86,7 +192,7 @@
   "blocks": [
     {
       "type": "usp",
-      "name": "USP",
+      "name": "USP (Tab 1)",
       "limit": 6,
       "settings": [
         {
@@ -106,6 +212,25 @@
           "id": "svg",
           "default": "<svg></svg>",
           "label": "SVG Icon code"
+        }
+      ]
+    },
+    {
+      "type": "nutrition",
+      "name": "Content Nutrition",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Nutrition",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "default": "Text comes here.",
+          "label": "Text"
         }
       ]
     }

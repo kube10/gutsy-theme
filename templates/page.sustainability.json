@@ -77,7 +77,19 @@
     "1641727605ae9469c2": {
       "type": "sustainability-graph",
       "settings": {
+        "title": "Section title",
         "content": "On this graph you see how much land, water and CO2 is consumed to produce 1 kg of edible protein from beef, lamb, chicken … and then our insects."
+      }
+    },
+    "164337781902c4cf06": {
+      "type": "sustainability-solution",
+      "settings": {
+        "color_scheme": "bg-beige",
+        "heading": "We have a solution",
+        "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet metus id augue ultrices efficitur eu quis libero. Ut vel risus eleifend risus placerat gravida in ut arcu. Curabitur semper turpis sit amet justo porttitor, ultricies imperdiet turpis blandit. Duis vitae nibh auctor, ultricies est non, facilisis lorem. Nullam commodo eros vitae sapien pharetra rhoncus. Nullam felis enim, consequat eu varius non, hendrerit a dui. Nulla porttitor congue sapien nec ullamcorper. Integer suscipit lacinia lacus non bibendum. Suspendisse faucibus a arcu in dictum.<\/p>",
+        "image": "shopify:\/\/shop_images\/GUTSY-FOOD-BAG-MOCKUP_2.png",
+        "heading_color": "primary-2",
+        "img_height": 560
       }
     },
     "1641817310b48162c1": {
@@ -164,6 +176,7 @@
     "main",
     "164156190741de324b",
     "1641727605ae9469c2",
+    "164337781902c4cf06",
     "1641817310b48162c1",
     "164181746851efd510",
     "16418175466bfd235d",

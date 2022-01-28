@@ -5,20 +5,38 @@
       <h1 class="color-primary-1">{{section.settings.headline}}</h1>
       <p data-scroll>{{section.settings.paragraph}}</p>
       <h2 data-scroll class="color-primary-2">{{section.settings.quote}}</h2>
-    <div data-scroll class="about-page-section-2__images">
-      <div class="about-page-section-2__image">
-        <img src="{{section.settings.image_1 | image_url}}" alt="">
-        <h2 class="color-primary-1">{{section.settings.tag_1}}</h2>
+  </div>
+  <div class="about-page-section-2__team">
+    {%- for block in section.blocks -%}
+      <div data-scroll class="about-page-section-2__team-member">
+        <div class="team-member__img-wrap">
+          <img src="{{block.settings.image_1 | image_url}}" alt="" class="team-member__primary-img">
+          <img src="{{block.settings.image_2 | image_url}}" alt="" class="team-member__secondary-img">
+        </div>
+        <div class="team-member__text-content">
+          <h2 class="color-primary-1">{{block.settings.name}}</h2>
+          <span>{{block.settings.function}}</span>
+        </div>
       </div>
-      <div class="about-page-section-2__image">
-        <img src="
-        {{section.settings.image_2 | image_url }}" alt="">
-        <h2 class="color-primary-1">{{section.settings.tag_1}}</h2>
-      </div>
-    </div>
+    {%- endfor -%}
   </div>
 </div>
 </div>
+
+<script type="text/javascript">
+  const teamMemberImages = document.querySelectorAll('.team-member__img-wrap');
+
+  teamMemberImages.forEach((image, i) => {
+    image.addEventListener('mouseenter', () => {
+      image.querySelector('.team-member__secondary-img').classList.add('show')
+    })
+    image.addEventListener('mouseleave', () => {
+      image.querySelector('.team-member__secondary-img').classList.remove('show')
+    })
+  });
+
+</script>
+
 {% schema %}
 {
   "name": "About Page Section_2",
@@ -39,31 +57,39 @@
       "type": "richtext",
       "id": "quote",
       "label": "Quote"
-    },
+    }
+  ],
+  "blocks": [
     {
-      "type": "image_picker",
-      "id": "image_1",
-      "label": "Image 1"
-    },
-    {
-      "type": "text",
-      "id": "tag_1",
-      "label": "Image Tag 1"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_2",
-      "label": "Image 2"
-    },
-    {
-      "type": "text",
-      "id": "tag_2",
-      "label": "Image Tag 2"
+      "type": "team_member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "function",
+          "label": "Function"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 2 (shown on hover)"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "About Page Section-2"
+      "name": "About Page Team"
     }
   ]
 }

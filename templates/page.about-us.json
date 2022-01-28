@@ -15,14 +15,44 @@
     },
     "164181877859f3462b": {
       "type": "about-page-section-2",
+      "blocks": {
+        "e91bd29f-d220-421a-9e8f-47ca78de3b24": {
+          "type": "team_member",
+          "settings": {
+            "name": "Jack",
+            "function": "Co-Founder",
+            "image_1": "shopify:\/\/shop_images\/Frame_59.jpg",
+            "image_2": "shopify:\/\/shop_images\/close-border-collie-sticking-tongue-260nw-382281400.jpg"
+          }
+        },
+        "0acf8fe2-9381-4436-8b0e-0df0327f4c73": {
+          "type": "team_member",
+          "settings": {
+            "name": "Achilles",
+            "function": "Co-Founder",
+            "image_1": "shopify:\/\/shop_images\/Frame_62.jpg",
+            "image_2": "shopify:\/\/shop_images\/closeup-portrait-photo-adorable-mongrel-260nw-773293042.jpg"
+          }
+        },
+        "63395afc-4f33-48f3-bcda-6858469ed909": {
+          "type": "team_member",
+          "settings": {
+            "name": "Freddy",
+            "function": "Marketing & Sales",
+            "image_1": "shopify:\/\/shop_images\/Rectangle_25-2.png",
+            "image_2": "shopify:\/\/shop_images\/36839b3b2a74eb80078eba7d8f700536.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "e91bd29f-d220-421a-9e8f-47ca78de3b24",
+        "0acf8fe2-9381-4436-8b0e-0df0327f4c73",
+        "63395afc-4f33-48f3-bcda-6858469ed909"
+      ],
       "settings": {
-        "headline": "MEET THE FOUNDERS",
+        "headline": "MEET THE PACK",
         "paragraph": "<p>Our story started 5 years ago. We (Achilles and Jack) met at university through a mutual friend. It soon became clear that we have a lot in common. We both like adventurous holidays and pub nights, but most of all: we share a love for the planet and dogs, especially our sweet Otis and Choco.<\/p><p><br\/>Recently we found a way to combine these two passions. We’re all trying to eat more consciously and ecologically. But what about the food we serve our dogs? We decided to come up with an answer to this question ourselves.<br\/><br\/>Gutsy is high-quality, insect-based dog food that brings you and your dog closer together and closer to the planet.<\/p>",
-        "quote": "<p>Because life’s about making memories, not footprints.<\/p>",
-        "image_1": "shopify:\/\/shop_images\/Frame_62.jpg",
-        "tag_1": "Achilles",
-        "image_2": "shopify:\/\/shop_images\/Frame_59.jpg",
-        "tag_2": "Jack"
+        "quote": "<p>Because life’s about making memories, not footprints.<\/p>"
       }
     },
     "1641819000b5dbbfa9": {

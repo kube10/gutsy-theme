@@ -1,0 +1,40 @@
+#map {
+  height: 560px;
+}
+
+.store-locator__wrap {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.stores-list__wrap {
+  padding: 1rem;
+}
+
+.store-list-item {
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.store-list-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.store-list-item.active {
+  background-color: rgb(var(--color-base-primary-3));
+}
+
+.store-list-item__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.map-icon {
+  padding: 1rem;
+  background-color: rgb(var(--color-base-primary-2));
+  width: auto !important;
+  height: auto !important;
+}

@@ -1,0 +1,195 @@
+{{ "section-store-locator.css" | asset_url | stylesheet_tag }}
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+
+<div class="store-locator-section-inner section-padding">
+  <div class="page-width">
+    <h1>Store Locator</h1>
+    <div class="store-locator__wrap">
+      <div id="map" data-start="{{section.settings.map_start_point}}"></div>
+      <div class="stores-list__wrap">
+        <input id="search-field" type="text" name="search">
+        <button class="button button-small button-secondary search-btn">Search</button>
+        {%- for store in section.blocks -%}
+          <div id="store-list-item-{{forloop.index0}}" class="store-list-item" data-coordinates="{{store.settings.coordinates}}" data-name="{{store.settings.name}}" data-id={{forloop.index0}}>
+            <div class="store-list-item__header">
+              <h4>{{store.settings.name}}</h4>
+            </div>
+            <p>{{store.settings.address}}</p>
+            <div class="store-list-item__actions">
+              <button id="view-store-btn-{{forloop.index0}}" data-id="{{forloop.index0}}" class="button button-secondary button-small view-store-btn">View on map</button>
+              {%- if store.settings.website -%}
+                <a class="link" href="{{store.settings.website}}" target="_blank">Website</a>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  const mapStartPoint = document.querySelector('#map').getAttribute('data-start');
+
+  const stores = document.querySelectorAll('.store-list-item');
+
+  const viewStoreBtns = document.querySelectorAll('.view-store-btn');
+
+  const searchBtn = document.querySelector('.search-btn')
+
+  const searchInput = document.querySelector('#search-input')
+
+
+  var map = L.map('map').setView(strToCo(mapStartPoint), 13);
+
+  // let postalCodes;
+  //
+  // readJsonFile("https://gutsy-website.s3.eu-west-3.amazonaws.com/geonames-postal-code+(1).json", function(data) {
+  //   postalCodes = JSON.parse(data);
+  // })
+
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiZ3V0c3lkb2ciLCJhIjoiY2t5eWlvbWI5MDRyMTJ1bzFkdXZjaTJpeCJ9.2vsIqE9GIYcEii9UJ6FKZA'
+  }).addTo(map);
+
+
+  stores.forEach((store, i) => {
+    const html = `<span class="marker-inner" data-id="${i}">${store.getAttribute('data-name')}</span>`
+    const coordinates = strToCo(store.getAttribute('data-coordinates'));
+    console.log("coordinates: " + coordinates);
+
+    var icon = L.divIcon({className: 'map-icon', html: html});
+
+    L.marker(coordinates, {icon: icon}).addTo(map);
+  });
+
+  const markers = document.querySelectorAll('.map-icon');
+
+  // searchBtn.addEventListener('click', () => {
+  //   const searchValue = searchInput.value;
+  // })
+
+  markers.forEach((marker, i) => {
+    marker.addEventListener('click', () => {
+      console.log("clicked: " + marker.querySelector('span').getAttribute('data-id'));
+
+      const id = marker.querySelector('span').getAttribute('data-id');
+      setStoreActive(id);
+    })
+  });
+
+  viewStoreBtns.forEach((btn, i) => {
+    btn.addEventListener('click', (e) => {
+      if(!btn.classList.contains('active')) {
+        const id = btn.getAttribute('data-id');
+        setStoreActive(id);
+      } else {
+        clearSelection();
+      }
+    })
+  });
+
+  function readJsonFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+  }
+
+  function setStoreActive(id) {
+    stores.forEach((store, i) => {
+      store.classList.remove('active');
+    });
+
+    const storeListItem = document.querySelector('#store-list-item-' + id)
+      storeListItem.classList.add('active');
+
+    const coordinates = strToCo(storeListItem.getAttribute('data-coordinates'));
+
+    const btn = document.querySelector('#view-store-btn-' + id);
+    btn.classList.add('active');
+    btn.innerHTML = "Close"
+
+    map.flyTo(coordinates, 16)
+  }
+
+  function clearSelection() {
+    console.log("function runs");
+
+    viewStoreBtns.forEach((btn, i) => {
+      btn.classList.remove('active');
+      btn.innerHTML = "View on map"
+    });
+
+
+    stores.forEach((store, i) => {
+      console.log(store);
+      store.classList.remove('active');
+    });
+
+    map.flyTo(strToCo(mapStartPoint), 13);
+  }
+
+  function strToCo(string) {
+    return string.split(',')
+  }
+</script>
+
+{%- schema -%}
+{
+  "name": "Store Locator",
+  "tag": "section",
+  "class": "store-locator-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "map_start_point",
+      "label": "Coördinaten Startpunt Kaart",
+      "default": "51.21467725837327, 4.417267875977602"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "store",
+      "name": "Store",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Store Name"
+        },
+        {
+          "type": "textarea",
+          "id": "address",
+          "label": "Store Address"
+        },
+        {
+          "type": "url",
+          "id": "website",
+          "label": "Store Website"
+        },
+        {
+          "type": "text",
+          "id": "coordinates",
+          "label": "Store Coordinates"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Store Locator"
+    }
+  ]
+}
+{%- endschema -%}

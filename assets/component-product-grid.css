@@ -46,6 +46,13 @@
 }
 
 @media screen and (min-width: 1080px) {
+  .product-details-section-inner.product-card .button-group {
+    flex-direction: row;
+  }
+
+  .product-details-section-inner.product-card .product-details-content {
+    padding: 2rem;
+  }
 }
 
 @media screen and (min-width: 750px) {

@@ -1,8 +1,38 @@
+.product-detail-usp__heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.product-detail-usp__heading .active {
+  color: rgb(var(--color-base-primary-2));
+  border-color: rgb(var(--color-base-primary-2));
+}
+
 .product-detail-usp__grid {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 1rem;
   margin-top: 2rem;
+}
+
+.product-detail-usp__tab {
+  display: none;
+}
+
+.product-detail-usp__tab.tab_open {
+  display: block;
+}
+
+.product-detail-usp__tab_2-content {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.product-nutrition-info {
+  margin: 3rem 0rem;
 }
 
 .product-detail-usp__card {
