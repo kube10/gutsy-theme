@@ -1,29 +1,60 @@
 #map {
-  height: 560px;
+  height: 50vh;
 }
 
 .store-locator__wrap {
-  display: grid;
+  display: block;
   grid-template-columns: 2fr 1fr;
 }
 
 .stores-list__wrap {
-  padding: 1rem;
+  padding: 1rem 0rem;
+  height: auto;
+  overflow-x: scroll;
+  overflow-y: auto;
+
+  background-color: white;
+  position: relative;
+}
+
+.query-wrap {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
 }
 
 .store-list-item {
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 1.5rem;
+  -webkit-box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+
+  width: calc(100vw - 1rem);
+}
+
+.store-list-item h4 {
+  font-size: 1.5rem;
+}
+
+.store-list-item.active {
+  background-color: rgb(var(--color-base-primary-1));
+  color: white;
+}
+
+.store-list-item.active h4 {
+  color: rgb(var(--color-base-primary-3));
+}
+
+.store-list-item.active .button {
+  border-color: white;
+  color: white;
 }
 
 .store-list-item__header {
   display: flex;
-  align-items: center;
+  align-items: ce-nter;
   justify-content: space-between;
-}
-
-.store-list-item.active {
-  background-color: rgb(var(--color-base-primary-3));
 }
 
 .store-list-item__actions {
@@ -32,9 +63,56 @@
   justify-content: space-between;
 }
 
-.map-icon {
-  padding: 1rem;
-  background-color: rgb(var(--color-base-primary-2));
+.mapboxgl-marker {
   width: auto !important;
   height: auto !important;
+  cursor: pointer !important;
+}
+
+.store-list-inner-title {
+  margin: 1rem 0;
+  display: none;
+}
+
+.scroll-tag-mobile {
+  margin-top: 1rem;
+  color: rgb(var(--color-base-primary-2));
+  font-weight: 600;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.scroll-tag-mobile > svg {
+  margin-left: 0.5rem;
+}
+
+@media screen and (min-width: 1080px) {
+  .store-locator__wrap {
+    display: grid;
+  }
+
+  .store-list-inner-title {
+    display: block;
+  }
+
+  .stores-list__wrap {
+    padding: 1rem;
+  }
+
+  #map {
+    height: 560px;
+  }
+
+  .scroll-tag-mobile {
+    display: none;
+  }
+
+  .stores-list__wrap {
+    background-color: white;
+    height: 560px;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
 }
