@@ -334,5 +334,20 @@
         "label": "Subscriptions Info page"
       }
     ]
+  },
+  {
+    "name": "accounts",
+    "settings": [
+      {
+        "type": "text",
+        "id": "register_title",
+        "label": "Registreren - Titel"
+      },
+      {
+        "type": "richtext",
+        "id": "register_content",
+        "label": "Registreren - Content"
+      }
+    ]
   }
 ]

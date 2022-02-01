@@ -243,6 +243,7 @@ body,
 .page-margin,
 .shopify-challenge__container {
   margin: 7rem auto;
+  padding: 1rem;
 }
 
 .rte-width {
@@ -1599,7 +1600,8 @@ input[type="checkbox"] {
 .form__message {
   align-items: center;
   display: flex;
-  font-size: 1.4rem;
+  font-size: 1rem;
+  text-align: left;
   line-height: 1;
   margin-top: 1rem;
 }
@@ -1634,7 +1636,7 @@ input[type="checkbox"] {
 
 .form-status {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .form-status-list {
@@ -2325,7 +2327,9 @@ details[open] > .header__icon--menu .icon-hamburger {
 }
 
 .header__submenu .header__menu-item {
-  padding: 0.95rem 3.5rem 0.95rem 2rem;
+  padding: 0.5rem;
+  font-family: var(--font-body-family);
+  font-size: 0.75rem;
 }
 
 .header__submenu .header__submenu .header__menu-item {

@@ -66,9 +66,7 @@ function setTotalPrice() {
       const productId = form.getAttribute("productId");
 
       //get quantitypicker element
-      const quantityPicker = form.querySelector(
-        "#quantity-picker-" + productId
-      );
+      const quantityPicker = form.querySelector(".quantity__input");
 
       //get unit price in string from Shopify's price component
       const unitPriceStr = form

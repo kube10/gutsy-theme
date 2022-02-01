@@ -6,7 +6,7 @@
       <p data-scroll>{{section.settings.paragraph}}</p>
       <h2 data-scroll class="color-primary-2">{{section.settings.quote}}</h2>
   </div>
-  <div class="about-page-section-2__team">
+  <div class="about-page-section-2__team col-{{section.settings.columns}}">
     {%- for block in section.blocks -%}
       <div data-scroll class="about-page-section-2__team-member">
         <div class="team-member__img-wrap">
@@ -57,6 +57,22 @@
       "type": "richtext",
       "id": "quote",
       "label": "Quote"
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Aantal kolommen",
+      "options": [
+        {
+          "value": 2,
+          "label": "2"
+        },
+        {
+          "value": 3,
+          "label": "1"
+        }
+      ],
+      "default": 3
     }
   ],
   "blocks": [

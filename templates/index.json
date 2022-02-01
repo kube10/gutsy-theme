@@ -41,7 +41,8 @@
         "show_overlay_1": false,
         "background_overlay_2": "linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 25%, rgba(255, 255, 255, 0) 100%)",
         "show_overlay_2": true,
-        "content-width": 750
+        "content-width": 750,
+        "buttons-width": 450
       }
     },
     "16413122942b6eaed8": {
@@ -58,7 +59,8 @@
     "164156093350c034d1": {
       "type": "homepage-products",
       "settings": {
-        "collection": "all"
+        "collection": "all",
+        "benefits_link": ""
       }
     },
     "1641312336a418c8c5": {
@@ -150,7 +152,16 @@
     "1641461453d5d748a3": {
       "type": "video",
       "settings": {
-        "video_url": "https:\/\/gutsy-website.s3.eu-west-3.amazonaws.com\/UI_VID_FULL_HQ.mp4"
+        "video_url": "https:\/\/gutsy-website.s3.eu-west-3.amazonaws.com\/UI_VID_FULL_HQ.mp4",
+        "autoplay": true
+      }
+    },
+    "1643554443aad525cb": {
+      "type": "section-reseller",
+      "settings": {
+        "heading": "Gutsy Pet Foods in your store?",
+        "content": "Please send us a message using the form below.\nWe will get back to you ASAP.",
+        "image": "shopify:\/\/shop_images\/GUTSY-FOOD-BAG-MOCKUP_1.jpg"
       }
     },
     "16395750350bfa8123": {
@@ -226,6 +237,7 @@
     "1641312336a418c8c5",
     "1641312429be037db4",
     "1641461453d5d748a3",
+    "1643554443aad525cb",
     "16395750350bfa8123",
     "16395754318a175f7a",
     "163957879347b59527"

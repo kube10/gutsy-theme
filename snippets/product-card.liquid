@@ -27,8 +27,13 @@
   width: 100%;
 }
 
+.product-details-text-content {
+    text-align: center;
+}
+
 .product-details-content {
   padding: 2rem 1rem;
+  border-top: 2px solid white;
 }
 
 .product-details-section-inner {
@@ -115,21 +120,28 @@
   }
 }
 
+.product-details-section-inner.color-bg-beige h4, .product-details-section-inner.color-bg-green h4 {
+  color: rgb(var(--color-base-primary-2))
+}
+
+.product-details-section-inner.color-bg-green h2 {
+  color: rgb(var(--color-base-primary-3))
+}
+
+.product-details-section-inner.color-bg-beige h2 {
+  color: rgb(var(--color-base-primary-1))
+}
+
+.product-details-section-inner.color-bg-green .price-item {
+  color: rgb(var(--color-base-primary-3))
+}
+
+.product-details-section-inner.color-bg-beige .price-item {
+  color: rgb(var(--color-base-primary-1))
+}
 </style>
 
-{% assign type = "" %}
-{% for tag in product_card_product.tags %}
-  {% case tag %}
-    {% when "puppy" %}
-    {% assign type = "puppy" %}
-    {% when "adult-s" %}
-    {% assign type = "adult-s" %}
-    {% when "adult-l" %}
-    {% assign type = "adult-l" %}
-  {% endcase %}
-{% endfor %}
-
-<section class="product-details-section-inner {{type}} product-card">
+<section class="product-details-section-inner color-{{color_scheme}} product-card">
   <div class="product-details-grid">
     <div class="product-media-slideshow">
       <div class="controls">
@@ -153,14 +165,13 @@
           <img class="product-details-slide-img" src="{{ media | image_url: width: 500 }}" alt="">
         {% endfor %}
     </div>
-    <div class="product-details-content {{type}}">
+    <div class="product-details-content">
       <div class="product-details-content-inner">
         <div data-scroll class="product-details-text-content">
           <h2>{{ product_card_product.title | escape }}</h2>
           {% if product_card_product.metafields.custom_fields["tagline"] != blank %}
           <h4>{{ product_card_product.metafields.custom_fields["tagline"] }}</h4>
           {% endif %}
-          <p>{{product_card_product.content}}</p>
         </div>
 
         <div class="product-details-card-bottom">
@@ -172,8 +183,9 @@
             </div>
           </div>
         </div>
-        {% render 'product-modal', product: product_card_product %}
       </div>
     </div>
   </div>
 </section>
+
+{% render 'product-modal', product: product_card_product %}

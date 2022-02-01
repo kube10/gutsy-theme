@@ -8,6 +8,8 @@
     "social_facebook_link": "Facebook",
     "social_instagram_link": "Instagram",
     "social_youtube_link": "Youtube",
+    "register_title": "maak vandaag je gutsy account aan!",
+    "register_content": "<p>Een account bij Gutsy - da's tal van voordelen.<\/p>",
     "colors_solid_button_labels": "#FFFFFF",
     "colors_accent_1": "#121212",
     "colors_accent_2": "#334FB4",
@@ -49,37 +51,29 @@
           "c44f85de-1427-4936-8dbe-4bfcbab47fdb": {
             "type": "submenu",
             "settings": {
-              "heading": "Links",
+              "heading": "GUTSY",
               "menu": "footer_left"
             }
           },
           "46d7723d-f610-4175-bf5f-d37535a2d899": {
             "type": "submenu",
             "settings": {
-              "heading": "Links",
-              "menu": "footer_left"
+              "heading": "SHOP",
+              "menu": "footer_2"
             }
           },
           "64814934-aeff-4a56-869b-937b4800bd00": {
             "type": "submenu",
             "settings": {
-              "heading": "Links",
-              "menu": "footer_left"
-            }
-          },
-          "9c7d0ff3-f0a6-4a56-97d5-85467152fab8": {
-            "type": "submenu",
-            "settings": {
-              "heading": "Links",
-              "menu": "footer_left"
+              "heading": "SUPPORT",
+              "menu": "footer_3"
             }
           }
         },
         "block_order": [
           "c44f85de-1427-4936-8dbe-4bfcbab47fdb",
           "46d7723d-f610-4175-bf5f-d37535a2d899",
-          "64814934-aeff-4a56-869b-937b4800bd00",
-          "9c7d0ff3-f0a6-4a56-97d5-85467152fab8"
+          "64814934-aeff-4a56-869b-937b4800bd00"
         ],
         "settings": {
           "color_scheme": "bg-green",

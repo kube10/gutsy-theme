@@ -5,32 +5,18 @@
       "settings": {
       }
     },
-    "form": {
-      "type": "contact-form",
+    "1643554515c9bfe08e": {
+      "type": "section-reseller",
       "settings": {
-        "heading": "Get in touch with us today!",
-        "content": "We'll try to get back to you as soon as possible!",
-        "image": "shopify:\/\/shop_images\/Frame_207.jpg"
+        "heading": "Gutsy Pet Foods in your store?",
+        "content": "Please send us a message using the form below.\nWe will get back to you ASAP.",
+        "image": "shopify:\/\/shop_images\/GUTSY-FOOD-BAG-MOCKUP_1.jpg"
       }
     },
-    "16435525659de51732": {
-      "type": "cta-section",
-      "settings": {
-        "color_scheme": "bg-green",
-        "headline": "DO YOU WANT TO BE PART OF THE SOLUTION?",
-        "heading_color": "primary-2",
-        "subheadline": "FALL IN LOVE WITH OUR ECOLOGICAL, INSECT-BASED DOG FOOD RANGE.",
-        "subheading_color": "primary-3",
-        "buttonText": "To the shop",
-        "button_href": "shopify:\/\/collections\/all",
-        "button_color": "primary-2",
-        "image": "shopify:\/\/shop_images\/1212981_1.jpg"
-      }
-    },
-    "1643552641f78f2265": {
+    "16435545336e34e65c": {
       "type": "section-testimonials",
       "blocks": {
-        "29736942-0890-4ed4-b45c-d04376662338": {
+        "8e75324a-84e9-4d53-a883-7c48046762cf": {
           "type": "testimonial",
           "settings": {
             "testimonial_content": "My BFF Jacky has had stomach troubles for years. Thanks to gutsy’s hypo-allergenic trekker fuel, those issues are in the past!",
@@ -38,7 +24,7 @@
             "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25.png"
           }
         },
-        "bb21bbaa-629a-495e-b60a-e210ae301d5b": {
+        "5e094a19-9992-4dbe-8cce-ac931689bc4f": {
           "type": "testimonial",
           "settings": {
             "testimonial_content": "It’s funny how we always consider our own footprint when thinking about sustainability. Gutsy reduces our pet’s paw print too!",
@@ -46,7 +32,7 @@
             "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-1.png"
           }
         },
-        "e6feecbe-30dd-4698-971b-35358a13141c": {
+        "2e7ba18f-af29-414f-9362-1863942f8b77": {
           "type": "testimonial",
           "settings": {
             "testimonial_content": "My border collie is a real hiker, he’s more wolf than dog! A nutritious meal that’s rich in proteins is exactly what she needed.",
@@ -56,9 +42,9 @@
         }
       },
       "block_order": [
-        "29736942-0890-4ed4-b45c-d04376662338",
-        "bb21bbaa-629a-495e-b60a-e210ae301d5b",
-        "e6feecbe-30dd-4698-971b-35358a13141c"
+        "8e75324a-84e9-4d53-a883-7c48046762cf",
+        "5e094a19-9992-4dbe-8cce-ac931689bc4f",
+        "2e7ba18f-af29-414f-9362-1863942f8b77"
       ],
       "settings": {
         "color_scheme": "bg-beige",
@@ -66,10 +52,10 @@
         "headline": "Dog lovers love us!"
       }
     },
-    "1643552683cff9c716": {
+    "16435545671c8fb38e": {
       "type": "apps",
       "blocks": {
-        "3bf1d4e8-f5a0-4039-b090-b03077387e6b": {
+        "e2f2d79b-188f-447b-b6f2-bcc29212b4ca": {
           "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
             "heading_font": "helvetica_n4",
@@ -80,13 +66,13 @@
         }
       },
       "block_order": [
-        "3bf1d4e8-f5a0-4039-b090-b03077387e6b"
+        "e2f2d79b-188f-447b-b6f2-bcc29212b4ca"
       ],
       "settings": {
         "include_margins": true
       }
     },
-    "16435526933bdf6a70": {
+    "16435545855d81ba4a": {
       "type": "instagram-link",
       "settings": {
         "instagram_url": "https:\/\/instagram.com"
@@ -95,10 +81,9 @@
   },
   "order": [
     "main",
-    "form",
-    "16435525659de51732",
-    "1643552641f78f2265",
-    "1643552683cff9c716",
-    "16435526933bdf6a70"
+    "1643554515c9bfe08e",
+    "16435545336e34e65c",
+    "16435545671c8fb38e",
+    "16435545855d81ba4a"
   ]
 }

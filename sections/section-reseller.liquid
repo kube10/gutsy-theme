@@ -1,5 +1,4 @@
-{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
-
+{{ "section-reseller.css" | asset_url | stylesheet_tag }}
 <div class="contact page-width page-width spaced-section">
   <div class="contact-section__grid">
     <div class="contact-section__form">
@@ -35,6 +34,16 @@
                 <span class="form__message">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
               </small>
             {%- endif -%}
+          </div>
+        </div>
+        <div class="contact__fields">
+          <div class="field">
+            <input class="field__input" autocomplete="store" type="text" id="ContactForm-store" name="contact[store]" value="" placeholder="Your store">
+            <label class="field__label" for="ContactForm-store">Your store</label>
+          </div>
+          <div class="field">
+            <input class="field__input" autocomplete="location" type="text" id="ContactForm-location" name="contact[location]" value="" placeholder="Your location">
+            <label class="field__label" for="ContactForm-location">Your location</label>
           </div>
         </div>
         <div class="field">
@@ -75,12 +84,11 @@
     </div>
   </div>
 </div>
-
-{% schema %}
+{%- schema -%}
 {
-  "name": "t:sections.contact-form.name",
+  "name": "Become A Reseller",
   "tag": "section",
-  "class": "spaced-section",
+  "class": "section-padding",
   "settings": [
     {
       "type": "text",
@@ -101,8 +109,8 @@
   ],
   "presets": [
     {
-      "name": "t:sections.contact-form.presets.name"
+      "name": "Become A Reseller"
     }
   ]
 }
-{% endschema %}
+{%- endschema -%}

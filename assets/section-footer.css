@@ -52,7 +52,7 @@
 @media screen and (min-width: 768px) {
   .footer__content-top_menus > div {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
   }
 

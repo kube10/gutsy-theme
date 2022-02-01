@@ -33,8 +33,6 @@
   height: 200px;
   width: 200px;
   position: relative;
-  border-radius: 50%;
-  overflow: hidden;
   cursor: crosshair;
 }
 
@@ -48,10 +46,15 @@
   height: 100%;
 }
 
+.team-member__primary-img {
+  border-radius: 50%;
+}
+
 .team-member__secondary-img {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  border-radius: 50%;
 }
 
 .team-member__secondary-img.show {
@@ -66,6 +69,16 @@
 @media screen and (min-width: 768px) {
   .about-page-section-2__images {
     flex-direction: row;
+  }
+
+  .about-page-section-2__team.col-2 {
+    grid-template-columns: 1fr 1fr;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .about-page-section-2__team.col-3 {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .about-page-section-2__image {

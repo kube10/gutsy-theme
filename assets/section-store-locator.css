@@ -115,4 +115,8 @@
     overflow-x: hidden;
     overflow-y: scroll;
   }
+
+  .store-list-item {
+    width: 100%;
+  }
 }

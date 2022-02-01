@@ -9,6 +9,12 @@ if (!customElements.get("product-form")) {
         this.form.querySelector("[name=id]").disabled = false;
         this.form.addEventListener("submit", this.onSubmitHandler.bind(this));
         this.cartNotification = document.querySelector("cart-notification");
+        this.form.addEventListener("keydown", function (e) {
+          if (e.keyCode == 13) {
+            e.preventDefault();
+            return false;
+          }
+        });
       }
 
       onSubmitHandler(evt) {
@@ -30,6 +36,7 @@ if (!customElements.get("product-form")) {
         delete config.headers["Content-Type"];
 
         const formData = new FormData(this.form);
+
         formData.append(
           "sections",
           this.cartNotification
@@ -38,6 +45,10 @@ if (!customElements.get("product-form")) {
         );
         formData.append("sections_url", window.location.pathname);
         config.body = formData;
+
+        for (var value of formData.entries()) {
+          console.log(value);
+        }
 
         fetch(`${routes.cart_add_url}`, config)
           .then((response) => response.json())
@@ -48,6 +59,7 @@ if (!customElements.get("product-form")) {
             }
 
             this.cartNotification.renderContents(response);
+            console.log(response);
           })
           .catch((e) => {
             console.error(e);
@@ -58,10 +70,6 @@ if (!customElements.get("product-form")) {
             this.querySelector(".loading-overlay__spinner").classList.add(
               "hidden"
             );
-            if (evt.target.hasAttribute("checkout")) {
-              console.log("checkout");
-              // document.querySelector('[name="checkout"]').click();
-            }
           });
       }
 

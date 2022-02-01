@@ -9,43 +9,54 @@
 
 <noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
 
-<div id="ProductGridContainer">
-  {%- paginate collection.products by section.settings.products_per_page -%}
-    {%- if collection.products.size == 0 -%}
-      <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
-        <div class="loading-overlay gradient"></div>
-        <div class="title-wrapper center">
-          <h2 class="title title--primary">
-            {{ 'sections.collection_template.empty' | t }}<br>
-            {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: "underlined-link link" }}
-          </h2>
+{%- if section.settings.layout == 'col' -%}
+<div class="section-padding">
+  {%- endif -%}
+  <div id="ProductGridContainer" class="{% if section.settings.layout == 'col' %}page-width{% endif %}">
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- if collection.products.size == 0 -%}
+        <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
+          <div class="loading-overlay gradient"></div>
+          <div class="title-wrapper center">
+            <h2 class="title title--primary">
+              {{ 'sections.collection_template.empty' | t }}<br>
+              {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: "underlined-link link" }}
+            </h2>
+          </div>
         </div>
-      </div>
-    {%- else -%}
-      <div class="collection">
-        <div class="loading-overlay gradient"></div>
-
-          {%- if section.settings.layout == "row" -%}
-              {%- for product in collection.products -%}
-                    {% render 'product-row',
-                      product_row_product: product
-                    %}
-
-              {%- endfor -%}
-            {%- else -%}
-              <div class="collection__product-card-grid">
+      {%- else -%}
+        <div class="collection {% if section.settings.layout == 'col' %}collection__grid-col{% endif %}">
+          <div class="loading-overlay gradient"></div>
+            {%- if section.settings.layout == "row" -%}
                 {%- for product in collection.products -%}
-                      {% render 'product-card', product_card_product: product %}
+                      {% render 'product-row',
+                        product_row_product: product
+                      %}
+
                 {%- endfor -%}
-              </div>
+              {%- else -%}
+                <div class="collection__product-card-grid">
+                  {%- for product in collection.products -%}
+                    {%- assign val = forloop.index | modulo:2 -%}
+                    {%- if val ==  0 -%}
+                        {% render 'product-card', product_card_product: product, color_scheme: "bg-green" %}
+                      {%- else -%}
+                          {% render 'product-card', product_card_product: product, color_scheme: "bg-beige" %}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+            {%- endif -%}
+          {%- if paginate.pages > 1 -%}
+            {% render 'pagination', paginate: paginate, anchor: '' %}
           {%- endif -%}
-        {%- if paginate.pages > 1 -%}
-          {% render 'pagination', paginate: paginate, anchor: '' %}
-        {%- endif -%}
-      </div>
-    {%- endif -%}
-  {%- endpaginate -%}
-</div>
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+  {%- if section.settings.layout == 'col' -%}
+  </div>
+{%- endif -%}
+
 
 <script type="text/javascript">
 

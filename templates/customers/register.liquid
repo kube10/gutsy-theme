@@ -10,8 +10,13 @@
     </symbol>
   </svg>
   <h1>
-    {{ 'customer.register.title' | t }}
+    {%- if settings.register_title != ""-%}
+      {{settings.register_title}}
+      {%- else -%}
+      {{ 'customer.register.title' | t }}
+    {%- endif -%}
   </h1>
+  {{ settings.register_content }}
   {%- form 'create_customer', novalidate: 'novalidate' -%}
     {%- if form.errors -%}
       <h2 class="form__message" tabindex="-1" autofocus>
@@ -20,7 +25,7 @@
         </svg>
         {{ 'templates.contact.form.error_heading' | t }}
       </h2>
-      <ul> 
+      <ul>
         {%- for field in form.errors -%}
           <li>
             {%- if field == 'form' -%}
@@ -35,7 +40,7 @@
         {%- endfor -%}
       </ul>
     {%- endif -%}
-    <div class="field">      
+    <div class="field">
       <input
         type="text"
         name="customer[first_name]"
@@ -61,7 +66,7 @@
         {{ 'customer.register.last_name' | t }}
       </label>
     </div>
-    <div class="field">      
+    <div class="field">
       <input
         type="email"
         name="customer[email]"
@@ -89,7 +94,7 @@
         {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
       </span>
     {%- endif -%}
-    <div class="field">     
+    <div class="field">
       <input
         type="password"
         name="customer[password]"
@@ -113,7 +118,7 @@
         {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.
       </span>
     {%- endif -%}
-    <button>
+    <button class="button button-primary">
       {{ 'customer.register.submit' | t }}
     </button>
   {%- endform -%}

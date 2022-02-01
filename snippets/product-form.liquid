@@ -222,20 +222,18 @@
 <div class="product-form-wrap">
   <h2>Get <span>one bag</span> or <span>subscribe and save!</span></h2>
 
-  {%- assign product_form_id = 'product-form-' | append: section.id -%}
+  {%- assign product_form_id = 'product-form-' | append: product.id -%}
 
   <product-form productId="{{product.id}}" class="product-form">
     <div class="product-form__error-message-wrapper" role="alert" hidden>
       <span class="product-form__error-message"></span>
     </div>
 
-
-
     {%- form 'product', product, data-productid: product.id, id: product_form_id, class: 'form-grid', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
 
     <div class="size-quantity">
       {%- unless product.has_only_default_variant -%}
-        <variant-selects class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+        <variant-selects class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }} data-product="{{product.id}}">
           {%- for option in product.options_with_values -%}
             <div class="product-form__input product-form__input--dropdown">
               <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">

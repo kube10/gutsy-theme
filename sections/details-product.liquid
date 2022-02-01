@@ -27,17 +27,19 @@
         </div>
         {% render 'product-usp-icons' %}
         <div class="product-details-actions">
-          <button class="button button-primary">More info <img src="{{'arrow-down-white.svg' | asset_url }}" alt=""></button>
-          <button class="button button-download-recipe" href="">Download full recipe
-          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3.92969 13.4857H13.263V12.1523H3.92969V13.4857ZM13.263 6.15234H10.5964V2.15234H6.59635V6.15234H3.92969L8.59635 10.819L13.263 6.15234Z" fill="black"/>
-          </svg>
-        </button>
+          <button onclick="scrollToNextSection()" class="button button-primary">More info <img src="{{'arrow-down-white.svg' | asset_url }}" alt=""></button>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script type="text/javascript">
+  function scrollToNextSection() {
+    const nextSection = document.querySelector('#section-product-detail-usp');
+    nextSection.scrollIntoView({behavior: "smooth"});
+  }
+</script>
 
 {% schema %}
 {

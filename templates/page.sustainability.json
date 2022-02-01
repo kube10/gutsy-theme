@@ -101,7 +101,7 @@
         "subheadline": "Fall in love with our ecological, insect-based dog food range.",
         "subheading_color": "primary-3",
         "buttonText": "To the shop",
-        "button_href": "",
+        "button_href": "shopify:\/\/collections\/all",
         "button_color": "primary-2",
         "image": "shopify:\/\/shop_images\/1212981_1.jpg"
       }
