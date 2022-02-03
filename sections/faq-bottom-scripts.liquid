@@ -1,0 +1,103 @@
+
+<script type="text/javascript">
+function scrollToSection(category) {
+  const target = document.querySelector('#category-' + category);
+  const offset = target.offsetTop - 120;
+  const allLinks = document.querySelectorAll('.faq-content__category-link');
+
+  window.scroll({
+    top: offset,
+    behavior: "smooth"
+  })
+
+  allLinks.forEach((link, i) => {
+    link.classList.remove('active');
+  });
+
+  const activeLink = document.querySelector('#btn-' + category);
+  activeLink.classList.add('active');
+}
+
+function openFAQ(id) {
+      const answers = document.querySelectorAll('.faq-content-section__card-answer');
+
+      const answerToOpen = document.querySelector('#faq-answer_' + id);
+
+      if (answerToOpen.classList.contains('open')) {
+        answers.forEach((answer, i) => {
+          answer.classList.remove('open')
+        });
+      } else {
+        answers.forEach((answer, i) => {
+          answer.classList.remove('open')
+        });
+        answerToOpen.classList.add('open')
+      }
+}
+
+const contentSections = document.querySelectorAll('.faq-content-section__inner');
+
+const sidebar = document.querySelector('.faq-content-section__sidebar');
+
+const contentWrap = document.querySelector('.faq-content-section__content-wrap')
+
+contentSections.forEach((section, i) => {
+  const categories = section.querySelectorAll('.category__title');
+
+  const sectionId = section.getAttribute('data-sectionId');
+
+  categories.forEach((category, i) => {
+    const categoryString = category.innerHTML.replace(/\s+/g, '').replace(/,/g, "");
+    sidebar.innerHTML += `<div id="btn-${sectionId}-${categoryString}" data-id="${sectionId}-${categoryString}" class="faq-content__category-link">
+    ${category.innerHTML}</div>`;
+  });
+});
+
+const cards = document.querySelectorAll('.faq-card');
+
+cards.forEach((card, i) => {
+  const clone = card.cloneNode(true);
+  contentWrap.appendChild(clone);
+});
+
+const links = document.querySelectorAll('.faq-content__category-link')
+
+links.forEach((link, i) => {
+  if (i === 0) {
+    link.classList.add('active');
+  }
+  link.addEventListener('click', function() {
+    const category = link.getAttribute('data-id');
+
+    const target = document.querySelector('#category-' + category);
+    const offset = target.offsetTop - 120;
+
+    const allLinks = document.querySelectorAll('.faq-content__category-link');
+
+    window.scroll({
+        top: offset,
+        behavior: "smooth"
+      });
+
+      allLinks.forEach((link, i) => {
+        link.classList.remove('active');
+      });
+
+      const activeLink = document.querySelector('#btn-' + category);
+      activeLink.classList.add('active');
+  })
+});
+
+</script>
+
+{%- schema -%}
+{
+  "name": "FAQ Bottom Scripts",
+  "tag": "div",
+  "presets": [
+    {
+      "name": "FAQ Bottom Scripts"
+    }
+  ]
+}
+{%- endschema -%}

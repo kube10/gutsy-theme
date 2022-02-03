@@ -10,7 +10,7 @@
 <noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
 
 {%- if section.settings.layout == 'col' -%}
-<div class="section-padding">
+<div class="section-padding {% if section.settings.layout == 'col' %}color-bg-green{% endif %}">
   {%- endif -%}
   <div id="ProductGridContainer" class="{% if section.settings.layout == 'col' %}page-width{% endif %}">
     {%- paginate collection.products by section.settings.products_per_page -%}
