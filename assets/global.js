@@ -736,12 +736,12 @@ class VariantSelects extends HTMLElement {
   }
 
   updateURL() {
-    // if (!this.currentVariant || this.dataset.updateUrl === "false") return;
-    // window.history.replaceState(
-    //   {},
-    //   "",
-    //   `${this.dataset.url}?variant=${this.currentVariant.id}`
-    // );
+    if (!this.currentVariant || this.dataset.updateUrl === "false") return;
+    window.history.replaceState(
+      {},
+      "",
+      `${this.dataset.url}?variant=${this.currentVariant.id}`
+    );
   }
 
   updateShareUrl() {

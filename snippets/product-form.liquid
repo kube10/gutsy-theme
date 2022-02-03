@@ -359,4 +359,4 @@
 </div>
 
 {% assign productTitle = product.title | replace: " ", "_" | downcase %}
-{% render "calculator", productTitle: productTitle, id: product.id %}
+{% render "calculator", productTitle: productTitle, id: product.id, product: product %}

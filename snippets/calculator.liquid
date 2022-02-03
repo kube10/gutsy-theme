@@ -1,192 +1,4 @@
-<style>
-  .calculator-modal {
-    position: fixed;
-    min-height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 30%;
-    background-color: rgba(28, 28, 28, 0.6);
-    padding: 1rem;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity .3s ease;
-  }
-
-  .calculator-modal.open {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .calculator-modal-inner {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 2rem;
-    position: relative;
-    top: 100px;
-    max-height: calc(100vh - 2rem);
-    overflow-y: scroll;
-  }
-
-  .calculator-modal.open > .calculator-modal-inner {
-    top: 0px;
-    transition: top .3s ease .1s;
-  }
-
-  .calculator-close {
-    position: fixed;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-    background-color: rgb(var(--color-base-primary-3));
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    z-index: 999;
-  }
-
-
-  .calculator-modal-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0rem;
-    max-width: 760px;
-  }
-
-  .calculator-modal-heading {
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-
-  .calculator-form {
-    display: flex;
-    align-items: left;
-    justify-content: space-between;
-    flex-direction: column;
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  .calculator-form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-  }
-
-  .warning {
-    font-weight: 400;
-    padding: .5rem;
-    background-color: rgba(255, 78, 78, 0.2);
-    color: rgba(255, 78, 78, 1)
-  }
-
-  .warning a {
-    color: rgb(var(--color-base-primary-1))
-  }
-
-  .calculator-form-group > .quantity {
-    width: 100%;
-  }
-
-  .calculator-form-group > label {
-    font-weight: 600;
-    margin-bottom: .5rem;
-  }
-
-  .calculator-modal-results {
-    width: 100%;
-    margin-bottom: 2rem;
-    font-weight: bold;
-  }
-
-  .calculator-modal-results span {
-    font-weight: normal;
-  }
-
-  .calculator-modal-actions {
-    margin-bottom: 2rem;
-  }
-
-  .calculator-modal-info {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .calculator-modal-info > svg {
-    margin-right: 0rem;
-    margin-bottom: 1rem;
-    width: 3rem;
-    height: 3rem;
-  }
-
-  @media (min-width: 1080px) {
-
-    .calculator-modal {
-      padding: 2rem;
-    }
-
-    .calculator-modal-inner {
-      padding: 2rem;
-      max-height: auto;
-      overflow-y: auto;
-    }
-
-    .calculator-form {
-      flex-direction: row;
-      align-items: center;
-    }
-
-    .calculator-modal-content {
-      padding: 4rem;
-    }
-
-    .calculator-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      cursor: pointer;
-      background-color: transparent;
-      width: auto;
-      height: auto;
-      display: block;
-      border-radius: 0;
-      z-index: auto;
-    }
-
-    .calculator-form-group {
-      margin-bottom: 0rem;
-    }
-
-    .calculator-form-group > .quantity {
-      width: calc(14rem / var(--font-body-scale));
-    }
-
-    .calculator-modal-info {
-      display: flex;
-      align-items: center;
-      flex-direction: row;
-      text-align: left;
-    }
-
-    .calculator-modal-info > svg {
-      margin-right: 1rem;
-      margin-bottom: 0rem;
-      width: auto;
-      height: auto;
-    }
-  }
-</style>
+{{ 'component-calculator.css' | asset_url | stylesheet_tag }}
 
 <div id="calculator-{{id}}" class="calculator-modal">
   <div class="calculator-modal-inner">
@@ -242,8 +54,78 @@
         <p>Kg/month: <span id="results2-{{id}}"></span></p>
       </div>
       <div class="calculator-modal-actions">
-        <p style="text-align: center">Click to apply!</p>
-        <button id="bagsBtn-{{id}}" class="button button-primary"><span id="bagsbtn-span-{{id}}">1&nbsp;</span> Gutsy Bag (6KG)</button>
+        <h2 class="color-primary-1">Our recommendations:</h2>
+        <label for="subscribe">Do you want to subscribe?</label>
+        <select name="subscription" id="subscriptionSelect">
+          <option value="none">No subscription</option>
+          <option value="30days">Delivery every 30 days</option>
+          <option value="45days">Delivery every 45 days</option>
+        </select>
+
+        {%- for variant in product.variants -%}
+          <product-form productId="{{product.id}}">
+            {%- assign product_form_id = variant.id -%}
+            {%- form 'product', product, data-productid: product.id, id: product_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+              <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ variant.id }}" disabled>.
+              <input type="hidden" class="selling_plan_1" name="selling_plan_476145" value="" disabled>
+              <input type="hidden" class="selling_plan_2" name="selling_plan" value="" disabled>
+              <div class="calculator-modal-option__row-title">
+                <span>{{product.title}}:</span>
+                <span class="option-value">{{variant.option1}}</span>
+              </div>
+              <div class="calculator-modal-option__row">
+                  <div class="calculator-modal-actions__field">
+                              <div class="product-form__input product-form__quantity" {{ block.shopify_attributes }}>
+                                <quantity-input class="quantity">
+                                  <button class="quantity__button no-js-hidden" name="minus" type="button">
+                                    <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+                                    {% render 'icon-minus' %}
+                                  </button>
+                                  <input class="quantity__input"
+                                      type="number"
+                                      name="quantity"
+                                      id="quantity-picker-{{variant.id}}"
+                                      min="1"
+                                      value="1"
+                                      form="{{ product_form_id }}"
+                                      productId="{{product.id}}"
+                                      data-size="{{variant.option1}}"
+                                    >
+                                  <button class="quantity__button no-js-hidden" name="plus" type="button">
+                                    <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+                                    {% render 'icon-plus' %}
+                                  </button>
+                                </quantity-input>
+                              </div>
+                            </div>
+                            <button
+                                type="submit"
+                                name="add"
+                                class="product-form__submit button button-secondary button-small {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+                              {% if variant.available == false %}disabled{% endif %}
+                              >
+                                  <span>
+                                    {%- if variant.available -%}
+                                      {{ 'products.product.add_to_cart' | t }}
+                                    {%- else -%}
+                                      {{ 'products.product.sold_out' | t }}
+                                    {%- endif -%}
+                                  </span>
+                                  <div class="loading-overlay__spinner hidden">
+                                    <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                      <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                    </svg>
+                                  </div>
+                              </button>
+                    </div>
+              <div class="product-form__error-message-wrapper" role="alert" hidden>
+                <span class="product-form__error-message"></span>
+              </div>
+            {%- endform -%}
+          </product-form>
+        {%- endfor -%}
+          <!-- <p style="text-align: center">Click to apply!</p>
+          <button id="bagsBtn-{{id}}" class="button button-primary"><span id="bagsbtn-span-{{id}}">1&nbsp;</span> Gutsy Bag (6KG)</button> -->
       </div>
       <div class="calculator-modal-info">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -152,22 +152,54 @@ calculators.forEach((calculator, i) => {
   const ageField = calculator.querySelector("#age-" + productId);
   const result1Field = calculator.querySelector("#results1-" + productId);
   const result2Field = calculator.querySelector("#results2-" + productId);
-  const bagsBtn = calculator.querySelector("#bagsBtn-" + productId);
-  const bagsBtnSpan = calculator.querySelector("#bagsbtn-span-" + productId);
+  // const bagsBtn = calculator.querySelector("#bagsBtn-" + productId);
+  // const bagsBtnSpan = calculator.querySelector("#bagsbtn-span-" + productId);
   const ageFormGroup = calculator.querySelector("#age-form-group-" + productId);
 
   const calculatorForm = calculator.querySelector(".calculator-form");
 
   const warning = calculator.querySelector("#warning-" + productId);
 
-  console.log(warning);
+  // bagsBtn.addEventListener("click", function () {
+  //   document.querySelector("#calculator-" + productId).classList.remove("open");
+  //   const quantityInput = document.querySelector(
+  //     "#quantity-picker-" + productId
+  //   );
+  //   quantityInput.value = amount;
+  // });
 
-  bagsBtn.addEventListener("click", function () {
-    document.querySelector("#calculator-" + productId).classList.remove("open");
-    const quantityInput = document.querySelector(
-      "#quantity-picker-" + productId
-    );
-    quantityInput.value = amount;
+  const subscriptionSelect = calculator.querySelector("#subscriptionSelect");
+
+  subscriptionSelect.addEventListener("change", (e) => {
+    const sellingPlan1 = calculator.querySelectorAll(".selling_plan_1");
+    const sellingPlan2 = calculator.querySelectorAll(".selling_plan_2");
+    console.log(subscriptionSelect.value);
+
+    if (subscriptionSelect.value == "none") {
+      sellingPlan1.forEach((item, i) => {
+        item.value = "";
+      });
+
+      sellingPlan2.forEach((item, i) => {
+        item.value = "";
+      });
+    } else if (subscriptionSelect.value == "30days") {
+      sellingPlan1.forEach((item, i) => {
+        item.value = "subsave";
+      });
+
+      sellingPlan2.forEach((item, i) => {
+        item.value = "516161590";
+      });
+    } else if (subscriptionSelect.value == "45days") {
+      sellingPlan1.forEach((item, i) => {
+        item.value = "subsave";
+      });
+
+      sellingPlan2.forEach((item, i) => {
+        item.value = "531660854";
+      });
+    }
   });
 
   breedField.addEventListener("change", (e) => {
@@ -313,14 +345,14 @@ calculators.forEach((calculator, i) => {
     if (breedField.value === "puppy") {
       const monthly = (dose * 30) / 1000;
       result2Field.innerHTML = monthly + "kg";
-      calcBags(monthly);
+      divideBags(monthly);
     } else {
       const min = parseInt(dose.substr(0, dose.indexOf("-")));
       const max = parseInt(dose.substr(dose.indexOf("-") + 1));
       const minMonthly = (min * 30) / 1000;
       const maxMonthly = (max * 30) / 1000;
       result2Field.innerHTML = minMonthly + " - " + maxMonthly + "kg";
-      calcBags(maxMonthly);
+      divideBags(maxMonthly);
     }
   }
 
@@ -338,7 +370,7 @@ calculators.forEach((calculator, i) => {
       amount = bags;
       bagSize = "2kg";
     }
-    bagsBtn.innerHTML = bags + "&nbsp;" + bagText;
+    // bagsBtn.innerHTML = bags + "&nbsp;" + bagText;
   }
 
   function divideBags(monthly) {
@@ -376,7 +408,24 @@ calculators.forEach((calculator, i) => {
     }
 
     bagSizes.forEach((size, i) => {
-      // console.log("Bag " + size.kg + "kg: " + size.count);
+      if (i === 2) {
+        if (size.count === 3) {
+          size.count -= 3;
+          bagSizes[1].count += 1;
+        }
+      }
+    });
+
+    bagSizes.forEach((size, i) => {
+      console.log("Bag " + size.kg + "kg: " + size.count);
+      const inputs = calculator.querySelectorAll(".quantity__input");
+      const sizeString = size.kg + "kg";
+
+      inputs.forEach((input, i) => {
+        if (input.getAttribute("data-size") === sizeString) {
+          input.value = size.count;
+        }
+      });
     });
   }
 
@@ -473,21 +522,21 @@ calculators.forEach((calculator, i) => {
     }
   }
 
-  jQuery("#bagsBtn-" + productId).click(function () {
-    if (bagSize === "6kg") {
-      jQuery("#variantSelector-" + productId).val("6kg");
-    } else {
-      jQuery("#variantSelector-" + productId).val("2kg");
-    }
-
-    const event = new Event("change", {
-      view: window,
-      bubbles: true,
-      cancelable: true,
-    });
-
-    document
-      .querySelector("#variantSelector-" + productId)
-      .dispatchEvent(event);
-  });
+  // jQuery("#bagsBtn-" + productId).click(function () {
+  //   if (bagSize === "6kg") {
+  //     jQuery("#variantSelector-" + productId).val("6kg");
+  //   } else {
+  //     jQuery("#variantSelector-" + productId).val("2kg");
+  //   }
+  //
+  //   const event = new Event("change", {
+  //     view: window,
+  //     bubbles: true,
+  //     cancelable: true,
+  //   });
+  //
+  //   document
+  //     .querySelector("#variantSelector-" + productId)
+  //     .dispatchEvent(event);
+  // });
 });
