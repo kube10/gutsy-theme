@@ -119,34 +119,13 @@
     padding: 1rem !important;
   }
 
-  /* input[type='radio']:after {
-    width: 15px;
-    height: 15px;
-    border-radius: 15px;
-    top: -2px;
-    left: -1px;
-    position: relative;
-    background-color: #d1d3d1;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 2px solid white;
-    cursor: pointer;
+  .product-form__error-message-wrapper {
+    font-weight: 400;
+    padding: 1rem;
+    background-color: rgba(255, 78, 78, 0.2);
+    color: rgba(255, 78, 78, 1);
+    margin-bottom: 1rem;
   }
-
-  input[type='radio']:checked:after {
-      width: 15px;
-      height: 15px;
-      border-radius: 15px;
-      top: -2px;
-      left: -1px;
-      position: relative;
-      background-color: rgba(var(--color-base-primary-2));
-      content: '';
-      display: inline-block;
-      visibility: visible;
-      border: 2px solid white;
-  } */
 
   @media (min-width: 1080px) {
 
@@ -225,9 +204,7 @@
   {%- assign product_form_id = 'product-form-' | append: product.id -%}
 
   <product-form productId="{{product.id}}" class="product-form">
-    <div class="product-form__error-message-wrapper" role="alert" hidden>
-      <span class="product-form__error-message"></span>
-    </div>
+
 
     {%- form 'product', product, data-productid: product.id, id: product_form_id, class: 'form-grid', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
 
@@ -311,7 +288,14 @@
     </div>
 
       <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+
+      <div>
+          <div class="product-form__error-message-wrapper" role="alert" hidden>
+            <span class="product-form__error-message"></span>
+          </div>
+
       <div class="product-form__buttons">
+
         <button
           type="submit"
           name="add"
@@ -353,11 +337,8 @@
               </svg>
             </div>
         </button>
-      {% comment %}
-
-              {{ form | payment_button }}
-      {% endcomment %}
       </div>
+    </div>
 
     <div class="usp-row">
       <div class="usp">
