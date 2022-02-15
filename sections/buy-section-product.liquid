@@ -1,10 +1,10 @@
 {{ 'section-buy-product.css' | asset_url | stylesheet_tag }}
 
 <section class="page-width">
-  <div data-scroll class="buy-section-content">
+  <div class="buy-section-content">
     <h1>{{section.settings.headline}}</h1>
     <h3>Try {{product.title | escape}} today</h3>
-    {% render 'product-form' %}
+    {% render 'product-form', colorScheme: "bg-beige" %}
   </div>
 </section>
 

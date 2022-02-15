@@ -12,10 +12,15 @@
       {% for block in section.blocks %}
         {% if block.type == "figures-row-1" %}
           <div data-scroll class="sustainability-figures__cards-1">
-            <p class="sustainability-figures__card-paragraph">{{block.settings.paragraph}}</p>
-            <div class="sustainability-figures__large">
-              <h1 class="sustainability-figures__large-percentage color-primary-2">{{block.settings.percentage}}</h1>
-              <h2 class="sustainability-figures__large-description color-primary-1">{{block.settings.description}}</h2>
+            <div class="figures-row-1__svg-wrap">
+              {{ block.settings.icon }}
+            </div>
+            <div class="sustainability-figures__cards-1-content">
+              <p class="sustainability-figures__card-paragraph">{{block.settings.paragraph}}</p>
+              <div class="sustainability-figures__large">
+                <h1 class="sustainability-figures__large-percentage color-primary-2">{{block.settings.percentage}}</h1>
+                <h2 class="sustainability-figures__large-description color-primary-1">{{block.settings.description}}</h2>
+              </div>
             </div>
           </div>
         {% endif %}
@@ -107,6 +112,11 @@
           "type": "text",
           "label": "Description",
           "id": "description"
+        },
+        {
+          "type": "textarea",
+          "label": "Icon SVG Code",
+          "id": "icon"
         }
       ]
     },

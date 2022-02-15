@@ -36,7 +36,9 @@
     {% render 'meta-tags' %}
 
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-    {{ content_for_header }}
+    <script src="https://smarteucookiebanner.upsell-apps.com/gdpr_adapter.js?shop=gutsy-bonfire.myshopify.com" type="application/javascript"></script>
+  {% capture 'header_content' %}{{ content_for_header }}{% endcapture %}{{ header_content | replace: "trekkie.load(", "(window.deferTrekkie || trekkie.load)(" }}
+
 
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
@@ -103,7 +105,7 @@
       }
 
       body {
-        display: grid;
+        display: block;
         grid-template-rows: auto auto 1fr auto;
         grid-template-columns: 100%;
         min-height: 100%;
@@ -131,7 +133,9 @@
     {%- endif -%}
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
-  </head>
+  {% render 'weglot_hreftags' %}
+  {% render 'weglot_switcher' %}
+</head>
 
   <body class="gradient">
     {%- if template.name == "index" -%}

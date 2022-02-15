@@ -21,7 +21,9 @@
         font-family: "Lato", sans-serif;
       }
     </style>
-  </head>
+  {% render 'weglot_hreftags' %}
+{% render 'weglot_switcher' %}
+</head>
   <body>
     {{ content_for_layout }}
   </body>

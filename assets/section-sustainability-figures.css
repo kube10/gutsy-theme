@@ -93,6 +93,10 @@
   margin-left: 1rem;
 }
 
+.figures-row-1__svg-wrap {
+  margin-right: 1rem;
+}
+
 @media screen and (min-width: 768px) {
   .sustainability-figures__headlines,
   .sustainability-figures__row-1,
@@ -104,11 +108,16 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1080px) {
   .sustainability-figures__headlines,
   .sustainability-figures__row-1,
   .sustainability-figures__row-2 {
     margin-bottom: 7.5rem;
+  }
+
+  .figures-row-1__svg-wrap {
+    position: relative;
+    bottom: 7px;
   }
 
   .sustainability-figures__card-paragraph {
@@ -119,11 +128,13 @@
   .sustainability-figures__row-2 {
     display: flex;
     justify-content: space-between;
-    width: 960px;
+    width: 1080px;
   }
 
   .sustainability-figures__cards-1 {
     margin-bottom: 0rem;
+    display: flex;
+    align-items: flex-end;
   }
 
   .sustainability-figures__large-percentage {

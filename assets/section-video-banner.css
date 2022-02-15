@@ -144,6 +144,7 @@
 .blog-feature-article-title {
   max-width: 200px;
   transition: all 0.4s ease;
+  color: white;
 }
 
 .blog-feature-title > h3:last-child {
@@ -153,9 +154,10 @@
 .blog-feature-count {
   font-family: var(--font-body-family);
   font-weight: 300;
-  font-size: 4rem;
+  font-size: 3rem;
   width: 75px;
   transition: all 0.3s ease;
+  margin-bottom: 0;
 }
 
 .blog-feature-line {

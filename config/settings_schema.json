@@ -332,6 +332,11 @@
         "type": "url",
         "id": "subscriptions_info_page",
         "label": "Subscriptions Info page"
+      },
+      {
+        "type": "url",
+        "id": "all_benefits_page",
+        "label": "All Benefits Page"
       }
     ]
   },

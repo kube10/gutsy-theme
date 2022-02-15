@@ -198,7 +198,7 @@
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
-<div class="product-form-wrap">
+<div class="product-form-wrap color-{{colorScheme}}">
   <h2>Get <span>one bag</span> or <span>subscribe and save!</span></h2>
 
   {%- assign product_form_id = 'product-form-' | append: product.id -%}
@@ -267,7 +267,7 @@
     </div>
 
     <div class="after-form">
-      <a class="link" href="{{settings.subscriptions_info_page}}">More information about our subscriptions.</a>
+      <a class="link" target="_blank" href="{{settings.subscriptions_info_page}}">More information about our subscriptions.</a>
       <div class="calculator">
           Not sure how much your pet needs? <br class="hide-desktop"/><span class="open-calculator-link" calculatorId="{{product.id}}" >Try our calculator!</span>
       </div>

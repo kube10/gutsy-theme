@@ -28,12 +28,19 @@
             "button_style_2": "secondary",
             "button_secondary_color": "white"
           }
+        },
+        "69291200-2d9b-4bd6-b435-54ffcec604ea": {
+          "type": "blog_feature",
+          "settings": {
+            "blog": "nieuws"
+          }
         }
       },
       "block_order": [
         "ca143f79-6dd8-4aee-ba33-f316e3f9a16b",
         "910e615d-0291-475b-b2d2-3ddd8275bedf",
-        "914139b2-f4af-477b-847c-125f35684b4c"
+        "914139b2-f4af-477b-847c-125f35684b4c",
+        "69291200-2d9b-4bd6-b435-54ffcec604ea"
       ],
       "settings": {
         "video_url": "https:\/\/gutsy-website.s3.eu-west-3.amazonaws.com\/Dog+Running.mp4",
@@ -42,7 +49,7 @@
         "background_overlay_2": "linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 25%, rgba(255, 255, 255, 0) 100%)",
         "show_overlay_2": true,
         "content-width": 750,
-        "buttons-width": 450
+        "buttons-width": 590
       }
     },
     "16413122942b6eaed8": {
@@ -59,8 +66,7 @@
     "164156093350c034d1": {
       "type": "homepage-products",
       "settings": {
-        "collection": "all",
-        "benefits_link": ""
+        "collection": "all"
       }
     },
     "1641312336a418c8c5": {

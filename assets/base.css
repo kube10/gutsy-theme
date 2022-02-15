@@ -158,6 +158,10 @@ html.no-js .no-js-hidden {
   padding: 0 0.5rem;
 }
 
+.page-width--narrow {
+  padding: 0 0.5rem;
+}
+
 .page-width-desktop {
   padding: 0;
   margin: 0 auto;
@@ -184,7 +188,6 @@ html.no-js .no-js-hidden {
 @media screen and (min-width: 990px) {
   .page-width--narrow {
     max-width: 72.6rem;
-    padding: 0;
   }
 
   .page-width-desktop {
@@ -485,6 +488,7 @@ blockquote {
 .customer .field input,
 .customer select,
 .field__input,
+.cf-field input,
 .form__label,
 .select__select {
   font-size: 1rem;
@@ -1406,6 +1410,7 @@ details[open] > .share-button__fallback {
 /* component-form */
 .field__input,
 .select__select,
+.cf-field input,
 .customer .field input,
 .customer select {
   -webkit-appearance: none;
@@ -1431,6 +1436,7 @@ details[open] > .share-button__fallback {
 }
 
 .field__input:hover,
+.cf-field > input:hover,
 .customer .field input:hover,
 .customer select:hover,
 .localization-form__select:hover {
@@ -1438,6 +1444,7 @@ details[open] > .share-button__fallback {
 }
 
 .field__input:focus,
+.cf-field > input:focus,
 .customer .field input:focus,
 .customer select:focus,
 .localization-form__select:focus {
@@ -1501,6 +1508,7 @@ details[open] > .share-button__fallback {
 }
 
 .field__input,
+.cf-field > input,
 .customer .field input {
   flex-grow: 1;
   text-align: left;
@@ -1883,13 +1891,18 @@ input[type="checkbox"] {
   letter-spacing: 0.05rem;
 }
 
+/* WEGLOT LANG PICKER */
+.wg-default,
+.wg-default .country-selector {
+}
+
 /* section-header */
 #shopify-section-header {
   position: fixed;
   top: 42px;
   z-index: 997;
-  width: 100%;
-  transition: top 0.2 s ease;
+  width: 100vw;
+  transition: top 0.2s ease;
 }
 
 .header-wrapper {

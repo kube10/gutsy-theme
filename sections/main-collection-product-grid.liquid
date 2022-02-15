@@ -39,7 +39,7 @@
                   {%- for product in collection.products -%}
                     {%- assign val = forloop.index | modulo:2 -%}
                     {%- if val ==  0 -%}
-                        {% render 'product-card', product_card_product: product, color_scheme: "bg-green" %}
+                        {% render 'product-card', product_card_product: product, color_scheme: "bg-beige" %}
                       {%- else -%}
                           {% render 'product-card', product_card_product: product, color_scheme: "bg-beige" %}
                     {%- endif -%}

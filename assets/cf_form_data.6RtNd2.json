@@ -1,0 +1,371 @@
+{
+  "form": {
+    "id": "6RtNd2",
+    "name": "Registration",
+    "handle": "registration-4869",
+    "theme_id": null,
+    "settings": {
+      "locales": {
+        "back": "Back",
+        "next": "Next",
+        "cancel": "Cancel",
+        "edit_link": "Edit account",
+        "fix_errors": "Please fix errors before continuing",
+        "is_invalid": "{{label}} is invalid",
+        "email_taken": "Email has already been taken",
+        "phone_taken": "Phone number has already been taken",
+        "server_error": "Could not save form, please try again later",
+        "step_counter": "Step {{current}} of {{total}}",
+        "verify_email": "Check your email for a verification link to activate your account.",
+        "not_available": "An error occurred while saving your account, please try again in a few minutes.",
+        "create_account": "Create account",
+        "update_account": "Update account",
+        "recaptcha_error": "Challenge verification failed, please try again",
+        "creating_account": "Creating account...",
+        "updating_account": "Updating account...",
+        "reset_password_link": "Reset your password",
+        "invalid_email_domain": "Email contains an invalid domain name",
+        "reset_password_email_sent": "Check your inbox for a link to reset your password.",
+        "reset_password_too_many_attempts": "You tried to reset your password too many times. Please wait and try again later."
+      },
+      "whitelistedTags": "",
+      "showPasswordReset": true,
+      "markRequiredFields": true,
+      "displayCancelButton": true,
+      "goBackAfterSubmission": false,
+      "cancelButtonRedirectUrl": "\/account\/login",
+      "postSubmissionRedirectUrl": "\/account",
+      "goBackAfterCancelButtonClick": false
+    },
+    "install_locations": [
+
+    ],
+    "created_at": "2022-02-10T13:35:38Z",
+    "updated_at": "2022-02-10T13:40:54Z",
+    "revision_ids": [
+      "yzTgoZL",
+      "7kTpKy7"
+    ]
+  },
+  "revision": {
+    "id": "yzTgoZL",
+    "created_at": "2022-02-10T13:40:54Z",
+    "updated_at": "2022-02-10T13:40:54Z",
+    "embed_version": "4.9.0",
+    "published_at": null,
+    "fields": [
+      {
+        "id": 538855,
+        "dataColumn": {
+          "key": "first_name",
+          "label": "First name",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 0,
+        "type": "text",
+        "stepId": 111880,
+        "default": "",
+        "label": "First name",
+        "placeholder": "",
+        "description": null,
+        "enum": null,
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "metadata": {
+              "hiddenInApp": true
+            },
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "Must not be blank"
+          }
+        ],
+        "sensitive": null,
+        "preset": "first_name",
+        "autotag": null
+      },
+      {
+        "id": 633993,
+        "dataColumn": {
+          "key": "last_name",
+          "label": "Last name",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 1,
+        "type": "text",
+        "stepId": 111880,
+        "default": "",
+        "label": "Last name",
+        "placeholder": "",
+        "description": null,
+        "enum": null,
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "metadata": {
+              "hiddenInApp": true
+            },
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "Must not be blank"
+          }
+        ],
+        "sensitive": null,
+        "preset": "last_name",
+        "autotag": null
+      },
+      {
+        "id": 209759,
+        "dataColumn": {
+          "key": "email",
+          "label": "Email address",
+          "dataType": "email"
+        },
+        "parentId": null,
+        "position": 2,
+        "type": "email",
+        "stepId": 111880,
+        "default": "",
+        "label": "Email address",
+        "placeholder": "",
+        "description": null,
+        "enum": null,
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "operator": "is_valid_email",
+            "comparand": null,
+            "errorMessage": "Please provide a valid email address"
+          },
+          {
+            "metadata": {
+              "hiddenInApp": true
+            },
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "Must not be blank"
+          }
+        ],
+        "sensitive": null,
+        "preset": "email_address",
+        "autotag": null
+      },
+      {
+        "id": 863585,
+        "dataColumn": {
+          "key": "password",
+          "label": "Password",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 3,
+        "type": "text",
+        "stepId": 111880,
+        "default": "",
+        "label": "Password",
+        "placeholder": "",
+        "description": null,
+        "enum": null,
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "metadata": {
+              "hiddenInApp": true
+            },
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "Must not be blank"
+          },
+          {
+            "metadata": {
+              "mandatory": true,
+              "staticOperator": true,
+              "comparandFieldProps": {
+                "min": 5
+              }
+            },
+            "operator": "longer_than",
+            "comparand": 5,
+            "errorMessage": "Password is too short"
+          }
+        ],
+        "sensitive": true,
+        "preset": "password",
+        "autotag": null
+      },
+      {
+        "id": 444776,
+        "dataColumn": {
+          "key": "pet_name",
+          "label": "Your pet's name",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 4,
+        "type": "text",
+        "stepId": 111880,
+        "default": "",
+        "label": "Your pet's name",
+        "placeholder": "",
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 6
+        },
+        "settings": {
+        },
+        "validations": [
+
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      },
+      {
+        "id": 519668,
+        "dataColumn": {
+          "key": "pet_birthday",
+          "label": "Your pet's birthday",
+          "dataType": "date"
+        },
+        "parentId": null,
+        "position": 5,
+        "type": "date",
+        "stepId": 111880,
+        "default": "",
+        "label": "Your pet's birthday",
+        "placeholder": "",
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 6
+        },
+        "settings": {
+          "dateInput": "picker",
+          "yearsBack": 20,
+          "dateFormat": "DD-MM-YYYY",
+          "yearsForward": 1
+        },
+        "validations": [
+          {
+            "metadata": {
+              "mandatory": true,
+              "staticOperator": true
+            },
+            "operator": "is_valid",
+            "comparand": null,
+            "errorMessage": "Please specify a valid date"
+          }
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      },
+      {
+        "id": 222809,
+        "dataColumn": {
+          "key": "profile_picture",
+          "label": "A picture of your dog",
+          "dataType": "file"
+        },
+        "parentId": null,
+        "position": 6,
+        "type": "file",
+        "stepId": 111880,
+        "default": "",
+        "label": "A picture of your dog",
+        "placeholder": "",
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "metadata": {
+              "mandatory": true,
+              "staticOperator": true,
+              "staticComparand": true
+            },
+            "operator": "less_than",
+            "comparand": 25600,
+            "errorMessage": "Please upload a file less than 25MB in size"
+          },
+          {
+            "metadata": {
+              "mandatory": true,
+              "staticOperator": true
+            },
+            "operator": "file_extension_not_blank",
+            "comparand": null,
+            "errorMessage": "Please upload a file with a valid file extension"
+          },
+          {
+            "metadata": {
+              "0": "P",
+              "1": "o",
+              "2": "l",
+              "3": "a",
+              "4": "r",
+              "5": "i",
+              "6": "s",
+              "7": "T",
+              "8": "e",
+              "9": "x",
+              "10": "t",
+              "11": "F",
+              "12": "i",
+              "13": "e",
+              "14": "l",
+              "15": "d",
+              "16": "2",
+              "17": "9"
+            },
+            "operator": "file_extension_equals",
+            "comparand": ".jpg, .png",
+            "errorMessage": "Please upload an image file (.jpeg or .png)"
+          }
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      }
+    ],
+    "steps": [
+      {
+        "id": 111880,
+        "title": "Step 1",
+        "description": ""
+      }
+    ],
+    "rules": [
+
+    ]
+  }
+}

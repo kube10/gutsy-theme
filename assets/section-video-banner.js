@@ -21,7 +21,7 @@ discoverBtns.forEach((btn) => {
     btn.parentElement.querySelector(".blog-feature-count").style.opacity = "0";
     btn.parentElement.querySelector(
       ".blog-feature-article-title"
-    ).style.transform = "translateX(-108px)";
+    ).style.transform = "translateX(-76px)";
     btn.parentElement.querySelector(".blog-feature-line").style.width = "80%";
   });
 

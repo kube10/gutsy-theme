@@ -1,0 +1,123 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "16442279659eef588e": {
+      "type": "subscriptions-info",
+      "blocks": {
+        "dbdfb123-d9ac-4a3e-9cdb-a22a62008d36": {
+          "type": "info",
+          "settings": {
+            "title": "10% Discount",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt, risus et efficitur scelerisque, dolor felis placerat metus, ac fermentum justo dolor congue magna. Aenean ac suscipit tortor. Suspendisse fringilla nisl eget elit pulvinar interdum. Mauris pharetra quam ut est gravida tincidunt vitae vitae arcu.",
+            "svg_icon": "<svg width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M25.58 41.9999L6 22.4199V26.4199C6 27.4799 6.42 28.4999 7.18 29.2399L22.76 44.8199C24.32 46.3799 26.86 46.3799 28.42 44.8199L40.84 32.3999C42.4 30.8399 42.4 28.2999 40.84 26.7399L25.58 41.9999Z\" fill=\"#F47F36\"><\/path>\n<path d=\"M22.76 34.82C23.54 35.6 24.56 36 25.58 36C26.6 36 27.62 35.6 28.4 34.82L40.82 22.4C42.38 20.84 42.38 18.3 40.82 16.74L25.24 1.16C24.5 0.42 23.48 0 22.42 0H10C7.8 0 6 1.8 6 4V16.42C6 17.48 6.42 18.5 7.18 19.24L22.76 34.82V34.82ZM10 4H22.42L38 19.58L25.58 32L10 16.42V4Z\" fill=\"#F47F36\"><\/path>\n<path d=\"M14.5 11C15.8807 11 17 9.88071 17 8.5C17 7.11929 15.8807 6 14.5 6C13.1193 6 12 7.11929 12 8.5C12 9.88071 13.1193 11 14.5 11Z\" fill=\"#F47F36\"><\/path>\n<\/svg>"
+          }
+        },
+        "64e14cbf-d262-4af7-a78e-f2e90609f7c2": {
+          "type": "info",
+          "settings": {
+            "title": "DELIVERED WHENEVER YOU WANT",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt, risus et efficitur scelerisque, dolor felis placerat metus, ac fermentum justo dolor congue magna. Aenean ac suscipit tortor. Suspendisse fringilla nisl eget elit pulvinar interdum. Mauris pharetra quam ut est gravida tincidunt vitae vitae arcu.",
+            "svg_icon": "<svg width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M36 37C37.66 37 39 35.66 39 34C39 32.34 37.66 31 36 31C34.34 31 33 32.34 33 34C33 35.66 34.34 37 36 37ZM39 19H34V24H42.92L39 19ZM12 37C13.66 37 15 35.66 15 34C15 32.34 13.66 31 12 31C10.34 31 9 32.34 9 34C9 35.66 10.34 37 12 37ZM40 16L46 24V34H42C42 37.32 39.32 40 36 40C32.68 40 30 37.32 30 34H18C18 37.32 15.32 40 12 40C8.68 40 6 37.32 6 34H2V12C2 9.78 3.78 8 6 8H34V16H40ZM6 12V30H7.52C8.62 28.78 10.22 28 12 28C13.78 28 15.38 28.78 16.48 30H30V12H6ZM20 14L27 21L20 28V23H10V19H20V14Z\" fill=\"#F47F36\"><\/path>\n<\/svg>"
+          }
+        },
+        "e9eaf54c-dbb6-4efd-9c8a-ba7d2add0f9f": {
+          "type": "info",
+          "settings": {
+            "title": "CANCEL ANYTIME",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt, risus et efficitur scelerisque, dolor felis placerat metus, ac fermentum justo dolor congue magna. Aenean ac suscipit tortor. Suspendisse fringilla nisl eget elit pulvinar interdum. Mauris pharetra quam ut est gravida tincidunt vitae vitae arcu.",
+            "svg_icon": "<svg width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M33 18C32.16 18 31.34 18.08 30.52 18.22L2.02 6L2 20L22.12 22.68C21.28 23.56 20.56 24.54 19.94 25.6L2 28L2.02 42L18.16 35.08C19.18 42.38 25.42 48 33 48C41.28 48 48 41.28 48 33C48 24.72 41.28 18 33 18ZM6 16.5L6.02 12.06L21.04 18.5L6 16.5ZM18.2 30.72L6 35.94V31.5L18.34 29.86C18.28 30.14 18.24 30.42 18.2 30.72V30.72ZM33 44C26.94 44 22 39.06 22 33C22 26.94 26.94 22 33 22C39.06 22 44 26.94 44 33C44 39.06 39.06 44 33 44Z\" fill=\"#F47F36\"><\/path>\n<path d=\"M36.5401 28.0605L33.0001 31.5805L29.4601 28.0605L28.0601 29.4605L31.5801 33.0005L28.0601 36.5405L29.4601 37.9405L33.0001 34.4205L36.5401 37.9405L37.9401 36.5405L34.4201 33.0005L37.9401 29.4605L36.5401 28.0605Z\" fill=\"#F47F36\"><\/path>\n<\/svg>"
+          }
+        }
+      },
+      "block_order": [
+        "dbdfb123-d9ac-4a3e-9cdb-a22a62008d36",
+        "64e14cbf-d262-4af7-a78e-f2e90609f7c2",
+        "e9eaf54c-dbb6-4efd-9c8a-ba7d2add0f9f"
+      ],
+      "settings": {
+        "color_scheme": "bg-green",
+        "headline": "A Gutsy Subscriptions - that's tons of benefits",
+        "heading_color": "primary-2",
+        "subheading_color": "primary-3",
+        "button_text": "To the shop",
+        "button_href": "shopify:\/\/collections\/all"
+      }
+    },
+    "16442288400caf43b4": {
+      "type": "section-testimonials",
+      "blocks": {
+        "3129fbae-e037-4d7a-bc86-a0d16ec7687b": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "My BFF Jacky has had stomach troubles for years. Thanks to gutsy’s hypo-allergenic trekker fuel, those issues are in the past!",
+            "testimonial_name": "Lisa, Antwerp",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25.png"
+          }
+        },
+        "cb790769-b9bd-40ae-a6ea-f19486540289": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "It’s funny how we always consider our own footprint when thinking about sustainability. Gutsy reduces our pet’s paw print too!",
+            "testimonial_name": "Ben, Brugge",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-1.png"
+          }
+        },
+        "6cc7aa47-8022-4dff-876b-64671a756aeb": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "My border collie is a real hiker, he’s more wolf than dog! A nutritious meal that’s rich in proteins is exactly what she needed.",
+            "testimonial_name": "Michael, Brussels",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-2.png"
+          }
+        }
+      },
+      "block_order": [
+        "3129fbae-e037-4d7a-bc86-a0d16ec7687b",
+        "cb790769-b9bd-40ae-a6ea-f19486540289",
+        "6cc7aa47-8022-4dff-876b-64671a756aeb"
+      ],
+      "settings": {
+        "color_scheme": "bg-beige",
+        "heading_color": "primary-1",
+        "headline": "Dog lovers love us!"
+      }
+    },
+    "16442289053626ce84": {
+      "type": "apps",
+      "blocks": {
+        "54aa8e1a-e711-45e2-bf5e-77dfb3695f73": {
+          "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "heading_font": "helvetica_n4",
+            "heading_size": 20,
+            "feed_width": 100,
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "54aa8e1a-e711-45e2-bf5e-77dfb3695f73"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "164422891308c9951e": {
+      "type": "instagram-link",
+      "settings": {
+        "instagram_url": "https:\/\/instagram.com"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16442279659eef588e",
+    "16442288400caf43b4",
+    "16442289053626ce84",
+    "164422891308c9951e"
+  ]
+}

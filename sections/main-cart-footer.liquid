@@ -39,6 +39,14 @@
                   {%- endif -%}
                 </div>
 
+
+                  <p class="delivery-notice">
+                    {%- if cart.total_price > 5000 -%}
+                      Free delivery within Belgium!
+                    {%- else -%}
+                      Add {{ 5000 | minus: cart.total_price | money }} more for free delivery within Belgium!
+                    {%- endif -%}
+                  </p>
                 <small class="tax-note caption-large rte">
                   {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
                     {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
@@ -58,7 +66,6 @@
                     {{ 'sections.cart.update' | t }}
                   </button>
                 </noscript>
-
                 <button type="submit" id="checkout" class="cart__checkout-button button button-primary" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
                   {{ 'sections.cart.checkout' | t }}
                 </button>

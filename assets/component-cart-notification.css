@@ -70,11 +70,6 @@
   width: 1.3rem;
 }
 
-.cart-notification__close {
-  margin-top: -2rem;
-  margin-right: -3rem;
-}
-
 .cart-notification__links {
   text-align: center;
   display: none;

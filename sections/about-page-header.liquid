@@ -6,14 +6,19 @@
       <h1 class="color-primary-3">
       {{section.settings.headline}}</h1>
       <p class="about-header-section__paragraph">{{section.settings.paragraph}}</p>
-      <button class="button button-borderless color-primary-2">SCROLL DOWN {% render 'icon-arrow-down-orange' %}</button>
+      <button onclick="toNextSection()" class="button button-borderless color-primary-2">SCROLL DOWN {% render 'icon-arrow-down-orange' %}</button>
     </div>
   </div>
   <div class="about-header-section__background">
     <video muted autoplay loop class="about-header-section__background-video" src="{{section.settings.video_url}}"></video>
   </div>
 </div>
-
+<script type="text/javascript">
+  function toNextSection() {
+    const section = document.querySelector('#shopify-section-template--14312058126390__164181877859f3462b');
+    section.scrollIntoView({behavior: "smooth"})
+  }
+</script>
 {% schema %}
 {
   "name": "About Page Header",

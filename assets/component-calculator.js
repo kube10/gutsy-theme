@@ -152,28 +152,44 @@ calculators.forEach((calculator, i) => {
   const ageField = calculator.querySelector("#age-" + productId);
   const result1Field = calculator.querySelector("#results1-" + productId);
   const result2Field = calculator.querySelector("#results2-" + productId);
-  // const bagsBtn = calculator.querySelector("#bagsBtn-" + productId);
-  // const bagsBtnSpan = calculator.querySelector("#bagsbtn-span-" + productId);
   const ageFormGroup = calculator.querySelector("#age-form-group-" + productId);
 
   const calculatorForm = calculator.querySelector(".calculator-form");
 
   const warning = calculator.querySelector("#warning-" + productId);
 
-  // bagsBtn.addEventListener("click", function () {
-  //   document.querySelector("#calculator-" + productId).classList.remove("open");
-  //   const quantityInput = document.querySelector(
-  //     "#quantity-picker-" + productId
-  //   );
-  //   quantityInput.value = amount;
-  // });
-
   const subscriptionSelect = calculator.querySelector("#subscriptionSelect");
+
+  const subscriptions = [
+    {
+      product: "puppy",
+      name: "selling_plan_502653",
+      value: "515964982",
+    },
+    {
+      product: "adult-s",
+      name: "selling_plan_502652",
+      value: "516161590",
+    },
+    {
+      product: "adult-l",
+      name: "selling_plan_502650",
+      value: "531595318",
+    },
+  ];
 
   subscriptionSelect.addEventListener("change", (e) => {
     const sellingPlan1 = calculator.querySelectorAll(".selling_plan_1");
     const sellingPlan2 = calculator.querySelectorAll(".selling_plan_2");
-    console.log(subscriptionSelect.value);
+    let subscription;
+
+    if (calculatorForm.getAttribute("id").indexOf("puppy") > -1) {
+      subscription = subscriptions[0];
+    } else if (calculatorForm.getAttribute("id").indexOf("(s)") > -1) {
+      subscription = subscriptions[1];
+    } else if (calculatorForm.getAttribute("id").indexOf("(l)") > -1) {
+      subscription = subscriptions[2];
+    }
 
     if (subscriptionSelect.value == "none") {
       sellingPlan1.forEach((item, i) => {
@@ -186,18 +202,11 @@ calculators.forEach((calculator, i) => {
     } else if (subscriptionSelect.value == "30days") {
       sellingPlan1.forEach((item, i) => {
         item.value = "subsave";
+        item.setAttribute("name", subscription.name);
       });
 
       sellingPlan2.forEach((item, i) => {
-        item.value = "516161590";
-      });
-    } else if (subscriptionSelect.value == "45days") {
-      sellingPlan1.forEach((item, i) => {
-        item.value = "subsave";
-      });
-
-      sellingPlan2.forEach((item, i) => {
-        item.value = "531660854";
+        item.value = subscription.value;
       });
     }
   });
@@ -343,7 +352,7 @@ calculators.forEach((calculator, i) => {
 
   function calcMonthly(dose) {
     if (breedField.value === "puppy") {
-      const monthly = (dose * 30) / 1000;
+      const monthly = (dose * 35) / 1000;
       result2Field.innerHTML = monthly + "kg";
       divideBags(monthly);
     } else {

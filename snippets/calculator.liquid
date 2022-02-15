@@ -1,6 +1,6 @@
 {{ 'component-calculator.css' | asset_url | stylesheet_tag }}
 
-<div id="calculator-{{id}}" class="calculator-modal">
+<div id="calculator-{{id}}" class="calculator-modal color-bg-white">
   <div class="calculator-modal-inner">
     <div calculatorId="{{id}}" class="calculator-close">
       <img src="
@@ -56,19 +56,20 @@
       <div class="calculator-modal-actions">
         <h2 class="color-primary-1">Our recommendations:</h2>
         <label for="subscribe">Do you want to subscribe?</label>
-        <select name="subscription" id="subscriptionSelect">
-          <option value="none">No subscription</option>
-          <option value="30days">Delivery every 30 days</option>
-          <option value="45days">Delivery every 45 days</option>
-        </select>
+        <div class="calculator-subscription-select__wrap">
+          <select name="subscription" id="subscriptionSelect">
+            <option value="none">No subscription</option>
+            <option value="30days">Delivery every 30 days</option>
+          </select>
+        </div>
 
         {%- for variant in product.variants -%}
           <product-form productId="{{product.id}}">
             {%- assign product_form_id = variant.id -%}
             {%- form 'product', product, data-productid: product.id, id: product_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-              <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ variant.id }}" disabled>.
-              <input type="hidden" class="selling_plan_1" name="selling_plan_476145" value="" disabled>
-              <input type="hidden" class="selling_plan_2" name="selling_plan" value="" disabled>
+              <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ variant.id }}" disabled>
+              <input type="hidden" class="selling_plan_1" name="selling_plan_502653" value="">
+              <input type="hidden" class="selling_plan_2" name="selling_plan" value="">
               <div class="calculator-modal-option__row-title">
                 <span>{{product.title}}:</span>
                 <span class="option-value">{{variant.option1}}</span>

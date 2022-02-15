@@ -414,7 +414,7 @@
 :is(.account, .order) {
   margin: 6rem auto 9rem;
   max-width: var(--page-width);
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 @media screen and (min-width: 750px) {
@@ -425,7 +425,6 @@
 
 @media screen and (min-width: 990px) {
   :is(.account, .order) > div:nth-of-type(2) {
-    display: flex;
     margin-top: 5rem;
   }
 }
@@ -448,7 +447,7 @@
 }
 
 :is(.account, .order) p {
-  margin: 0 0 2rem;
+  margin: 0 0 1rem;
   font-size: 1rem;
 }
 
@@ -457,7 +456,27 @@
 }
 
 :is(.account, .order) h2 {
-  margin-top: 4rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.account__grid {
+  display: block;
+}
+
+.account__actions {
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 0.5rem;
+}
+
+.birthday__message-wrap {
+  background-color: rgb(var(--color-base-primary-1));
+  color: white;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  -webkit-box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.06);
   margin-bottom: 1rem;
 }
 
@@ -465,6 +484,35 @@
   :is(.account, .order) h2 {
     margin-top: 0;
   }
+
+  .account__grid {
+    display: grid;
+    grid-template-columns: 70% 30%;
+  }
+}
+
+.account__sidebar {
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+}
+
+.account__sidebar-profile {
+  text-align: center;
+}
+
+.account__sidebar-profile h2 {
+  margin-top: 1rem;
+}
+
+.profile-img {
+  width: 250px;
+  border-radius: 50%;
+}
+
+.account__label {
+  font-weight: 800;
 }
 
 .account h1 + a {

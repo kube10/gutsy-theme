@@ -101,6 +101,10 @@ cart-items {
   padding: 1rem;
 }
 
+.delivery-notice {
+  text-align: right;
+}
+
 @media screen and (min-width: 750px) {
   .cart__items {
     grid-column-start: 1;
