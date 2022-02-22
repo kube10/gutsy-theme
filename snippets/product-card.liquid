@@ -183,7 +183,14 @@
           <div class="product-details-actions">
             <div class="button-group">
               <a href="{{product_card_product.url}}" class="button button-secondary">MORE INFO</a>
-              <button id="{{product_card_product.id}}" class="open-product-modal-btn button button-primary">BUY NOW</button>
+
+              <button id="{{product_card_product.id}}" class="open-product-modal-btn button button-primary">
+                {%- if product_card_product.first_available_variant.inventory_quantity > 0 -%}
+                  BUY NOW
+                  {%- else -%}
+                  PREORDER
+                {%- endif -%}
+              </button>
             </div>
           </div>
         </div>

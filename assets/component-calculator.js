@@ -163,18 +163,18 @@ calculators.forEach((calculator, i) => {
   const subscriptions = [
     {
       product: "puppy",
-      name: "selling_plan_502653",
-      value: "515964982",
+      name: "subs_type_1tcnskksowghl7i",
+      value: "547455030",
     },
     {
       product: "adult-s",
-      name: "selling_plan_502652",
-      value: "516161590",
+      name: "subs_type_hw3c3dr9gep1bqc",
+      value: "547455030",
     },
     {
       product: "adult-l",
-      name: "selling_plan_502650",
-      value: "531595318",
+      name: "subs_type_pofczctutf7ucey",
+      value: "547455030",
     },
   ];
 
@@ -201,7 +201,7 @@ calculators.forEach((calculator, i) => {
       });
     } else if (subscriptionSelect.value == "30days") {
       sellingPlan1.forEach((item, i) => {
-        item.value = "subsave";
+        item.value = "0";
         item.setAttribute("name", subscription.name);
       });
 

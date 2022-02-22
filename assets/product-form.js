@@ -7,12 +7,6 @@ if (!customElements.get("product-form")) {
 
         this.form = this.querySelector("form");
         this.form.querySelector("[name=id]").disabled = false;
-        // if (this.form.querySelector("[name=selling_plan]")) {
-        //   this.form.querySelector(
-        //     "[name=selling_plan_502653]"
-        //   ).disabled = false;
-        //   this.form.querySelector("[name=selling_plan]").disabled = false;
-        // }
         this.form.addEventListener("submit", this.onSubmitHandler.bind(this));
         this.cartNotification = document.querySelector("cart-notification");
         this.form.addEventListener("keydown", function (e) {

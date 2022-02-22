@@ -793,8 +793,11 @@ class VariantSelects extends HTMLElement {
       .then((responseText) => {
         const id = `price-${this.dataset.section}`;
         const html = new DOMParser().parseFromString(responseText, "text/html");
-        const destination = document.getElementById(id);
-        const source = html.getElementById(id);
+        const productId = this.dataset.product;
+        const destination = document.querySelector('#' + id + "[data-product='"+productId+"']");
+        const source = html.querySelector(".priceComponent[data-product='"+productId+"']");
+
+        const productForm = document.querySelector('.product-form[productId="'+productId+'"]');
 
         if (source && destination) destination.innerHTML = source.innerHTML;
 
@@ -805,7 +808,68 @@ class VariantSelects extends HTMLElement {
           !this.currentVariant.available,
           window.variantStrings.soldOut
         );
+
+        let unitPriceStr = productForm
+          .querySelector("#unitPrice-" + productId)
+          .querySelector(".price-item")
+          .innerHTML.replace(/\s+/g, "");
+
+        let unitPrice = parseFloat(unitPriceStr.substr(1).replace(",", "."));
+
+        const finalPrice = this.getSubscriptionPrice(unitPrice, productForm);
+        this.changeTotalPrice(finalPrice, productForm);
+
       });
+  }
+
+  getSubscriptionPrice(originalUnitPrice, form) {
+    const subscriptionField = form.querySelector('.subscriptionCheckBox');
+    let newPrice = originalUnitPrice
+    console.log("Sub price function triggered");
+    console.log("originalUnitPrice: " + originalUnitPrice);
+    if (subscriptionField.checked) {
+      newPrice = originalUnitPrice * 0.9;
+      console.log("sub field checked");
+    }
+    return newPrice;
+  }
+
+  changeTotalPrice(unitPrice, form) {
+      const productId = form.getAttribute("productId");
+
+      //get quantitypicker element
+      const quantityPicker = form.querySelector(".quantity__input");
+
+      const euroLocale = Intl.NumberFormat("en-EU", {
+        style: "currency",
+        currency: "EUR",
+      });
+
+      const unitPriceEU = euroLocale.format(unitPrice);
+      form
+        .querySelector("#unitPrice-" + productId)
+        .querySelector(".price-item")
+        .innerHTML = unitPriceEU;
+
+      //get quantity values
+      const quantity = parseFloat(quantityPicker.value);
+
+      //total price calulcations
+      const totalPrice = parseFloat(unitPrice * quantity);
+
+      const totalPriceEU = euroLocale.format(totalPrice);
+
+      //set total price in wrapper element
+      form
+        .querySelector("#totalPrice-" + productId)
+        .querySelector(".price--large").innerHTML = totalPriceEU;
+
+      if (subscriptionSelected) {
+        form.querySelector("#perMonthInfo-" + productId).innerHTML =
+          "Per month";
+      } else {
+        form.querySelector("#perMonthInfo-" + productId).innerHTML = "";
+      }
   }
 
   toggleAddButton(disable = true, text, modifyClass = true) {

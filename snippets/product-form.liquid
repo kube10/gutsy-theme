@@ -8,6 +8,11 @@
     opacity: 1;
   }
 
+  .product-form-wrap {
+    max-width: 840px;
+    width: 100%;
+  }
+
   .product-form-wrap > h2 {
     color: #1A3C32;
     margin-bottom: 2rem;
@@ -24,9 +29,50 @@
 
   .size-quantity {
     display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 260px;
+  background-color: rgba(0, 0, 0, .65);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 12px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  left: 110%;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+  .product-form__icons {
+    display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    grid-column-gap: 2rem;
+    margin-left: 2rem;
+  }
+
+  .open-calculator-link {
+    cursor: pointer;
+  }
+
+  .info-link {
+    text-decoration: none;
+    margin-left: 1rem;
   }
 
   .size-quantity .form__label {
@@ -38,6 +84,8 @@
     grid-area: calculator;
     margin-bottom: 2rem;
     text-align: center;
+    display: flex;
+    align-items: center;
   }
 
   .calculator {
@@ -62,6 +110,10 @@
     margin-bottom: 2rem;
     border-color: rgb(var(--color-base-primary-1)) !important;
     color: rgb(var(--color-base-primary-1)) !important;
+  }
+
+  .subscriptionCheckBox {
+    margin-right: 0px;
   }
 
   .product-form__buttons > .button-primary {
@@ -89,6 +141,7 @@
     grid-area: icons;
     margin-top: 2rem;
     flex-direction: column;
+    width: 100%;
   }
 
   .usp {
@@ -148,12 +201,15 @@
       grid-column-gap: 2rem;
     }
 
-    .size-quantity {
-      justify-content: flex-end;
+    .product-form__actions {
+      grid-area: actions;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap:wrap;
     }
 
     .after-form {
-      margin-top: 0;
       text-align: left;
     }
 
@@ -194,12 +250,21 @@
   }
 </style>
 
+{%- assign subscription = true -%}
+{%- for tag in product.tags -%}
+  {%- if tag == "sample-box" -%}
+    {%- assign subscription = false -%}
+  {%- endif -%}
+{%- endfor -%}
+
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 <div class="product-form-wrap color-{{colorScheme}}">
-  <h2>Get <span>one bag</span> or <span>subscribe and save!</span></h2>
+  {%- if subscription -%}
+    <h2>Get <span>one bag</span> or <span>subscribe and save!</span></h2>
+  {%- endif -%}
 
   {%- assign product_form_id = 'product-form-' | append: product.id -%}
 
@@ -264,98 +329,117 @@
           </button>
         </quantity-input>
       </div>
+
+      {%- if subscription -%}
+        <div class="product-form__icons">
+          <span class="open-calculator-link tooltip" calculatorId="{{product.id}}" >
+            {%- render 'icon-calculator' -%}
+            <span class="tooltiptext">Calculate your pet's monthly needs</span>
+          </span>
+        </div>
+      {%- endif -%}
     </div>
 
     <div class="after-form">
-      <a class="link" target="_blank" href="{{settings.subscriptions_info_page}}">More information about our subscriptions.</a>
-      <div class="calculator">
+      {%- if subscription -%}
+        <input class="subscriptionCheckBox" type="checkbox" name="" value="">
+        <span>I want a subscription (10% discount)</span>
+        <a target="_blank" class="info-link tooltip" href="{{settings.subscriptions_info_page}}">
+          {% render 'icon-info' %}
+          <span class="tooltiptext">More information about our subscriptions</span>
+        </a>
+      {%- endif -%}
+      <!-- <div class="calculator">
           Not sure how much your pet needs? <br class="hide-desktop"/><span class="open-calculator-link" calculatorId="{{product.id}}" >Try our calculator!</span>
-      </div>
+      </div> -->
     </div>
 
-    <div class="prices">
-      <div id="unitPrice-{{product.id}}"class="unitPrice">
-        <span>Price per bag</span>
-        <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
-          {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
-        </div>
-      </div>
-      <div id="totalPrice-{{product.id}}" class="totalPrice">
-        <span>Total price</span>
-        <h2 class="price--large"></h2>
-        <span id="perMonthInfo-{{product.id}}" class='perMonthInfo'>Per month</span>
-      </div>
-    </div>
 
-      <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}" disabled>
-
-      <div>
-          <div class="product-form__error-message-wrapper" role="alert" hidden>
-            <span class="product-form__error-message"></span>
+    <div class="product-form__actions">
+          <div class="prices">
+            <div id="unitPrice-{{product.id}}"class="unitPrice">
+              <span>Price per bag</span>
+              <div class="no-js-hidden priceComponent" id="price-{{ section.id }}" data-product="{{product.id}}" role="status" {{ block.shopify_attributes }}>
+                {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
+              </div>
+            </div>
+            <div id="totalPrice-{{product.id}}" class="totalPrice">
+              <span>Total price</span>
+              <h2 class="price--large"></h2>
+              <span id="perMonthInfo-{{product.id}}" class='perMonthInfo'>Per month</span>
+            </div>
           </div>
+          <div>
+              <div class="product-form__error-message-wrapper" role="alert" hidden>
+                <span class="product-form__error-message"></span>
+              </div>
+          <div class="product-form__buttons">
 
-      <div class="product-form__buttons">
+            {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
 
-        <button
-          type="submit"
-          name="add"
-          class="product-form__submit button button-secondary {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
-        {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
-        >
-            <span>
-              {%- if product.selected_or_first_available_variant.available -%}
-                {{ 'products.product.add_to_cart' | t }}
-              {%- else -%}
-                {{ 'products.product.sold_out' | t }}
-              {%- endif -%}
-            </span>
-            <div class="loading-overlay__spinner hidden">
-              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-              </svg>
-            </div>
-        </button>
+            <button
+              type="submit"
+              name="add"
+              class="product-form__submit button button-secondary {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+            {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+            >
+                <span>
+                  {%- if product.selected_or_first_available_variant.available -%}
+                    {{ 'products.product.add_to_cart' | t }}
+                  {%- else -%}
+                    Pre order
+                  {%- endif -%}
+                </span>
+                <div class="loading-overlay__spinner hidden">
+                  <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                  </svg>
+                </div>
+            </button>
 
-        <button
-          id="directCheckout"
-          type="submit"
-          name="add"
-          directCheckout
-          class="product-form__submit button button-primary {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
-        {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
-        >
-            <span>
-              {%- if product.selected_or_first_available_variant.available -%}
-                Buy now
-              {%- else -%}
-                {{ 'products.product.sold_out' | t }}
-              {%- endif -%}
-            </span>
-            <div class="loading-overlay__spinner hidden">
-              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-              </svg>
-            </div>
-        </button>
-      </div>
-    </div>
+          {%- endif -%}
 
-    <div class="usp-row">
-      <div class="usp">
-        <img class="usp-icon" src="{{'secure-payment.svg' | asset_url}}" alt="">
-        <span>Secure payment</span>
-      </div>
-      <div class="usp">
-        <img class="usp-icon" src="{{'delivery.svg' | asset_url}}" alt="">
-        <span>Fast delivery</span>
-      </div>
-      <div class="usp">
-        <img class="usp-icon" src="{{'cancel.svg' | asset_url}}" alt="">
-        <span>Cancel subscription anytime</span>
-      </div>
+            <button
+              id="directCheckout"
+              type="submit"
+              name="add"
+              directCheckout
+              class="product-form__submit button button-primary {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+            {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+            >
+                <span>
+                  {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
+                    Buy now
+                  {%- else -%}
+                    Preorder
+                  {%- endif -%}
+                </span>
+                <div class="loading-overlay__spinner hidden">
+                  <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                  </svg>
+                </div>
+            </button>
+          </div>
+        </div>
+        <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}" disabled>
     </div>
     {%- endform -%}
   </product-form>
+  <div class="usp-row">
+    <div class="usp">
+      <img class="usp-icon" src="{{'secure-payment.svg' | asset_url}}" alt="">
+      <span>Secure payment</span>
+    </div>
+    <div class="usp">
+      <img class="usp-icon" src="{{'delivery.svg' | asset_url}}" alt="">
+      <span>Fast delivery</span>
+    </div>
+    <div class="usp">
+      <img class="usp-icon" src="{{'cancel.svg' | asset_url}}" alt="">
+      <span>Cancel subscription anytime</span>
+    </div>
+  </div>
 </div>
 
 {% assign productTitle = product.title | replace: " ", "_" | downcase %}

@@ -36,7 +36,13 @@
               </div>
             </div>
             <div class="button-group">
-              <a id="{{product.id}}" class="button button-primary button-small open-product-modal-btn">BUY NOW</a>
+              <a id="{{product.id}}" class="button button-primary button-small open-product-modal-btn">
+                  {%- if product.first_available_variant.inventory_quantity > 0 -%}
+                    BUY NOW
+                    {%- else -%}
+                    PREORDER
+                  {%- endif -%}
+                </a>
               <a href="{{settings.all_benefits_page}}" class="button color-primary-1 button-small">Discover all the benefits
                 <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_1369_53673" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="11" height="11">

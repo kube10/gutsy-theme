@@ -27,24 +27,29 @@ productForms.forEach((form) => {
   const quantityPicker = form.querySelector(".quantity__input");
 
   quantityPicker.addEventListener("change", (e) => {
-    setTotalPrice();
+    setTotalPrice(form);
   });
 
   const variantSelector = form.querySelector(".variantSelector");
 
-  variantSelector.addEventListener("change", (e) => {
-    setTotalPrice();
-  });
-});
 
-document.body.addEventListener("change", function (e) {
-  if (e.target.classList.contains("rc_widget__option__input--subsave")) {
-    console.log("subscribe selected");
-    subscriptionSelected = true;
-  } else if (e.target.classList.contains("rc_widget__option__input--onetime")) {
-    subscriptionSelected = false;
-  }
-  setTotalPrice();
+  const subscriptionField = form.querySelector('.subscriptionCheckBox');
+
+  subscriptionField.addEventListener('change', (e) => {
+    // if (e.target.checked) {
+    //   subscriptionSelected = true;
+    // } else {
+    //   subscriptionSelected = false;
+    // }
+    // setTotalPrice(form);
+    form.querySelector('variant-selects').onVariantChange()
+  })
+
+
+  setTimeout(function () {
+    // productForm.classList.add("show");
+    setTotalPrice(form);
+  }, 500);
 });
 
 calculators.forEach((calculator) => {
@@ -59,56 +64,53 @@ calculators.forEach((calculator) => {
   });
 });
 
-function setTotalPrice() {
-  setTimeout(function () {
-    productForms.forEach((form) => {
-      //get product ID from form element
-      const productId = form.getAttribute("productId");
+function setTotalPrice(form) {
+    const productId = form.getAttribute("productid");
 
-      //get quantitypicker element
-      const quantityPicker = form.querySelector(".quantity__input");
+    //get quantitypicker element
+    const quantityPicker = form.querySelector(".quantity__input");
 
-      //get unit price in string from Shopify's price component
-      const unitPriceStr = form
-        .querySelector("#unitPrice-" + productId)
-        .querySelector(".price-item")
-        .innerHTML.replace(/\s+/g, "");
-
-      //make float
-      const unitPrice = parseFloat(unitPriceStr.substr(1).replace(",", "."));
-
-      //get quantity values
-      const quantity = parseFloat(quantityPicker.value);
-
-      //total price calulcations
-      const totalPrice = parseFloat(unitPrice * quantity);
-
-      const euroLocale = Intl.NumberFormat("en-EU", {
-        style: "currency",
-        currency: "EUR",
-      });
-
-      const totalPriceEU = euroLocale.format(totalPrice);
-
-      //set total price in wrapper element
-      form
-        .querySelector("#totalPrice-" + productId)
-        .querySelector(".price--large").innerHTML = totalPriceEU;
-
-      if (subscriptionSelected) {
-        form.querySelector("#perMonthInfo-" + productId).innerHTML =
-          "Per month";
-      } else {
-        form.querySelector("#perMonthInfo-" + productId).innerHTML = "";
-      }
+    const euroLocale = Intl.NumberFormat("en-EU", {
+      style: "currency",
+      currency: "EUR",
     });
-  }, 100);
+
+    //get unit price in string from Shopify's price component
+    let unitPriceStr = form
+      .querySelector("#unitPrice-" + productId)
+      .querySelector(".price-item")
+      .innerHTML.replace(/\s+/g, "");
+
+    //make float
+    let unitPrice = parseFloat(unitPriceStr.substr(1).replace(",", "."));
+
+    const unitPriceEU = euroLocale.format(unitPrice);
+    form
+      .querySelector("#unitPrice-" + productId)
+      .querySelector(".price-item")
+      .innerHTML = unitPriceEU;
+
+    //get quantity values
+    const quantity = parseFloat(quantityPicker.value);
+
+    //total price calulcations
+    const totalPrice = parseFloat(unitPrice * quantity);
+
+    const totalPriceEU = euroLocale.format(totalPrice);
+
+    //set total price in wrapper element
+    form
+      .querySelector("#totalPrice-" + productId)
+      .querySelector(".price--large").innerHTML = totalPriceEU;
+
+    if (subscriptionSelected) {
+      form.querySelector("#perMonthInfo-" + productId).innerHTML =
+        "Per month";
+    } else {
+      form.querySelector("#perMonthInfo-" + productId).innerHTML = "";
+    }
 }
 
-setTimeout(function () {
-  // productForm.classList.add("show");
-  setTotalPrice();
-}, 1000);
 
 function resetForm() {
   productForms.forEach((form, i) => {
