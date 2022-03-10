@@ -1,0 +1,22 @@
+.community-partners__content-grid {
+  display: grid;
+  grid-row-gap: 2rem;
+  grid-column-gap: 2rem;
+}
+
+.community-partner__card-heading {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .community-partners__content-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .community-partners__content-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

@@ -1,0 +1,58 @@
+{{ "section-community-blog.css" | asset_url | stylesheet_tag }}
+
+  {%- paginate blogs.community.articles by section.settings.posts_per_page -%}
+  <div class="page-width">
+    <h1 class="color-primary-1 blog-heading">{{ section.settings.heading }}</h1>
+    <div class="community-blog__grid">
+        {%- for article in blogs.community.articles -%}
+          <div class="blog-post__card">
+              <div class="blog-post__card-image-wrap">
+                <img class="blog-post__card-image" src="{{ article.image | image_url }}" alt="">
+              </div>
+              <div class="blog-post__card-content">
+                <div class="blog-post__header-tag">
+                  {% for tag in article.tags %}
+                    {%- if forloop.first -%}
+                      {{ tag }}
+                    {%- endif -%}
+                  {% endfor %}
+                </div>
+                <h4 class="color-primary-2">{{ article.title }}</h4>
+                <p>{{ article.excerpt }}</p>
+                <a href="{{ article.url }}" class="button button-borderless color-primary-1">READ MORE {% render 'icon-arrow-left-green' %}</a>
+              </div>
+          </div>
+        {%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+{%- schema -%}
+{
+  "name": "Community Blog",
+  "tag": "section",
+  "class": "section-community-blog section-padding",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Gutsy Blog"
+    },
+    {
+      "type": "number",
+      "id": "posts_per_page",
+      "label": "Posts per page",
+      "default": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community Blog"
+    }
+  ]
+}
+{%- endschema -%}

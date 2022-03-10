@@ -1,0 +1,28 @@
+<div class="page-width">
+  <div class="community-insta-feed__heading center">
+    <h1 class="color-primary-3">{{ section.settings.heading }}</h1>
+    <p>Join our community by tagging your Instagram adventures with #gutsypetfood</p>
+  </div>
+  <div class="tagembed-container" style=" width:100%;height:100%;overflow: auto;"><div class="tagembed-socialwall" data-wall-id="30090" view-url="https://widget.tagembed.com/30090"></div><script src="https://widget.tagembed.com/embed.min.js" type="text/javascript"></script></div>
+</div>
+
+{%- schema -%}
+{
+  "name": "Community Insta Feed",
+  "tag": "section",
+  "class": "section-insta-feed color-bg-green section-padding",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Gutsy Feed"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community Insta Feed"
+    }
+  ]
+}
+{%- endschema -%}

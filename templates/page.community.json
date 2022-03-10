@@ -1,0 +1,120 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "164690718054f1a911": {
+      "type": "community-blog",
+      "settings": {
+        "posts_per_page": 6
+      }
+    },
+    "1646907174432ba872": {
+      "type": "community-insta-feed",
+      "settings": {
+      }
+    },
+    "16469071637ea43b4a": {
+      "type": "community-news",
+      "blocks": {
+        "e0eda9f8-9a16-43b2-b566-6fa46212d183": {
+          "type": "article",
+          "settings": {
+            "heading": "SUSTAINABILITY IN PET FOODS: A SOLUTION?",
+            "image": "shopify:\/\/shop_images\/pexels-lisa-fotios-1006374.jpg",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida. <\/p>",
+            "tag": "THE NEW YORK TIMES",
+            "url": ""
+          }
+        },
+        "71fa6ec6-4167-4a8b-83c1-c13a429c6a8c": {
+          "type": "article",
+          "settings": {
+            "heading": "SUSTAINABILITY IN PET FOODS: A SOLUTION?",
+            "image": "shopify:\/\/shop_images\/Frame_207.jpg",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida. <\/p>",
+            "tag": "THE NEW YORK TIMES",
+            "url": ""
+          }
+        },
+        "500c323f-3cf9-4dcc-b9b5-088401552fc4": {
+          "type": "article",
+          "settings": {
+            "heading": "SUSTAINABILITY IN PET FOODS: A SOLUTION?",
+            "image": "shopify:\/\/shop_images\/1212981_1.jpg",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida. <\/p>",
+            "tag": "THE NEW YORK TIMES",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "e0eda9f8-9a16-43b2-b566-6fa46212d183",
+        "71fa6ec6-4167-4a8b-83c1-c13a429c6a8c",
+        "500c323f-3cf9-4dcc-b9b5-088401552fc4"
+      ],
+      "settings": {
+        "heading": "The Gutsy News"
+      }
+    },
+    "1646907188917c0881": {
+      "type": "community-partners",
+      "blocks": {
+        "c0d479db-0e37-4db3-a3c7-b1821ed5c37c": {
+          "type": "partner",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/tom-co-logo.png",
+            "heading": "Tom & Co",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida.",
+            "website": "https:\/\/www.tomandco.com\/nl\/"
+          }
+        },
+        "ffecccd0-0d78-444a-8204-0e527459c369": {
+          "type": "partner",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/tom-co-logo.png",
+            "heading": "Tom & Co",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida.",
+            "website": "https:\/\/www.tomandco.com\/nl\/"
+          }
+        },
+        "05bab3e9-afd8-46f5-b4ce-8856b32f6013": {
+          "type": "partner",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/tom-co-logo.png",
+            "heading": "Tom & Co",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida.",
+            "website": "https:\/\/www.tomandco.com\/nl\/"
+          }
+        },
+        "da5cb304-a408-47ad-ae79-247637c9d936": {
+          "type": "partner",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/tom-co-logo.png",
+            "heading": "Tom & Co",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida.",
+            "website": "https:\/\/www.tomandco.com\/nl\/"
+          }
+        }
+      },
+      "block_order": [
+        "c0d479db-0e37-4db3-a3c7-b1821ed5c37c",
+        "ffecccd0-0d78-444a-8204-0e527459c369",
+        "05bab3e9-afd8-46f5-b4ce-8856b32f6013",
+        "da5cb304-a408-47ad-ae79-247637c9d936"
+      ],
+      "settings": {
+        "heading": "The Gutsy Partners"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "164690718054f1a911",
+    "1646907174432ba872",
+    "16469071637ea43b4a",
+    "1646907188917c0881"
+  ]
+}

@@ -1,0 +1,64 @@
+{{ "section-community-partners.css" | asset_url | stylesheet_tag }}
+<div class="page-width center">
+  <h1 class="color-primary-1">{{ section.settings.heading }}</h1>
+  <div class="community-partners__content-grid">
+    {%- for block in section.blocks -%}
+      <div class="community-partner__card">
+        <img class="community-partner__logo" src="{{ block.settings.logo | image_url }}" alt="">
+        <h5 class="color-primary-2 community-partner__card-heading">{{ block.settings.heading }}</h5>
+        <div class="community-partner__content">
+          {{ block.settings.content }}
+        </div>
+        <a href="{{ block.settings.website }}" class="button button-borderless color-primary-1">VISIT WEBSITE {% render 'icon-arrow-left-green' %}</a>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+{%- schema -%}
+{
+  "name": "Community Partners",
+  "tag": "section",
+  "class": "section-community-partners section-padding",
+  "blocks": [
+    {
+      "type": "partner",
+      "name": "Partner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "url",
+          "id": "website",
+          "label": "Website"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Gutsy Partners"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community Partners"
+    }
+  ]
+}
+{%- endschema -%}

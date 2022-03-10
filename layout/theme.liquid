@@ -37,6 +37,7 @@
 
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
     <script src="https://smarteucookiebanner.upsell-apps.com/gdpr_adapter.js?shop=gutsy-bonfire.myshopify.com" type="application/javascript"></script>
+    <script src="{{ 'subscriptions.js' | asset_url }}" defer="defer"></script>
   {% capture 'header_content' %}{{ content_for_header }}{% endcapture %}{{ header_content | replace: "trekkie.load(", "(window.deferTrekkie || trekkie.load)(" }}
 
 
