@@ -15,6 +15,8 @@ if (!customElements.get("product-form")) {
             return false;
           }
         });
+
+        this.subscriptionField = this.querySelector(".subscriptionCheckbox");
       }
 
       onSubmitHandler(evt) {

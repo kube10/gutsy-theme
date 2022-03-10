@@ -1,0 +1,248 @@
+.product-form {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.product-form.show {
+  opacity: 1;
+}
+
+.product-form-wrap {
+  max-width: 840px;
+  width: 100%;
+}
+
+.product-form-wrap > h2 {
+  color: #1a3c32;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.buy-section-content > h3 {
+  text-align: center;
+}
+
+.product-form-wrap > h2 > span {
+  color: #f47f36;
+}
+
+.size-quantity {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 260px;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 12px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  left: 110%;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.product-form__icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column-gap: 2rem;
+  margin-left: 2rem;
+}
+
+.open-calculator-link {
+  cursor: pointer;
+}
+
+.info-link {
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.size-quantity .form__label {
+  margin-top: 1rem;
+}
+
+.after-form {
+  margin-top: 2rem;
+  grid-area: calculator;
+  margin-bottom: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.calculator {
+  margin-top: 1rem;
+}
+
+.calculator > span {
+  font-weight: bold;
+  color: rgb(var(--color-base-primary-2));
+  cursor: pointer;
+}
+
+.product-form__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.product-form__buttons > .button-secondary {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-color: rgb(var(--color-base-primary-1)) !important;
+  color: rgb(var(--color-base-primary-1)) !important;
+}
+
+.subscriptionCheckBox {
+  margin-right: 0px;
+}
+
+.product-form__buttons > .button-primary {
+  width: 100%;
+}
+
+.prices {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.totalPrice {
+  margin-left: 1rem;
+}
+
+.totalPrice > h2 {
+  color: rgb(var(--color-base-primary-2));
+}
+
+.usp-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  grid-area: icons;
+  margin-top: 2rem;
+  flex-direction: column;
+  width: 100%;
+}
+
+.usp {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.usp > span {
+  margin-left: 0.5rem;
+}
+
+div.rc_popup {
+  display: none;
+}
+
+.rc-radio {
+  cursor: default;
+}
+
+.rc-option--active {
+  --rc-active-bg: rgba(var(--color-base-primary-2), 0.3);
+  border-radius: 1rem;
+}
+
+.rc-template__legacy-radio .rc-radio {
+  padding: 1rem !important;
+}
+
+.product-form__error-message-wrapper {
+  font-weight: 400;
+  padding: 1rem;
+  background-color: rgba(255, 78, 78, 0.2);
+  color: rgba(255, 78, 78, 1);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 1080px) {
+  .product-form-wrap > h2 {
+    text-align: left;
+  }
+
+  .product-form__buttons > .button-secondary {
+    margin-right: 1rem;
+  }
+
+  .buy-section-content > h3 {
+    text-align: left;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas: "left right" "calculator calculator" "actions actions" "icons icons";
+    grid-column-gap: 2rem;
+  }
+
+  .product-form__actions {
+    grid-area: actions;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .after-form {
+    text-align: left;
+  }
+
+  .prices {
+    justify-content: flex-start;
+  }
+
+  .product-form__buttons {
+    flex-direction: row;
+  }
+
+  .product-form__buttons > .button-secondary {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+  }
+
+  .product-form__buttons > .button-primary {
+    width: auto;
+  }
+
+  .usp-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-area: icons;
+    margin-top: 2rem;
+    flex-direction: row;
+  }
+
+  .usp {
+    margin-bottom: 0rem;
+    margin-top: 0rem;
+  }
+
+  .hide-desktop {
+    display: none;
+  }
+}

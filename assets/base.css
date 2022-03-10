@@ -2456,3 +2456,15 @@ details-disclosure > details {
 }
 
 /* SEAL SUBSCRIPTIONS */
+
+/* WEGLOT LANGUAGE PICKER */
+.wg-default,
+.wg-default .country-selector {
+  right: auto !important;
+  left: 2rem !important;
+}
+
+/* NEXTSALE OVERLAY */
+.nsw.nsp .ns-overlay {
+  display: block;
+}

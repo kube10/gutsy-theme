@@ -37,7 +37,34 @@
       {%- endfor -%}
     </div>
     <div class="section-video-banner-content-right">
-      {%- for block in section.blocks -%}
+      {%- if section.settings.featured_product -%}
+        {%- assign product = section.settings.featured_product -%}
+        <div id="blog-feature-card" class="section-video-banner-blog-feature-card">
+          <div id="blog-feature-title" class="blog-feature-title">
+            <h3 class="blog-feature-count">01</h3>
+            <h4 class="blog-feature-article-title">{{ section.settings.featured_product_heading}}</h4>
+          </div>
+            <div id="blog-feature-line" class="blog-feature-line"></div>
+            <a id="blog-feature-card-button" href="{{ product.url }}" target="_blank" class="blog-feature-card-button">
+              <span>Discover</span>
+              {% render 'icon-arrow-right-white.liquid' %}
+            </a>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.second_feature_url -%}
+        <div id="blog-feature-card" class="section-video-banner-blog-feature-card">
+          <div id="blog-feature-title" class="blog-feature-title">
+            <h3 class="blog-feature-count">02</h3>
+            <h4 class="blog-feature-article-title">{{ section.settings.second_feature_heading }}</h4>
+          </div>
+            <div id="blog-feature-line" class="blog-feature-line"></div>
+            <a id="blog-feature-card-button" href="{{ section.settings.second_feature_url }}" target="_blank" class="blog-feature-card-button">
+              <span>Discover</span>
+              {% render 'icon-arrow-right-white.liquid' %}
+            </a>
+        </div>
+      {%- endif -%}
+      <!-- {%- for block in section.blocks -%}
         {%- if block.type == "blog_feature" -%}
           {%- if block.settings.blog != blank -%}
             {%- for article in block.settings.blog.articles limit: 3 -%}
@@ -55,7 +82,7 @@
             {%- endfor -%}
           {%- endif -%}
         {%- endif -%}
-      {%- endfor -%}
+      {%- endfor -%} -->
     </div>
   </div>
 </div>
@@ -120,6 +147,30 @@
       "max": 750,
       "step": 10,
       "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Features"
+    },
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Featured product"
+    },
+    {
+      "type": "text",
+      "id": "featured_product_heading",
+      "label": "Featured product heading"
+    },
+    {
+      "type": "url",
+      "id": "second_feature_url",
+      "label": "Second Feature URL"
+    },
+    {
+      "type": "text",
+      "id": "second_feature_heading",
+      "label": "Second feature heading"
     }
   ],
   "blocks": [
