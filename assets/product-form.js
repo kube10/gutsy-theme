@@ -16,7 +16,27 @@ if (!customElements.get("product-form")) {
           }
         });
 
-        this.subscriptionField = this.querySelector(".subscriptionCheckbox");
+        this.calculators = this.querySelectorAll(".calculator-modal");
+        this.openCalculator = this.querySelector(".open-calculator-link");
+        this.calculatorModal = this.querySelector(".calculator-modal");
+
+        const calculatorModal = this.calculatorModal;
+        this.openCalculator.addEventListener("click", function (e) {
+          calculatorModal.classList.add("open");
+        });
+
+        this.closeCalculator = this.querySelector(".calculator-close");
+
+        this.closeCalculator.addEventListener("click", function (e) {
+          calculatorModal.classList.remove("open");
+        });
+
+        this.checkoutBtn = this.querySelector("#directCheckout");
+        this.checkoutBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          this.form.setAttribute("checkout", true);
+          this.form.submit();
+        });
       }
 
       onSubmitHandler(evt) {

@@ -5,8 +5,6 @@
   {%- endif -%}
 {%- endfor -%}
 
-
-
 <div class="product-form-wrap color-{{colorScheme}}">
   {%- if subscription -%}
     <h2>Get <span>one bag</span> or <span>subscribe and save!</span></h2>
@@ -52,7 +50,6 @@
         <label class="form__label" for="Quantity-{{ section.id }}">
           {{ 'products.product.quantity.label' | t }}
         </label>
-
         <quantity-input class="quantity">
           <button class="quantity__button no-js-hidden" name="minus" type="button">
             <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
@@ -86,12 +83,13 @@
 
     <div class="after-form">
       {%- if subscription -%}
-        <input class="subscriptionCheckBox" type="checkbox" name="" value="">
+        <div class="sealsubs-target-element" data-product="{{ product | json | escape }}" data-handle="{{ product.handle }}"></div>
+        <!-- <input class="subscriptionCheckBox" type="checkbox" name="" value="">
         <span>I want a subscription (10% discount)</span>
         <a target="_blank" class="info-link tooltip" href="{{settings.subscriptions_info_page}}">
           {% render 'icon-info' %}
           <span class="tooltiptext">More information about our subscriptions</span>
-        </a>
+        </a> -->
       {%- endif -%}
       <!-- <div class="calculator">
           Not sure how much your pet needs? <br class="hide-desktop"/><span class="open-calculator-link" calculatorId="{{product.id}}" >Try our calculator!</span>
@@ -169,6 +167,9 @@
         <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}" disabled>
     </div>
     {%- endform -%}
+
+    {% assign productTitle = product.title | replace: " ", "_" | downcase %}
+    {% render "calculator", productTitle: productTitle, id: product.id, product: product %}
   </product-form>
   <div class="usp-row">
     <div class="usp">
@@ -185,6 +186,3 @@
     </div>
   </div>
 </div>
-
-{% assign productTitle = product.title | replace: " ", "_" | downcase %}
-{% render "calculator", productTitle: productTitle, id: product.id, product: product %}

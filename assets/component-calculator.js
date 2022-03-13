@@ -144,6 +144,7 @@ const large = [
 let amount, bagSize;
 
 //"calculaors" variable declared in 'component-product-form.js'
+const calculators = document.querySelectorAll(".calculator-modal");
 calculators.forEach((calculator, i) => {
   const productId = calculator.getAttribute("id").substr(11);
 

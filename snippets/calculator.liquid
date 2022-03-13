@@ -63,7 +63,7 @@
           </select>
         </div>
 
-        {%- for variant in product.variants -%}
+        <!-- {%- for variant in product.variants -%}
           <product-form productId="{{product.id}}">
             {%- assign product_form_id = variant.id -%}
             {%- form 'product', product, data-productid: product.id, id: product_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
@@ -124,7 +124,7 @@
               </div>
             {%- endform -%}
           </product-form>
-        {%- endfor -%}
+        {%- endfor -%} -->
           <!-- <p style="text-align: center">Click to apply!</p>
           <button id="bagsBtn-{{id}}" class="button button-primary"><span id="bagsbtn-span-{{id}}">1&nbsp;</span> Gutsy Bag (6KG)</button> -->
       </div>
