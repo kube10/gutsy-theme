@@ -37,6 +37,63 @@ if (!customElements.get("product-form")) {
           this.form.setAttribute("checkout", true);
           this.form.submit();
         });
+
+        this.quantityInput = this.querySelector(".quantity__input");
+        this.priceItem = this.querySelector(".price-item");
+        this.totalPriceWrapper = this.querySelector(
+          ".totalPrice > .price--large"
+        );
+
+        this.calculateTotalPrice(
+          this.priceItem,
+          this.quantityInput,
+          this.totalPriceWrapper
+        );
+
+        this.quantityInput.addEventListener("change", (e) => {
+          console.log(this.priceItem);
+          this.calculateTotalPrice(
+            this.priceItem,
+            this.quantityInput,
+            this.totalPriceWrapper
+          );
+        });
+
+        let $this = this;
+
+        this.subscriptionInput;
+
+        this.subscriptionSelected = false;
+
+        this.perMonthInfo = this.querySelector(".perMonthInfo");
+        this.perMonthInfo.classList.add("hidden");
+
+        /* SubscriptionFields are inserted with JS later, so we must check for them to be loaded, before adding a mutation observer to the hidden input field. */
+        const subscriptionLoaded = setInterval(function (e) {
+          if ($this.querySelector("input[name='selling_plan']")) {
+            this.subscriptionInput = $this.querySelector(
+              "input[name='selling_plan']"
+            );
+            const config = { attributes: true, childList: true, subtree: true };
+            const callback = function (mutationsList, observer) {
+              for (const mutation of mutationsList) {
+                if (mutation.type === "attributes") {
+                  if (mutation.target.value) {
+                    $this.subscriptionSelected = true;
+                  } else {
+                    $this.subscriptionSelected = false;
+                  }
+                  $this.applyDiscount($this.subscriptionSelected);
+                }
+              }
+            };
+            const observer = new MutationObserver(callback);
+
+            observer.observe(this.subscriptionInput, config);
+
+            clearInterval(subscriptionLoaded);
+          }
+        }, 20);
       }
 
       onSubmitHandler(evt) {
@@ -110,6 +167,48 @@ if (!customElements.get("product-form")) {
         if (errorMessage) {
           this.errorMessage.textContent = errorMessage;
         }
+      }
+
+      applyDiscount(isDiscount) {
+        const unitPriceStr = this.priceItem.innerHTML.replace(/\s+/g, "");
+        let unitPrice = parseFloat(unitPriceStr.substr(1).replace(",", "."));
+        let newPrice;
+
+        if (isDiscount) {
+          newPrice = unitPrice * 0.9;
+          this.perMonthInfo.classList.remove("hidden");
+        } else {
+          newPrice = unitPrice / 0.9;
+          this.perMonthInfo.classList.add("hidden");
+        }
+
+        const euroLocale = Intl.NumberFormat("en-EU", {
+          style: "currency",
+          currency: "EUR",
+        });
+
+        const newPriceEU = euroLocale.format(newPrice);
+
+        this.priceItem.innerHTML = newPriceEU;
+        this.calculateTotalPrice(
+          this.priceItem,
+          this.quantityInput,
+          this.totalPriceWrapper
+        );
+      }
+
+      calculateTotalPrice(priceItem, quantityInput, totalPriceWrapper) {
+        const unitPriceStr = priceItem.innerHTML.replace(/\s+/g, "");
+        let unitPrice = parseFloat(unitPriceStr.substr(1).replace(",", "."));
+        const quantity = parseFloat(quantityInput.value);
+
+        const euroLocale = Intl.NumberFormat("en-EU", {
+          style: "currency",
+          currency: "EUR",
+        });
+        const totalPrice = parseFloat(unitPrice * quantity);
+        const totalPriceEU = euroLocale.format(totalPrice);
+        totalPriceWrapper.innerHTML = totalPriceEU;
       }
     }
   );

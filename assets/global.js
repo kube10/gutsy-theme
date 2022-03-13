@@ -666,6 +666,7 @@ class VariantSelects extends HTMLElement {
   constructor() {
     super();
     this.addEventListener("change", this.onVariantChange);
+    this.form = this.parentElement.closest("product-form");
   }
 
   onVariantChange() {
@@ -755,14 +756,19 @@ class VariantSelects extends HTMLElement {
   }
 
   updateVariantInput() {
-    const productForm = document.querySelectorAll(
-      `#product-form-${this.dataset.product}, #product-form-installment`
-    );
-    productForms.forEach((productForm) => {
-      const input = productForm.querySelector('input[name="id"]');
-      input.value = this.currentVariant.id;
-      input.dispatchEvent(new Event("change", { bubbles: true }));
-    });
+    console.log(this.form);
+    const input = this.form.querySelector('input[name="id"]');
+    input.value = this.currentVariant.id;
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+
+    // const productForm = document.querySelectorAll(
+    //   `#product-form-${this.dataset.product}, #product-form-installment`
+    // );
+    // productForms.forEach((productForm) => {
+    //   const input = productForm.querySelector('input[name="id"]');
+    //   input.value = this.currentVariant.id;
+    //   input.dispatchEvent(new Event("change", { bubbles: true }));
+    // });
   }
 
   updatePickupAvailability() {
@@ -786,45 +792,35 @@ class VariantSelects extends HTMLElement {
   }
 
   renderProductInfo() {
-    fetch(
-      `${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`
-    )
-      .then((response) => response.text())
-      .then((responseText) => {
-        const id = `price-${this.dataset.section}`;
-        const html = new DOMParser().parseFromString(responseText, "text/html");
-        const productId = this.dataset.product;
-        const destination = document.querySelector('#' + id + "[data-product='"+productId+"']");
-        const source = html.querySelector(".priceComponent[data-product='"+productId+"']");
-
-        const productForm = document.querySelector('.product-form[productId="'+productId+'"]');
-
-        if (source && destination) destination.innerHTML = source.innerHTML;
-
-        const price = document.getElementById(`price-${this.dataset.section}`);
-
-        if (price) price.classList.remove("visibility-hidden");
-        this.toggleAddButton(
-          !this.currentVariant.available,
-          window.variantStrings.soldOut
+    fetch(`${this.dataset.url}.js`)
+      .then((response) => response.json())
+      .then((data) => {
+        const variants = data.variants;
+        const currentVariant = variants.find(
+          (variant) => variant.id === this.currentVariant.id
         );
 
-        let unitPriceStr = productForm
-          .querySelector("#unitPrice-" + productId)
-          .querySelector(".price-item")
-          .innerHTML.replace(/\s+/g, "");
+        const euroLocale = Intl.NumberFormat("en-EU", {
+          style: "currency",
+          currency: "EUR",
+        });
 
-        let unitPrice = parseFloat(unitPriceStr.substr(1).replace(",", "."));
+        const unitPriceFloat = parseFloat(currentVariant.price / 100);
 
-        const finalPrice = this.getSubscriptionPrice(unitPrice, productForm);
-        this.changeTotalPrice(finalPrice, productForm);
+        const unitPriceEU = euroLocale.format(unitPriceFloat);
 
+        this.form.priceItem.innerHTML = unitPriceEU;
+        this.form.calculateTotalPrice(
+          this.form.priceItem,
+          this.form.quantityInput,
+          this.form.totalPriceWrapper
+        );
       });
   }
 
   getSubscriptionPrice(originalUnitPrice, form) {
-    const subscriptionField = form.querySelector('.subscriptionCheckBox');
-    let newPrice = originalUnitPrice
+    const subscriptionField = form.querySelector(".subscriptionCheckBox");
+    let newPrice = originalUnitPrice;
     console.log("Sub price function triggered");
     console.log("originalUnitPrice: " + originalUnitPrice);
     if (subscriptionField.checked) {
@@ -832,44 +828,6 @@ class VariantSelects extends HTMLElement {
       console.log("sub field checked");
     }
     return newPrice;
-  }
-
-  changeTotalPrice(unitPrice, form) {
-      const productId = form.getAttribute("productId");
-
-      //get quantitypicker element
-      const quantityPicker = form.querySelector(".quantity__input");
-
-      const euroLocale = Intl.NumberFormat("en-EU", {
-        style: "currency",
-        currency: "EUR",
-      });
-
-      const unitPriceEU = euroLocale.format(unitPrice);
-      form
-        .querySelector("#unitPrice-" + productId)
-        .querySelector(".price-item")
-        .innerHTML = unitPriceEU;
-
-      //get quantity values
-      const quantity = parseFloat(quantityPicker.value);
-
-      //total price calulcations
-      const totalPrice = parseFloat(unitPrice * quantity);
-
-      const totalPriceEU = euroLocale.format(totalPrice);
-
-      //set total price in wrapper element
-      form
-        .querySelector("#totalPrice-" + productId)
-        .querySelector(".price--large").innerHTML = totalPriceEU;
-
-      if (subscriptionSelected) {
-        form.querySelector("#perMonthInfo-" + productId).innerHTML =
-          "Per month";
-      } else {
-        form.querySelector("#perMonthInfo-" + productId).innerHTML = "";
-      }
   }
 
   toggleAddButton(disable = true, text, modifyClass = true) {
