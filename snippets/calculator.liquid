@@ -1,6 +1,6 @@
 {{ 'component-calculator.css' | asset_url | stylesheet_tag }}
 
-<div id="calculator-{{id}}" class="calculator-modal color-bg-white">
+<calculator-element id="calculator-{{id}}" class="calculator-modal color-bg-white">
   <div class="calculator-modal-inner">
     <div calculatorId="{{id}}" class="calculator-close">
       <img src="
@@ -50,8 +50,8 @@
       <div class="calculator-modal-results">
         <div id="warning-{{id}}" class="warning hidden">
         </div>
-        <p>Recommended daily dose: <span id="results1-{{id}}"></span></p>
-        <p>Kg/month: <span id="results2-{{id}}"></span></p>
+        <p>Recommended daily dose: <span id="results1-{{id}}" class="results1Field"></span></p>
+        <p>Kg/month: <span id="results2-{{id}}" class="results2Field"></span></p>
       </div>
       <div class="calculator-modal-actions">
         <h2 class="color-primary-1">Our recommendations:</h2>
@@ -216,4 +216,4 @@
       </div>
     </div>
   </div>
-</div>
+</calculator-element>
