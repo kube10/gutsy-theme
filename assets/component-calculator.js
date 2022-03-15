@@ -144,17 +144,17 @@ const large = [
 const subscriptions = [
   {
     product: "puppy",
-    name: "subs_type_1tcnskksowghl7i",
+    name: "subs_type_gzcqmf13m29n3nd",
     value: "547455030",
   },
   {
     product: "adult-s",
-    name: "subs_type_hw3c3dr9gep1bqc",
+    name: "subs_type_0e29uj8fvgikc8d",
     value: "547455030",
   },
   {
     product: "adult-l",
-    name: "subs_type_pofczctutf7ucey",
+    name: "subs_type_hidvaoxyrw6odxi",
     value: "547455030",
   },
 ];
@@ -180,6 +180,16 @@ if (!customElements.get("calculator")) {
         this.subscriptionSelect = this.querySelector("#subscriptionSelect");
 
         this.subscriptionSelect.addEventListener("change", (e) => {
+          console.log(this.subscriptionSelect.value);
+          this.sellingPlanInputs = this.querySelectorAll(
+            'input[name="selling_plan"]'
+          );
+          this.subTypeInputs = this.querySelectorAll('input[name="sub_type"]');
+
+          this.subsIntervalInputs = this.querySelectorAll(
+            'input[name="subs_interval"]'
+          );
+
           this.sellingPlan1 = this.querySelectorAll(".selling_plan_1");
           this.sellingPlan2 = this.querySelectorAll(".selling_plan_2");
           this.subscription;
@@ -197,21 +207,29 @@ if (!customElements.get("calculator")) {
           }
 
           if (this.subscriptionSelect.value == "none") {
-            this.sellingPlan1.forEach((item, i) => {
-              item.value = "";
+            this.sellingPlanInputs.forEach((input, i) => {
+              input.value = "";
             });
 
-            this.sellingPlan2.forEach((item, i) => {
-              item.value = "";
+            this.subTypeInputs.forEach((input, i) => {
+              input.value = "";
+            });
+
+            this.subsIntervalInputs.forEach((input, i) => {
+              input.value = "";
             });
           } else if (this.subscriptionSelect.value == "30days") {
-            this.sellingPlan1.forEach((item, i) => {
-              item.value = "0";
-              item.setAttribute("name", subscription.name);
+            this.sellingPlanInputs.forEach((input, i) => {
+              input.value = this.subscription.value;
             });
 
-            this.sellingPlan2.forEach((item, i) => {
-              item.value = subscription.value;
+            this.subTypeInputs.forEach((input, i) => {
+              input.value = "0";
+              input.setAttribute("name", this.subscription.name);
+            });
+
+            this.subsIntervalInputs.forEach((input, i) => {
+              input.value = this.subscription.value;
             });
           }
         });

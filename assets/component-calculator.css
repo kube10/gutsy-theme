@@ -67,6 +67,14 @@
 
 .calculator-product-form {
   position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.calculator-subscription__info-wrap {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(var(--color-base-primary-2));
 }
 
 .calculator-form {

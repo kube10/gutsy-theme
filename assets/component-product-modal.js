@@ -19,6 +19,6 @@ closeModalBtn.forEach((btn, i) => {
     );
     modal.classList.remove("open");
     document.body.style.overflow = "auto";
-    resetForm();
+    // resetForm();
   });
 });

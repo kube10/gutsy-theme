@@ -79,6 +79,8 @@ if (!customElements.get("product-form")) {
             this.subscriptionInput = $this.querySelector(
               "input[name='selling_plan']"
             );
+
+            this.savingsBadge.innerHTML = "First month free!";
             const config = { attributes: true, childList: true, subtree: true };
             const callback = function (mutationsList, observer) {
               for (const mutation of mutationsList) {
