@@ -141,6 +141,21 @@ const large = [
   },
 ];
 
+// if (!customElements.get("calculator")) {
+//   customElements.define(
+//     "calculator",
+//     class Calculator extends HTMLElement {
+//       constructor() {
+//         super();
+//
+//         this.weightField = this.querySelector(".weight-field");
+//         this.breedField = this.querySelector(".breed-field");
+//         this.ageField = this.querySelector(".age-field");
+//       }
+//     }
+//   );
+// }
+
 let amount, bagSize;
 
 //"calculaors" variable declared in 'component-product-form.js'

@@ -15,7 +15,7 @@
         <div class="calculator-form-group">
           <label for="breed">Dog type</label>
           <div class="select">
-            <select class="select__select" name="breed" id="breed-{{id}}">
+            <select class="select__select breed-field" name="breed" id="breed-{{id}}">
               <option value="puppy">Puppy</option>
               <option value="mini">Mini</option>
               <option value="medium">Medium</option>
@@ -29,7 +29,7 @@
         <div class="calculator-form-group">
           <label for="weight">Weight (kg)</label>
           <div class="select">
-            <select id="weight-{{id}}" class="select__select">
+            <select id="weight-{{id}}" class="weight-field select__select">
             </select>
             <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
@@ -39,7 +39,7 @@
         <div id="age-form-group-{{id}}" class="calculator-form-group age-form-group hidden">
           <label for="age">Age (months)</label>
           <div class="select">
-            <select id="age-{{id}}" class="select__select">
+            <select id="age-{{id}}" class="select__select age-field">
             </select>
             <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
@@ -62,6 +62,86 @@
             <option value="30days">Delivery every 30 days</option>
           </select>
         </div>
+        {%- for variant in product.variants -%}
+          <product-form>
+            {%- form 'product', product, data-productid: product.id, id: product_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form', class: "calculator-product-form" -%}
+              <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ variant.id }}" disabled>
+              <div class="calculator-modal-option__row-title">
+                <span>{{product.title}}:</span>
+                <span class="option-value">{{variant.option1}}</span>
+              </div>
+              <div class="calculator-modal-option__row">
+                <div class="calculator-modal-actions__field">
+                    <div class="product-form__input product-form__quantity" {{ block.shopify_attributes }}>
+                                  <quantity-input class="quantity">
+                                    <button class="quantity__button no-js-hidden" name="minus" type="button">
+                                      <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+                                      {% render 'icon-minus' %}
+                                    </button>
+                                    <input class="quantity__input"
+                                        type="number"
+                                        name="quantity"
+                                        id="quantity-picker-{{variant.id}}"
+                                        min="1"
+                                        value="1"
+                                        form="{{ product_form_id }}"
+                                        productId="{{product.id}}"
+                                        data-size="{{variant.option1}}"
+                                      >
+                                    <button class="quantity__button no-js-hidden" name="plus" type="button">
+                                      <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+                                      {% render 'icon-plus' %}
+                                    </button>
+                                  </quantity-input>
+                                </div>
+                              </div>
+                              <div class="prices calculator__prices">
+                                <div id="unitPrice-{{product.id}}" class="unitPrice">
+                                  <span>Price per bag</span>
+                                  <div class="no-js-hidden priceComponent" id="price-{{ section.id }}" data-product="{{product.id}}" role="status" {{ block.shopify_attributes }}>
+                                    {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price' -%}
+                                  </div>
+                                </div>
+                                <div id="totalPrice-{{product.id}}" class="totalPrice">
+                                  <span>Total price</span>
+                                  <h2 class="price"></h2>
+                                  <span id="perMonthInfo-{{product.id}}" class='perMonthInfo'>Per month</span>
+                                </div>
+                              </div>
+                              <button
+                                  type="submit"
+                                  name="add"
+                                  class="product-form__submit button button-secondary button-small {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+                                {% if variant.available == false %}disabled{% endif %}
+                                >
+                                    <span>
+                                      {%- if variant.available -%}
+                                        {{ 'products.product.add_to_cart' | t }}
+                                      {%- else -%}
+                                        {{ 'products.product.sold_out' | t }}
+                                      {%- endif -%}
+                                    </span>
+                                    <div class="loading-overlay__spinner hidden">
+                                      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                      </svg>
+                                    </div>
+                                </button>
+
+                  </div>
+              <div class="product-form__error-message-wrapper" role="alert" hidden>
+                <span class="product-form__error-message"></span>
+              </div>
+              <div class="product-form__success-wrapper">
+                <div class="product-form__success-content">
+                  {%- render "icon-success" -%}
+                  <span class="product-form__success-message">Product was added to cart!</span>
+                </div>
+                <div class="product-form__success-close">Close</div>
+              </div>
+            {%- endform -%}
+          </product-form>
+        {%- endfor -%}
 
         <!-- {%- for variant in product.variants -%}
           <product-form productId="{{product.id}}">

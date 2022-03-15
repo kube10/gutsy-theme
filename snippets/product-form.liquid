@@ -12,7 +12,7 @@
 
   {%- assign product_form_id = 'product-form-' | append: product.id -%}
 
-  <product-form productId="{{product.id}}" class="product-form">
+  <product-form productId="{{product.id}}" class="product-form" data-calculator="true" data-checkoutBtn="true">
     {%- form 'product', product, data-productid: product.id, id: product_form_id, class: 'form-grid', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
 
     <div class="size-quantity">
@@ -107,7 +107,7 @@
             </div>
             <div id="totalPrice-{{product.id}}" class="totalPrice">
               <span>Total price</span>
-              <h2 class="price--large"></h2>
+              <h2 class="price price--large"></h2>
               <span id="perMonthInfo-{{product.id}}" class='perMonthInfo'>Per month</span>
             </div>
           </div>
@@ -165,6 +165,13 @@
           </div>
         </div>
         <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+        <div class="product-form__success-wrapper">
+          <div class="product-form__success-content">
+            {%- render "icon-success" -%}
+            <span class="product-form__success-message">Product was added to cart!</span>
+          </div>
+          <div class="product-form__success-close">Close</div>
+        </div>
     </div>
     {%- endform -%}
 

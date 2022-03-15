@@ -16,33 +16,38 @@ if (!customElements.get("product-form")) {
           }
         });
 
-        this.calculators = this.querySelectorAll(".calculator-modal");
-        this.openCalculator = this.querySelector(".open-calculator-link");
-        this.calculatorModal = this.querySelector(".calculator-modal");
+        this.calculatorInForm = this.dataset.calculator;
 
-        const calculatorModal = this.calculatorModal;
-        this.openCalculator.addEventListener("click", function (e) {
-          calculatorModal.classList.add("open");
-        });
+        if (this.calculatorInForm) {
+          this.calculators = this.querySelectorAll(".calculator-modal");
+          this.openCalculator = this.querySelector(".open-calculator-link");
+          this.calculatorModal = this.querySelector(".calculator-modal");
 
-        this.closeCalculator = this.querySelector(".calculator-close");
+          const calculatorModal = this.calculatorModal;
+          this.openCalculator.addEventListener("click", function (e) {
+            calculatorModal.classList.add("open");
+          });
 
-        this.closeCalculator.addEventListener("click", function (e) {
-          calculatorModal.classList.remove("open");
-        });
+          this.closeCalculator = this.querySelector(".calculator-close");
 
-        this.checkoutBtn = this.querySelector("#directCheckout");
-        this.checkoutBtn.addEventListener("click", function (e) {
-          e.preventDefault();
-          this.form.setAttribute("checkout", true);
-          this.form.submit();
-        });
+          this.closeCalculator.addEventListener("click", function (e) {
+            calculatorModal.classList.remove("open");
+          });
+        }
+
+        this.checkoutBtnInForm = this.dataset.checkoutBtn;
+        if (this.checkoutBtnInForm) {
+          this.checkoutBtn = this.querySelector("#directCheckout");
+          this.checkoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            this.form.setAttribute("checkout", true);
+            this.form.submit();
+          });
+        }
 
         this.quantityInput = this.querySelector(".quantity__input");
         this.priceItem = this.querySelector(".price-item");
-        this.totalPriceWrapper = this.querySelector(
-          ".totalPrice > .price--large"
-        );
+        this.totalPriceWrapper = this.querySelector(".totalPrice > .price");
 
         this.calculateTotalPrice(
           this.priceItem,
@@ -137,7 +142,8 @@ if (!customElements.get("product-form")) {
               return;
             }
 
-            this.cartNotification.renderContents(response);
+            // this.cartNotification.renderContents(response);
+
             console.log(response);
           })
           .catch((e) => {
@@ -149,6 +155,14 @@ if (!customElements.get("product-form")) {
             this.querySelector(".loading-overlay__spinner").classList.add(
               "hidden"
             );
+            this.querySelector(".product-form__success-wrapper").classList.add(
+              "show"
+            );
+            this.querySelector(".product-form__success-close").onclick = () => {
+              this.querySelector(
+                ".product-form__success-wrapper"
+              ).classList.remove("show");
+            };
           });
       }
 

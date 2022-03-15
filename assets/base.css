@@ -1790,11 +1790,11 @@ input[type="checkbox"] {
 }
 
 /* component-cart-count-bubble */
-.cart-count-bubble:empty {
+.cart-icon-bubble:empty {
   display: none;
 }
 
-.cart-count-bubble {
+.cart-icon-bubble {
   position: absolute;
   background-color: rgb(var(--color-button));
   color: rgb(var(--color-button-text));

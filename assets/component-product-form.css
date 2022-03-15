@@ -133,6 +133,49 @@
   color: rgb(var(--color-base-primary-2));
 }
 
+.product-form__success-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #7af096;
+  border: 1px solid #49ab60;
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(25px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+  z-index: 99;
+}
+
+.product-form__success-wrapper.show {
+  opacity: 1;
+  transform: translateY(0px);
+  pointer-events: auto;
+}
+
+.product-form__success-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.product-form__success-content > svg {
+  max-width: 2rem;
+  margin-right: 1rem;
+}
+
+.product-form__success-close {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
 .usp-row {
   display: flex;
   align-items: flex-start;
@@ -205,6 +248,7 @@ div.rc_popup {
     align-items: flex-end;
     justify-content: space-between;
     flex-wrap: wrap;
+    position: relative;
   }
 
   .after-form {
