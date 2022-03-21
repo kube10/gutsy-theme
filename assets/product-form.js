@@ -16,9 +16,13 @@ if (!customElements.get("product-form")) {
           }
         });
 
+        this.subscriptionInputWrap = this.querySelector(
+          ".sealsubs-target-element"
+        );
+
         this.calculatorInForm = this.dataset.calculator;
 
-        if (this.calculatorInForm) {
+        if (this.calculatorInForm && this.subscriptionInputWrap) {
           this.calculators = this.querySelectorAll(".calculator-modal");
           this.openCalculator = this.querySelector(".open-calculator-link");
           this.calculatorModal = this.querySelector(".calculator-modal");
@@ -74,33 +78,40 @@ if (!customElements.get("product-form")) {
         this.perMonthInfo.classList.add("hidden");
 
         /* SubscriptionFields are inserted with JS later, so we must check for them to be loaded, before adding a mutation observer to the hidden input field. */
-        const subscriptionLoaded = setInterval(function (e) {
-          if ($this.querySelector("input[name='selling_plan']")) {
-            this.subscriptionInput = $this.querySelector(
-              "input[name='selling_plan']"
-            );
 
-            this.savingsBadge.innerHTML = "First month free!";
-            const config = { attributes: true, childList: true, subtree: true };
-            const callback = function (mutationsList, observer) {
-              for (const mutation of mutationsList) {
-                if (mutation.type === "attributes") {
-                  if (mutation.target.value) {
-                    $this.subscriptionSelected = true;
-                  } else {
-                    $this.subscriptionSelected = false;
+        if (this.subscriptionInput) {
+          const subscriptionLoaded = setInterval(function (e) {
+            if ($this.querySelector("input[name='selling_plan']")) {
+              this.subscriptionInput = $this.querySelector(
+                "input[name='selling_plan']"
+              );
+
+              this.savingsBadge.innerHTML = "First month free!";
+              const config = {
+                attributes: true,
+                childList: true,
+                subtree: true,
+              };
+              const callback = function (mutationsList, observer) {
+                for (const mutation of mutationsList) {
+                  if (mutation.type === "attributes") {
+                    if (mutation.target.value) {
+                      $this.subscriptionSelected = true;
+                    } else {
+                      $this.subscriptionSelected = false;
+                    }
+                    $this.applyDiscount($this.subscriptionSelected);
                   }
-                  $this.applyDiscount($this.subscriptionSelected);
                 }
-              }
-            };
-            const observer = new MutationObserver(callback);
+              };
+              const observer = new MutationObserver(callback);
 
-            observer.observe(this.subscriptionInput, config);
+              observer.observe(this.subscriptionInput, config);
 
-            clearInterval(subscriptionLoaded);
-          }
-        }, 20);
+              clearInterval(subscriptionLoaded);
+            }
+          }, 20);
+        }
       }
 
       onSubmitHandler(evt) {

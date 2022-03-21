@@ -119,7 +119,7 @@
 }
 
 .section-video-banner-blog-feature-card {
-  background-color: #081310;
+  background-color: rgb(var(--color-base-primary-3));
   mix-blend-mode: hard-light;
   border-radius: 1rem;
   opacity: 0.85;
@@ -132,7 +132,7 @@
 }
 
 .section-video-banner-blog-feature-card h3 {
-  color: white;
+  color: rgb(var(--color-base-primary-1));
 }
 
 .blog-feature-title {
@@ -144,7 +144,7 @@
 .blog-feature-article-title {
   max-width: 200px;
   transition: all 0.4s ease;
-  color: white;
+  color: rgb(var(--color-base-primary-1));
 }
 
 .blog-feature-title > h3:last-child {
@@ -164,13 +164,13 @@
   width: 100%;
   height: 4px;
   border-radius: 4px;
-  background-color: white;
+  background-color: rgb(var(--color-base-primary-1));
   display: block !important;
   transition: width 0.2s ease;
 }
 
 .blog-feature-card-button {
-  color: white;
+  color: rgb(var(--color-base-primary-1));
   font-weight: 600;
   text-transform: uppercase;
   display: flex;

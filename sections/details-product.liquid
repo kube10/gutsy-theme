@@ -27,7 +27,8 @@
         </div>
         {% render 'product-usp-icons' %}
         <div class="product-details-actions">
-          <button onclick="scrollToNextSection()" class="button button-primary">More info <img src="{{'arrow-down-white.svg' | asset_url }}" alt=""></button>
+          <button onclick="scrollToNextSection()" class="button button-secondary">More info</button>
+          <button type="button" onclick="scrollToBuyForm()" name="button" class="button button-primary">Buy now</button>
         </div>
       </div>
     </div>
@@ -38,6 +39,11 @@
   function scrollToNextSection() {
     const nextSection = document.querySelector('#section-product-detail-usp');
     nextSection.scrollIntoView({behavior: "smooth"});
+  }
+
+  function scrollToBuyForm() {
+    const buyForm = document.querySelector('.product-buy-section');
+    buyForm.scrollIntoView({ behavior: "smooth"} )
   }
 </script>
 

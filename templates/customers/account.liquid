@@ -107,24 +107,24 @@
             <img class="profile-img" src="{{custom_data['profile_picture'].url}}" alt="">
           {%- endif -%}
           <div class="">
-            <h2 class="color-primary-2">Hello, {{customer.first_name}}</h2>
-            <label for="" class="account__label">Your pet</label>
-
-            {%- if custom_data["pet_name"] != "" -%}
-              <p id="petName">{{ custom_data["pet_name"]}}</p>
+            {%- if custom_data["pet_name" != ""] -%}
+              <h2 class="color-primary-2">Hey {{customer.first_name}} & <span id="petName">{{ custom_data["pet_name"]}}</span>!</h2>
+            {%- else -%}
+              <h2 class="color-primary-2">Hey {{customer.first_name}}!</h2>
             {%- endif -%}
 
             {%- if custom_data["pet_birthday"] != "" -%}
               <p>
-                <span>Birthday: </span>
+                <span>Your pet's birthday: </span>
                 <span id="birthday">{{ custom_data["pet_birthday"] | date: "%b %d, %Y" }}</span>
               </p>
+
+              <div class="birthday__message-wrap">
+                {%- render 'birthday-cake' -%}
+                <p class="birthday__message"></p>
+              </div>
             {%- endif -%}
 
-            <div class="birthday__message-wrap">
-              {%- render 'birthday-cake' -%}
-              <p class="birthday__message"></p>
-            </div>
           </div>
       </div>
 
@@ -139,12 +139,8 @@
         {{ routes.account_logout_url }}">
           Log out
         </a>
-        <a href="/tools/recurring/login">Manage Subscriptions</a>
+        <a href="/a/subscriptions/manage/">Manage Subscriptions</a>
       </div>
-        <!-- Begin ReCharge code -->
-        <p id="rc_link_container">
-        </p>
-        <!-- End ReCharge code -->
     </div>
   </div>
 </div>

@@ -1,21 +1,22 @@
 {{ "section-subscriptions-info.css" | asset_url | stylesheet_tag }}
 
-<div class="section-subscriptions-info-inner color-{{section.settings.color_scheme}}">
-    <div class="subscriptions-info-section__left page-width">
-      <div class="section-padding">
-        <h1 class="color-{{section.settings.heading_color}}">{{section.settings.headline}}</h1>
+<div class="section-subscriptions-info-inner color-{{section.settings.color_scheme}} section-padding">
+  <div class="page-width">
+    <div class="subscriptions-info-section__cards">
         {%- for block in section.blocks -%}
             <div data-scroll class="subscriptions-info__card">
+              {{block.settings.svg_icon}}
               <div class="subscriptions-info__card-heading">
-                {{block.settings.svg_icon}}
                 <h2 class="color-{{section.settings.subheading_color}}">{{block.settings.title}}</h2>
               </div>
               <p>{{block.settings.content}}</p>
             </div>
         {%- endfor -%}
-        <a href="{{section.settings.button_href}}" class="button button-secondary">{{section.settings.button_text}}</a>
-      </div>
     </div>
+    <div class="subscriptions-info-section__bottom">
+      <a href="{{section.settings.button_href}}" class="button button-secondary">{{section.settings.button_text}}</a>
+    </div>
+  </div>
 </div>
 
 {% schema %}
@@ -69,52 +70,6 @@
       "label": "t:sections.rich-text.settings.color_scheme.label"
     },
     {
-      "type":"text",
-      "id": "headline",
-      "label": "Headline",
-      "default": "Why try Gutsy?"
-    },
-    {
-      "type": "select",
-      "id": "heading_color",
-      "label": "Kleur heading",
-      "default": "primary-1",
-      "options": [
-        {
-          "value": "primary-1",
-          "label": "Gutsy Green"
-        },
-        {
-          "value": "primary-2",
-          "label": "Gutsy Orange"
-        },
-        {
-          "value": "primary-3",
-          "label": "Gutsy Beige"
-        }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "subheading_color",
-      "label": "Kleur subheading",
-      "default": "primary-1",
-      "options": [
-        {
-          "value": "primary-1",
-          "label": "Gutsy Green"
-        },
-        {
-          "value": "primary-2",
-          "label": "Gutsy Orange"
-        },
-        {
-          "value": "primary-3",
-          "label": "Gutsy Beige"
-        }
-      ]
-    },
-    {
       "type": "text",
       "id":"button_text",
       "label": "Button Text",
@@ -124,11 +79,6 @@
       "type": "url",
       "id": "button_href",
       "label": "Button link"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
     }
   ],
   "presets": [

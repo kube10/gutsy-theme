@@ -1,0 +1,84 @@
+{{ "section-subscriptions-hero.css" | asset_url | stylesheet_tag }}
+
+<div class="section-subscriptions-hero-inner color-{{section.settings.color_scheme}}">
+  <div class="section-subscriptions-hero__grid">
+    <div class="section-subscriptions-hero__image-wrap">
+      <img src="{{ section.settings.image | image_url }}" alt="">
+    </div>
+    <div class="section-subscriptions-hero__content section-padding">
+      <h1 class="color-{{section.settings.heading_color}}">{{section.settings.headline}}</h1>
+      <p>{{ section.settings.text_content }}</p>
+    </div>
+  </div>
+</div>
+
+{%- schema -%}
+{
+  "name": "Subscriptions Hero",
+  "tag": "section",
+  "class": "section-subscriptions-hero",
+  "presets": [
+    {
+      "name": "Subscriptions Hero"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "bg-green",
+          "label": "Green Background"
+        },
+        {
+          "value": "bg-beige",
+          "label": "Beige Background"
+        },
+        {
+          "value": "bg-white",
+          "label": "White Background"
+        }
+      ],
+      "default": "bg-white",
+      "label": "t:sections.rich-text.settings.color_scheme.label"
+    },
+    {
+      "type":"text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Gutsy Subscriptions"
+    },
+    {
+      "type": "select",
+      "id": "heading_color",
+      "label": "Kleur heading",
+      "default": "primary-1",
+      "options": [
+        {
+          "value": "primary-1",
+          "label": "Gutsy Green"
+        },
+        {
+          "value": "primary-2",
+          "label": "Gutsy Orange"
+        },
+        {
+          "value": "primary-3",
+          "label": "Gutsy Beige"
+        }
+      ]
+    },
+    {
+      "type": "textarea",
+      "id": "text_content",
+      "label": "Text content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ]
+}
+{%- endschema -%}

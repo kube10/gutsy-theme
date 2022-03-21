@@ -1,24 +1,3 @@
-.subscriptions-info-section__right {
-  display: block !important;
-  height: 100%;
-  width: 100%;
-  background-position: center;
-  background-size: cover;
-}
-
-.section-subscriptions-info-inner {
-  margin-top: 3rem;
-}
-
-.subscriptions-info-section__left {
-  text-align: center;
-}
-
-.subscriptions-info-section__left-image {
-  max-width: 100%;
-  height: auto;
-}
-
 .subscriptions-info__card {
   margin-bottom: 3rem;
   display: flex;
@@ -52,40 +31,23 @@
     flex-direction: row;
   }
 
-  .subscriptions-info__card-heading > svg {
-    margin-bottom: 0rem;
-    margin-right: 1rem;
+  .subscriptions-info__card > svg {
+    margin-bottom: 1rem;
     width: 2.5rem;
     height: 2.5rem;
-  }
-
-  .subscriptions-info__card {
-    padding-left: 4rem;
-    padding-right: 4rem;
-    margin-bottom: 4rem;
   }
 }
 
 @media screen and (min-width: 1080px) {
-  .subscriptions-info-section__left {
-    text-align: left;
+  .subscriptions-info-section__cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-column-gap: 4rem;
   }
 
   .section-subscriptions-info-inner > .page-width {
-    max-width: 1080px;
     text-align: center;
-  }
-
-  .subscriptions-info__card {
-    align-items: flex-start;
-    text-align: left;
-    padding: 0;
-    width: calc(100vw / 2);
-    margin: 2rem auto;
-  }
-
-  .subscriptions-info__card > p {
-    margin-left: 3.5rem;
   }
 
   .subscriptions-info-section__right {
