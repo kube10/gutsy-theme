@@ -475,10 +475,6 @@ if (!customElements.get("calculator")) {
           },
         ];
 
-        console.log("breed: " + breed);
-        console.log("product: " + product);
-        console.log("form id: " + this.calculatorForm.getAttribute("id"));
-
         if (this.calculatorForm.getAttribute("id").indexOf(product) == -1) {
           let warningObject;
           warnings.forEach((item) => {

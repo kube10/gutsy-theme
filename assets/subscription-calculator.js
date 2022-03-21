@@ -36,6 +36,10 @@ function init() {
     "#seal-subscription-items-list .seal-flex-grow-2"
   );
 
+  const editBtn = document.querySelector(
+    '.seal-edit-button[data-seal-t="overview_edit_button"]'
+  );
+
   if (lineItems) {
     loadCalculatorTemplate();
 
@@ -43,11 +47,25 @@ function init() {
       const id = item.parentNode.getAttribute("data-item-id");
       const openCalcButton = document.createElement("div");
       openCalcButton.classList.add("subscriptions-open-calc-button");
+      openCalcButton.classList.add("hidden");
       openCalcButton.innerHTML = "Open calculator";
       openCalcButton.setAttribute("onclick", "openCalculator(" + id + ")");
       item.appendChild(openCalcButton);
     });
+
+    console.log(editBtn);
+
+    editBtn.setAttribute("onclick", "openEditState()");
   }
+}
+
+function openEditState() {
+  const openCalcButtons = document.querySelectorAll(
+    ".subscriptions-open-calc-button"
+  );
+  openCalcButtons.forEach((btn, i) => {
+    btn.classList.remove("hidden");
+  });
 }
 
 function loadCalculatorTemplate() {
@@ -103,12 +121,14 @@ function openCalculator(id) {
         data.selling_plan_groups[0].selling_plans[0].price_adjustments[1].value;
 
       setCalculatorPrices(variantObject, quantity, discount);
+      setTotalKg(variantObject, quantity);
     });
 
   inputField.value = quantity;
 
   inputField.addEventListener("change", function () {
     setCalculatorPrices(variantObject, inputField.value, discount);
+    setTotalKg(variantObject, inputField.value);
   });
 
   initCalculator(id);
@@ -132,7 +152,6 @@ function initCalculator(id) {
   ).innerHTML;
 
   if (variantName.indexOf("puppy") > -1) {
-    setResult(puppy[0], result1Field, breedField, result2Field);
     fillWeightField(puppy, weightField);
     fillAgeField(ageField);
     ageFormGroup.classList.remove("hidden");
@@ -140,16 +159,88 @@ function initCalculator(id) {
   } else if (variantName.indexOf("(S)") > -1) {
     fillAgeField(ageField);
     breedField.value = "mini";
-    setResult(mini[0], result1Field, breedField, result2Field);
     fillWeightField(mini, weightField);
     ageFormGroup.classList.add("hidden");
   } else {
     fillAgeField(ageField);
     breedField.value = "medium";
-    setResult(medium[0], result1Field, breedField, result2Field);
     fillWeightField(medium, weightField);
     ageFormGroup.classList.add("hidden");
   }
+
+  breedField.addEventListener("change", (e) => {
+    const value = breedField.value;
+    if (value === "puppy") {
+      fillWeightField(puppy, weightField);
+      setResult(puppy[0], result1Field, breedField, result2Field);
+      ageFormGroup.classList.remove("hidden");
+    } else if (value === "mini") {
+      fillWeightField(mini, weightField);
+      setResult(mini[0], result1Field, breedField, result2Field);
+      ageFormGroup.classList.add("hidden");
+    } else if (value === "medium") {
+      fillWeightField(medium, weightField);
+      setResult(medium[0], result1Field, breedField, result2Field);
+      ageFormGroup.classList.add("hidden");
+    } else {
+      fillWeightField(large, weightField);
+      setResult(large[0], result1Field, breedField, result2Field);
+      ageFormGroup.classList.add("hidden");
+    }
+  });
+
+  weightField.addEventListener("change", (e) => {
+    breed = breedField.value;
+    weightValue = weightField.value;
+    if (breed === "puppy") {
+      let result;
+      puppy.forEach((item, i) => {
+        if (item.weight == weightValue) {
+          result = item;
+        }
+      });
+      setResult(result, result1Field, breedField, result2Field);
+    } else if (breed === "mini") {
+      let result;
+      mini.forEach((item, i) => {
+        if (item.weight == weightValue) {
+          result = item;
+        }
+      });
+      setResult(result, result1Field, breedField, result2Field);
+    } else if (breed === "medium") {
+      let result;
+      medium.forEach((item, i) => {
+        if (item.weight == weightValue) {
+          result = item;
+        }
+      });
+      setResult(result, result1Field, breedField, result2Field);
+    } else {
+      let result;
+      large.forEach((item, i) => {
+        if (item.weight == weightValue) {
+          result = item;
+        }
+      });
+      setResult(result, result1Field, breedField, result2Field);
+    }
+  });
+
+  ageField.addEventListener("change", (e) => {
+    if (breedField.value === "puppy") {
+      let result;
+      puppy.forEach((item) => {
+        if (
+          ageField.value === item.age.toString() &&
+          weightField.value === item.weight.toString()
+        ) {
+          result = item;
+        }
+      });
+      setResult(result, result1Field, breedField, result2Field);
+    }
+  });
 }
 
 function closeCalculator() {
@@ -178,6 +269,20 @@ function setCalculatorPrices(variantObject, quantity, discount) {
   calculator.querySelector(".totalPrice .price").innerHTML = euroLocale.format(
     totalPrice
   );
+}
+
+function setTotalKg(variant, quantity) {
+  const kg = variant.option1.substr(0, variant.option1.indexOf("kg"));
+
+  const totalKg = parseInt(kg) * quantity;
+  document
+    .querySelector(".calculator-subscription__total-kg")
+    .setAttribute("data-single-bag", kg);
+  document
+    .querySelector(".calculator-subscription__total-kg")
+    .setAttribute("data-total-bag", totalKg);
+  document.querySelector(".calculator-subscription__total-kg").innerHTML =
+    totalKg + "kg";
 }
 
 function setResult(resultItem, result1Field, breedField, result2Field) {
@@ -221,15 +326,66 @@ function calcMonthly(dose, breedField, result2Field) {
   if (breedField.value === "puppy") {
     const monthly = (dose * 35) / 1000;
     result2Field.innerHTML = monthly + "kg";
-    divideBags(monthly);
+    setResultMessage(monthly);
   } else {
     const min = parseInt(dose.substr(0, dose.indexOf("-")));
     const max = parseInt(dose.substr(dose.indexOf("-") + 1));
     const minMonthly = (min * 30) / 1000;
     const maxMonthly = (max * 30) / 1000;
     result2Field.innerHTML = minMonthly + " - " + maxMonthly + "kg";
-    // divideBags(maxMonthly);
+    setResultMessage(maxMonthly);
   }
+}
+
+function setResultMessage(monthly) {
+  const resultMessageWrapper = document.querySelector(
+    ".calculator-subscription__result-message"
+  );
+  const singleBagKg = parseInt(
+    document
+      .querySelector(".calculator-subscription__total-kg")
+      .getAttribute("data-single-bag")
+  );
+
+  const totalBagKg = parseInt(
+    document
+      .querySelector(".calculator-subscription__total-kg")
+      .getAttribute("data-total-bag")
+  );
+
+  const bagSizes = [2, 6, 10];
+
+  let alteration;
+
+  let html;
+
+  if (totalBagKg > monthly + singleBagKg) {
+    // alteration = Math.ceil((totalBagKg - monthly) / singleBagKg);
+    //
+    // const remainder = (totalBagKg - monthly) % singleBagKg;
+    //
+    // console.log("Remainder: " + remainder);
+
+    html = `<strong>That seems like too much!</strong><p>We recommend reducing your subscription.</p>`;
+
+    // if (0 < remainder < 2) {
+    //   html += ` and adding one bag of 2kg`;
+    // } else if (2 < remainder < 6) {
+    //   html += ` and adding one bag of 6kg`;
+    // } else if (6 < remainder < 10) {
+    //   html += ` and adding one bag of 10kg`;
+    // }
+    //
+    // html += "</p>";
+  } else if (totalBagKg < monthly) {
+    alteration = Math.ceil((monthly - totalBagKg) / singleBagKg);
+
+    html = `<strong>You might need to add some more!</strong><p>We recommend adding more to your subscription.</p>`;
+  } else {
+    html = `<strong>That seems just right!</strong><p>Your subscription should be just right for your pet.</p>`;
+  }
+
+  resultMessageWrapper.innerHTML = html;
 }
 
 function divideBags(monthly) {
