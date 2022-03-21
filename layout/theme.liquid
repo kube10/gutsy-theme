@@ -37,7 +37,6 @@
 
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
     <script src="https://smarteucookiebanner.upsell-apps.com/gdpr_adapter.js?shop=gutsy-bonfire.myshopify.com" type="application/javascript"></script>
-    <script src="{{ 'subscriptions.js' | asset_url }}" defer="defer"></script>
   {% capture 'header_content' %}{{ content_for_header }}{% endcapture %}{{ header_content | replace: "trekkie.load(", "(window.deferTrekkie || trekkie.load)(" }}
 
 
@@ -167,6 +166,11 @@
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
     </ul>
+    <ul hidden class="subscription-calculator-hrefs">
+      <li id="subscription-calculator-html" data-href="{{ 'calculator-html.html' | asset_url }}"></li>
+      <li id="subscription-calculator-js" data-href="{{ 'component-calculator.js' | asset_url }}"></li>
+      <li id="subscription-calculator-css" data-href="{{ 'component-calculator.css' | asset_url }}"></li>
+    </ul>
 
     <script>
       window.shopUrl = '{{ shop.url }}';
@@ -196,5 +200,6 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    <script src="{{ 'subscription-calculator.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>
