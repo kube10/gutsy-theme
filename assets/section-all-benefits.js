@@ -1,4 +1,6 @@
 (function () {
+  const section = document.getElementById("all-benefits");
+
   const dogBowl = document.getElementById("dog-bowl-svg");
   const korrels = dogBowl.querySelectorAll(".korrel");
 
@@ -53,7 +55,7 @@
 
   window.onscroll = () => {
     const scrollY = window.scrollY * 2;
-    let rate = scrollY / window.innerHeight;
+    let rate = scrollY / section.offsetHeight;
     korrels.forEach((korrel, i) => {
       // const transform = korrel.style.transform;
       // const valuesString = transform.substring(9);
