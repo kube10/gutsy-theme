@@ -2,12 +2,12 @@
 
 <div id="all-benefits" class="section-homepage-usp-inner section-padding color-{{section.settings.color_scheme}}">
   <div class="page-width">
-    <h1 class="text-center color-{{section.settings.heading_color}}">{{section.settings.headline}}</h1>
+    <!-- <h1 class="text-center color-{{section.settings.heading_color}}">{{section.settings.headline}}</h1> -->
     <div class="all-benefits__grid">
       <div class="all-benefits__content-left">
         {%- for block in section.blocks -%}
             {%- if forloop.index <= 3 -%}
-              <div class="all-benefits__usp-card">
+              <div data-scroll class="all-benefits__usp-card">
                 <div class="all-benefits__usp-card--heading">
                   {{ block.settings.svg_icon }}
                   <h2 class="color-primary-1">{{ block.settings.title }}</h2>
@@ -24,7 +24,7 @@
       <div class="all-benefits__content-left">
         {%- for block in section.blocks -%}
               {%- if forloop.index > 3 -%}
-              <div class="all-benefits__usp-card">
+              <div data-scroll class="all-benefits__usp-card">
                 <div class="all-benefits__usp-card--heading">
                   {{ block.settings.svg_icon }}
                   <h2 class="color-primary-1">{{ block.settings.title }}</h2>
@@ -36,6 +36,7 @@
       </div>
     </div>
   </div>
+
 </div>
 
 <script src="{{ 'section-all-benefits.js' | asset_url }}" defer="defer"></script>
