@@ -5,7 +5,6 @@ const headerWrapper = document.querySelector(".header-wrapper");
 window.addEventListener("scroll", (e) => {
   if (window.scrollY > 20) {
     header.style.top = "0px";
-    console.log(header);
     if (
       window.location.pathname === "/" ||
       window.location.pathname === "/pages/about-us"

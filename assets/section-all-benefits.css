@@ -1,0 +1,101 @@
+#all-benefits {
+  margin-top: 64px;
+  /* padding-top: 0; */
+}
+
+#all-benefits .text-center {
+  text-align: center;
+}
+
+#all-benefits .page-width {
+  /* height: 100vh; */
+  position: relative;
+}
+
+.all-benefits__grid {
+  display: grid;
+}
+
+.all-benefits__bowl-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: static;
+  width: auto;
+}
+
+#dog-bowl-svg {
+  max-width: 780px;
+  animation: dog-bowl-in 0.5s ease;
+  width: 100%;
+}
+
+@keyframes dog-bowl-in {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 100;
+    transform: translateY(0px);
+  }
+}
+
+#dog-bowl-svg .korrel {
+  opacity: 0;
+  position: relative;
+  transition: opacity 0.2s ease, transform 0.5s ease;
+}
+
+#dog-bowl-svg .korrel.show {
+  opacity: 1;
+}
+
+.all-benefits__content-left,
+.all-benefits__content-right {
+  position: relative;
+  z-index: 5;
+}
+
+.all-benefits__usp-card {
+  margin: 2rem 0;
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.all-benefits__usp-card > p {
+  margin-top: 0;
+}
+
+.all-benefits__usp-card--heading {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  grid-column-gap: 1rem;
+}
+
+.all-benefits__usp-card--heading > h2 {
+  font-size: 1.5rem;
+}
+
+.all-benefits__usp-card--heading > svg {
+  width: 1.75rem;
+}
+
+@media screen and (min-width: 1080px) {
+  .all-benefits__grid {
+    grid-template-columns: 350px 350px;
+    justify-content: space-between;
+  }
+
+  .all-benefits__bowl-wrap {
+    position: absolute;
+    width: 780px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

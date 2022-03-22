@@ -1,53 +1,44 @@
-{{ "section-homepage-usp.css" | asset_url | stylesheet_tag }}
-
-<style>
-
-  #all-benefits .homepage-usp-section__left {
-    display: none;
-  }
-
-  #all-benefits .homepage-usp-section__right > h1 {
-    text-align: center;
-  }
-
-@media screen and (min-width: 1080px) {
-  #all-benefits .section-homepage-usp-inner__grid {
-    display: block;
-  }
-
-
-
-  .all-benefits-usp__wrap {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 4rem;
-    max-width: 1280px;
-  }
-}
-</style>
+{{ "section-all-benefits.css" | asset_url | stylesheet_tag }}
 
 <div id="all-benefits" class="section-homepage-usp-inner section-padding color-{{section.settings.color_scheme}}">
-  <div class="page-width section-homepage-usp-inner__grid">
-    <div class="homepage-usp-section__left">
-      <img class="homepage-usp-section__left-image" src="{{section.settings.image | image_url:width:1080 }}" alt="">
-    </div>
-      <div class="homepage-usp-section__right">
-        <h1 class="color-{{section.settings.heading_color}}">{{section.settings.headline}}</h1>
-        <div class="all-benefits-usp__wrap">
-          {%- for block in section.blocks -%}
-              <div data-scroll class="homepage-usp__card">
-                <div class="homepage-usp__card-heading">
-                  {{block.settings.svg_icon}}
-                  <h2 class="color-{{section.settings.subheading_color}}">{{block.settings.title}}</h2>
+  <div class="page-width">
+    <h1 class="text-center color-{{section.settings.heading_color}}">{{section.settings.headline}}</h1>
+    <div class="all-benefits__grid">
+      <div class="all-benefits__content-left">
+        {%- for block in section.blocks -%}
+            {%- if forloop.index <= 3 -%}
+              <div class="all-benefits__usp-card">
+                <div class="all-benefits__usp-card--heading">
+                  {{ block.settings.svg_icon }}
+                  <h2 class="color-primary-1">{{ block.settings.title }}</h2>
                 </div>
-                <p>{{block.settings.content}}</p>
+                <p>{{ block.settings.content }}</p>
               </div>
-          {%- endfor -%}
-        </div>
-        <a href="{{section.settings.button_href}}" class="button button-secondary">{{section.settings.button_text}}</a>
+            {%- endif -%}
+        {%- endfor -%}
       </div>
+      <div class="all-benefits__bowl-wrap">
+        {%- render "dog-bowl-1" -%}
+        {%- render "dog-bowl-2" -%}
+      </div>
+      <div class="all-benefits__content-left">
+        {%- for block in section.blocks -%}
+              {%- if forloop.index > 3 -%}
+              <div class="all-benefits__usp-card">
+                <div class="all-benefits__usp-card--heading">
+                  {{ block.settings.svg_icon }}
+                  <h2 class="color-primary-1">{{ block.settings.title }}</h2>
+                </div>
+                <p>{{ block.settings.content }}</p>
+              </div>
+            {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
   </div>
 </div>
+
+<script src="{{ 'section-all-benefits.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {
@@ -124,42 +115,6 @@
           "label": "Gutsy Beige"
         }
       ]
-    },
-    {
-      "type": "select",
-      "id": "subheading_color",
-      "label": "Kleur subheading",
-      "default": "primary-1",
-      "options": [
-        {
-          "value": "primary-1",
-          "label": "Gutsy Green"
-        },
-        {
-          "value": "primary-2",
-          "label": "Gutsy Orange"
-        },
-        {
-          "value": "primary-3",
-          "label": "Gutsy Beige"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "id":"button_text",
-      "label": "Button Text",
-      "default": "Discover all the benefits"
-    },
-    {
-      "type": "url",
-      "id": "button_href",
-      "label": "Button link"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
     }
   ],
   "presets": [
