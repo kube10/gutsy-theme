@@ -40,9 +40,6 @@
       ],
       "settings": {
         "color_scheme": "bg-green",
-        "headline": "A Gutsy Subscriptions - that's tons of benefits",
-        "heading_color": "primary-2",
-        "subheading_color": "primary-3",
         "button_text": "To the shop",
         "button_href": "shopify:\/\/collections\/all"
       }
