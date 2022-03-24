@@ -53,63 +53,78 @@
     });
   });
 
-  window.onscroll = () => {
-    const scrollY = window.scrollY * 2;
-    let rate = scrollY / section.offsetHeight;
-    korrels.forEach((korrel, i) => {
-      // const transform = korrel.style.transform;
-      // const valuesString = transform.substring(9);
-      // const valuesSubstr = valuesString.substring(1, valuesString.indexOf(")"));
-      // const valuesArray = valuesSubstr.split(",");
-      // const valuesArrayInt = [];
-      // valuesArray.forEach((value, i) => {
-      //   valuesArrayInt.push(parseInt(value.substring(0, value.indexOf("p"))));
-      // });
+  // window.onscroll = () => {
+  //   const scrollY = window.scrollY * 2;
+  //   let rate = scrollY / section.offsetHeight;
+  //   korrels.forEach((korrel, i) => {
+  //     // const transform = korrel.style.transform;
+  //     // const valuesString = transform.substring(9);
+  //     // const valuesSubstr = valuesString.substring(1, valuesString.indexOf(")"));
+  //     // const valuesArray = valuesSubstr.split(",");
+  //     // const valuesArrayInt = [];
+  //     // valuesArray.forEach((value, i) => {
+  //     //   valuesArrayInt.push(parseInt(value.substring(0, value.indexOf("p"))));
+  //     // });
+  //
+  //     if (rate > 1) {
+  //       rate = 1;
+  //     }
+  //
+  //     const baseX = transformArray[i].baseX;
+  //     const baseY = transformArray[i].baseY;
+  //
+  //     const rateY = baseY - baseY * rate;
+  //     const rateX = baseX - baseX * rate;
+  //
+  //     korrel.style.transform = `translate(${rateX}px, -${rateY}px)`;
+  //
+  //     const viewPortOffsetKorrel = korrel.getBoundingClientRect();
+  //     const leftKorrel = viewPortOffsetKorrel.left;
+  //     const topKorrel = viewPortOffsetKorrel.top;
+  //     const rightKorrel = viewPortOffsetKorrel.right;
+  //     const bottomKorrel = viewPortOffsetKorrel.bottom;
+  //
+  //     const viewPortOffsetBowl = dogBowl.getBoundingClientRect();
+  //     const leftBowl = viewPortOffsetBowl.left;
+  //     const topBowl = viewPortOffsetBowl.top;
+  //     const rightBowl = viewPortOffsetBowl.right;
+  //     const bottomBowl = viewPortOffsetBowl.bottom;
+  //
+  //     if (scrollY < 100) {
+  //       korrel.classList.remove("show");
+  //     } else {
+  //       if (
+  //         leftKorrel > leftBowl &&
+  //         rightKorrel < rightBowl &&
+  //         topKorrel - 50 > topBowl &&
+  //         bottomKorrel < bottomBowl
+  //       ) {
+  //         korrel.classList.add("show");
+  //       } else {
+  //         korrel.classList.remove("show");
+  //       }
+  //     }
+  //   });
+  // };
 
-      if (rate > 1) {
-        rate = 1;
-      }
+  const korrelFragments = Math.ceil(korrels.length / 40);
+  const korrelsWrap = document.getElementById("korrels");
+  const amountPerFragment = Math.ceil(korrels.length / korrelFragments);
 
-      const baseX = transformArray[i].baseX;
-      const baseY = transformArray[i].baseY;
+  korrels.forEach((korrel, i) => {
+    let delay;
+    if (i === 0) {
+      delay = 500;
+    } else {
+      delay = i * 20;
+    }
 
-      const rateY = baseY - baseY * rate;
-      const rateX = baseX - baseX * rate;
+    setTimeout(function () {
+      korrel.classList.add("show");
+      korrel.style.transform = "translate(0px, 0px)";
+    }, delay);
+  });
 
-      korrel.style.transform = `translate(${rateX}px, -${rateY}px)`;
-
-      const viewPortOffsetKorrel = korrel.getBoundingClientRect();
-      const leftKorrel = viewPortOffsetKorrel.left;
-      const topKorrel = viewPortOffsetKorrel.top;
-      const rightKorrel = viewPortOffsetKorrel.right;
-      const bottomKorrel = viewPortOffsetKorrel.bottom;
-
-      const viewPortOffsetBowl = dogBowl.getBoundingClientRect();
-      const leftBowl = viewPortOffsetBowl.left;
-      const topBowl = viewPortOffsetBowl.top;
-      const rightBowl = viewPortOffsetBowl.right;
-      const bottomBowl = viewPortOffsetBowl.bottom;
-
-      if (scrollY < 100) {
-        korrel.classList.remove("show");
-      } else {
-        if (
-          leftKorrel > leftBowl &&
-          rightKorrel < rightBowl &&
-          topKorrel - 50 > topBowl &&
-          bottomKorrel < bottomBowl
-        ) {
-          korrel.classList.add("show");
-        } else {
-          korrel.classList.remove("show");
-        }
-      }
-    });
-  };
-
-  // const korrelFragments = Math.ceil(korrels.length / 40);
-  // const korrelsWrap = document.getElementById("korrels");
-  // const amountPerFragment = Math.ceil(korrels.length / korrelFragments);
   // for (var i = 0; i < korrelFragments; i++) {
   //   const index = i;
   //   let delay;

@@ -44,7 +44,7 @@
 #dog-bowl-svg .korrel {
   opacity: 0;
   position: relative;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.5s ease;
 }
 
 #dog-bowl-svg .korrel.show {
