@@ -14,6 +14,7 @@
 
 .all-benefits__grid {
   display: grid;
+  grid-template-rows: auto auto auto;
 }
 
 .all-benefits__bowl-wrap {
@@ -22,6 +23,8 @@
   justify-content: center;
   position: static;
   width: auto;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 
 #dog-bowl-svg {
@@ -88,6 +91,7 @@
 @media screen and (min-width: 1080px) {
   .all-benefits__grid {
     grid-template-columns: 350px 40% 350px;
+    grid-template-rows: auto;
     justify-content: space-between;
     position: relative;
   }
@@ -97,5 +101,8 @@
     width: 100%;
     top: 80px;
     align-self: flex-start;
+
+    grid-row-start: auto;
+    grid-row-end: auto;
   }
 }
