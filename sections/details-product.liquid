@@ -9,6 +9,12 @@
     {% when "adult-l" %}
     {% assign type = "adult-l" %}
   {% endcase %}
+  {%- if type == "" -%}
+    {%- assign type = "puppy" -%}
+  {%- endif -%}
+  {%- if tag == "kibble" -%}
+    {%- assign kibble = true -%}
+  {%- endif -%}
 {% endfor %}
 
 <section class="product-details-section-inner {{type}}">
@@ -27,7 +33,9 @@
         </div>
         {% render 'product-usp-icons' %}
         <div class="product-details-actions">
-          <button onclick="scrollToNextSection()" class="button button-secondary">More info</button>
+          {%- if kibble -%}        
+            <button onclick="scrollToNextSection()" class="button button-secondary">More info</button>
+          {%- endif -%}
           <button type="button" onclick="scrollToBuyForm()" name="button" class="button button-primary">Buy now</button>
         </div>
       </div>

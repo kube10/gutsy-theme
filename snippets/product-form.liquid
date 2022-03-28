@@ -2,6 +2,10 @@
 {%- for tag in product.tags -%}
   {%- if tag == "sample-box" -%}
     {%- assign subscription = false -%}
+    {%- assign sampleBox = true -%}
+  {%- endif -%}
+  {%- if tag == "toys" or tag == "snacks"-%}
+    {%- assign subscription = false -%}
   {%- endif -%}
 {%- endfor -%}
 
@@ -46,30 +50,33 @@
           </script>
         </variant-selects>
       {%- endunless -%}
-      <div class="product-form__input product-form__quantity" {{ block.shopify_attributes }}>
-        <label class="form__label" for="Quantity-{{ section.id }}">
-          {{ 'products.product.quantity.label' | t }}
-        </label>
-        <quantity-input class="quantity">
-          <button class="quantity__button no-js-hidden" name="minus" type="button">
-            <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
-            {% render 'icon-minus' %}
-          </button>
-          <input class="quantity__input"
-              type="number"
-              name="quantity"
-              id="quantity-picker-{{product.id}}"
-              min="1"
-              value="1"
-              form="{{ product_form_id }}"
-              productId="{{product.id}}"
-            >
-          <button class="quantity__button no-js-hidden" name="plus" type="button">
-            <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
-            {% render 'icon-plus' %}
-          </button>
-        </quantity-input>
-      </div>
+
+      {%- unless sampleBox -%}
+        <div class="product-form__input product-form__quantity" {{ block.shopify_attributes }}>
+          <label class="form__label" for="Quantity-{{ section.id }}">
+            {{ 'products.product.quantity.label' | t }}
+          </label>
+          <quantity-input class="quantity">
+            <button class="quantity__button no-js-hidden" name="minus" type="button">
+              <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+              {% render 'icon-minus' %}
+            </button>
+            <input class="quantity__input"
+                type="number"
+                name="quantity"
+                id="quantity-picker-{{product.id}}"
+                min="1"
+                value="1"
+                form="{{ product_form_id }}"
+                productId="{{product.id}}"
+              >
+            <button class="quantity__button no-js-hidden" name="plus" type="button">
+              <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+              {% render 'icon-plus' %}
+            </button>
+          </quantity-input>
+        </div>
+      {%- endunless -%}
 
       {%- if subscription -%}
         <div class="product-form__icons">
@@ -99,17 +106,23 @@
 
     <div class="product-form__actions">
           <div class="prices">
-            <div id="unitPrice-{{product.id}}"class="unitPrice">
-              <span>Price per bag</span>
+            {%- if subscriptions -%}
+              <div id="unitPrice-{{product.id}}"class="unitPrice">
+                <span>Price per bag</span>
+                <div class="no-js-hidden priceComponent" id="price-{{ section.id }}" data-product="{{product.id}}" role="status" {{ block.shopify_attributes }}>
+                  {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
+                </div>
+              </div>
+              <div id="totalPrice-{{product.id}}" class="totalPrice">
+                <span>Total price</span>
+                <h2 class="price price--large"></h2>
+                <span id="perMonthInfo-{{product.id}}" class='perMonthInfo'>Per month</span>
+              </div>
+              {%- else -%}
               <div class="no-js-hidden priceComponent" id="price-{{ section.id }}" data-product="{{product.id}}" role="status" {{ block.shopify_attributes }}>
                 {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
               </div>
-            </div>
-            <div id="totalPrice-{{product.id}}" class="totalPrice">
-              <span>Total price</span>
-              <h2 class="price price--large"></h2>
-              <span id="perMonthInfo-{{product.id}}" class='perMonthInfo'>Per month</span>
-            </div>
+            {%- endif -%}
           </div>
           <div>
               <div class="product-form__error-message-wrapper" role="alert" hidden>
@@ -129,7 +142,7 @@
                   {%- if product.selected_or_first_available_variant.available -%}
                     {{ 'products.product.add_to_cart' | t }}
                   {%- else -%}
-                    Pre order
+                    Sold out
                   {%- endif -%}
                 </span>
                 <div class="loading-overlay__spinner hidden">

@@ -6,6 +6,20 @@
   position: relative;
 }
 
+.main-collection__filters {
+  display: flex;
+  grid-column-gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-button.active {
+  border-color: rgb(var(--color-base-primary-2));
+  color: rgb(var(--color-base-primary-2));
+}
+
 @media screen and (max-width: 749px) {
   .collection .grid__item:only-child {
     flex: 0 0 100%;

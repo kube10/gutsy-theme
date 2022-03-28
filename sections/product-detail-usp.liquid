@@ -1,50 +1,60 @@
 {{ "section-detail-usp.css" | asset_url | stylesheet_tag }}
 
-<div id="section-product-detail-usp">
-  <div class="page-width">
-    <div class="product-detail-usp__heading">
-      <div class="button-group">
-        <button data-tab="1" class="tab-btn button button-secondary button-small active">Ingrediënts</button>
-        <button data-tab="2" class="tab-btn button button-secondary button-small">Nutrition</button>
-      </div>
-    </div>
-    <div data-scroll class="product-detail-usp__tab-wrap">
-      <div id="tab-1" class="tab_open product-detail-usp__tab">
-        <div class="headings-center">
-          <h1 class="color-{{ section.settings.headline_color_tab_1}}">{{section.settings.headline_tab_1}}</h1>
-          <h3 class="color-{{ section.settings.subheadline_color_tab_1}}">{{section.settings.subheadline_tab_1}}</h3>
-        </div>
-        <div class="product-detail-usp__grid">
-          {% for block in section.blocks %}
-            {%- if block.type == "usp" -%}
-              <div class="product-detail-usp__card">
-                  {{block.settings.svg}}
-                  <h2 class="color-primary-1">{{block.settings.title}}</h2>
-                  <p>{{block.settings.text}}</p>
-              </div>
-            {%- endif -%}
-          {% endfor %}
+{%- for tag in product.tags -%}
+  {%- if tag == "kibble" -%}
+    {%- assign kibble = true-%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if kibble -%}
+
+  <div id="section-product-detail-usp section-padding">
+    <div class="page-width">
+      <div class="product-detail-usp__heading">
+        <div class="button-group">
+          <button data-tab="1" class="tab-btn button button-secondary button-small active">Ingrediënts</button>
+          <button data-tab="2" class="tab-btn button button-secondary button-small">Nutrition</button>
         </div>
       </div>
-      <div id="tab-2" class="product-detail-usp__tab">
+      <div data-scroll class="product-detail-usp__tab-wrap">
+        <div id="tab-1" class="tab_open product-detail-usp__tab">
           <div class="headings-center">
-            <h1 class="color-{{ section.settings.headline_color_tab_2}}">{{section.settings.headline_tab_2}}</h1>
-            <h3 class="color-{{ section.settings.subheadline_color_tab_2}}">{{section.settings.subheadline_tab_2}}</h3>
+            <h1 class="color-{{ section.settings.headline_color_tab_1}}">{{section.settings.headline_tab_1}}</h1>
+            <h3 class="color-{{ section.settings.subheadline_color_tab_1}}">{{section.settings.subheadline_tab_1}}</h3>
           </div>
-          <div class="product-detail-usp__tab_2-content">
+          <div class="product-detail-usp__grid">
             {% for block in section.blocks %}
-              {%- if block.type == "nutrition" -%}
-                <div class="product-nutrition-info">
-                    <h3 class="color-primary-1">{{block.settings.title}}</h3>
+              {%- if block.type == "usp" -%}
+                <div class="product-detail-usp__card">
+                    {{block.settings.svg}}
+                    <h2 class="color-primary-1">{{block.settings.title}}</h2>
                     <p>{{block.settings.text}}</p>
                 </div>
               {%- endif -%}
             {% endfor %}
           </div>
+        </div>
+        <div id="tab-2" class="product-detail-usp__tab">
+            <div class="headings-center">
+              <h1 class="color-{{ section.settings.headline_color_tab_2}}">{{section.settings.headline_tab_2}}</h1>
+              <h3 class="color-{{ section.settings.subheadline_color_tab_2}}">{{section.settings.subheadline_tab_2}}</h3>
+            </div>
+            <div class="product-detail-usp__tab_2-content">
+              {% for block in section.blocks %}
+                {%- if block.type == "nutrition" -%}
+                  <div class="product-nutrition-info">
+                      <h3 class="color-primary-1">{{block.settings.title}}</h3>
+                      <p>{{block.settings.text}}</p>
+                  </div>
+                {%- endif -%}
+              {% endfor %}
+            </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+{%- endif -%}
 
 <script type="text/javascript">
   const tabBtns = document.querySelectorAll('.tab-btn');
@@ -78,7 +88,7 @@
 {
   "name": "Product Detail USPs",
   "tag": "section",
-  "class": "section-padding",
+  "class": "section-product-detail-usp",
   "settings": [
     {
       "type": "header",
