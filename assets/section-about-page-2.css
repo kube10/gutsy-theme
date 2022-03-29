@@ -90,7 +90,8 @@
   padding: 0 2rem;
 }
 
-.about-page-section-2__team.col-3 {
+.about-page-section-2__team.col-3,
+.about-page-section-2__team.col-5 {
   grid-template-columns: 1fr;
 }
 
@@ -127,7 +128,8 @@
     margin: 0 auto;
   }
 
-  .about-page-section-2__team.col-3 {
+  .about-page-section-2__team.col-3,
+  .about-page-section-2__team.col-5 {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
@@ -145,5 +147,11 @@
     height: 450px;
     margin-top: 1rem;
     margin-bottom: 2rem;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .about-page-section-2__team.col-5 {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }

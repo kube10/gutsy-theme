@@ -80,7 +80,7 @@
       "type": "sustainability-graph",
       "settings": {
         "title": "Insects as  solution",
-        "content": "On this graph you see how much land, water and CO2 is consumed to produce 1 kg of edible protein from beef, lamb, chicken … and then our insects."
+        "content": "On this graph you see how much land, water and CO2 is consumed to produce one kg of edible protein from beef, lamb, chicken… and then our little rescuers."
       }
     },
     "164337781902c4cf06": {
@@ -100,7 +100,7 @@
         "color_scheme": "bg-green",
         "headline": "DO YOU WANT TO BE PART OF THE SOLUTION?",
         "heading_color": "primary-2",
-        "subheadline": "Fall in love with our ecological, insect-based dog food range.",
+        "subheadline": "Start your adventure with our ecological, insect-based dog food range here.",
         "subheading_color": "primary-3",
         "buttonText": "To the shop",
         "button_href": "shopify:\/\/collections\/all",

@@ -30,13 +30,21 @@
           "announcement-bar-0": {
             "type": "announcement",
             "settings": {
-              "text": "Welcome to our store",
-              "link": ""
+              "text": "1 Month free subscription",
+              "link": "shopify:\/\/collections\/all"
+            }
+          },
+          "5d831797-9c34-48bc-bf80-db7ca96c9458": {
+            "type": "announcement",
+            "settings": {
+              "text": "First try 50% off",
+              "link": "shopify:\/\/products\/gutsy-sample-box"
             }
           }
         },
         "block_order": [
-          "announcement-bar-0"
+          "announcement-bar-0",
+          "5d831797-9c34-48bc-bf80-db7ca96c9458"
         ],
         "settings": {
           "show": true,

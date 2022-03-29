@@ -62,7 +62,7 @@
         "color_scheme": "bg-green",
         "headline": "Do you have the guts to change the world?",
         "heading_color": "primary-2",
-        "subheadline": "Check out our sustainable and tasty dog food",
+        "subheadline": "Check out our planet-friendly and ridiculous tasty dog food.",
         "subheading_color": "primary-3",
         "image": "shopify:\/\/shop_images\/1212981_1.jpg"
       }
@@ -70,7 +70,7 @@
     "164156093350c034d1": {
       "type": "homepage-products",
       "settings": {
-        "collection": "all"
+        "collection": "frontpage"
       }
     },
     "1641312336a418c8c5": {
@@ -80,7 +80,7 @@
           "type": "usp",
           "settings": {
             "title": "planet friendly",
-            "content": "The carbon footprint of insects is 30 times smaller per kg than that of a cow. This means that by serving Gutsy, which contains insects as a protein source, you and your dog have the chance to reduce your own carbon footprint too.",
+            "content": "Gutsy uses insects as an outstanding source of protein. The ecological footprint of insects is 30 times smaller per kg than that of beef. This means that by serving Gutsy you and your dog have the opportunity to reduce your own carbon footprint as well.",
             "svg_icon": "<svg width=\"48\" height=\"49\" viewbox=\"0 0 48 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M12.1003 16.2719C9.48183 18.8907 8.00753 22.4403 8.00003 26.1436C7.99253 29.8469 9.45245 33.4024 12.0603 36.0319C15.0003 29.2319 20.2403 23.5519 26.7803 20.1719C21.1354 24.9482 17.3249 31.537 16.0003 38.8119C21.2003 41.2719 27.6003 40.3719 31.9003 36.0719C38.8603 29.1119 40.0003 8.17188 40.0003 8.17188C40.0003 8.17188 19.0603 9.31188 12.1003 16.2719Z\" fill=\"#F47F36\"><\/path>\n<\/svg>"
           }
         },
@@ -88,7 +88,7 @@
           "type": "usp",
           "settings": {
             "title": "ridiculously tasty",
-            "content": "Spoil your dog with crunchy dog food full of flavour. Because your faithful companion only deserves the best.",
+            "content": "Spoil your dog with crunchy dog food full of flavor. Because your faithful companion only deserves the best.",
             "svg_icon": "<svg width=\"48\" height=\"49\" viewbox=\"0 0 48 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M36 8.17188C32.58 8.17188 30.5 8.83188 29.3 9.39188C27.76 8.63188 26 8.17188 24 8.17188C22 8.17188 20.24 8.63188 18.7 9.39188C17.5 8.83188 15.42 8.17188 12 8.17188C6 8.17188 2 24.1719 2 28.1719C2 29.8319 4.64 31.3519 8.28 31.9719C9.56 36.4519 15.6 39.8719 23 40.1719V31.6119C21.82 30.8719 20 29.5319 20 28.1719C20 26.1719 24 26.1719 24 26.1719C24 26.1719 28 26.1719 28 28.1719C28 29.5319 26.18 30.8719 25 31.6119V40.1719C32.4 39.8719 38.44 36.4519 39.72 31.9719C43.36 31.3519 46 29.8319 46 28.1719C46 24.1719 42 8.17188 36 8.17188ZM8.3 27.9119C7.3 27.6719 6.52 27.3919 6 27.1719C6.5 21.6319 10.4 12.9719 12.1 12.1719C13.18 12.1719 14 12.2919 14.74 12.3919C10.54 17.0119 8.88 24.2519 8.3 27.9119ZM18 24.1719C17.4696 24.1719 16.9609 23.9612 16.5858 23.5861C16.2107 23.211 16 22.7023 16 22.1719C16 21.0919 16.9 20.1719 18 20.1719C18.5304 20.1719 19.0391 20.3826 19.4142 20.7577C19.7893 21.1327 20 21.6414 20 22.1719C20 23.2919 19.1 24.1719 18 24.1719ZM30 24.1719C29.4696 24.1719 28.9609 23.9612 28.5858 23.5861C28.2107 23.211 28 22.7023 28 22.1719C28 21.0919 28.9 20.1719 30 20.1719C30.5304 20.1719 31.0391 20.3826 31.4142 20.7577C31.7893 21.1327 32 21.6414 32 22.1719C32 23.2919 31.1 24.1719 30 24.1719ZM39.7 27.9119C39.12 24.2519 37.46 17.0119 33.26 12.3919C34 12.2919 34.82 12.1719 35.9 12.1719C37.6 12.9719 41.5 21.6319 42 27.1719C41.5 27.3919 40.72 27.6719 39.7 27.9119Z\" fill=\"#F47F36\"><\/path>\n<\/svg>"
           }
         },
@@ -123,7 +123,7 @@
           "type": "usp-insects",
           "settings": {
             "title": "hypoallergenic",
-            "content": "Our kibble is hypoallergenic and therefore perfect for dogs with sensitive stomachs. Allergic reactions are a thing of the past, you can ask our very own Otis!",
+            "content": "Our kibble is hypoallergenic and therefore perfect for dogs with a sensitive stomach. Allergic reactions are a thing of the past, you can ask our loyal customer Otis!",
             "svg_icon": "<svg width=\"48\" height=\"49\" viewbox=\"0 0 48 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M12.1003 16.9242C9.48183 19.5431 8.00753 23.0926 8.00003 26.796C7.99253 30.4993 9.45245 34.0548 12.0603 36.6842C15.0003 29.8842 20.2403 24.2042 26.7803 20.8242C21.1354 25.6006 17.3249 32.1894 16.0003 39.4642C21.2003 41.9242 27.6003 41.0242 31.9003 36.7242C38.8603 29.7642 40.0003 8.82422 40.0003 8.82422C40.0003 8.82422 19.0603 9.96422 12.1003 16.9242Z\" fill=\"#F47F36\"><\/path>\n<\/svg>"
           }
         },
@@ -131,7 +131,7 @@
           "type": "usp-insects",
           "settings": {
             "title": "high-quality proteins",
-            "content": "Not all proteins are easy to digest. That’s where Gutsy makes the difference. We only use high-quality and easy digestible proteins in our dog food.",
+            "content": "Not all proteins are easy to digest. That is where Gutsy makes the difference. We only use high-quality and easy digestible proteins in our dog food.",
             "svg_icon": "<svg width=\"48\" height=\"49\" viewbox=\"0 0 48 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M24 3.82422C19.6255 3.82938 15.4317 5.56942 12.3385 8.66266C9.24522 11.7559 7.50518 15.9497 7.50002 20.3242C7.49478 23.8991 8.66249 27.3769 10.824 30.2242C10.824 30.2242 11.274 30.8167 11.3475 30.9022L24 45.8242L36.6585 30.8947C36.7245 30.8152 37.176 30.2242 37.176 30.2242L37.1775 30.2197C39.338 27.3736 40.5051 23.8974 40.5 20.3242C40.4949 15.9497 38.7548 11.7559 35.6616 8.66266C32.5683 5.56942 28.3745 3.82938 24 3.82422V3.82422ZM30.315 21.3772L24.0045 27.8242L17.685 21.3772C16.9262 20.5938 16.502 19.5459 16.502 18.4552C16.502 17.3646 16.9262 16.3167 17.685 15.5332C18.0571 15.1508 18.5021 14.8468 18.9937 14.6392C19.4852 14.4316 20.0134 14.3246 20.547 14.3246C21.0806 14.3246 21.6088 14.4316 22.1004 14.6392C22.5919 14.8468 23.0369 15.1508 23.409 15.5332L24.0045 16.1407L24.594 15.5332C24.9661 15.1508 25.4111 14.8468 25.9027 14.6392C26.3942 14.4316 26.9224 14.3246 27.456 14.3246C27.9896 14.3246 28.5178 14.4316 29.0094 14.6392C29.5009 14.8468 29.9459 15.1508 30.318 15.5332C31.0768 16.3167 31.5011 17.3646 31.5011 18.4552C31.5011 19.5459 31.0768 20.5938 30.318 21.3772H30.315Z\" fill=\"#F47F36\"><\/path>\n<\/svg>"
           }
         },
@@ -139,7 +139,7 @@
           "type": "usp-insects",
           "settings": {
             "title": "an ecological alternative",
-            "content": "Thanks to their tiny ecological pawprint, you can feed your dog with a clean conscience.",
+            "content": "Insects do not only have tiny legs, they also have a tiny ecological footprint, you can feed your dog with a clean conscience.",
             "svg_icon": "<svg width=\"48\" height=\"49\" viewbox=\"0 0 48 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M36 8.82422C32.58 8.82422 30.5 9.48422 29.3 10.0442C27.76 9.28422 26 8.82422 24 8.82422C22 8.82422 20.24 9.28422 18.7 10.0442C17.5 9.48422 15.42 8.82422 12 8.82422C6 8.82422 2 24.8242 2 28.8242C2 30.4842 4.64 32.0042 8.28 32.6242C9.56 37.1042 15.6 40.5242 23 40.8242V32.2642C21.82 31.5242 20 30.1842 20 28.8242C20 26.8242 24 26.8242 24 26.8242C24 26.8242 28 26.8242 28 28.8242C28 30.1842 26.18 31.5242 25 32.2642V40.8242C32.4 40.5242 38.44 37.1042 39.72 32.6242C43.36 32.0042 46 30.4842 46 28.8242C46 24.8242 42 8.82422 36 8.82422ZM8.3 28.5642C7.3 28.3242 6.52 28.0442 6 27.8242C6.5 22.2842 10.4 13.6242 12.1 12.8242C13.18 12.8242 14 12.9442 14.74 13.0442C10.54 17.6642 8.88 24.9042 8.3 28.5642V28.5642ZM18 24.8242C17.4696 24.8242 16.9609 24.6135 16.5858 24.2384C16.2107 23.8634 16 23.3547 16 22.8242C16 21.7442 16.9 20.8242 18 20.8242C18.5304 20.8242 19.0391 21.0349 19.4142 21.41C19.7893 21.7851 20 22.2938 20 22.8242C20 23.9442 19.1 24.8242 18 24.8242ZM30 24.8242C29.4696 24.8242 28.9609 24.6135 28.5858 24.2384C28.2107 23.8634 28 23.3547 28 22.8242C28 21.7442 28.9 20.8242 30 20.8242C30.5304 20.8242 31.0391 21.0349 31.4142 21.41C31.7893 21.7851 32 22.2938 32 22.8242C32 23.9442 31.1 24.8242 30 24.8242ZM39.7 28.5642C39.12 24.9042 37.46 17.6642 33.26 13.0442C34 12.9442 34.82 12.8242 35.9 12.8242C37.6 13.6242 41.5 22.2842 42 27.8242C41.5 28.0442 40.72 28.3242 39.7 28.5642V28.5642Z\" fill=\"#F47F36\"><\/path>\n<\/svg>"
           }
         }

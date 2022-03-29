@@ -1892,6 +1892,25 @@ input[type="checkbox"] {
   letter-spacing: 0.05rem;
 }
 
+.announcement-bar__text-slider--wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.announcement-bar__next-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+  cursor: pointer;
+}
+
+.announcement-bar__next-btn > svg {
+  width: 16px;
+}
+
 /* WEGLOT LANG PICKER */
 .wg-default,
 .wg-default .country-selector {
