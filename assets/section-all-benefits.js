@@ -1,6 +1,8 @@
 (function () {
   const section = document.getElementById("all-benefits");
 
+  const bowlWrap = document.querySelector(".all-benefits__bowl-wrap");
+
   const dogBowl = document.getElementById("dog-bowl-svg");
   const korrels = dogBowl.querySelectorAll(".korrel");
 
@@ -53,97 +55,45 @@
     });
   });
 
-  // window.onscroll = () => {
-  //   const scrollY = window.scrollY * 2;
-  //   let rate = scrollY / section.offsetHeight;
-  //   korrels.forEach((korrel, i) => {
-  //     // const transform = korrel.style.transform;
-  //     // const valuesString = transform.substring(9);
-  //     // const valuesSubstr = valuesString.substring(1, valuesString.indexOf(")"));
-  //     // const valuesArray = valuesSubstr.split(",");
-  //     // const valuesArrayInt = [];
-  //     // valuesArray.forEach((value, i) => {
-  //     //   valuesArrayInt.push(parseInt(value.substring(0, value.indexOf("p"))));
-  //     // });
-  //
-  //     if (rate > 1) {
-  //       rate = 1;
-  //     }
-  //
-  //     const baseX = transformArray[i].baseX;
-  //     const baseY = transformArray[i].baseY;
-  //
-  //     const rateY = baseY - baseY * rate;
-  //     const rateX = baseX - baseX * rate;
-  //
-  //     korrel.style.transform = `translate(${rateX}px, -${rateY}px)`;
-  //
-  //     const viewPortOffsetKorrel = korrel.getBoundingClientRect();
-  //     const leftKorrel = viewPortOffsetKorrel.left;
-  //     const topKorrel = viewPortOffsetKorrel.top;
-  //     const rightKorrel = viewPortOffsetKorrel.right;
-  //     const bottomKorrel = viewPortOffsetKorrel.bottom;
-  //
-  //     const viewPortOffsetBowl = dogBowl.getBoundingClientRect();
-  //     const leftBowl = viewPortOffsetBowl.left;
-  //     const topBowl = viewPortOffsetBowl.top;
-  //     const rightBowl = viewPortOffsetBowl.right;
-  //     const bottomBowl = viewPortOffsetBowl.bottom;
-  //
-  //     if (scrollY < 100) {
-  //       korrel.classList.remove("show");
-  //     } else {
-  //       if (
-  //         leftKorrel > leftBowl &&
-  //         rightKorrel < rightBowl &&
-  //         topKorrel - 50 > topBowl &&
-  //         bottomKorrel < bottomBowl
-  //       ) {
-  //         korrel.classList.add("show");
-  //       } else {
-  //         korrel.classList.remove("show");
-  //       }
-  //     }
-  //   });
-  // };
-
   const korrelFragments = Math.ceil(korrels.length / 40);
   const korrelsWrap = document.getElementById("korrels");
   const amountPerFragment = Math.ceil(korrels.length / korrelFragments);
 
-  korrels.forEach((korrel, i) => {
-    let delay;
-    if (i === 0) {
-      delay = 500;
-    } else {
-      delay = i * 20;
-    }
+  if (!bowlWrap.classList.contains("homepage")) {
+    korrels.forEach((korrel, i) => {
+      let delay;
+      if (i === 0) {
+        delay = 500;
+      } else {
+        delay = i * 20;
+      }
 
-    setTimeout(function () {
-      korrel.classList.add("show");
-      korrel.style.transform = "translate(0px, 0px)";
-    }, delay);
-  });
+      setTimeout(function () {
+        korrel.classList.add("show");
+        korrel.style.transform = "translate(0px, 0px)";
+      }, delay);
+    });
+  } else {
+    window.onscroll = () => {
+      if (
+        bowlWrap.offsetTop - 500 <= window.scrollY &&
+        !bowlWrap.classList.contains("fulle")
+      ) {
+        korrels.forEach((korrel, i) => {
+          let delay;
+          if (i === 0) {
+            delay = 500;
+          } else {
+            delay = i * 20;
+          }
 
-  // for (var i = 0; i < korrelFragments; i++) {
-  //   const index = i;
-  //   let delay;
-  //   if (index === 0) {
-  //     delay = 500;
-  //   } else {
-  //     delay = i * 500;
-  //   }
-  //
-  //   setTimeout(function () {
-  //     for (var x = 1; x <= amountPerFragment; x++) {
-  //       if (korrels[index * amountPerFragment + x - 1]) {
-  //         korrels[index * amountPerFragment + x - 1].classList.add("show");
-  //         korrels[index * amountPerFragment + x - 1].style.transform =
-  //           "translate(0, 0)";
-  //         korrels[index * amountPerFragment + x - 1].style.transitionDelay =
-  //           "." + x * 10 + "s";
-  //       }
-  //     }
-  //   }, delay);
-  // }
+          setTimeout(function () {
+            korrel.classList.add("show");
+            korrel.style.transform = "translate(0px, 0px)";
+          }, delay);
+        });
+        bowlWrap.classList.add("full");
+      }
+    };
+  }
 })();

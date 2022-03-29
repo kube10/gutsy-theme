@@ -1,9 +1,12 @@
 {{ "section-homepage-usp.css" | asset_url | stylesheet_tag }}
+{{ "section-all-benefits.css" | asset_url | stylesheet_tag }}
 
 <div class="section-homepage-usp-inner section-padding color-{{section.settings.color_scheme}}">
   <div class="page-width section-homepage-usp-inner__grid">
     <div class="homepage-usp-section__left">
-      <img class="homepage-usp-section__left-image" src="{{section.settings.image | image_url:width:1080 }}" alt="">
+      <div class="all-benefits__bowl-wrap homepage">
+        {%- render "dog-bowl" -%}
+      </div>
     </div>
       <div class="homepage-usp-section__right">
         <h1 class="color-{{section.settings.heading_color}}">{{section.settings.headline}}</h1>
@@ -21,6 +24,8 @@
       </div>
   </div>
 </div>
+
+<script src="{{ 'section-all-benefits.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {
