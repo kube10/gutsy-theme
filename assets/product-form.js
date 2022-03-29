@@ -73,7 +73,7 @@ if (!customElements.get("product-form")) {
 
         this.subscriptionInput;
 
-        this.subscriptionSelected = false;
+        this.subscriptionSelected = true;
 
         this.perMonthInfo = this.querySelector(".perMonthInfo");
         this.perMonthInfo.classList.add("hidden");
@@ -112,6 +112,7 @@ if (!customElements.get("product-form")) {
 
               observer.observe(this.subscriptionInput, config);
 
+              $this.applyDiscount($this.subscriptionSelected);
               $this.setSubscriptionPrice();
 
               clearInterval(subscriptionLoaded);

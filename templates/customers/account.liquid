@@ -115,7 +115,11 @@
 
             {%- if custom_data["pet_birthday"] != "" -%}
               <p>
-                <span>Your pet's birthday: </span>
+                {%- if custom_data["pet_name"] != "" -%}
+                  <span>{{ custom_data["pet_name"]}}'s birthday: </span>
+                  {%- else -%}
+                  <span>Your pet's birthday: </span>
+                {%- endif -%}
                 <span id="birthday">{{ custom_data["pet_birthday"] | date: "%b %d, %Y" }}</span>
               </p>
 

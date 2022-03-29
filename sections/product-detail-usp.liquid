@@ -40,14 +40,18 @@
               <h3 class="color-{{ section.settings.subheadline_color_tab_2}}">{{section.settings.subheadline_tab_2}}</h3>
             </div>
             <div class="product-detail-usp__tab_2-content">
-              {% for block in section.blocks %}
-                {%- if block.type == "nutrition" -%}
-                  <div class="product-nutrition-info">
-                      <h3 class="color-primary-1">{{block.settings.title}}</h3>
-                      <p>{{block.settings.text}}</p>
-                  </div>
-                {%- endif -%}
-              {% endfor %}
+              <div class="product-nutrition-info">
+                <h3 class="color-primary-1">Composition</h3>
+                {{ product.metafields.nutrition.ingredients | metafield_text }}
+              </div>
+              <div class="product-nutrition-info">
+                <h3 class="color-primary-1">Additives/kg</h3>
+                {{ product.metafields.nutrition.additives | metafield_text }}
+              </div>
+              <div class="product-nutrition-info">
+                <h3 class="color-primary-1">Analytical Constituents</h3>
+                {{ product.metafields.nutrition.analytical_constituents | metafield_text }}
+              </div>
             </div>
         </div>
       </div>

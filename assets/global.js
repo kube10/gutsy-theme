@@ -814,6 +814,7 @@ class VariantSelects extends HTMLElement {
         const unitPriceEU = euroLocale.format(unitPriceFloat);
 
         this.form.priceItem.innerHTML = unitPriceEU;
+        this.form.applyDiscount(this.form.subscriptionSelected);
         this.form.calculateTotalPrice(
           this.form.priceItem,
           this.form.quantityInput,
