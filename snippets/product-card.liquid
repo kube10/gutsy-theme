@@ -145,6 +145,13 @@
 }
 </style>
 
+{%- assign reduceCount = false -%}
+{%- for media in product_card_product.media -%}
+  {%- if media.alt == "weight-chart" -%}
+    {%- assign reduceCount = true -%}
+  {%- endif -%}
+{%- endfor -%}
+
 <section class="product-details-section-inner color-{{color_scheme}} product-card">
   <div class="product-details-grid">
     <div class="product-media-slideshow">
@@ -156,17 +163,25 @@
             <div class="dummy"></div>
             <div class="slideshow-dots">
               {%- for media in product_card_product.media -%}
+                {%- unless media.alt == "weight-chart" -%}
                   <div id="{{forloop.index}}" class="slideshow-dot"></div>
+                {%- endunless -%}
               {%- endfor -%}
             </div>
             <div class="count">
-              {%- assign count = product_card_product.media | size -%}
+              {%- if reduceCount -%}
+                  {%- assign count = product_card_product.media | size | minus: 1 -%}
+                {%- else -%}
+                  {%- assign count = product_card_product.media | size -%}
+              {%- endif -%}
               <span class="currentSlideNo">1</span>/<span>{{ count }}</span>
             </div>
           </div>
       </div>
         {% for media in product_card_product.media %}
-          <img class="product-details-slide-img" src="{{ media | image_url: width: 500 }}" alt="">
+          {%- unless media.alt == "weight-chart" -%}
+            <img class="product-details-slide-img" src="{{ media | image_url: width: 500 }}" alt="{{media.alt}}">
+          {%- endunless -%}
         {% endfor %}
     </div>
     <div class="product-details-content">

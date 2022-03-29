@@ -23,7 +23,28 @@
 <section class="product-details-section-inner {{type}}">
   <div class="product-details-grid">
     <div class="product-details-img">
-        <img class="product-details-img-tag" src="{{ product | image_url: width: 500 }}" alt="">
+      <div class="product-media-slideshow">
+        <div class="controls">
+            <div class="next-slide-btn">
+                {% render 'icon-arrow-right-orange' %}
+            </div>
+            <div class="controls-bottom-row">
+              <div class="dummy"></div>
+              <div class="slideshow-dots">
+                {%- for media in product.media -%}
+                    <div id="{{forloop.index}}" class="slideshow-dot"></div>
+                {%- endfor -%}
+              </div>
+              <div class="count">
+                {%- assign count = product.media | size -%}
+                <span class="currentSlideNo">1</span>/<span>{{ count }}</span>
+              </div>
+            </div>
+        </div>
+          {% for media in product.media %}
+            <img class="product-details-slide-img" src="{{ media | image_url: width: 500 }}" alt="">
+          {% endfor %}
+      </div>
     </div>
     <div class="product-details-content {{type}}">
       <div data-scroll class="product-details-content-inner">
@@ -64,6 +85,73 @@
     const buyForm = document.querySelector('.product-buy-section');
     buyForm.scrollIntoView({ behavior: "smooth"} )
   }
+</script>
+
+<script type="text/javascript">
+
+  const slideshow = document.querySelectorAll('.product-media-slideshow');
+
+  slideshow.forEach(slideshow => {
+    const slides = slideshow.querySelectorAll('.product-details-slide-img');
+
+      slides[0].style.opacity = 1;
+
+      let currentSlide = 0;
+      let maxSlide = slides.length - 1;
+
+      slideshow.querySelector(".slideshow-dot:nth-child(1)").style.opacity = 1;
+
+      // setInterval(function () {
+      //   slides[currentSlide].style.opacity = 0;
+      //   if (currentSlide != maxSlide) {
+      //     const nextSlide = currentSlide + 1;
+      //     slides[nextSlide].style.opacity = 1;
+      //     currentSlide = nextSlide;
+      //     slideshow.querySelector('.currentSlideNo').innerHTML = nextSlide + 1;
+      //     slideshowDots.forEach(dot => dot.style.opacity = .6)
+      //     slideshow.querySelector(".slideshow-dot:nth-child("+(nextSlide + 1) +")").style.opacity = 1;
+      //   } else {
+      //     slides[0].style.opacity = 1;
+      //     currentSlide = 0;
+      //     slideshowDots.forEach(dot => dot.style.opacity = .6)
+      //     slideshow.querySelector(".slideshow-dot:nth-child(1)").style.opacity = 1;
+      //     slideshow.querySelector('.currentSlideNo').innerHTML = 1;
+      //   }
+      // }, 5000);
+
+      const nextSlideBtn = slideshow.querySelector('.next-slide-btn');
+      nextSlideBtn.addEventListener('click', () => {
+        slides[currentSlide].style.opacity = 0;
+        if (currentSlide != maxSlide) {
+          const nextSlide = currentSlide + 1;
+          slides[nextSlide].style.opacity = 1;
+          currentSlide = nextSlide;
+          slideshow.querySelector('.currentSlideNo').innerHTML = nextSlide + 1;
+          slideshowDots.forEach(dot => dot.style.opacity = .6)
+          slideshow.querySelector(".slideshow-dot:nth-child("+(nextSlide + 1) +")").style.opacity = 1;
+        } else {
+          slides[0].style.opacity = 1;
+          currentSlide = 0;
+          slideshowDots.forEach(dot => dot.style.opacity = .6)
+          slideshow.querySelector(".slideshow-dot:nth-child(1)").style.opacity = 1;
+          slideshow.querySelector('.currentSlideNo').innerHTML = 1;
+        }
+      })
+
+      const slideshowDots = slideshow.querySelectorAll('.slideshow-dot');
+      slideshowDots.forEach(slideshowDot => {
+        slideshowDot.addEventListener('click', function(e) {
+          const id = e.target.getAttribute('id')
+          slideshowDots.forEach(dot => dot.style.opacity = .7)
+          e.target.style.opacity = 1;
+          slides.forEach(slide => {
+            slide.style.opacity = 0;
+          });
+          slides[parseInt(id) - 1].style.opacity = 1;
+          slideshow.querySelector('.currentSlideNo').innerHTML = id;
+        })
+      })
+  })
 </script>
 
 {% schema %}
