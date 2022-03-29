@@ -20,9 +20,8 @@
 
   {%- assign product_form_id = 'product-form-' | append: product.id -%}
 
-  <product-form productId="{{product.id}}" class="product-form" data-calculator="true" data-checkoutBtn="true">
+  <product-form productId="{{product.id}}" class="product-form" data-calculator="true" data-checkoutBtn="true" data-handle={{product.handle}}>
     {%- form 'product', product, data-productid: product.id, id: product_form_id, class: 'form-grid', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-
     <div class="size-quantity">
       {%- unless product.has_only_default_variant -%}
         <variant-selects class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }} data-product="{{product.id}}">

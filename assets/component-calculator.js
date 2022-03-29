@@ -197,11 +197,11 @@ if (!customElements.get("calculator")) {
           if (this.calculatorForm.getAttribute("id").indexOf("puppy") > -1) {
             this.subscription = subscriptions[0];
           } else if (
-            this.calculatorForm.getAttribute("id").indexOf("(s)") > -1
+            this.calculatorForm.getAttribute("id").indexOf("small") > -1
           ) {
             this.subscription = subscriptions[1];
           } else if (
-            this.calculatorForm.getAttribute("id").indexOf("(l)") > -1
+            this.calculatorForm.getAttribute("id").indexOf("large") > -1
           ) {
             this.subscription = subscriptions[2];
           }

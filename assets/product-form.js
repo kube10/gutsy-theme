@@ -8,6 +8,7 @@ if (!customElements.get("product-form")) {
         this.form = this.querySelector("form");
         this.form.querySelector("[name=id]").disabled = false;
         this.form.addEventListener("submit", this.onSubmitHandler.bind(this));
+        this.handle = this.dataset.handle;
         this.cartNotification = document.querySelector("cart-notification");
         this.form.addEventListener("keydown", function (e) {
           if (e.keyCode == 13) {
@@ -79,14 +80,16 @@ if (!customElements.get("product-form")) {
 
         /* SubscriptionFields are inserted with JS later, so we must check for them to be loaded, before adding a mutation observer to the hidden input field. */
 
-        if (this.subscriptionInput) {
+        if (this.subscriptionInputWrap) {
           const subscriptionLoaded = setInterval(function (e) {
-            if ($this.querySelector("input[name='selling_plan']")) {
+            if (
+              $this.querySelector(
+                ".sls-purchase-options-container input[name='selling_plan']"
+              )
+            ) {
               this.subscriptionInput = $this.querySelector(
-                "input[name='selling_plan']"
+                ".sls-purchase-options-container input[name='selling_plan']"
               );
-
-              this.savingsBadge.innerHTML = "First month free!";
               const config = {
                 attributes: true,
                 childList: true,
@@ -101,12 +104,15 @@ if (!customElements.get("product-form")) {
                       $this.subscriptionSelected = false;
                     }
                     $this.applyDiscount($this.subscriptionSelected);
+                    $this.setSubscriptionPrice();
                   }
                 }
               };
               const observer = new MutationObserver(callback);
 
               observer.observe(this.subscriptionInput, config);
+
+              $this.setSubscriptionPrice();
 
               clearInterval(subscriptionLoaded);
             }
@@ -235,7 +241,31 @@ if (!customElements.get("product-form")) {
         });
         const totalPrice = parseFloat(unitPrice * quantity);
         const totalPriceEU = euroLocale.format(totalPrice);
-        totalPriceWrapper.innerHTML = totalPriceEU;
+        totalPriceWrapper.innerHTML = totalPriceEU.replace(".", ",");
+      }
+
+      setSubscriptionPrice() {
+        const priceWrap = this.form.querySelector(
+          '.sls-option-container[data-selling-plan-group="0"] .money'
+        );
+
+        const fullPrice = this.form.querySelector(
+          ".sls-option-container .money"
+        ).innerHTML;
+
+        const fullPriceReplc = fullPrice.substring(fullPrice.indexOf(";") + 1);
+
+        let fullPriceFloat = parseFloat(fullPriceReplc.replace(",", "."));
+
+        const discounted = fullPriceFloat * 0.9;
+
+        const euroLocale = Intl.NumberFormat("en-EU", {
+          style: "currency",
+          currency: "EUR",
+        });
+
+        const discountedEU = euroLocale.format(discounted);
+        priceWrap.innerHTML = discountedEU.replace(".", ",");
       }
     }
   );

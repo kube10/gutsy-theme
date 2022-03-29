@@ -675,6 +675,10 @@ class VariantSelects extends HTMLElement {
     this.toggleAddButton(true, "", false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
+    const $this = this;
+    setTimeout(function () {
+      $this.form.setSubscriptionPrice();
+    }, 300);
 
     if (!this.currentVariant) {
       this.toggleAddButton(true, "", true);
