@@ -16,8 +16,15 @@
 
     let offsetY = 500 * (1 + i * 0.02);
 
-    if (left > window.innerWidth / 2) {
-      offsetX = (left - window.innerWidth / 2) * -1;
+    let center = window.innerWidth / 2;
+
+    if (bowlWrap.classList.contains("homepage")) {
+      center = bowlWrap.offsetWidth / 2;
+      console.log(center);
+    }
+
+    if (left > center) {
+      offsetX = (left - center) * -1;
       const rndm = Math.random();
       const rndm2 = Math.random();
       if (rndm2 > 0.5) {
@@ -32,7 +39,7 @@
       }
       korrel.style.transform = `translate(${offsetX}px, -${offsetY}px)`;
     } else {
-      offsetX = (left - window.innerWidth / 2) * -1;
+      offsetX = (left - center) * -1;
       const rndm = Math.random();
       const rndm2 = Math.random();
       if (rndm2 > 0.5) {
