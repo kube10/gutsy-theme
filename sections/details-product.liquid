@@ -15,6 +15,9 @@
   {%- if tag == "kibble" -%}
     {%- assign kibble = true -%}
   {%- endif -%}
+  {%- if tag == "sample-box" -%}
+    {% assign sampleBox = true %}
+  {%- endif -%}
 {% endfor %}
 
 <section class="product-details-section-inner {{type}}">
@@ -32,12 +35,20 @@
           <p>{{product.content}}</p>
         </div>
         {% render 'product-usp-icons' %}
-        <div class="product-details-actions">
-          {%- if kibble -%}        
-            <button onclick="scrollToNextSection()" class="button button-secondary">More info</button>
-          {%- endif -%}
-          <button type="button" onclick="scrollToBuyForm()" name="button" class="button button-primary">Buy now</button>
-        </div>
+        {%- unless sampleBox -%}
+          <div class="product-details-actions">
+            {%- if kibble -%}
+              <button onclick="scrollToNextSection()" class="button button-secondary">More info</button>
+            {%- endif -%}
+            <button type="button" onclick="scrollToBuyForm()" name="button" class="button button-primary">Buy now</button>
+          </div>
+        {%- endunless -%}
+        {%- if sampleBox -%}
+          <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+          {{ 'component-product-form.css' | asset_url | stylesheet_tag }}
+          {{ 'component-price.css' | asset_url | stylesheet_tag }}
+          {%- render 'product-form' -%}
+        {%- endif -%}
       </div>
     </div>
   </div>

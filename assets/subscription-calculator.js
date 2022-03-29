@@ -1,11 +1,11 @@
 const products = [
   {
     handle: "chicken-munchies-adult-l",
-    string: "Chicken Munchies Adult (L)",
+    string: "Chicken Munchies Large Adult",
   },
   {
     handle: "chicken-munchies-adult-s",
-    string: "Chicken Munchies Adult (S)",
+    string: "Chicken Munchies Small Adult",
   },
   {
     handle: "chicken-munchies-puppy",

@@ -1,0 +1,80 @@
+{
+  "sections": {
+    "details": {
+      "type": "details-product",
+      "settings": {
+      }
+    },
+    "1639575113515162c3": {
+      "type": "section-testimonials",
+      "blocks": {
+        "fa633ae0-ccda-4e4e-9a84-bf2f9f8cce18": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "My BFF Jacky has had stomach troubles for years. Thanks to gutsy’s hypo-allergenic trekker fuel, those issues are in the past!",
+            "testimonial_name": "Lisa, Antwerp",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25.png"
+          }
+        },
+        "bb8fec30-cda0-4be3-b5ee-2da5a601adfd": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "It’s funny how we always consider our own footprint when thinking about sustainability. Gutsy reduces our pet’s paw print too!",
+            "testimonial_name": "Ben, Brugge",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-1.png"
+          }
+        },
+        "417376ef-cf4d-4320-91e5-c6321b3a9c6e": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_content": "My border collie is a real hiker, he’s more wolf than dog! A nutritious meal that’s rich in proteins is exactly what she needed.",
+            "testimonial_name": "Michael, Brussels",
+            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-2.png"
+          }
+        }
+      },
+      "block_order": [
+        "fa633ae0-ccda-4e4e-9a84-bf2f9f8cce18",
+        "bb8fec30-cda0-4be3-b5ee-2da5a601adfd",
+        "417376ef-cf4d-4320-91e5-c6321b3a9c6e"
+      ],
+      "settings": {
+        "color_scheme": "bg-green",
+        "heading_color": "primary-2",
+        "headline": "Dog lovers love us!"
+      }
+    },
+    "1639579029d31473ae": {
+      "type": "apps",
+      "blocks": {
+        "92811e94-a9eb-4c74-83a4-8b1c4f2a39e5": {
+          "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "heading_font": "helvetica_n4",
+            "heading_size": 20,
+            "feed_width": 100,
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "92811e94-a9eb-4c74-83a4-8b1c4f2a39e5"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "16395790392dec3340": {
+      "type": "instagram-link",
+      "settings": {
+        "instagram_url": "https:\/\/instagram.com"
+      }
+    }
+  },
+  "order": [
+    "details",
+    "1639575113515162c3",
+    "1639579029d31473ae",
+    "16395790392dec3340"
+  ]
+}

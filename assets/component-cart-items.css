@@ -205,6 +205,11 @@ cart-remove-button .icon-remove {
   text-transform: uppercase;
 }
 
+.cart-item__quantity-wrapper.disabled > quantity-input {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 @media screen and (max-width: 749px) {
   .cart-items,
   .cart-items thead,

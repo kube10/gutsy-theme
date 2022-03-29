@@ -1,11 +1,15 @@
 {%- assign subscription = true -%}
 {%- for tag in product.tags -%}
   {%- if tag == "sample-box" -%}
-    {%- assign subscription = false -%}
-    {%- assign sampleBox = true -%}
+      {%- assign subscription = false -%}
+      {%- assign sampleBox = true -%}
+    {%- else -%}
+      {%- assign subscription = true -%}
   {%- endif -%}
   {%- if tag == "toys" or tag == "snacks"-%}
-    {%- assign subscription = false -%}
+      {%- assign subscription = false -%}
+    {%- else -%}
+      {%- assign subscription = true -%}
   {%- endif -%}
 {%- endfor -%}
 
@@ -80,10 +84,10 @@
 
       {%- if subscription -%}
         <div class="product-form__icons">
-          <span class="open-calculator-link tooltip" calculatorId="{{product.id}}" >
+          <div calculatorId="{{product.id}}" class="open-calculator-link product-form__calculator-icon">
             {%- render 'icon-calculator' -%}
-            <span class="tooltiptext">Calculate your pet's monthly needs</span>
-          </span>
+            <span>Calculate your pet's monthly needs</span>
+          </div>
         </div>
       {%- endif -%}
     </div>
@@ -106,7 +110,7 @@
 
     <div class="product-form__actions">
           <div class="prices">
-            {%- if subscriptions -%}
+            {%- if subscription -%}
               <div id="unitPrice-{{product.id}}"class="unitPrice">
                 <span>Price per bag</span>
                 <div class="no-js-hidden priceComponent" id="price-{{ section.id }}" data-product="{{product.id}}" role="status" {{ block.shopify_attributes }}>

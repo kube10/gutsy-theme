@@ -200,6 +200,8 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-    <script src="{{ 'subscription-calculator.js' | asset_url }}" defer="defer"></script>
+    {%- if template.name != "product" and template.name != "collection" and template.name != "index" -%}    
+      <script src="{{ 'subscription-calculator.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
   </body>
 </html>

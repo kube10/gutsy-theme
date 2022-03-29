@@ -33,6 +33,12 @@
   flex-wrap: wrap;
 }
 
+.product-form__calculator-icon {
+  display: flex;
+  align-items: center;
+  grid-column-gap: 0.5rem;
+}
+
 .tooltip {
   position: relative;
   display: inline-block;

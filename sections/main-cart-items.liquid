@@ -174,8 +174,16 @@
                     </div>
                   </td>
 
+                  {%- for tag in item.product.tags -%}
+                    {%- if tag == "sample-box" -%}
+                      {% assign sampleBox = true %}
+                      {%- else -%}
+                      {% assign sampleBox = false %}
+                    {%- endif -%}
+                  {%- endfor -%}
+
                   <td class="cart-item__quantity">
-                    <div class="cart-item__quantity-wrapper">
+                    <div class="cart-item__quantity-wrapper {% if sampleBox %}disabled{% endif %}">
                       <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
                         {{ 'products.product.quantity.label' | t }}
                       </label>
