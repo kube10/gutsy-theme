@@ -1,0 +1,118 @@
+{{ 'section-sample-box.css' | asset_url | stylesheet_tag }}
+<section class="product-details-section-inner">
+  <div class="product-details-grid">
+    <div class="product-details-img">
+      <img src="{{ product.featured_image | image_url }}" alt="">
+      <div class="sample-box__arrow-down" onclick="scrollToNextSection()">
+        {%- render 'icon-arrow-right-orange' -%}
+      </div>
+    </div>
+    <div class="product-details-content">
+      <div data-scroll class="product-details-content-inner">
+        <div class="product-details-text-content">
+          <h1 class="color-primary-1">{{ product.title | escape }}</h1>
+          {% if product.metafields.custom_fields["tagline"] != blank %}
+          <h3>{{ product.metafields.custom_fields["tagline"] }}</h3>
+          {% endif %}
+          <p>{{product.content}}</p>
+        </div>
+        {% render 'product-usp-icons' %}
+        <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+        {{ 'component-product-form.css' | asset_url | stylesheet_tag }}
+          {{ 'component-price.css' | asset_url | stylesheet_tag }}
+          {%- render 'product-form' -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  function scrollToNextSection() {
+    const nextSection = document.querySelector('.product-details-content');
+    window.scroll({
+      top: nextSection.offsetTop - 76,
+      behavior: "smooth"
+    })
+  }
+
+</script>
+
+<script type="text/javascript">
+
+  const slideshow = document.querySelectorAll('.product-media-slideshow');
+
+  slideshow.forEach(slideshow => {
+    const slides = slideshow.querySelectorAll('.product-details-slide-img');
+
+      slides[0].style.opacity = 1;
+
+      let currentSlide = 0;
+      let maxSlide = slides.length - 1;
+
+      slideshow.querySelector(".slideshow-dot:nth-child(1)").style.opacity = 1;
+
+      // setInterval(function () {
+      //   slides[currentSlide].style.opacity = 0;
+      //   if (currentSlide != maxSlide) {
+      //     const nextSlide = currentSlide + 1;
+      //     slides[nextSlide].style.opacity = 1;
+      //     currentSlide = nextSlide;
+      //     slideshow.querySelector('.currentSlideNo').innerHTML = nextSlide + 1;
+      //     slideshowDots.forEach(dot => dot.style.opacity = .6)
+      //     slideshow.querySelector(".slideshow-dot:nth-child("+(nextSlide + 1) +")").style.opacity = 1;
+      //   } else {
+      //     slides[0].style.opacity = 1;
+      //     currentSlide = 0;
+      //     slideshowDots.forEach(dot => dot.style.opacity = .6)
+      //     slideshow.querySelector(".slideshow-dot:nth-child(1)").style.opacity = 1;
+      //     slideshow.querySelector('.currentSlideNo').innerHTML = 1;
+      //   }
+      // }, 5000);
+
+      const nextSlideBtn = slideshow.querySelector('.next-slide-btn');
+      nextSlideBtn.addEventListener('click', () => {
+        slides[currentSlide].style.opacity = 0;
+        if (currentSlide != maxSlide) {
+          const nextSlide = currentSlide + 1;
+          slides[nextSlide].style.opacity = 1;
+          currentSlide = nextSlide;
+          slideshow.querySelector('.currentSlideNo').innerHTML = nextSlide + 1;
+          slideshowDots.forEach(dot => dot.style.opacity = .6)
+          slideshow.querySelector(".slideshow-dot:nth-child("+(nextSlide + 1) +")").style.opacity = 1;
+        } else {
+          slides[0].style.opacity = 1;
+          currentSlide = 0;
+          slideshowDots.forEach(dot => dot.style.opacity = .6)
+          slideshow.querySelector(".slideshow-dot:nth-child(1)").style.opacity = 1;
+          slideshow.querySelector('.currentSlideNo').innerHTML = 1;
+        }
+      })
+
+      const slideshowDots = slideshow.querySelectorAll('.slideshow-dot');
+      slideshowDots.forEach(slideshowDot => {
+        slideshowDot.addEventListener('click', function(e) {
+          const id = e.target.getAttribute('id')
+          slideshowDots.forEach(dot => dot.style.opacity = .7)
+          e.target.style.opacity = 1;
+          slides.forEach(slide => {
+            slide.style.opacity = 0;
+          });
+          slides[parseInt(id) - 1].style.opacity = 1;
+          slideshow.querySelector('.currentSlideNo').innerHTML = id;
+        })
+      })
+  })
+</script>
+
+{% schema %}
+{
+  "name": "Sample Box",
+  "tag": "section",
+  "class": "sample-box-section",
+  "presets": [
+    {
+      "name": "Sample Box"
+    }
+  ]
+}
+{% endschema %}

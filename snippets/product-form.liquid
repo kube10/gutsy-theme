@@ -15,7 +15,9 @@
 
 <div class="product-form-wrap color-{{colorScheme}}">
   {%- if subscription -%}
-    <h2>Get <span>one bag</span> or <span>subscribe and save!</span></h2>
+    {%- unless sampleBox -%}
+      <h2>Get <span>one bag</span> or <span>subscribe and save!</span></h2>
+    {%- endunless -%}
   {%- endif -%}
 
   {%- assign product_form_id = 'product-form-' | append: product.id -%}
@@ -82,12 +84,14 @@
       {%- endunless -%}
 
       {%- if subscription -%}
-        <div class="product-form__icons">
-          <div calculatorId="{{product.id}}" class="open-calculator-link product-form__calculator-icon">
-            {%- render 'icon-calculator' -%}
-            <span>Calculate your pet's monthly needs</span>
+        {%- unless sampleBox -%}
+          <div class="product-form__icons">
+            <div calculatorId="{{product.id}}" class="open-calculator-link product-form__calculator-icon">
+              {%- render 'icon-calculator' -%}
+              <span>Calculate your pet's monthly needs</span>
+            </div>
           </div>
-        </div>
+        {%- endunless -%}
       {%- endif -%}
     </div>
 
@@ -111,16 +115,22 @@
           <div class="prices">
             {%- if subscription -%}
               <div id="unitPrice-{{product.id}}"class="unitPrice">
-                <span>Price per bag</span>
+                {%- if sampleBox -%}
+                    <span>Price per box</span>
+                  {%- else -%}
+                    <span>Price per bag</span>
+                {%- endif -%}
                 <div class="no-js-hidden priceComponent" id="price-{{ section.id }}" data-product="{{product.id}}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
                 </div>
               </div>
-              <div id="totalPrice-{{product.id}}" class="totalPrice">
-                <span>Total price</span>
-                <h2 class="price price--large"></h2>
-                <span id="perMonthInfo-{{product.id}}" class='perMonthInfo'>Per month</span>
-              </div>
+              {%- unless sampleBox -%}
+                <div id="totalPrice-{{product.id}}" class="totalPrice">
+                  <span>Total price</span>
+                  <h2 class="price price--large"></h2>
+                  <span id="perMonthInfo-{{product.id}}" class='perMonthInfo'>Per month</span>
+                </div>
+              {%- endunless -%}
               {%- else -%}
               <div class="no-js-hidden priceComponent" id="price-{{ section.id }}" data-product="{{product.id}}" role="status" {{ block.shopify_attributes }}>
                 {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}

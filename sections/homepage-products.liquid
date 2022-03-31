@@ -12,18 +12,9 @@
           <a href="{{product.url}}"><img data-card="{{product.id}}" class="homepage-products__image" src="
           {{ product.featured_image | image_url: width: 500 }}" alt=""></a>
           <div id="homepage-products__card-{{product.id}}" class="homepage-products__card">
-              <h2 class="homepage-products__card-title color-primary-1">{{product.title}}</h2>
-            <div class="homepage-products__card-header">
-              <p class="homepage-products__card-description">{{product.description | truncatewords: 22 }}</p>
-              {%- for tag in product.tags -%}
-                {%- if tag == "adult-l" or tag == "adult-s" or tag == "puppy" -%}
-                <div class="product-tag-badge">{{ tag | upcase }}</div>
-                {%- endif -%}
-              {%- endfor -%}
-
-            </div>
+            <h2 class="homepage-products__card-title color-primary-1">{{product.title}}</h2>
             <div class="homepage-products__card-price-row">
-              <h5 class="color-primary-2">{{product.price | money}}</h5>
+              <h5 class="color-primary-2">From {{product.price | money}}</h5>
               <div class="homepage-products__card-options">
                 Bags of
                 {%- for option in product.options_with_values -%}
