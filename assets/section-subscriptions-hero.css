@@ -22,6 +22,15 @@
   padding-right: 1rem;
 }
 
+.section-subscriptions-hero__actions {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  grid-column-gap: 2rem;
+}
+
 @media screen and (min-width: 992px) {
   .section-subscriptions-hero__grid {
     grid-template-columns: 50% 1fr;
@@ -33,12 +42,17 @@
 
   .section-subscriptions-hero__content {
     padding-left: 3rem;
+    padding-right: 3rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
   }
 
   .section-subscriptions-hero__content > p {
+    width: 75%;
+  }
+
+  .section-subscriptions-hero__actions {
     width: 75%;
   }
 }

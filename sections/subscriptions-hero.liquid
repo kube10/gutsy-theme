@@ -7,7 +7,12 @@
     </div>
     <div class="section-subscriptions-hero__content section-padding">
       <h1 class="color-{{section.settings.heading_color}}">{{section.settings.headline}}</h1>
+      <h3 class="color-{{section.settings.subheading_color}}">{{section.settings.subheading}}</h3>
       <p>{{ section.settings.text_content }}</p>
+      <div class="section-subscriptions-hero__actions">
+        <a href="{{section.settings.primary_btn_url}}" class="button button-primary">{{ section.settings.primary_btn_text }}</a>
+        <a href="{{section.settings.secondary_btn_url}}" class="button button-secondary">{{ section.settings.secondary_btn_text }}</a>
+      </div>
     </div>
   </div>
 </div>
@@ -68,7 +73,32 @@
           "label": "Gutsy Beige"
         }
       ]
-    },
+    },    {
+          "type":"text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "One month free subscription"
+        },
+        {
+          "type": "select",
+          "id": "subheading_color",
+          "label": "Kleur subheading",
+          "default": "primary-2",
+          "options": [
+            {
+              "value": "primary-1",
+              "label": "Gutsy Green"
+            },
+            {
+              "value": "primary-2",
+              "label": "Gutsy Orange"
+            },
+            {
+              "value": "primary-3",
+              "label": "Gutsy Beige"
+            }
+          ]
+        },
     {
       "type": "textarea",
       "id": "text_content",
@@ -78,6 +108,26 @@
       "type": "image_picker",
       "id": "image",
       "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "primary_btn_text",
+      "label": "Primary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "primary_btn_url",
+      "label": "Primary Button URL"
+    },
+    {
+      "type": "text",
+      "id": "secondary_btn_text",
+      "label": "Secondary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "secondary_btn_url",
+      "label": "Secondary Button URL"
     }
   ]
 }

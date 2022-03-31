@@ -11,8 +11,14 @@
         "color_scheme": "bg-beige",
         "headline": "A Gutsy Subscription",
         "heading_color": "primary-1",
+        "subheading": "One month free subscription",
+        "subheading_color": "primary-2",
         "text_content": "The first month your dog can enjoy Gutsy completely free of charge when you take out a subscription. We make sure they are delivered to your home every month, saving you money, time and helping us on our journey to a better planet.",
-        "image": "shopify:\/\/shop_images\/pexels-lisa-fotios-1006374.jpg"
+        "image": "shopify:\/\/shop_images\/pexels-lisa-fotios-1006374.jpg",
+        "primary_btn_text": "SHOP NOW",
+        "primary_btn_url": "shopify:\/\/collections\/all",
+        "secondary_btn_text": "All benefits",
+        "secondary_btn_url": "shopify:\/\/pages\/all-benefits"
       }
     },
     "16442279659eef588e": {

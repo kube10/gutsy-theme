@@ -20,6 +20,7 @@
 
 .subscriptions-info__card-heading > h2 {
   font-size: 1.5rem;
+  height: 75px;
 }
 
 @media screen and (min-width: 768px) {
@@ -42,7 +43,7 @@
   .subscriptions-info-section__cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
+    align-items: flex-start;
     grid-column-gap: 4rem;
   }
 
