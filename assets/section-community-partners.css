@@ -1,7 +1,8 @@
 .community-partners__content-grid {
   display: grid;
-  grid-row-gap: 2rem;
-  grid-column-gap: 2rem;
+  grid-row-gap: 3rem;
+  grid-column-gap: 3rem;
+  margin-top: 3rem;
 }
 
 .community-partner__card-heading {
@@ -9,8 +10,15 @@
   margin-bottom: 0.5rem;
 }
 
+.community-partner__card {
+  text-align: center;
+}
+
 .community-partner__logo {
   max-width: 250px;
+  height: 150px;
+  object-fit: contain;
+  object-position: center;
 }
 
 @media screen and (min-width: 768px) {
