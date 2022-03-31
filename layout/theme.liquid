@@ -202,10 +202,12 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-    {%- if template.name != "product" and template.name != "collection" and template.name != "index" -%}    
+    {%- if template.name != "product" and template.name != "collection" and template.name != "index" -%}
       <script src="{{ 'subscription-calculator.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-  
+
 {% include "bc_banner" %}
+ {% include 'smile-initializer' %}
+
 </body>
 </html>

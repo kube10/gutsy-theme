@@ -20,6 +20,10 @@
               {% render block %}
             {%- when 'subtotal' -%}
               <div class="js-contents" {{ block.shopify_attributes }}>
+                <div class="cart__discount-code-wrap">
+                  <strong>Have a discount code?</strong>
+                  <p>Discount codes can be applied at checkout!</p>
+                </div>
                 <div class="totals">
                   <h3 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h3>
                   <p class="totals__subtotal-value color-primary-1">{{ cart.total_price | money_with_currency }}</p>
