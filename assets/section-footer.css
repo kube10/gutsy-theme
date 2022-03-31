@@ -405,6 +405,13 @@ noscript .localization-selector.link {
   color: white;
 }
 
+.footer__policy-link {
+  color: white;
+  margin-right: 1rem;
+  text-decoration: none;
+  opacity: 0.75;
+}
+
 @media screen and (min-width: 750px) {
   .footer__copyright {
     text-align: right;
