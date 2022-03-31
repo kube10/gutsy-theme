@@ -113,6 +113,7 @@ class CartItems extends HTMLElement {
         document.getElementById("cart-errors").textContent =
           window.cartStrings.error;
         this.disableLoading();
+        location.reload();
       });
   }
 

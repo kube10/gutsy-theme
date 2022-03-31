@@ -60,7 +60,6 @@
                     {%- if section.settings.show_vendor -%}
                       <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
                     {%- endif -%}
-
                     <a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a>
 
                     {%- if item.original_price != item.final_price -%}
@@ -80,7 +79,15 @@
                       </div>
                     {%- else -%}
                       <div class="product-option">
-                        {{ item.original_price | money }}
+                        {%- if item.selling_plan_allocation -%}
+                            {%- if item.selling_plan_allocation.price_adjustments[0].price == 0 -%}
+                              First month free, after that <strong class="color-primary-2">{{ item.selling_plan_allocation.price_adjustments[1].price | times: item.quantity | money}} per month.</strong>
+                              {%- else -%}
+                              <strong>{{ item.original_price | money }} per month.</strong>
+                            {%- endif -%}
+                          {%- else -%}
+                          {{ item.original_price | money }}
+                        {%- endif -%}
                       </div>
                     {%- endif -%}
 
@@ -151,6 +158,7 @@
                           </dt>
                           <dd class="price price--end">
                             {{ item.final_line_price | money }}
+
                           </dd>
                         </dl>
                       {%- else -%}
@@ -283,6 +291,10 @@
     <p class="visually-hidden" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">{{ 'accessibility.loading' | t }}</p>
   </form>
 </cart-items>
+
+<script type="text/javascript">
+  fetch('/cart.js').then(res => res.json()).then(data => console.log(data))
+</script>
 
 {% schema %}
 {
