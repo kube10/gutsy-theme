@@ -11,28 +11,28 @@
         "62f761bf-fea4-4d41-994d-1d014410410d": {
           "type": "store",
           "settings": {
-            "name": "Tom & Co Berchem",
-            "address": "Diksmuidelaan 79\/83, 2600 Antwerpen",
-            "website": "https:\/\/tom&co.com",
-            "coordinates": "51.19888250477169, 4.4403487380967235"
+            "name": "Moose in the City",
+            "address": "IJzerenwaag 10, 2000 Antwerpen",
+            "website": "https:\/\/www.moose-in-the-city.com\/nl",
+            "coordinates": "51.21684864178273, 4.400593398302417"
           }
         },
         "ef58c05d-fce4-40d3-984c-f4431a032f0f": {
           "type": "store",
           "settings": {
-            "name": "A dog's life",
-            "address": "Jachtlaan 31, 1040 Etterbeek",
-            "website": "https:\/\/www.uneviedechien.be\/",
-            "coordinates": "50.83152558829099, 4.3905305841107705"
+            "name": "Jardiland Soignies",
+            "address": "Chaussée De Mons 327\n7060 Soignies\nHenegouwen",
+            "website": "https:\/\/www.jardiland.com\/storelocator\/store\/view\/name\/soignies\/",
+            "coordinates": "50.54797842856708, 4.048661069444204"
           }
         },
         "fb8044bc-fcab-4bd2-afab-6e41d4c47afe": {
           "type": "store",
           "settings": {
-            "name": "Maxi Zoo XXL Oostende",
-            "address": "Torhoutsesteenweg 694, 8400 Oostende",
-            "website": "https:\/\/www.maxizoo.be\/nl\/stores\/maxi-zoo-oostende\/",
-            "coordinates": "51.19562004637677, 2.9018007953241463"
+            "name": "Zowizoo",
+            "address": "Mechelsesteenweg 272, 2550 Kontich",
+            "website": "https:\/\/zowizoo.be",
+            "coordinates": "51.12287035736127, 4.449152940628295"
           }
         }
       },

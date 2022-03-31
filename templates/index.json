@@ -13,7 +13,7 @@
         "910e615d-0291-475b-b2d2-3ddd8275bedf": {
           "type": "subheading",
           "settings": {
-            "subheading": "<b>Have you ever thought about reducing your dog's ecological pawprint?<\/b>\n<br><br>\nThis hybrid dog food with insects and chicken is stuffed with flavour and high-quality proteins. By feeding your pet Gutsy you can keep your dog, yourself and our planet happy at the same time.",
+            "subheading": "<b>Have you ever thought about reducing your dog's ecological pawprint?<\/b>\n<br><br>\nWe are on a mission to inspire dog and owner to explore the world through a healthy and sustainable lifestyle.",
             "color": "white"
           }
         },
@@ -154,7 +154,7 @@
         "headline": "Winner, winner, <br>insect dinner!",
         "heading_color": "primary-2",
         "subheading_color": "primary-3",
-        "button_text": "MORE ABOUT SUSTAINABILITY",
+        "button_text": "THERE IS MORE TO EXPLORE",
         "button_href": "shopify:\/\/pages\/sustainability",
         "image": "shopify:\/\/shop_images\/Frame_207.jpg"
       }
@@ -169,7 +169,7 @@
     "1643554443aad525cb": {
       "type": "section-reseller",
       "settings": {
-        "heading": "Gutsy Pet Foods in your store?",
+        "heading": "Gutsy Pet Food in your store?",
         "content": "Please send us a message using the form below.\nWe will get back to you ASAP.",
         "image": "shopify:\/\/shop_images\/GUTSY-FOOD-BAG-MOCKUP_1.jpg"
       }

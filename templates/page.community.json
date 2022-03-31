@@ -8,12 +8,14 @@
     "164690718054f1a911": {
       "type": "community-blog",
       "settings": {
+        "heading": "The Gutsy Blog",
         "posts_per_page": 6
       }
     },
     "1646907174432ba872": {
       "type": "community-insta-feed",
       "settings": {
+        "heading": "The Gutsy Feed"
       }
     },
     "16469071637ea43b4a": {
@@ -22,41 +24,30 @@
         "e0eda9f8-9a16-43b2-b566-6fa46212d183": {
           "type": "article",
           "settings": {
-            "heading": "SUSTAINABILITY IN PET FOODS: A SOLUTION?",
-            "image": "shopify:\/\/shop_images\/pexels-lisa-fotios-1006374.jpg",
-            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida. <\/p>",
-            "tag": "THE NEW YORK TIMES",
-            "url": ""
+            "heading": "Twee Gentse studenten maken hondenvoeding van insecten en winnen prijs van UGent",
+            "image": "shopify:\/\/shop_images\/2e7a1a7d-3c7f-11ec-b07d-02b7b76bf47f.jpg",
+            "content": "<p>Twee Gentse studenten ontwikkelen dierenvoeding op basis van insecten en zijn met dat project in de prijzen gevallen op Expedition DO!, het start-upprogramma van Universiteit Gent.<\/p>",
+            "tag": "vrt nieuws",
+            "url": "https:\/\/www.vrt.be\/vrtnws\/nl\/2021\/11\/03\/hondenvoeding-gemaakt-van-insecten-gentse-studenten-winnen-prij\/"
           }
         },
         "71fa6ec6-4167-4a8b-83c1-c13a429c6a8c": {
           "type": "article",
           "settings": {
-            "heading": "SUSTAINABILITY IN PET FOODS: A SOLUTION?",
-            "image": "shopify:\/\/shop_images\/Frame_207.jpg",
-            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida. <\/p>",
-            "tag": "THE NEW YORK TIMES",
-            "url": ""
-          }
-        },
-        "500c323f-3cf9-4dcc-b9b5-088401552fc4": {
-          "type": "article",
-          "settings": {
-            "heading": "SUSTAINABILITY IN PET FOODS: A SOLUTION?",
-            "image": "shopify:\/\/shop_images\/1212981_1.jpg",
-            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida. <\/p>",
-            "tag": "THE NEW YORK TIMES",
-            "url": ""
+            "heading": "Achilles (23) en Jack (24) lanceren hondenvoeding met insecten",
+            "image": "shopify:\/\/shop_images\/694.webp",
+            "content": "<p>Hondenvoeding op basis van insecten. Dat is wat Achilles Hannecart (23) en Jack Lathouwers (24), twee studenten van de UGent, hebben ontwikkeld. “De voeding is niet alleen duurzamer, omdat het geen vlees bevat, maar ook gezonder voor je hond. En het is ook nog eens even lekker\", klinkt het.<\/p>",
+            "tag": "Het Laatste Nieuws",
+            "url": "https:\/\/www.hln.be\/gent\/achilles-23-en-jack-24-lanceren-hondenvoeding-met-insecten-er-steken-geen-krekels-uit-ze-zien-eruit-als-gewone-hondenbrokken~af645c56\/"
           }
         }
       },
       "block_order": [
         "e0eda9f8-9a16-43b2-b566-6fa46212d183",
-        "71fa6ec6-4167-4a8b-83c1-c13a429c6a8c",
-        "500c323f-3cf9-4dcc-b9b5-088401552fc4"
+        "71fa6ec6-4167-4a8b-83c1-c13a429c6a8c"
       ],
       "settings": {
-        "heading": "The Gutsy News"
+        "heading": "Gutsy in the News"
       }
     },
     "1646907188917c0881": {
@@ -65,19 +56,19 @@
         "c0d479db-0e37-4db3-a3c7-b1821ed5c37c": {
           "type": "partner",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/tom-co-logo.png",
-            "heading": "Tom & Co",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida.",
-            "website": "https:\/\/www.tomandco.com\/nl\/"
+            "logo": "shopify:\/\/shop_images\/FlamingoPetProducts_250x150px.png",
+            "heading": "Flamingo",
+            "content": "Together with Flamingo, we provide hours of entertainment for your dog to get the most out of his day.",
+            "website": "https:\/\/www.flamingo.be\/nl"
           }
         },
         "ffecccd0-0d78-444a-8204-0e527459c369": {
           "type": "partner",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/tom-co-logo.png",
-            "heading": "Tom & Co",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida.",
-            "website": "https:\/\/www.tomandco.com\/nl\/"
+            "logo": "shopify:\/\/shop_images\/FIT_Endorserlogo.png",
+            "heading": "Flanders Investment & Trade",
+            "content": "Thanks to their support, we are putting the Gutsy paw print on the map.",
+            "website": "https:\/\/welcome.flandersinvestmentandtrade.com\/en"
           }
         },
         "05bab3e9-afd8-46f5-b4ce-8856b32f6013": {

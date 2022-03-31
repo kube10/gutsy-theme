@@ -36,7 +36,7 @@
           "settings": {
             "category": "",
             "question": "Where can I buy Gutsy?",
-            "answer": "<p>You can buy Gutsy here, on our <strong>online website,<\/strong> and in different pet <strong>specialty stores<\/strong> across Belgium. These pet specialties stores can be found on this map.<\/p>"
+            "answer": "<p>You can buy Gutsy here, on our <strong>online website,<\/strong> and in different pet <strong>specialty stores<\/strong> across Belgium. These pet specialties stores can be found on this <a href=\"\/pages\/store-locator\" title=\"Store Locator\">map<\/a>.<\/p>"
           }
         },
         "8227ea84-2687-4d25-9e48-f421013f58a0": {
@@ -44,7 +44,7 @@
           "settings": {
             "category": "",
             "question": "Is our packaging recyclable?",
-            "answer": "<p>Our packaging is made of mono-plastic, which means all bags are <strong>100% recyclable<\/strong>. You can easily recycle your bag of Gutsy at the PMD.<\/p>"
+            "answer": "<p>Our packaging is made of mono-plastic, which means all bags are <strong>100% recyclable<\/strong>. You can easily recycle your bag of Gutsy by sorting it with your plastics. <\/p>"
           }
         },
         "53e46e29-1ed2-439f-90bd-20613e7fc3e5": {
@@ -100,7 +100,7 @@
           "settings": {
             "category": "Feeding guidelines",
             "question": "How much of Gutsy do I need to give my dog?",
-            "answer": "<p>With our  handy (calculator), you can easily calculate much of our ridiculous tasting kibble your dog should get each day. <\/p>"
+            "answer": "<p>With our handy <strong>calculator <\/strong>which you can find in our shop, you can easily calculate how much of our ridiculous tasting kibble your dog should get each day. <\/p>"
           }
         },
         "77c761ef-7b3e-48a0-9138-939731a38511": {
@@ -108,7 +108,7 @@
           "settings": {
             "category": "",
             "question": "Changing from my previous food to Gutsy?",
-            "answer": "<p>Day 1-2: 25% Gutsy + 75% current food<\/p><p>Day 3-4: 50% Gutsy + 50% current food <\/p><p>Day 5-6: 75% Gutsy + 25% current food <\/p><p>Day 7: Let the adventure begin with a ridiculously delicious bowl of Gutsy food.<\/p>"
+            "answer": "<p>The Go To Gutsy Manual:<\/p><p><strong>Day 1-2<\/strong>: 25% Gutsy + 75% current food<\/p><p><strong>Day 3-4<\/strong>: 50% Gutsy + 50% current food <\/p><p><strong>Day 5-6<\/strong>: 75% Gutsy + 25% current food <\/p><p><strong>Day 7<\/strong>: Let the adventure begin with a ridiculously delicious bowl of Gutsy.<\/p>"
           }
         },
         "fa23d6a4-7bcb-4cc2-99e6-8637058d1bcf": {
@@ -116,7 +116,7 @@
           "settings": {
             "category": "",
             "question": "When and how do I need to change from puppy food to adult food?",
-            "answer": "<p>These are the general guidelines:<\/p><p> <\/p><p>Mini breeds: around 6 months (e.g., Chihuahua, Maltese)<\/p><p>Small breeds: around 8 months (e.g., Jack Russel, French Bulldog)<\/p><p>Medium breeds: around 9 months (e.g., Cocker Spaniel)<\/p><p>Large breeds: around 11.5 months (e.g., German Shepherd, Golden Retriever)<\/p><p>Giant breeds: around 13.5 months (e.g., Spanish Mastiff)<\/p><p> <\/p><p>Puppies need more calories to grow, so the number of meals per day for adult dogs will be lower. The correct number of meals per day can be found in the feeding table.<\/p>"
+            "answer": "<p>These are the general guidelines:<\/p><p> <\/p><p><strong>Mini breeds<\/strong>: around 8 months (e.g., Chihuahua, Maltese)<\/p><p><strong>Small breeds<\/strong>: around 12 months (e.g., Jack Russel, French Bulldog)<\/p><p><strong>Medium breeds<\/strong>: around 14 months (e.g., Cocker Spaniel)<\/p><p><strong>Large breeds<\/strong>: around 18 months (e.g., German Shepherd, Golden Retriever)<\/p><p><strong>Giant breeds<\/strong>: around 24 months (e.g., Spanish Mastiff)<\/p><p> <\/p><p>Puppies need more calories to grow, so the number of meals per day for adult dogs will be lower. The correct number of meals per day can be found in the feeding table.<\/p>"
           }
         }
       },
@@ -146,7 +146,7 @@
           "settings": {
             "category": "Account and Subscription",
             "question": "How do I make an account?",
-            "answer": "<p>You create your personal account on our website (link). Hereby you will be sitting on the front row to receive all the latest news about Gutsy, as well as numerous benefits such as discount codes and other interesting surprises. <\/p>"
+            "answer": "<p>You create your <strong>personal account<\/strong> on our website. Hereby you will be sitting on the front row to receive all the <strong>latest news<\/strong> about Gutsy, as well as <strong>numerous benefits<\/strong> such as discount codes and other interesting surprises. <\/p>"
           }
         },
         "78e7e271-ca71-496a-95ae-fe0a4a7129a8": {
@@ -154,7 +154,7 @@
           "settings": {
             "category": "",
             "question": "What are the advantages of a subscription?",
-            "answer": "<p>By taking out a subscription, you save up to 10% on your dog's favorite food and on top of that, it is delivered straight to your door. Save time and money with our subscription!<\/p>"
+            "answer": "<p>By taking out a subscription, you save up to <strong>10%<\/strong> on your dog's favorite food and on top of that, it is <strong>delivered straight to your door<\/strong>. You can cancel it any time but why would you if you can <strong>save time and money<\/strong> with our subscription?<\/p>"
           }
         },
         "1edd13c9-8a66-4b34-8526-038581a074d4": {
@@ -162,7 +162,7 @@
           "settings": {
             "category": "",
             "question": "How do I subscribe?",
-            "answer": "<p>     You can easily subscribe via here. By joining the Gutsy pack with a subscription you can enjoy plenty of benefits.<\/p>"
+            "answer": "<p>You can easily subscribe via<a href=\"\/pages\/subscriptions\" title=\"Subscriptions\"> here<\/a>. By joining the Gutsy pack with a subscription you can enjoy <strong>plenty of benefits.<\/strong><\/p>"
           }
         },
         "d85bb251-4914-4760-ac41-d0ed4f2dfa7f": {
@@ -178,7 +178,7 @@
           "settings": {
             "category": "",
             "question": "Can I buy Gutsy for my store?",
-            "answer": "<p>On our website, under 'support' and then under 'become a reseller', you can easily submit a request to offer Gutsy in your shop.<\/p>"
+            "answer": "<p><strong>Offcourse<\/strong>! For all our B2B clients we have mad this <a href=\"\/pages\/become-a-reseller\" title=\"Become A Reseller\">contact form<\/a> where you can leave your information and questions behind.<\/p>"
           }
         },
         "0140c2b1-39a2-4216-8f12-1f7b61595a3a": {
@@ -202,7 +202,7 @@
           "settings": {
             "category": "",
             "question": "Is there a free delivery?",
-            "answer": "<p>As from an order of 50 euros, your products will be delivered completely free of charge and directly to your home. <\/p>"
+            "answer": "<p>As from an <strong>order of 50 euros<\/strong>, your products will be delivered completely <strong>free of charge<\/strong> and directly to your home. <\/p>"
           }
         },
         "c67b2565-0ed5-41cc-8a29-b7771fbe631d": {
@@ -210,7 +210,7 @@
           "settings": {
             "category": "",
             "question": "What are the payments options?",
-            "answer": "<p>Bancontact<\/p><p>Visa<\/p><p>IDeal<\/p><p>Mastercard<\/p><p>Maestro<\/p><p>American Express<\/p><p>Shop Pay<\/p><p>Apple Pay<\/p><p>Google Pay<\/p>"
+            "answer": "<p>Bancontact<\/p><p>Visa<\/p><p>Mastercard<\/p><p>Maestro<\/p><p>American Express<\/p><p>Shop Pay<\/p><p>Apple Pay<\/p><p>Google Pay<\/p>"
           }
         }
       },

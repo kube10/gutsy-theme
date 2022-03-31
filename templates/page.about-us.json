@@ -20,33 +20,55 @@
           "type": "team_member",
           "settings": {
             "name": "Jack",
-            "pet_name": "",
+            "pet_name": "Otis",
             "function": "Co-Founder",
             "text": "",
-            "image_1": "shopify:\/\/shop_images\/Frame_59.jpg",
-            "image_2": "shopify:\/\/shop_images\/close-border-collie-sticking-tongue-260nw-382281400.jpg"
+            "image_1": "shopify:\/\/shop_images\/Frame_59_256x256_crop_center_f8329c1d-f5e4-4b83-b448-f3ea5a88142e.png",
+            "image_2": "shopify:\/\/shop_images\/Otis.jpg"
           }
         },
         "0acf8fe2-9381-4436-8b0e-0df0327f4c73": {
           "type": "team_member",
           "settings": {
             "name": "Achilles",
-            "pet_name": "",
+            "pet_name": "Choco",
             "function": "Co-Founder",
             "text": "",
-            "image_1": "shopify:\/\/shop_images\/Frame_62.jpg",
-            "image_2": "shopify:\/\/shop_images\/closeup-portrait-photo-adorable-mongrel-260nw-773293042.jpg"
+            "image_1": "shopify:\/\/shop_images\/Frame_62_256x256_crop_center_5abc352a-4a27-4ef4-a6b7-8e76ccb823f6.png",
+            "image_2": "shopify:\/\/shop_images\/5d60dbb2-f12a-4c98-8bad-19ad64846a23.jpg"
           }
         },
         "63395afc-4f33-48f3-bcda-6858469ed909": {
           "type": "team_member",
           "settings": {
-            "name": "Freddy",
-            "pet_name": "",
-            "function": "Marketing & Sales",
+            "name": "Nathanael",
+            "pet_name": "Salto",
+            "function": "Creative Director",
             "text": "",
-            "image_1": "shopify:\/\/shop_images\/Rectangle_25-2.png",
-            "image_2": "shopify:\/\/shop_images\/36839b3b2a74eb80078eba7d8f700536.jpg"
+            "image_1": "shopify:\/\/shop_images\/foto_shumi-2.png",
+            "image_2": "shopify:\/\/shop_images\/DSCF7089.jpg"
+          }
+        },
+        "9aad9d09-e024-4b86-b2df-c12dc00d2e7b": {
+          "type": "team_member",
+          "settings": {
+            "name": "Gilles",
+            "pet_name": "Lizzie",
+            "function": "Business Developer",
+            "text": "",
+            "image_1": "shopify:\/\/shop_images\/DSCF8394.png",
+            "image_2": "shopify:\/\/shop_images\/LUC3367.jpg"
+          }
+        },
+        "edecbdbd-0144-4005-a8c0-41de3b4c0b36": {
+          "type": "team_member",
+          "settings": {
+            "name": "Dauwe",
+            "pet_name": "Woof",
+            "function": "Sales Representative",
+            "text": "",
+            "image_1": "shopify:\/\/shop_images\/foto_dauwe.png",
+            "image_2": "shopify:\/\/shop_images\/LUC3318.jpg"
           }
         },
         "f675f9b2-daff-4615-ae99-4faf0de391cb": {
@@ -78,12 +100,14 @@
         "e91bd29f-d220-421a-9e8f-47ca78de3b24",
         "0acf8fe2-9381-4436-8b0e-0df0327f4c73",
         "63395afc-4f33-48f3-bcda-6858469ed909",
+        "9aad9d09-e024-4b86-b2df-c12dc00d2e7b",
+        "edecbdbd-0144-4005-a8c0-41de3b4c0b36",
         "f675f9b2-daff-4615-ae99-4faf0de391cb",
         "80894804-43e5-46da-88dc-c5e52c4dfc32",
         "a696a7e2-ae71-4b74-acbe-baa40013382f"
       ],
       "settings": {
-        "headline": "The Gutsy Story",
+        "headline": "Our Tale",
         "team_headline": "Meet the pack",
         "columns": "5"
       }
