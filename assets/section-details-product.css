@@ -4,7 +4,7 @@
 
 .product-details-section-inner.puppy,
 .product-details-section-inner.adult-l {
-  background-color: rgba(238, 112, 75, 0.28);
+  background-color: rgb(var(--color-base-primary-3));
 }
 
 .product-details-section-inner.adult-s {

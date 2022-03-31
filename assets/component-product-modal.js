@@ -2,6 +2,7 @@ const openModalBtn = document.querySelectorAll(".open-product-modal-btn");
 
 openModalBtn.forEach((btn, i) => {
   btn.addEventListener("click", (e) => {
+    console.log(e.target);
     const modal = document.querySelector(
       "#product-modal-" + btn.getAttribute("id")
     );

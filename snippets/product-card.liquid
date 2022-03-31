@@ -62,6 +62,7 @@
   transition: opacity .5s ease;
   max-width: 100%;
   max-height: 60vh;
+  cursor: pointer;
 }
 
 .next-slide-btn {
@@ -70,13 +71,7 @@
   right: calc(1rem - 7.5px);
   transform: translateY(-50%);
   cursor: pointer;
-}
-
-.product-media-slideshow > .controls {
-  position: relative;
   z-index: 10;
-  width: 100%;
-  height: 100%;
 }
 
 .dummy {
@@ -155,7 +150,6 @@
 <section class="product-details-section-inner color-{{color_scheme}} product-card">
   <div class="product-details-grid">
     <div class="product-media-slideshow">
-      <div class="controls">
           <div class="next-slide-btn">
               {% render 'icon-arrow-right-orange' %}
           </div>
@@ -177,10 +171,9 @@
               <span class="currentSlideNo">1</span>/<span>{{ count }}</span>
             </div>
           </div>
-      </div>
         {% for media in product_card_product.media %}
           {%- unless media.alt == "weight-chart" -%}
-            <img class="product-details-slide-img" src="{{ media | image_url: width: 500 }}" alt="{{media.alt}}">
+              <img id="{{product_card_product.id}}" class="open-product-modal-btn product-details-slide-img" src="{{ media | image_url: width: 500 }}" alt="{{media.alt}}">
           {%- endunless -%}
         {% endfor %}
     </div>
