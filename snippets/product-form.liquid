@@ -6,23 +6,29 @@
     {%- else -%}
       {%- assign subscription = true -%}
   {%- endif -%}
-  {%- if tag == "toys" or tag == "snacks"-%}
+  {%- if tag == "snacks"-%}
       {%- assign subscription = false -%}
     {%- else -%}
       {%- assign subscription = true -%}
+  {%- endif -%}
+  {%- if tag == "toys" -%}
+      {%- assign subscription = false -%}
+      {%- assign toys = true -%}
   {%- endif -%}
 {%- endfor -%}
 
 <div class="product-form-wrap color-{{colorScheme}}">
   {%- if subscription -%}
     {%- unless sampleBox -%}
-      <h2>Get <span>one bag</span> or <span>subscribe and save!</span></h2>
+        <h2>Get <span>one bag</span> or <span>subscribe and save!</span></h2>
     {%- endunless -%}
   {%- endif -%}
 
   {%- assign product_form_id = 'product-form-' | append: product.id -%}
 
-  <product-form productId="{{product.id}}" class="product-form" data-calculator="true" data-checkoutBtn="true" data-handle={{product.handle}}>
+  <product-form productId="{{product.id}}" class="product-form" data-calculator="{%- unless toys -%}
+    true
+  {%- endunless -%}" data-checkoutBtn="true" data-handle={{product.handle}}>
     {%- form 'product', product, data-productid: product.id, id: product_form_id, class: 'form-grid', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
     <div class="size-quantity">
       {%- unless product.has_only_default_variant -%}
@@ -85,12 +91,14 @@
 
       {%- if subscription -%}
         {%- unless sampleBox -%}
-          <div class="product-form__icons">
-            <div calculatorId="{{product.id}}" class="open-calculator-link product-form__calculator-icon">
-              {%- render 'icon-calculator' -%}
-              <span>Calculate your pet's monthly needs</span>
+          {%- unless toys -%}
+            <div class="product-form__icons">
+              <div calculatorId="{{product.id}}" class="open-calculator-link product-form__calculator-icon">
+                {%- render 'icon-calculator' -%}
+                <span>Calculate your pet's monthly needs</span>
+              </div>
             </div>
-          </div>
+          {%- endunless -%}
         {%- endunless -%}
       {%- endif -%}
     </div>
@@ -113,10 +121,12 @@
 
     <div class="product-form__actions">
           <div class="prices">
-            {%- if subscription -%}
+            {%- if subscription or toys -%}
               <div id="unitPrice-{{product.id}}"class="unitPrice">
                 {%- if sampleBox -%}
                     <span>Price per box</span>
+                  {%- elsif toys -%}
+                    <span>Price per toy</span>
                   {%- else -%}
                     <span>Price per bag</span>
                 {%- endif -%}

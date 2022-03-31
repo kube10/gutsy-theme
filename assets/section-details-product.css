@@ -63,7 +63,15 @@
 .product-details-content.puppy
   > .product-details-content-inner
   > .product-details-text-content
-  > p {
+  > p,
+.product-details-content.puppy
+  > .product-details-content-inner
+  > .product-details-text-content
+  > ul,
+.product-details-content.puppy
+  > .product-details-content-inner
+  > .product-details-text-content
+  > li {
   color: white;
 }
 

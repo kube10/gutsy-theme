@@ -32,8 +32,7 @@
           <div class="loading-overlay gradient"></div>
           <div class="title-wrapper center">
             <h2 class="title title--primary">
-              {{ 'sections.collection_template.empty' | t }}<br>
-              {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: "underlined-link link" }}
+              They will be part of our next adventure.
             </h2>
           </div>
         </div>
@@ -45,7 +44,6 @@
                       {% render 'product-row',
                         product_row_product: product
                       %}
-
                 {%- endfor -%}
               {%- else -%}
                 <div class="collection__product-card-grid">

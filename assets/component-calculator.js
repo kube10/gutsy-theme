@@ -180,7 +180,7 @@ if (!customElements.get("calculator")) {
         this.subscriptionSelect = this.querySelector("#subscriptionSelect");
 
         this.subscriptionSelect.addEventListener("change", (e) => {
-          console.log(this.subscriptionSelect.value);
+          console.log(this.subscriptionSelect.checked);
           this.sellingPlanInputs = this.querySelectorAll(
             'input[name="selling_plan"]'
           );
@@ -206,7 +206,7 @@ if (!customElements.get("calculator")) {
             this.subscription = subscriptions[2];
           }
 
-          if (this.subscriptionSelect.value == "none") {
+          if (!this.subscriptionSelect.checked) {
             this.sellingPlanInputs.forEach((input, i) => {
               input.value = "";
             });
@@ -218,7 +218,7 @@ if (!customElements.get("calculator")) {
             this.subsIntervalInputs.forEach((input, i) => {
               input.value = "";
             });
-          } else if (this.subscriptionSelect.value == "30days") {
+          } else if (this.subscriptionSelect.checked) {
             this.sellingPlanInputs.forEach((input, i) => {
               input.value = this.subscription.value;
             });

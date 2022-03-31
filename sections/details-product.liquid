@@ -18,6 +18,9 @@
   {%- if tag == "sample-box" -%}
     {% assign sampleBox = true %}
   {%- endif -%}
+  {%- if tag == "toys" -%}
+    {%- assign toys = true -%}
+  {%- endif -%}
 {% endfor %}
 
 <section class="product-details-section-inner {{type}}">
@@ -55,7 +58,9 @@
           {% endif %}
           <p>{{product.content}}</p>
         </div>
-        {% render 'product-usp-icons' %}
+        {%- unless toys -%}        
+          {% render 'product-usp-icons' %}
+        {%- endunless -%}
         {%- unless sampleBox -%}
           <div class="product-details-actions">
             {%- if kibble -%}
