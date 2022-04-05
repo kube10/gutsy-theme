@@ -9,7 +9,7 @@
       "type": "about-page-header",
       "settings": {
         "headline": "GUTSY. For healthy pets & a healthy planet",
-        "paragraph": "Our objectives are twofold. <br>Our solution is simple.",
+        "paragraph": "",
         "video_url": "https:\/\/gutsy-website.s3.eu-west-3.amazonaws.com\/UI_VID_FULL_HQ.mp4"
       }
     },
@@ -265,7 +265,7 @@
       "settings": {
         "color_scheme": "bg-beige",
         "heading_color": "primary-1",
-        "headline": "Dog lovers love us!"
+        "headline": "They already joined the pack"
       }
     },
     "16418191374f920391": {

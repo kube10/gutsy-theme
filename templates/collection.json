@@ -4,15 +4,7 @@
       "type": "main-collection-product-grid",
       "settings": {
         "products_per_page": 16,
-        "image_ratio": "adapt",
-        "show_secondary_image": false,
-        "add_image_padding": false,
-        "show_image_outline": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_filtering": false,
-        "enable_sorting": false,
-        "collapse_on_larger_devices": false
+        "layout": "col"
       }
     },
     "1640091719605276eb": {
@@ -51,7 +43,7 @@
       "settings": {
         "color_scheme": "bg-beige",
         "heading_color": "primary-1",
-        "headline": "Dog lovers love us!"
+        "headline": "They already joined the pack"
       }
     },
     "16400917719f152aa0": {
