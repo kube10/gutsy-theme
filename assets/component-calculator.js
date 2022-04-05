@@ -179,8 +179,11 @@ if (!customElements.get("calculator")) {
 
         this.subscriptionSelect = this.querySelector("#subscriptionSelect");
 
+        this.variantForms = this.querySelectorAll("product-form");
+
         this.subscriptionSelect.addEventListener("change", (e) => {
           console.log(this.subscriptionSelect.checked);
+
           this.sellingPlanInputs = this.querySelectorAll(
             'input[name="selling_plan"]'
           );
@@ -205,6 +208,8 @@ if (!customElements.get("calculator")) {
           ) {
             this.subscription = subscriptions[2];
           }
+
+          let isDiscount = false;
 
           if (!this.subscriptionSelect.checked) {
             this.sellingPlanInputs.forEach((input, i) => {
@@ -231,7 +236,12 @@ if (!customElements.get("calculator")) {
             this.subsIntervalInputs.forEach((input, i) => {
               input.value = this.subscription.value;
             });
+            isDiscount = true;
           }
+
+          this.variantForms.forEach((form, i) => {
+            form.applyDiscount(isDiscount);
+          });
         });
 
         this.breedField.addEventListener("change", (e) => {
@@ -321,7 +331,9 @@ if (!customElements.get("calculator")) {
           this.fillAgeField();
           this.ageFormGroup.classList.remove("hidden");
           this.breedField.value = "puppy";
-        } else if (this.calculatorForm.getAttribute("id").indexOf("(s)") > -1) {
+        } else if (
+          this.calculatorForm.getAttribute("id").indexOf("small") > -1
+        ) {
           this.fillAgeField();
           this.breedField.value = "mini";
           this.setResult(mini[0]);
@@ -450,9 +462,9 @@ if (!customElements.get("calculator")) {
         const breed = this.breedField.value;
         let product;
         if (breed == "mini") {
-          product = "adult_(s)";
+          product = "small_adult";
         } else if (breed == "medium" || breed == "large") {
-          product = "adult_(l)";
+          product = "large_adult";
         } else {
           product = "puppy";
         }
@@ -461,17 +473,17 @@ if (!customElements.get("calculator")) {
           {
             tag: "puppy",
             plural: "puppies",
-            href: "/products/trekker-fuel-puppy",
+            href: "/products/chicken-munchies-puppy",
           },
           {
-            tag: "adult_(s)",
+            tag: "small_adult",
             plural: "small adults",
-            href: "/products/trekker-fuel-adult-s",
+            href: "/products/chicken-munchies-adult-s",
           },
           {
-            tag: "adult_(l)",
+            tag: "large_adult",
             plural: "medium & large adults",
-            href: "/products/trekker-fuel-adult-l",
+            href: "/products/tchicken-munchies-adult-l",
           },
         ];
 
@@ -482,10 +494,9 @@ if (!customElements.get("calculator")) {
               warningObject = item;
             }
           });
-          console.log("warningObject: " + warningObject);
           this.warning.innerHTML = `
               <p><strong>Hold on!</strong> This is not the recommended kibble for ${warningObject.plural}. <br><a class="link" href="${warningObject.href}">Click here</a> for our ${warningObject.plural} chicken munchies</p>`;
-          console.log("warning triggered: " + warningObject.plural);
+
           this.warning.classList.remove("hidden");
         } else {
           this.warning.innerHTML = "";

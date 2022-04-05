@@ -9,7 +9,7 @@
         <div class="product-details-text-content">
           <h1 class="color-primary-1">{{ product.title | escape }}</h1>
           {% if product.metafields.custom_fields["tagline"] != blank %}
-          <h3>{{ product.metafields.custom_fields["tagline"] }}</h3>
+          <h3 class="color-primary-2">{{ product.metafields.custom_fields["tagline"] }}</h3>
           {% endif %}
           <p>{{product.content}}</p>
         </div>

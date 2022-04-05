@@ -57,8 +57,11 @@
         <h2 class="color-primary-1">Our recommendations:</h2>
         <div class="subscription-select__wrap">
           <label for="subscribe"><strong>Do you want to subscribe?</strong></label>
-          <input type="checkbox" name="subscription" id="subscriptionSelect" value="subscription"><label for="subscription">Delivery every 30 days
-          </label>
+          <div class="subscription-select--input-wrap">
+              <input type="checkbox" name="subscription" id="subscriptionSelect" value="subscription">
+              <label for="subscription">Delivery every 30 days
+              </label>
+          </div>
         </div>
         <div class="calculator-subscription__info-wrap">
           Your first month is free on new subscriptions!
@@ -103,7 +106,7 @@
                                 <div id="unitPrice-{{product.id}}" class="unitPrice">
                                   <span>Price per bag</span>
                                   <div class="no-js-hidden priceComponent" id="price-{{ section.id }}" data-product="{{product.id}}" role="status" {{ block.shopify_attributes }}>
-                                    {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price' -%}
+                                    {%- render 'price', product: variant,show_badges: true, price_class: 'price' -%}
                                   </div>
                                 </div>
                                 <div id="totalPrice-{{product.id}}" class="totalPrice">

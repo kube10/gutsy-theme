@@ -675,7 +675,9 @@ class VariantSelects extends HTMLElement {
     this.toggleAddButton(true, "", false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
+
     const $this = this;
+
     setTimeout(function () {
       $this.form.setSubscriptionPrice();
     }, 300);
@@ -814,7 +816,9 @@ class VariantSelects extends HTMLElement {
         const unitPriceEU = euroLocale.format(unitPriceFloat);
 
         this.form.priceItem.innerHTML = unitPriceEU;
-        this.form.applyDiscount(this.form.subscriptionSelected);
+        if (this.form.subscriptionSelected) {
+          this.form.applyDiscount(this.form.subscriptionSelected);
+        }
         this.form.calculateTotalPrice(
           this.form.priceItem,
           this.form.quantityInput,

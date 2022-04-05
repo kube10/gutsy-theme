@@ -11,11 +11,20 @@
       <p>{{ section.settings.text_content }}</p>
       <div class="section-subscriptions-hero__actions">
         <a href="{{section.settings.primary_btn_url}}" class="button button-primary">{{ section.settings.primary_btn_text }}</a>
-        <a href="{{section.settings.secondary_btn_url}}" class="button button-secondary">{{ section.settings.secondary_btn_text }}</a>
+        <button onclick="scrollToNextSection()" class="button button-secondary">{{ section.settings.secondary_btn_text }}</button>
       </div>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  const scrollToNextSection = () => {
+    const section = document.querySelector('#shopify-section-template--14407916126262__16442279659eef588e');
+    section.scrollIntoView({
+      behavior: "smooth"
+    })
+  }
+</script>
 
 {%- schema -%}
 {
@@ -123,11 +132,6 @@
       "type": "text",
       "id": "secondary_btn_text",
       "label": "Secondary Button Text"
-    },
-    {
-      "type": "url",
-      "id": "secondary_btn_url",
-      "label": "Secondary Button URL"
     }
   ]
 }

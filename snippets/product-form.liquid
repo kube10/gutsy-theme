@@ -3,13 +3,9 @@
   {%- if tag == "sample-box" -%}
       {%- assign subscription = false -%}
       {%- assign sampleBox = true -%}
-    {%- else -%}
-      {%- assign subscription = true -%}
   {%- endif -%}
   {%- if tag == "snacks"-%}
       {%- assign subscription = false -%}
-    {%- else -%}
-      {%- assign subscription = true -%}
   {%- endif -%}
   {%- if tag == "toys" -%}
       {%- assign subscription = false -%}
@@ -26,9 +22,9 @@
 
   {%- assign product_form_id = 'product-form-' | append: product.id -%}
 
-  <product-form productId="{{product.id}}" class="product-form" data-calculator="{%- unless toys -%}
+  <product-form productId="{{product.id}}" class="product-form" data-calculator="{%- if subscription -%}
     true
-  {%- endunless -%}" data-checkoutBtn="true" data-handle={{product.handle}}>
+  {%- endif -%}" data-checkoutBtn="true" data-handle={{product.handle}}>
     {%- form 'product', product, data-productid: product.id, id: product_form_id, class: 'form-grid', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
     <div class="size-quantity">
       {%- unless product.has_only_default_variant -%}

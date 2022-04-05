@@ -40,7 +40,7 @@ if (!customElements.get("product-form")) {
           });
         }
 
-        this.checkoutBtnInForm = this.dataset.checkoutBtn;
+        this.checkoutBtnInForm = this.dataset.checkoutbtn;
         if (this.checkoutBtnInForm) {
           this.checkoutBtn = this.querySelector("#directCheckout");
           this.checkoutBtn.addEventListener("click", function (e) {
@@ -103,6 +103,7 @@ if (!customElements.get("product-form")) {
                     } else {
                       $this.subscriptionSelected = false;
                     }
+                    console.log($this.subscriptionSelected);
                     $this.applyDiscount($this.subscriptionSelected);
                     $this.setSubscriptionPrice();
                   }
@@ -212,7 +213,9 @@ if (!customElements.get("product-form")) {
           newPrice = unitPrice * 0.9;
           this.perMonthInfo.classList.remove("hidden");
         } else {
-          newPrice = unitPrice / 0.9;
+          const preRound = unitPrice / 0.9;
+          newPrice = Math.floor(preRound * 100) / 100;
+          console.log(newPrice);
           this.perMonthInfo.classList.add("hidden");
         }
 

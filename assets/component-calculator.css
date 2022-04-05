@@ -197,6 +197,13 @@
   display: block;
 }
 
+.subscription-select--input-wrap {
+  border: 2px solid rgb(var(--color-base-primary-2));
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+
 @media (min-width: 1080px) {
   .calculator-modal {
     padding: 2rem;
