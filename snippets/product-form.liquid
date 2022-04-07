@@ -13,7 +13,7 @@
   {%- endif -%}
 {%- endfor -%}
 {%- if product.selected_or_first_available_variant.inventory_quantity == 0 -%}
-  {% assign subscriptionActive = true %}
+  {% assign subscriptionActive = false %}
 {%- endif -%}
 
 <div class="product-form-wrap color-{{colorScheme}}">
