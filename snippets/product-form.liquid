@@ -103,7 +103,7 @@
     </div>
 
     <div class="after-form">
-      {%- if subscriptionActive -%}
+      {%- if subscriptionActive and subscription -%}
         <div class="sealsubs-target-element" data-product="{{ product | json | escape }}" data-handle="{{ product.handle }}"></div>
         <!-- <input class="subscriptionCheckBox" type="checkbox" name="" value="">
         <span>I want a subscription (10% discount)</span>

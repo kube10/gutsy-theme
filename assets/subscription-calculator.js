@@ -1,10 +1,10 @@
 const products = [
   {
-    handle: "chicken-munchies-adult-l",
+    handle: "chicken-munchies-large-adult",
     string: "Chicken Munchies Large Adult",
   },
   {
-    handle: "chicken-munchies-adult-s",
+    handle: "chicken-munchies-small-adult",
     string: "Chicken Munchies Small Adult",
   },
   {
@@ -191,7 +191,7 @@ function initCalculator(id) {
     fillAgeField(ageField);
     ageFormGroup.classList.remove("hidden");
     breedField.value = "puppy";
-  } else if (variantName.indexOf("(S)") > -1) {
+  } else if (variantName.indexOf("small") > -1) {
     fillAgeField(ageField);
     breedField.value = "mini";
     fillWeightField(mini, weightField);

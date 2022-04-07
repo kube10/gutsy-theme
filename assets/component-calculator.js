@@ -489,7 +489,7 @@ if (!customElements.get("calculator")) {
           {
             tag: "large_adult",
             plural: "medium & large adults",
-            href: "/products/tchicken-munchies-adult-l",
+            href: "/products/chicken-munchies-adult-l",
           },
         ];
 

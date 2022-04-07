@@ -73,7 +73,11 @@ if (!customElements.get("product-form")) {
 
         this.subscriptionInput;
 
-        this.subscriptionSelected = true;
+        this.subscriptionSelected = false;
+
+        if (this.subscriptionInputWrap) {
+          this.subscriptionSelected = true;
+        }
 
         this.perMonthInfo = this.querySelector(".perMonthInfo");
         this.perMonthInfo.classList.add("hidden");
