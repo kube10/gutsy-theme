@@ -14,11 +14,10 @@
         "subheading": "One month free subscription",
         "subheading_color": "primary-2",
         "text_content": "The first month your dog can enjoy Gutsy completely free of charge when you take out a subscription. We make sure they are delivered to your home every month, saving you money, time and helping us on our journey to a better planet.",
-        "image": "shopify:\/\/shop_images\/pexels-lisa-fotios-1006374.jpg",
+        "image": "shopify:\/\/shop_images\/SITE.png",
         "primary_btn_text": "SHOP NOW",
         "primary_btn_url": "shopify:\/\/collections\/all",
-        "secondary_btn_text": "All benefits",
-        "secondary_btn_url": "shopify:\/\/pages\/all-benefits"
+        "secondary_btn_text": "All benefits"
       }
     },
     "16442279659eef588e": {
@@ -66,25 +65,25 @@
         "3129fbae-e037-4d7a-bc86-a0d16ec7687b": {
           "type": "testimonial",
           "settings": {
-            "testimonial_content": "My BFF Jacky has had stomach troubles for years. Thanks to gutsy’s hypo-allergenic trekker fuel, those issues are in the past!",
-            "testimonial_name": "Lisa, Antwerp",
-            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25.png"
+            "testimonial_content": "Quinn is crazy about Gutsy. She has never emptied her bowl so quickly. Best of all, she doesn't even realise that she is doing her part for the climate.",
+            "testimonial_name": "Sofie & Quinn",
+            "testimonial_image": "shopify:\/\/shop_images\/Sofie_quinn.jpg"
           }
         },
         "cb790769-b9bd-40ae-a6ea-f19486540289": {
           "type": "testimonial",
           "settings": {
-            "testimonial_content": "It’s funny how we always consider our own footprint when thinking about sustainability. Gutsy reduces our pet’s paw print too!",
-            "testimonial_name": "Ben, Brugge",
-            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-1.png"
+            "testimonial_content": "Nono is a proud mother of 4 fantastic puppies. With Gutsy, we have found a perfectly balanced diet for the whole family.",
+            "testimonial_name": "Manon & Nono",
+            "testimonial_image": "shopify:\/\/shop_images\/manon_nono.jpg"
           }
         },
         "6cc7aa47-8022-4dff-876b-64671a756aeb": {
           "type": "testimonial",
           "settings": {
-            "testimonial_content": "My border collie is a real hiker, he’s more wolf than dog! A nutritious meal that’s rich in proteins is exactly what she needed.",
-            "testimonial_name": "Michael, Brussels",
-            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-2.png"
+            "testimonial_content": "We had to search for a long time for the right food for Henry as he is allergic to all kinds of ingredients, but thanks to Gutsy's hypoallergenic dog food, these allergies are a thing of the past.",
+            "testimonial_name": "Tom & Henry",
+            "testimonial_image": "shopify:\/\/shop_images\/Tom_henry.jpg"
           }
         }
       },

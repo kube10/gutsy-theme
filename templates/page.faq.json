@@ -178,7 +178,7 @@
           "settings": {
             "category": "",
             "question": "Can I buy Gutsy for my store?",
-            "answer": "<p><strong>Offcourse<\/strong>! For all our B2B clients we have mad this <a href=\"\/pages\/become-a-reseller\" title=\"Become A Reseller\">contact form<\/a> where you can leave your information and questions behind.<\/p>"
+            "answer": "<p><strong>Offcourse<\/strong>! For all our B2B clients we have made this <a href=\"\/pages\/become-a-reseller\" title=\"Become A Reseller\">contact form<\/a> where you can leave your information and questions behind.<\/p>"
           }
         },
         "0140c2b1-39a2-4216-8f12-1f7b61595a3a": {
@@ -239,12 +239,12 @@
         "color_scheme": "bg-green",
         "headline": "DO YOU WANT TO BE PART OF THE SOLUTION?",
         "heading_color": "primary-2",
-        "subheadline": "",
+        "subheadline": "Why wouldn't you? So have a look at our...",
         "subheading_color": "primary-3",
-        "buttonText": "To the shop",
+        "buttonText": "shop",
         "button_href": "",
         "button_color": "primary-3",
-        "image": "shopify:\/\/shop_images\/1212981_1.jpg"
+        "image": "shopify:\/\/shop_images\/DSCF8156.jpg"
       }
     },
     "164190649345a43177": {

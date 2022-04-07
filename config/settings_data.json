@@ -30,14 +30,14 @@
           "announcement-bar-0": {
             "type": "announcement",
             "settings": {
-              "text": "1 Month free subscription",
+              "text": "1 month free subscription",
               "link": "shopify:\/\/pages\/subscriptions"
             }
           },
           "5d831797-9c34-48bc-bf80-db7ca96c9458": {
             "type": "announcement",
             "settings": {
-              "text": "First try 50% off",
+              "text": "Try now for 50%",
               "link": "shopify:\/\/products\/gutsy-sample-box"
             }
           }

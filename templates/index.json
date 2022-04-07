@@ -20,10 +20,10 @@
         "914139b2-f4af-477b-847c-125f35684b4c": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop NOW",
+            "button_label_1": "Preorder NOW",
             "button_link_1": "shopify:\/\/collections\/all",
             "button_style_1": "primary",
-            "button_label_2": "Why Gutsy",
+            "button_label_2": "Why Gutsy?",
             "button_link_2": "shopify:\/\/pages\/all-benefits",
             "button_style_2": "secondary",
             "button_secondary_color": "white"
@@ -64,7 +64,7 @@
         "heading_color": "primary-2",
         "subheadline": "Check out our planet-friendly and ridiculous tasty dog food.",
         "subheading_color": "primary-3",
-        "image": "shopify:\/\/shop_images\/1212981_1.jpg"
+        "image": "shopify:\/\/shop_images\/DSCF8309.jpg"
       }
     },
     "164156093350c034d1": {
@@ -156,7 +156,7 @@
         "subheading_color": "primary-3",
         "button_text": "Why How What?",
         "button_href": "shopify:\/\/pages\/sustainability",
-        "image": "shopify:\/\/shop_images\/Frame_207.jpg"
+        "image": "shopify:\/\/shop_images\/LUC3280.jpg"
       }
     },
     "1641461453d5d748a3": {
@@ -180,25 +180,25 @@
         "940a5fb9-0506-4abf-8d0d-b4f8a590ed86": {
           "type": "testimonial",
           "settings": {
-            "testimonial_content": "My BFF Jacky has had stomach troubles for years. Thanks to gutsy’s hypo-allergenic trekker fuel, those issues are in the past!",
-            "testimonial_name": "Lisa, Antwerp",
-            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25.png"
+            "testimonial_content": "Quinn is crazy about Gutsy. She has never emptied her bowl so quickly. Best of all, she doesn't even realise that she is doing her part for the climate.",
+            "testimonial_name": "Sofie & Quinn",
+            "testimonial_image": "shopify:\/\/shop_images\/Sofie_quinn.jpg"
           }
         },
         "174d2fdb-5aca-49d5-87a8-0431c9dded58": {
           "type": "testimonial",
           "settings": {
-            "testimonial_content": "It’s funny how we always consider our own footprint when thinking about sustainability. Gutsy reduces our pet’s paw print too!",
-            "testimonial_name": "Ben, Brugge",
-            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-1.png"
+            "testimonial_content": "Nono is a proud mother of 4 fantastic puppies. With Gutsy, we have found a perfectly balanced diet for the whole family.",
+            "testimonial_name": "Manon & Nono",
+            "testimonial_image": "shopify:\/\/shop_images\/manon_nono.jpg"
           }
         },
         "7b34592d-6116-4a5d-9233-fb761c1355ea": {
           "type": "testimonial",
           "settings": {
-            "testimonial_content": "My border collie is a real hiker, he’s more wolf than dog! A nutritious meal that’s rich in proteins is exactly what she needed.",
-            "testimonial_name": "Michael, Brussels",
-            "testimonial_image": "shopify:\/\/shop_images\/Rectangle_25-2.png"
+            "testimonial_content": "We had to search for a long time for the right food for Henry as he is allergic to all kinds of ingredients, but thanks to Gutsy's hypoallergenic dog food, these allergies are a thing of the past.",
+            "testimonial_name": "Tom & Henry",
+            "testimonial_image": "shopify:\/\/shop_images\/Tom_henry.jpg"
           }
         }
       },
