@@ -23,7 +23,7 @@ if (!customElements.get("product-form")) {
 
         this.calculatorInForm = this.dataset.calculator;
 
-        if (this.calculatorInForm && this.subscriptionInputWrap) {
+        if (this.calculatorInForm) {
           this.calculators = this.querySelectorAll(".calculator-modal");
           this.openCalculator = this.querySelector(".open-calculator-link");
           this.calculatorModal = this.querySelector(".calculator-modal");
@@ -253,23 +253,27 @@ if (!customElements.get("product-form")) {
           '.sls-option-container[data-selling-plan-group="0"] .money'
         );
 
-        const fullPrice = this.form.querySelector(
-          ".sls-option-container .money"
-        ).innerHTML;
+        if (priceWrap) {
+          const fullPrice = this.form.querySelector(
+            ".sls-option-container .money"
+          ).innerHTML;
 
-        const fullPriceReplc = fullPrice.substring(fullPrice.indexOf(";") + 1);
+          const fullPriceReplc = fullPrice.substring(
+            fullPrice.indexOf(";") + 1
+          );
 
-        let fullPriceFloat = parseFloat(fullPriceReplc.replace(",", "."));
+          let fullPriceFloat = parseFloat(fullPriceReplc.replace(",", "."));
 
-        const discounted = fullPriceFloat * 0.9;
+          const discounted = fullPriceFloat * 0.9;
 
-        const euroLocale = Intl.NumberFormat("en-EU", {
-          style: "currency",
-          currency: "EUR",
-        });
+          const euroLocale = Intl.NumberFormat("en-EU", {
+            style: "currency",
+            currency: "EUR",
+          });
 
-        const discountedEU = euroLocale.format(discounted);
-        priceWrap.innerHTML = discountedEU.replace(".", ",");
+          const discountedEU = euroLocale.format(discounted);
+          priceWrap.innerHTML = discountedEU.replace(".", ",");
+        }
       }
     }
   );

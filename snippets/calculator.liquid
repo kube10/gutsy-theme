@@ -55,14 +55,16 @@
       </div>
       <div class="calculator-modal-actions">
         <h2 class="color-primary-1">Our recommendations:</h2>
-        <div class="subscription-select__wrap">
-          <label for="subscribe"><strong>Subscribe here and get your first month totally free!</strong></label>
-          <div class="subscription-select--input-wrap">
-              <input type="checkbox" name="subscription" id="subscriptionSelect" value="subscription">
-              <label for="subscription">Delivery every 30 days
-              </label>
+        {%- if subscriptionActive -%}        
+          <div class="subscription-select__wrap">
+            <label for="subscribe"><strong>Subscribe here and get your first month totally free!</strong></label>
+            <div class="subscription-select--input-wrap">
+                <input type="checkbox" name="subscription" id="subscriptionSelect" value="subscription">
+                <label for="subscription">Delivery every 30 days
+                </label>
+            </div>
           </div>
-        </div>
+        {%- endif -%}
         {%- for variant in product.variants -%}
           <product-form>
             {%- form 'product', product, data-productid: product.id, id: product_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form', class: "calculator-product-form" -%}

@@ -181,68 +181,72 @@ if (!customElements.get("calculator")) {
 
         this.variantForms = this.querySelectorAll("product-form");
 
-        this.subscriptionSelect.addEventListener("change", (e) => {
-          console.log(this.subscriptionSelect.checked);
+        if (this.subscriptionSelect) {
+          this.subscriptionSelect.addEventListener("change", (e) => {
+            console.log(this.subscriptionSelect.checked);
 
-          this.sellingPlanInputs = this.querySelectorAll(
-            'input[name="selling_plan"]'
-          );
-          this.subTypeInputs = this.querySelectorAll('input[name="sub_type"]');
+            this.sellingPlanInputs = this.querySelectorAll(
+              'input[name="selling_plan"]'
+            );
+            this.subTypeInputs = this.querySelectorAll(
+              'input[name="sub_type"]'
+            );
 
-          this.subsIntervalInputs = this.querySelectorAll(
-            'input[name="subs_interval"]'
-          );
+            this.subsIntervalInputs = this.querySelectorAll(
+              'input[name="subs_interval"]'
+            );
 
-          this.sellingPlan1 = this.querySelectorAll(".selling_plan_1");
-          this.sellingPlan2 = this.querySelectorAll(".selling_plan_2");
-          this.subscription;
+            this.sellingPlan1 = this.querySelectorAll(".selling_plan_1");
+            this.sellingPlan2 = this.querySelectorAll(".selling_plan_2");
+            this.subscription;
 
-          if (this.calculatorForm.getAttribute("id").indexOf("puppy") > -1) {
-            this.subscription = subscriptions[0];
-          } else if (
-            this.calculatorForm.getAttribute("id").indexOf("small") > -1
-          ) {
-            this.subscription = subscriptions[1];
-          } else if (
-            this.calculatorForm.getAttribute("id").indexOf("large") > -1
-          ) {
-            this.subscription = subscriptions[2];
-          }
+            if (this.calculatorForm.getAttribute("id").indexOf("puppy") > -1) {
+              this.subscription = subscriptions[0];
+            } else if (
+              this.calculatorForm.getAttribute("id").indexOf("small") > -1
+            ) {
+              this.subscription = subscriptions[1];
+            } else if (
+              this.calculatorForm.getAttribute("id").indexOf("large") > -1
+            ) {
+              this.subscription = subscriptions[2];
+            }
 
-          let isDiscount = false;
+            let isDiscount = false;
 
-          if (!this.subscriptionSelect.checked) {
-            this.sellingPlanInputs.forEach((input, i) => {
-              input.value = "";
+            if (!this.subscriptionSelect.checked) {
+              this.sellingPlanInputs.forEach((input, i) => {
+                input.value = "";
+              });
+
+              this.subTypeInputs.forEach((input, i) => {
+                input.value = "";
+              });
+
+              this.subsIntervalInputs.forEach((input, i) => {
+                input.value = "";
+              });
+            } else if (this.subscriptionSelect.checked) {
+              this.sellingPlanInputs.forEach((input, i) => {
+                input.value = this.subscription.value;
+              });
+
+              this.subTypeInputs.forEach((input, i) => {
+                input.value = "0";
+                input.setAttribute("name", this.subscription.name);
+              });
+
+              this.subsIntervalInputs.forEach((input, i) => {
+                input.value = this.subscription.value;
+              });
+              isDiscount = true;
+            }
+
+            this.variantForms.forEach((form, i) => {
+              form.applyDiscount(isDiscount);
             });
-
-            this.subTypeInputs.forEach((input, i) => {
-              input.value = "";
-            });
-
-            this.subsIntervalInputs.forEach((input, i) => {
-              input.value = "";
-            });
-          } else if (this.subscriptionSelect.checked) {
-            this.sellingPlanInputs.forEach((input, i) => {
-              input.value = this.subscription.value;
-            });
-
-            this.subTypeInputs.forEach((input, i) => {
-              input.value = "0";
-              input.setAttribute("name", this.subscription.name);
-            });
-
-            this.subsIntervalInputs.forEach((input, i) => {
-              input.value = this.subscription.value;
-            });
-            isDiscount = true;
-          }
-
-          this.variantForms.forEach((form, i) => {
-            form.applyDiscount(isDiscount);
           });
-        });
+        }
 
         this.breedField.addEventListener("change", (e) => {
           const value = this.breedField.value;
@@ -453,6 +457,8 @@ if (!customElements.get("calculator")) {
           inputs.forEach((input, i) => {
             if (input.getAttribute("data-size") === sizeString) {
               input.value = size.count;
+              const changeEvent = new Event("change");
+              input.dispatchEvent(changeEvent);
             }
           });
         });
