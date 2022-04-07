@@ -1,3 +1,18 @@
+replaceWeglotSwitcher();
+
+function replaceWeglotSwitcher() {
+  let containerLoaded = false;
+  const headerMenu = document.querySelector(".header__menu-right");
+  const intervalChecker = setInterval(() => {
+    const weglotContainer = document.querySelector(".weglot-container");
+    if (weglotContainer) {
+      containerLoaded = true;
+      clearInterval(intervalChecker);
+      headerMenu.appendChild(weglotContainer);
+    }
+  }, 10);
+}
+
 function getFocusableElements(container) {
   return Array.from(
     container.querySelectorAll(

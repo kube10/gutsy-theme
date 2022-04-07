@@ -2482,6 +2482,37 @@ details-disclosure > details {
 .wg-default .country-selector {
   right: auto !important;
   left: 2rem !important;
+  position: relative !important;
+  left: 0 !important;
+  background-color: transparent !important;
+  border: 0px !important;
+}
+
+.wg-drop.country-selector .wgcurrent {
+  border: 0px !important;
+}
+
+.wg-drop.country-selector .wgcurrent {
+  position: relative;
+}
+
+.wg-drop.country-selector .wgcurrent a {
+  padding-right: 0 !important;
+}
+
+.wg-drop.country-selector .wgcurrent:after {
+  transform: translateY(-50%) !important;
+  top: 50% !important;
+  display: none !important;
+}
+
+.wg-default {
+  margin-left: 1rem;
+}
+
+.wg-drop.country-selector ul {
+  left: 0 !important;
+  min-width: auto !important;
 }
 
 /* NEXTSALE OVERLAY */
