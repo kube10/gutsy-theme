@@ -6,8 +6,7 @@
   {%- endif -%}
 {%- endfor -%}
 
-{%- if kibble -%}
-
+{%- if kibble or template.suffix == "allbenefits" -%}
   <div id="section-product-detail-usp" class="section-padding">
     <div class="page-width">
       <div class="product-detail-usp__heading">
@@ -39,6 +38,9 @@
               <h1 class="color-{{ section.settings.headline_color_tab_2}}">{{section.settings.headline_tab_2}}</h1>
               <h3 class="color-{{ section.settings.subheadline_color_tab_2}}">{{section.settings.subheadline_tab_2}}</h3>
             </div>
+            {%- unless product -%}
+              {% assign product = all_products["chicken-munchies-adult-l"] %}
+            {%- endunless -%}
             <div class="product-detail-usp__tab_2-content">
               <div class="product-nutrition-info">
                 <h3 class="color-primary-1">Composition</h3>

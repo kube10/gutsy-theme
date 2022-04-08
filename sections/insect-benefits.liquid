@@ -13,7 +13,10 @@
               {% if block.type == "insect-usp" %}
               {% render 'insects-grid-paths', id: forloop.index %}
               <div data-scroll id="insect-benefits-card_{{forloop.index}}" class="insect-benefits-section__card">
-                  <h1 class="color-primary-2">{{block.settings.headline}}</h1>
+                <div class="insect-benefits-section__card-heading">
+                    <div class="insect-benefits-section__card-icon">{{section.settings.svg_icon}}</div>
+                    <h1 class="color-primary-2">{{block.settings.headline}}</h1>
+                </div>
                   <p>{{block.settings.paragraph}}</p>
               </div>
               {% endif %}
@@ -55,6 +58,11 @@
           "type": "textarea",
           "id": "paragraph",
           "label": "Paragraph"
+        },
+        {
+          "type": "textarea",
+          "id": "svg_icon",
+          "label": "SVG Icon"
         }
       ]
     }

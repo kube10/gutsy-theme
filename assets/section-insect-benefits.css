@@ -2,9 +2,24 @@
   max-width: 420px;
 }
 
+.insect-benefits-section__card-heading {
+  display: flex;
+  align-items: center;
+  grid-column-gap: 1.5rem;
+}
+
+.insect-benefits-section__card-heading > h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
 .insect-benefits-section__content-wrap {
   max-width: 1280px;
   margin: 0 auto;
+}
+
+.insect-benefits-section__card-icon {
+  width: 2.5rem;
 }
 
 .insect-line {
