@@ -35,7 +35,11 @@
               <h2 class="color-primary-2">{{block.settings.description}}</h2>
               <div id="sustainability-overlay-{{forloop.index}}" class="sustainability-figures__overlay">
                 <div class="sustainability-figures__overlay-icon">
-                  {{block.settings.overlay-icon}}
+                  {%- if block.settings.overlay-icon != ""-%}
+                    {{block.settings.overlay-icon}}
+                      {%- else -%}
+                    <img src="{{block.settings.overlay_icon_png | image_url }}" alt="">
+                  {%- endif -%}
                 </div>
                 <div class="sustainability-figures__overlay-text">
                   <p class="sustainability-figures__overlay-paragraph">{{block.settings.overlay-paragraph}}</p>
@@ -159,6 +163,11 @@
           "type": "textarea",
           "label": "Overlay Icon SVG Code",
           "id": "overlay-icon"
+        },
+        {
+          "type": "image_picker",
+          "label": "Overlay Icon PNG",
+          "id": "overlay_icon_png"
         }
       ]
     }
