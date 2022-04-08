@@ -13,8 +13,9 @@
 }
 
 .product-usp-icon {
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
+  margin-right: .75rem;
 }
 
 .product-usp {
@@ -31,21 +32,43 @@
 }
 </style>
 
+{%- if type == "adult-s" -%}
+  <!-- icon-color: dark -->
+    {% assign planetIcon = 'product-usp-planet-friendly.svg' %}
+    {% assign localIcon = 'product-usp-local.svg' %}
+    {% assign recycleIcon = 'product-usp-recycle.svg' %}
+    {% assign tastyIcon = 'product-usp-taste.svg' %}
+
+  {%- elsif type == "adult-l" or type == "puppy" -%}
+  <!-- icon-color: light -->
+  {% assign planetIcon = 'product-usp-planet-friendly-dark.svg' %}
+  {% assign localIcon = 'product-usp-local-dark.svg' %}
+  {% assign recycleIcon = 'product-usp-recycle-dark.svg' %}
+  {% assign tastyIcon = 'product-usp-taste-dark.svg' %}
+
+  {%- else -%}
+  <!-- icon-color: dark -->
+    {% assign planetIcon = 'product-usp-planet-friendly.svg' %}
+    {% assign localIcon = 'product-usp-local.svg' %}
+    {% assign recycleIcon = 'product-usp-recycle.svg' %}
+    {% assign tastyIcon = 'product-usp-taste.svg' %}
+{%- endif -%}
+
 <div class="product-usp-icons">
   <div class="product-usp">
-    <img class="product-usp-icon" src="{{'product-usp-planet-friendly.svg' | asset_url}}" alt="">
+    <img class="product-usp-icon" src="{{ planetIcon | asset_url}}" alt="">
     <span>Planet-friendly</span>
   </div>
   <div class="product-usp">
-    <img class="product-usp-icon" src="{{'product-usp-local.svg' | asset_url}}" alt="">
+    <img class="product-usp-icon" src="{{ localIcon | asset_url}}" alt="">
     <span>Locally produced</span>
   </div>
   <div class="product-usp">
-    <img class="product-usp-icon" src="{{'product-usp-recycle.svg' | asset_url}}" alt="">
+    <img class="product-usp-icon" src="{{ recycleIcon | asset_url}}" alt="">
     <span>100% Recycable</span>
   </div>
   <div class="product-usp">
-    <img class="product-usp-icon" src="{{'product-usp-taste.svg' | asset_url}}" alt="">
+    <img class="product-usp-icon" src="{{ tastyIcon | asset_url}}" alt="">
     <span>Ridiculously tasty</span>
   </div>
 </div>

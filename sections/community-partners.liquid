@@ -5,7 +5,7 @@
     {%- for block in section.blocks -%}
       <div class="community-partner__card">
         <img class="community-partner__logo" src="{{ block.settings.logo | image_url }}" alt="">
-        <h5 class="color-primary-2 community-partner__card-heading">{{ block.settings.heading }}</h5>
+        <h5 class="color-primary-2 community-partner__card-heading no-translate">{{ block.settings.heading }}</h5>
         <div class="community-partner__content">
           {{ block.settings.content }}
         </div>

@@ -59,7 +59,7 @@
           <p>{{product.content}}</p>
         </div>
         {%- unless toys -%}
-          {% render 'product-usp-icons' %}
+          {% render 'product-usp-icons', type: type %}
         {%- endunless -%}
         {%- unless sampleBox -%}
           <div class="product-details-actions">
