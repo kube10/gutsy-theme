@@ -52,7 +52,7 @@
     <div class="product-details-content {{type}}">
       <div data-scroll class="product-details-content-inner">
         <div class="product-details-text-content">
-          <h1>{{ product.title | escape }}</h1>
+          <h1 class="no-translate">{{ product.title | escape }}</h1>
           {% if product.metafields.custom_fields["tagline"] != blank %}
           <h3>{{ product.metafields.custom_fields["tagline"] }}</h3>
           {% endif %}
