@@ -61,7 +61,6 @@ if (!customElements.get("product-form")) {
         );
 
         this.quantityInput.addEventListener("change", (e) => {
-          console.log(this.priceItem);
           this.calculateTotalPrice(
             this.priceItem,
             this.quantityInput,
@@ -107,7 +106,6 @@ if (!customElements.get("product-form")) {
                     } else {
                       $this.subscriptionSelected = false;
                     }
-                    console.log($this.subscriptionSelected);
                     $this.applyDiscount($this.subscriptionSelected);
                     $this.setSubscriptionPrice();
                   }
@@ -155,10 +153,6 @@ if (!customElements.get("product-form")) {
         formData.append("sections_url", window.location.pathname);
         config.body = formData;
 
-        for (var value of formData.entries()) {
-          console.log(value);
-        }
-
         fetch(`${routes.cart_add_url}`, config)
           .then((response) => response.json())
           .then((response) => {
@@ -168,8 +162,6 @@ if (!customElements.get("product-form")) {
             }
 
             // this.cartNotification.renderContents(response);
-
-            console.log(response);
           })
           .catch((e) => {
             console.error(e);
@@ -219,7 +211,6 @@ if (!customElements.get("product-form")) {
         } else {
           const preRound = unitPrice / 0.9;
           newPrice = Math.floor(preRound * 100) / 100;
-          console.log(newPrice);
           this.perMonthInfo.classList.add("hidden");
         }
 

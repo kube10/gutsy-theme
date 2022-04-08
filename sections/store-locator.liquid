@@ -27,7 +27,7 @@
           {%- for store in section.blocks -%}
             <div id="store-list-item-{{forloop.index0}}" class="store-list-item" data-coordinates="{{store.settings.coordinates}}" data-name="{{store.settings.name}}" data-id={{forloop.index0}}>
               <div class="store-list-item__header">
-                <h4 class="color-primary-1">{{store.settings.name}}</h4>
+                <h4 class="color-primary-1 no-translate">{{store.settings.name}}</h4>
                 <span id="distance"></span>
               </div>
               <p>{{store.settings.address}}</p>

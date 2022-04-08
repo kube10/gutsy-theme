@@ -133,7 +133,7 @@
     <div class="product-details-content {{type}}">
       <div class="product-details-content-inner">
         <div data-scroll class="product-details-text-content">
-          <h1>{{ product_row_product.title | escape }}</h1>
+          <h1 class="no-translate">{{ product_row_product.title | escape }}</h1>
           {% if product_row_product.metafields.custom_fields["tagline"] != blank %}
           <h3>{{ product_row_product.metafields.custom_fields["tagline"] }}</h3>
           {% endif %}

@@ -183,8 +183,6 @@ if (!customElements.get("calculator")) {
 
         if (this.subscriptionSelect) {
           this.subscriptionSelect.addEventListener("change", (e) => {
-            console.log(this.subscriptionSelect.checked);
-
             this.sellingPlanInputs = this.querySelectorAll(
               'input[name="selling_plan"]'
             );
@@ -268,7 +266,6 @@ if (!customElements.get("calculator")) {
             this.ageFormGroup.classList.add("hidden");
           }
 
-          // setWarning(breedField.value);
           this.checkForWarnings();
         });
 
@@ -353,12 +350,36 @@ if (!customElements.get("calculator")) {
       }
 
       setResult(resultItem) {
+        console.log(resultItem);
+        console.log(this.result1Field);
+        const lang = document.querySelector("html").getAttribute("lang");
+
+        const notAvailableString =
+          lang === "nl"
+            ? "Combinatie niet beschikbaar"
+            : lang === "en"
+            ? "Combination not available"
+            : "Combinaison non disponible";
+
+        const mealsPerDayString =
+          lang === "nl"
+            ? "Maaltijden per dag"
+            : lang === "en"
+            ? "Meals per day"
+            : "Repas par jour";
+
         if (resultItem.dose === "Combinatie niet beschikbaar") {
-          this.result1Field.innerHTML = resultItem.dose;
+          this.result1Field.innerHTML = notAvailableString;
         } else {
           if (this.breedField.value === "puppy") {
             this.result1Field.innerHTML =
-              resultItem.dose + "g " + "(" + resultItem.mpd + " meals per day)";
+              resultItem.dose +
+              "g " +
+              "(" +
+              resultItem.mpd +
+              " " +
+              mealsPerDayString +
+              ")";
           } else {
             this.result1Field.innerHTML = resultItem.dose + "g";
           }
@@ -450,7 +471,6 @@ if (!customElements.get("calculator")) {
 
         const $this = this;
         bagSizes.forEach((size, i) => {
-          console.log("Bag " + size.kg + "kg: " + size.count);
           const inputs = $this.querySelectorAll(".quantity__input");
           const sizeString = size.kg + "kg";
 
