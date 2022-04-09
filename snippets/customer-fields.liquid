@@ -1,24 +1,27 @@
-{% comment %}
+{%- comment -%}
   ---
   Author: Helium
   Documentation: https://customerfields.com/help
-  Version: 4.9.0
+  Version: 4.10.1
   The following snippet exists to serve forms for the Customer Fields app.
   YOU SHOULD NOT BE EDITING THIS FILE. CHANGES MAY BE OVERWRITTEN!
   Instead, you should read our documentation and see how you can create 
   custom forms or reach out to our support team for help.
   ---
-{% endcomment %}
+{%- endcomment -%}
 
-{% assign custom_data = customer.metafields.customer_fields.data %}
-{% assign legacy_custom_data = customer.metafields.customr | json %}
+{%- assign countries = shop.metafields.customer_fields.countries.value | default: shop.metafields.customer_fields.countries -%}
+{%- assign options = shop.metafields.customer_fields.options.value | default: shop.metafields.customer_fields.options -%}
+{%- assign custom_data = customer.metafields.customer_fields.data.value | default: customer.metafields.customer_fields.data -%}
+{%- assign legacy_custom_data = customer.metafields.customr.value | default: customer.metafields.customr -%}
+{%- assign access_token = customer.metafields.customer_fields.access_token.value | default: customer.metafields.customer_fields.access_token -%}
 
 {% capture cf_init_data %}
 {
   {% if customer %}
   "shopifyCustomer": {
     "id": {{ customer.id | json }},
-    "token": {{ customer.metafields.customer_fields.access_token | json }},
+    "token": {{ access_token | json }},
     "first_name": {{ customer.first_name | json }},
     "last_name": {{ customer.last_name | json }},
     "name": {{ customer.name | json }},
@@ -34,15 +37,15 @@
     "tax_exempt": {{ customer.tax_exempt | json }},
     "total_spent": {{ customer.total_spent | json }},
     "custom_data": {{ custom_data | json }},
-    "legacy_custom_data": {{ legacy_custom_data }}
+    "legacy_custom_data": {{ legacy_custom_data | json }}
   },
   {% endif %}
   "domain": {{ shop.permanent_domain | json }},
   "baseApiUrl": "https://app.customerfields.com",
   "captchaSiteKey": "6LcNeUYeAAAAAMkKPnE-yFSEnk0ZdbXDd6xG7JgA",
   "captchaEnabled": true,
-  "proxyPath": {{ shop.metafields.customer_fields.options.proxy_path | default: "/tools/customr" | json }},
-  "countries": {{ shop.metafields.customer_fields.countries | json }},
+  "proxyPath": {{ options.proxy_path | default: "/tools/customr" | json }},
+  "countries": {{ countries | json }},
   "locale": {{ request.locale.iso_code | json }},
   "theme": {
     "name": "Gutsy Shopify Theme",
@@ -51,7 +54,7 @@
   {% if request.locale.root_url %}
   "localeRootPath": {{ request.locale.root_url | json }},
   {% endif %}
-  {% if content_for_header contains "AdminBarInjector" %}
+  {% if content_for_header contains "AdminBarInjector" or content_for_header contains "PreviewBarInjector" %}
   "adminIsLoggedIn": true
   {% else %}
   "adminIsLoggedIn": false
@@ -273,7 +276,7 @@
   </style>
 {% else %}
 
-{% assign use_version = version | default: '4.9.0' %}
+{% assign use_version = version | default: '4.10.1' %}
 
 <style>
     [data-cf-view] {

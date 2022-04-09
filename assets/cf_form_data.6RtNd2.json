@@ -3,7 +3,7 @@
     "id": "6RtNd2",
     "name": "Registration",
     "handle": "registration-4869",
-    "theme_id": null,
+    "theme_id": "120900026422",
     "settings": {
       "locales": {
         "back": "Back",
@@ -28,6 +28,7 @@
         "reset_password_email_sent": "Check your inbox for a link to reset your password.",
         "reset_password_too_many_attempts": "You tried to reset your password too many times. Please wait and try again later."
       },
+      "customCSS": ".cf-button[type=\"submit\"] {\n    color: white;\n    background-color: #F47F36;\n    font-weight: 600;\n    text-transform: uppercase;\n    font-size: 1rem;\n    border-radius: 24px;\n    letter-spacing: .05rem;\n    filter: drop-shadow(0px 2px 7px rgba(0,0,0,.24));\n}",
       "whitelistedTags": "",
       "showPasswordReset": true,
       "markRequiredFields": true,
@@ -38,20 +39,29 @@
       "goBackAfterCancelButtonClick": false
     },
     "install_locations": [
-
+      "register",
+      "account_edit"
     ],
     "created_at": "2022-02-10T13:35:38Z",
-    "updated_at": "2022-02-10T13:40:54Z",
+    "updated_at": "2022-04-09T08:09:40Z",
     "revision_ids": [
+      "vbTd0wm",
+      "ErTAXoN",
+      "7kTopl2",
+      "p4TbZvP",
+      "kdT25o8",
+      "OzTXnYd",
+      "8oT5b6Z",
+      "qYTz2LM",
       "yzTgoZL",
       "7kTpKy7"
     ]
   },
   "revision": {
-    "id": "yzTgoZL",
-    "created_at": "2022-02-10T13:40:54Z",
-    "updated_at": "2022-02-10T13:40:54Z",
-    "embed_version": "4.9.0",
+    "id": "vbTd0wm",
+    "created_at": "2022-04-09T08:41:32Z",
+    "updated_at": "2022-04-09T08:41:32Z",
+    "embed_version": "4.10.1",
     "published_at": null,
     "fields": [
       {
@@ -71,18 +81,19 @@
         "description": null,
         "enum": null,
         "appearance": {
-          "width": 12
+          "width": 12,
+          "cssClass": ""
         },
         "settings": {
         },
         "validations": [
           {
-            "metadata": {
-              "hiddenInApp": true
-            },
             "operator": "not_blank",
             "comparand": "",
-            "errorMessage": "Must not be blank"
+            "errorMessage": "Must not be blank",
+            "metadata": {
+              "hiddenInApp": true
+            }
           }
         ],
         "sensitive": null,
@@ -106,18 +117,19 @@
         "description": null,
         "enum": null,
         "appearance": {
-          "width": 12
+          "width": 12,
+          "cssClass": ""
         },
         "settings": {
         },
         "validations": [
           {
-            "metadata": {
-              "hiddenInApp": true
-            },
             "operator": "not_blank",
             "comparand": "",
-            "errorMessage": "Must not be blank"
+            "errorMessage": "Must not be blank",
+            "metadata": {
+              "hiddenInApp": true
+            }
           }
         ],
         "sensitive": null,
@@ -141,7 +153,8 @@
         "description": null,
         "enum": null,
         "appearance": {
-          "width": 12
+          "width": 12,
+          "cssClass": ""
         },
         "settings": {
         },
@@ -152,12 +165,12 @@
             "errorMessage": "Please provide a valid email address"
           },
           {
-            "metadata": {
-              "hiddenInApp": true
-            },
             "operator": "not_blank",
             "comparand": "",
-            "errorMessage": "Must not be blank"
+            "errorMessage": "Must not be blank",
+            "metadata": {
+              "hiddenInApp": true
+            }
           }
         ],
         "sensitive": null,
@@ -181,30 +194,31 @@
         "description": null,
         "enum": null,
         "appearance": {
-          "width": 12
+          "width": 12,
+          "cssClass": ""
         },
         "settings": {
         },
         "validations": [
           {
-            "metadata": {
-              "hiddenInApp": true
-            },
             "operator": "not_blank",
             "comparand": "",
-            "errorMessage": "Must not be blank"
+            "errorMessage": "Must not be blank",
+            "metadata": {
+              "hiddenInApp": true
+            }
           },
           {
+            "operator": "longer_than",
+            "comparand": 5,
+            "errorMessage": "Password is too short",
             "metadata": {
               "mandatory": true,
               "staticOperator": true,
               "comparandFieldProps": {
                 "min": 5
               }
-            },
-            "operator": "longer_than",
-            "comparand": 5,
-            "errorMessage": "Password is too short"
+            }
           }
         ],
         "sensitive": true,
@@ -230,9 +244,99 @@
 
         ],
         "appearance": {
+          "width": 12,
+          "cssClass": ""
+        },
+        "settings": {
+        },
+        "validations": [
+
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      },
+      {
+        "id": 674900,
+        "dataColumn": {
+          "key": "breed",
+          "label": "Your pet's breed",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 5,
+        "type": "dropdown_search",
+        "stepId": 111880,
+        "default": "",
+        "label": "Your pet's breed",
+        "placeholder": "Search and select an option...",
+        "description": "",
+        "enum": [
+          {
+            "value": "Golden Retriever",
+            "label": "Golden Retriever"
+          },
+          {
+            "value": "Cavalier King Charles",
+            "label": "Cavalier King Charles"
+          },
+          {
+            "value": "German Shepherd",
+            "label": "German Shepherd"
+          }
+        ],
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+          "end": 10,
+          "start": 1,
+          "enumType": "list",
+          "separateValues": false,
+          "noMatchesMessage": "No options found, try a different search",
+          "optionMatchPreference": "loose",
+          "sheetOptionsFoundMessage": "Showing {{ count }} of {{ total }}, search to refine results."
+        },
+        "validations": [
+
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      },
+      {
+        "id": 922957,
+        "dataColumn": {
+          "key": "gender",
+          "label": "Your dog's gender",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 6,
+        "type": "dropdown",
+        "stepId": 111880,
+        "default": "",
+        "label": "Your dog's gender",
+        "placeholder": "Select an option...",
+        "description": "",
+        "enum": [
+          {
+            "value": "M",
+            "label": "M"
+          },
+          {
+            "value": "F",
+            "label": "F"
+          }
+        ],
+        "appearance": {
           "width": 6
         },
         "settings": {
+          "end": 10,
+          "start": 1,
+          "enumType": "list",
+          "separateValues": false
         },
         "validations": [
 
@@ -249,7 +353,7 @@
           "dataType": "date"
         },
         "parentId": null,
-        "position": 5,
+        "position": 7,
         "type": "date",
         "stepId": 111880,
         "default": "",
@@ -260,7 +364,8 @@
 
         ],
         "appearance": {
-          "width": 6
+          "width": 6,
+          "cssClass": ""
         },
         "settings": {
           "dateInput": "picker",
@@ -270,13 +375,13 @@
         },
         "validations": [
           {
+            "operator": "is_valid",
+            "comparand": null,
+            "errorMessage": "Please specify a valid date",
             "metadata": {
               "mandatory": true,
               "staticOperator": true
-            },
-            "operator": "is_valid",
-            "comparand": null,
-            "errorMessage": "Please specify a valid date"
+            }
           }
         ],
         "sensitive": null,
@@ -291,7 +396,7 @@
           "dataType": "file"
         },
         "parentId": null,
-        "position": 6,
+        "position": 8,
         "type": "file",
         "stepId": 111880,
         "default": "",
@@ -302,31 +407,35 @@
 
         ],
         "appearance": {
-          "width": 12
+          "width": 12,
+          "cssClass": ""
         },
         "settings": {
         },
         "validations": [
           {
+            "operator": "less_than",
+            "comparand": 25600,
+            "errorMessage": "Please upload a file less than 25MB in size",
             "metadata": {
               "mandatory": true,
               "staticOperator": true,
               "staticComparand": true
-            },
-            "operator": "less_than",
-            "comparand": 25600,
-            "errorMessage": "Please upload a file less than 25MB in size"
+            }
           },
           {
+            "operator": "file_extension_not_blank",
+            "comparand": null,
+            "errorMessage": "Please upload a file with a valid file extension",
             "metadata": {
               "mandatory": true,
               "staticOperator": true
-            },
-            "operator": "file_extension_not_blank",
-            "comparand": null,
-            "errorMessage": "Please upload a file with a valid file extension"
+            }
           },
           {
+            "operator": "file_extension_equals",
+            "comparand": ".jpg, .png",
+            "errorMessage": "Please upload an image file (.jpeg or .png)",
             "metadata": {
               "0": "P",
               "1": "o",
@@ -346,14 +455,41 @@
               "15": "d",
               "16": "2",
               "17": "9"
-            },
-            "operator": "file_extension_equals",
-            "comparand": ".jpg, .png",
-            "errorMessage": "Please upload an image file (.jpeg or .png)"
+            }
           }
         ],
         "sensitive": null,
         "preset": null,
+        "autotag": null
+      },
+      {
+        "id": 990518,
+        "dataColumn": {
+          "key": "accepts_marketing",
+          "label": "Accepts marketing",
+          "dataType": "boolean"
+        },
+        "parentId": null,
+        "position": 9,
+        "type": "checkbox",
+        "stepId": 111880,
+        "default": "",
+        "label": "Subscribe to our newsletter",
+        "placeholder": "",
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+        },
+        "validations": [
+
+        ],
+        "sensitive": null,
+        "preset": "accepts_marketing",
         "autotag": null
       }
     ],
