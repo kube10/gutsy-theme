@@ -350,8 +350,6 @@ if (!customElements.get("calculator")) {
       }
 
       setResult(resultItem) {
-        console.log(resultItem);
-        console.log(this.result1Field);
         const lang = document.querySelector("html").getAttribute("lang");
 
         const notAvailableString =

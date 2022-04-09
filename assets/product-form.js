@@ -153,34 +153,62 @@ if (!customElements.get("product-form")) {
         formData.append("sections_url", window.location.pathname);
         config.body = formData;
 
-        fetch(`${routes.cart_add_url}`, config)
-          .then((response) => response.json())
-          .then((response) => {
-            if (response.status) {
-              this.handleErrorMessage(response.description);
-              return;
-            }
+        const addItemToCart = () => {
+          fetch(`${routes.cart_add_url}`, config)
+            .then((response) => response.json())
+            .then((response) => {
+              if (response.status) {
+                this.handleErrorMessage(response.description);
+                return;
+              }
 
-            // this.cartNotification.renderContents(response);
-          })
-          .catch((e) => {
-            console.error(e);
-          })
-          .finally(() => {
-            submitButton.classList.remove("loading");
-            submitButton.removeAttribute("aria-disabled");
-            this.querySelector(".loading-overlay__spinner").classList.add(
-              "hidden"
-            );
-            this.querySelector(".product-form__success-wrapper").classList.add(
-              "show"
-            );
-            this.querySelector(".product-form__success-close").onclick = () => {
+              // this.cartNotification.renderContents(response);
+            })
+            .catch((e) => {
+              console.error(e);
+            })
+            .finally(() => {
+              submitButton.classList.remove("loading");
+              submitButton.removeAttribute("aria-disabled");
+              this.querySelector(".loading-overlay__spinner").classList.add(
+                "hidden"
+              );
               this.querySelector(
                 ".product-form__success-wrapper"
-              ).classList.remove("show");
-            };
-          });
+              ).classList.add("show");
+              this.querySelector(
+                ".product-form__success-close"
+              ).onclick = () => {
+                this.querySelector(
+                  ".product-form__success-wrapper"
+                ).classList.remove("show");
+              };
+            });
+        };
+
+        if (this.handle === "gutsy-sample-box") {
+          fetch(`/cart.js`)
+            .then((res) => res.json())
+            .then((data) => {
+              const foundSampleBox = data.items.filter(
+                (item) => item.handle === "gutsy-sample-box"
+              );
+              if (foundSampleBox.length > 0) {
+                this.handleErrorMessage(
+                  "This item can only be purchased once per customer."
+                );
+                submitButton.classList.remove("loading");
+                submitButton.removeAttribute("aria-disabled");
+                this.querySelector(".loading-overlay__spinner").classList.add(
+                  "hidden"
+                );
+              } else {
+                addItemToCart();
+              }
+            });
+        } else {
+          addItemToCart();
+        }
       }
 
       handleErrorMessage(errorMessage = false) {
