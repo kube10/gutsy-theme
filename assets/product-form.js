@@ -41,7 +41,7 @@ if (!customElements.get("product-form")) {
         }
 
         this.checkoutBtnInForm = this.dataset.checkoutbtn;
-        if (this.checkoutBtnInForm) {
+        if (this.checkoutBtnInForm === "true") {
           this.checkoutBtn = this.querySelector("#directCheckout");
           this.checkoutBtn.addEventListener("click", function (e) {
             e.preventDefault();
@@ -204,6 +204,7 @@ if (!customElements.get("product-form")) {
                 );
               } else {
                 addItemToCart();
+                window.location.href = "/discount/SAMPLE_BOX/?redirect=/cart";
               }
             });
         } else {

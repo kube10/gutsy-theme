@@ -826,7 +826,11 @@ class VariantSelects extends HTMLElement {
           currency: "EUR",
         });
 
-        const unitPriceFloat = parseFloat(currentVariant.price / 100);
+        let unitPriceFloat = parseFloat(currentVariant.price / 100);
+
+        if (currentVariant.name.indexOf("sample box") > -1) {
+          unitPriceFloat = unitPriceFloat / 2;
+        }
 
         const unitPriceEU = euroLocale.format(unitPriceFloat);
 

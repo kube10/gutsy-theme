@@ -41,6 +41,13 @@
             </thead>
             <tbody>
               {%- for item in cart.items -%}
+                {%- for tag in item.product.tags -%}
+                  {%- if tag == "sample-box" -%}
+                    {% assign sampleBox = true %}
+                    {%- else -%}
+                    {% assign sampleBox = false %}
+                  {%- endif -%}
+                {%- endfor -%}
                 <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
                   <td class="cart-item__media">
                     {% if item.image %}
@@ -132,6 +139,13 @@
                         </li>
                       {%- endfor -%}
                     </ul>
+                    {%- if sampleBox -%}
+                      <div class="sample-box-discount-message">
+                          <strong>50% discount will be calculated at checkout. Use discount code <span class="color-primary-1">SAMPLE_BOX</span></strong>
+                          <br>
+                          <small class="color-primary-1">(Only one use per customer)</small>
+                      </div>
+                    {%- endif -%}
                   </td>
 
                   <td class="cart-item__totals right medium-hide large-up-hide">
@@ -180,16 +194,8 @@
                         </div>
                       {%- endif -%}
                     </div>
+
                   </td>
-
-                  {%- for tag in item.product.tags -%}
-                    {%- if tag == "sample-box" -%}
-                      {% assign sampleBox = true %}
-                      {%- else -%}
-                      {% assign sampleBox = false %}
-                    {%- endif -%}
-                  {%- endfor -%}
-
                   <td class="cart-item__quantity">
                     <div class="cart-item__quantity-wrapper {% if sampleBox %}disabled{% endif %}">
                       <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
@@ -277,6 +283,8 @@
                           {{ item.variant.unit_price_measurement.reference_unit }}
                         </div>
                       {%- endif -%}
+
+
                     </div>
                   </td>
                 </tr>

@@ -27,7 +27,7 @@
 
   <product-form productId="{{product.id}}" class="product-form" data-calculator="{%- if subscription -%}
     true
-  {%- endif -%}" data-checkoutBtn="true" data-handle={{product.handle}}>
+  {%- endif -%}" data-checkoutBtn="{%- if sampleBox -%}false{%- else -%}true{%- endif -%}" data-handle={{product.handle}}>
     {%- form 'product', product, data-productid: product.id, id: product_form_id, class: 'form-grid', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
     <div class="size-quantity">
       {%- unless product.has_only_default_variant -%}
@@ -176,27 +176,31 @@
 
           {%- endif -%}
 
-            <button
-              id="directCheckout"
-              type="submit"
-              name="add"
-              directCheckout
-              class="product-form__submit button button-primary {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
-            {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
-            >
-                <span>
-                  {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
-                    Buy now
-                  {%- else -%}
-                    Preorder
-                  {%- endif -%}
-                </span>
-                <div class="loading-overlay__spinner hidden">
-                  <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                  </svg>
-                </div>
-            </button>
+          {%- unless sampleBox -%}
+          <button
+            id="directCheckout"
+            type="submit"
+            name="add"
+            directCheckout
+            class="product-form__submit button button-primary {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+          {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+          >
+              <span>
+                {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
+                  Buy now
+                {%- else -%}
+                  Preorder
+                {%- endif -%}
+              </span>
+              <div class="loading-overlay__spinner hidden">
+                <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                </svg>
+              </div>
+          </button>
+          {%- endunless -%}
+
+
           </div>
         </div>
         <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}" disabled>

@@ -147,6 +147,12 @@
   {%- endif -%}
 {%- endfor -%}
 
+{%- for tag in product_card_product.tags -%}
+  {%- if tag == "sample-box" -%}
+    {%- assign sampleBox = true -%}
+  {%- endif -%}
+{%- endfor -%}
+
 <section class="product-details-section-inner color-{{color_scheme}} product-card">
   <div class="product-details-grid">
     <div class="product-media-slideshow">
@@ -187,10 +193,25 @@
         </div>
 
         <div class="product-details-card-bottom">
-          <div class="h2 product-details-card-price-wrap">{% render 'price', product: product_card_product, price_class: '' %}</div>
+          <div class="h2 product-details-card-price-wrap">
+            {%- if sampleBox -%}
+                <div class="price">
+                      <div class="price__regular">
+                        <div class="price-item price-item--regular">FROM €9.89</div>
+                      </div>
+                </div>
+              {%- else -%}
+              {% render 'price', product: product_card_product, price_class: '' %}
+            {%- endif -%}
+          </div>
           <div class="product-details-actions">
             <div class="button-group">
-              <a href="{{product_card_product.url}}" class="button button-secondary">MORE INFO</a>
+
+              {%- if sampleBox -%}
+                <a href="/discount/SAMPLE_BOX/?redirect=/products/{{product_card_product.handle}}" class="button button-secondary">MORE INFO</a>
+                {%- else -%}
+                <a href="{{product_card_product.url}}" class="button button-secondary">MORE INFO</a>
+              {%- endif -%}
 
               <button id="{{product_card_product.id}}" class="open-product-modal-btn button button-primary" {%- unless product_card_product.first_available_variant -%}disabled{%- endunless -%}>
                 {%- if product_card_product.first_available_variant.inventory_quantity > 0 -%}

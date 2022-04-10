@@ -20,6 +20,13 @@
   assign compare_at_price = target.compare_at_price
   assign price = target.price | default: 1999
   assign available = target.available | default: false
+
+  for tag in product.tags
+    if tag == "sample-box"
+      assign price = target.price | divided_by: 2
+    endif
+  endfor
+
   assign money_price = price | money
   if settings.currency_code_enabled
     assign money_price = price | money
@@ -28,7 +35,15 @@
   if target == product and product.price_varies
     assign money_price = 'products.product.price.from_price_html' | t: price: money_price
   endif
+
 -%}
+
+<!-- {%- for tag in product.tags -%}
+  {%- if tag == "sample-box" -%}
+    {% assign price = target.price | divided_by: 2 %}
+    {%- assign money_price =  'products.product.price.from_price_html' | t: price: money_price -%}
+  {%- endif -%}
+{%- endfor -%} -->
 
 <div class="price
   {%- if price_class %} {{ price_class }}{% endif -%}
