@@ -45,9 +45,10 @@
     "created_at": "2022-02-10T13:35:38Z",
     "updated_at": "2022-04-09T08:09:40Z",
     "revision_ids": [
-      "7kTopkP",
-      "OzTXnYd",
+      "vbTd0RM",
       "ErTAXoN",
+      "OzTXnYd",
+      "7kTopkP",
       "p4TbZkk",
       "vbTd0wm",
       "7kTopl2",
@@ -60,9 +61,9 @@
     ]
   },
   "revision": {
-    "id": "7kTopkP",
-    "created_at": "2022-04-10T12:28:21Z",
-    "updated_at": "2022-04-10T12:28:21Z",
+    "id": "vbTd0RM",
+    "created_at": "2022-04-10T13:05:21Z",
+    "updated_at": "2022-04-10T13:05:21Z",
     "embed_version": "4.10.1",
     "published_at": null,
     "fields": [
@@ -1539,8 +1540,8 @@
         "position": 9,
         "type": "checkbox",
         "stepId": 111880,
-        "default": "",
-        "label": "Subscribe to our newsletter",
+        "default": true,
+        "label": "Subscribe to our newsletter and be on the front bench for all the new arrivals we have in store!",
         "placeholder": "",
         "description": "",
         "enum": [
