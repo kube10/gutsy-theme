@@ -243,7 +243,7 @@ if (!customElements.get("product-form")) {
           this.perMonthInfo.classList.add("hidden");
         }
 
-        const euroLocale = Intl.NumberFormat("en-EU", {
+        const euroLocale = Intl.NumberFormat("de-DE", {
           style: "currency",
           currency: "EUR",
         });
@@ -263,7 +263,7 @@ if (!customElements.get("product-form")) {
         let unitPrice = parseFloat(unitPriceStr.substr(1).replace(",", "."));
         const quantity = parseFloat(quantityInput.value);
 
-        const euroLocale = Intl.NumberFormat("en-EU", {
+        const euroLocale = Intl.NumberFormat("de-DE", {
           style: "currency",
           currency: "EUR",
         });
@@ -290,7 +290,7 @@ if (!customElements.get("product-form")) {
 
           const discounted = fullPriceFloat * 0.9;
 
-          const euroLocale = Intl.NumberFormat("en-EU", {
+          const euroLocale = Intl.NumberFormat("de-DE", {
             style: "currency",
             currency: "EUR",
           });

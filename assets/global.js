@@ -821,7 +821,7 @@ class VariantSelects extends HTMLElement {
           (variant) => variant.id === this.currentVariant.id
         );
 
-        const euroLocale = Intl.NumberFormat("en-EU", {
+        const euroLocale = Intl.NumberFormat("de-DE", {
           style: "currency",
           currency: "EUR",
         });
