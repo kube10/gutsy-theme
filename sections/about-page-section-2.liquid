@@ -1,54 +1,58 @@
 {{ 'section-about-page-2.css' | asset_url | stylesheet_tag }}
-<div class="about-page-section-2__inner section-padding color-bg-beige">
-<div class="page-width text-center">
-  <h1 class="color-primary-1 about-page-section-2__heading">{{ section.settings.headline }}</h1>
-  {%- for block in section.blocks -%}
-    {%- if block.type == "content_block" -%}
-      {%- assign value = forloop.index | modulo:2 -%}
+<div class="about-page-section-2__inner">
+  <div class="section-padding color-bg-green">
+    <div class="page-width text-center">
+    <h1 class="color-primary-3 about-page-section-2__heading">{{ section.settings.headline }}</h1>
+    {%- for block in section.blocks -%}
+      {%- if block.type == "content_block" -%}
+        {%- assign value = forloop.index | modulo:2 -%}
 
-      {%- if value == 0 -%}
-        <div class="about-page-section-2__grid">
-          <div class="about-page-section-2__grid-left">
-            <img src="{{ block.settings.illustration | image_url}}" alt="">
+        {%- if value == 0 -%}
+          <div class="about-page-section-2__grid">
+            <div class="about-page-section-2__grid-left">
+              <img src="{{ block.settings.illustration | image_url}}" alt="">
+            </div>
+            <div class="about-page-section-2__content-wrap">
+              <h2 class="color-primary-2">{{ block.settings.headline }}</h2>
+              <p>{{ block.settings.content }}</p>
+            </div>
           </div>
+        {%- else -%}
+        <div class="about-page-section-2__grid second">
           <div class="about-page-section-2__content-wrap">
             <h2 class="color-primary-2">{{ block.settings.headline }}</h2>
             <p>{{ block.settings.content }}</p>
           </div>
+          <div class="about-page-section-2__grid-left">
+            <img src="{{ block.settings.illustration | image_url}}" alt="">
+          </div>
         </div>
-      {%- else -%}
-      <div class="about-page-section-2__grid">
-        <div class="about-page-section-2__content-wrap">
-          <h2 class="color-primary-2">{{ block.settings.headline }}</h2>
-          <p>{{ block.settings.content }}</p>
-        </div>
-        <div class="about-page-section-2__grid-left">
-          <img src="{{ block.settings.illustration | image_url}}" alt="">
-        </div>
-      </div>
-      {%- endif -%}
+        {%- endif -%}
 
-    {%- endif -%}
-  {%- endfor -%}
-  <h1 class="color-primary-1 about-page-section-2__team-heading">{{ section.settings.team_headline }}</h1>
-  <div class="about-page-section-2__team col-{{section.settings.columns}}">
-    {%- for block in section.blocks -%}
-      {%- if block.type == "team_member" -%}
-      <div data-scroll class="about-page-section-2__team-member">
-        <div class="team-member__img-wrap">
-          <img src="{{block.settings.image_1 | image_url}}" alt="" class="team-member__primary-img">
-          <img src="{{block.settings.image_2 | image_url}}" alt="" class="team-member__secondary-img">
-        </div>
-        <div class="team-member__text-content">
-          <h2 data-pet_name="{{block.settings.pet_name}}" data-name="{{block.settings.name}}" class="color-primary-1">{{block.settings.name}}</h2>
-          <strong class="color-primary-2">{{block.settings.function}}</strong>
-          <p>{{ block.settings.text }}</p>
-        </div>
-      </div>
       {%- endif -%}
     {%- endfor -%}
   </div>
-</div>
+  </div>
+  <div class="section-padding color-bg-beige">
+    <h1 class="color-primary-1 about-page-section-2__team-heading">{{ section.settings.team_headline }}</h1>
+    <div class="about-page-section-2__team col-{{section.settings.columns}}">
+      {%- for block in section.blocks -%}
+        {%- if block.type == "team_member" -%}
+        <div data-scroll class="about-page-section-2__team-member">
+          <div class="team-member__img-wrap">
+            <img src="{{block.settings.image_1 | image_url}}" alt="" class="team-member__primary-img">
+            <img src="{{block.settings.image_2 | image_url}}" alt="" class="team-member__secondary-img">
+          </div>
+          <div class="team-member__text-content">
+            <h2 data-pet_name="{{block.settings.pet_name}}" data-name="{{block.settings.name}}" class="color-primary-1">{{block.settings.name}}</h2>
+            <strong class="color-primary-2">{{block.settings.function}}</strong>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
 </div>
 
 <script type="text/javascript">
