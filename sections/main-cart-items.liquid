@@ -21,7 +21,7 @@
     {%- if shop.customer_accounts_enabled -%}
       <h3 class="cart__login-title color-primary-1">{{ 'sections.cart.login.title' | t }}</h3>
       <p class="cart__login-paragraph">
-        {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
+        {{ 'sections.cart.login.paragraph_ht8ml' | t: link: routes.account_login_url }}
       </p>
     {%- endif -%}
   </div>
@@ -141,7 +141,7 @@
                     </ul>
                     {%- if sampleBox -%}
                       <div class="sample-box-discount-message">
-                          <strong>50% discount will be calculated at checkout. Use discount code <span class="color-primary-1">SAMPLE_BOX</span></strong>
+                          <strong>50% discount will be calculated at checkout. Use discount code: <span class="color-primary-1">SAMPLE_BOX</span></strong>
                           <br>
                           <small class="color-primary-1">(Only one use per customer)</small>
                       </div>
