@@ -2532,3 +2532,12 @@ details-disclosure > details {
 .shopify-policy__container h3 {
   color: rgb(var(--color-base-primary-1));
 }
+
+/* Cookie bar */
+#sec-banner-div {
+  justify-content: center;
+}
+
+.upsell-gdpr-banner-message {
+  flex: none !important;
+}
