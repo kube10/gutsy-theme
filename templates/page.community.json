@@ -74,19 +74,19 @@
         "05bab3e9-afd8-46f5-b4ce-8856b32f6013": {
           "type": "partner",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/tom-co-logo.png",
-            "heading": "Tom & Co",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida.",
-            "website": "https:\/\/www.tomandco.com\/nl\/"
+            "logo": "shopify:\/\/shop_images\/eb7e9562a010f28aeba5e3b398a5a520.jpg",
+            "heading": "University Ghent",
+            "content": "Our fantastic kibble is among the best in class in taste and digestion tests.",
+            "website": "https:\/\/www.ugent.be"
           }
         },
         "da5cb304-a408-47ad-ae79-247637c9d936": {
           "type": "partner",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/tom-co-logo.png",
-            "heading": "Tom & Co",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur elit sit amet tincidunt gravida.",
-            "website": "https:\/\/www.tomandco.com\/nl\/"
+            "logo": "shopify:\/\/shop_images\/auto-3.webp",
+            "heading": "Start it",
+            "content": "An intensive start-up program that has accelerated us to the next level and is an absolute must to follow.",
+            "website": "https:\/\/startit.be"
           }
         }
       },

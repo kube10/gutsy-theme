@@ -23,7 +23,7 @@
             "pet_name": "Otis",
             "function": "Co-Founder",
             "text": "",
-            "image_1": "shopify:\/\/shop_images\/Frame_59_256x256_crop_center_f8329c1d-f5e4-4b83-b448-f3ea5a88142e.png",
+            "image_1": "shopify:\/\/shop_images\/Frame_59.jpg",
             "image_2": "shopify:\/\/shop_images\/Otis.jpg"
           }
         },
@@ -34,7 +34,7 @@
             "pet_name": "Choco",
             "function": "Co-Founder",
             "text": "",
-            "image_1": "shopify:\/\/shop_images\/Frame_62_256x256_crop_center_5abc352a-4a27-4ef4-a6b7-8e76ccb823f6.png",
+            "image_1": "shopify:\/\/shop_images\/Frame_62.jpg",
             "image_2": "shopify:\/\/shop_images\/5d60dbb2-f12a-4c98-8bad-19ad64846a23.jpg"
           }
         },
@@ -45,7 +45,7 @@
             "pet_name": "Salto",
             "function": "Creative Director",
             "text": "",
-            "image_1": "shopify:\/\/shop_images\/foto_shumi-2.png",
+            "image_1": "shopify:\/\/shop_images\/1599212637685.jpg",
             "image_2": "shopify:\/\/shop_images\/DSCF7089.jpg"
           }
         },
@@ -64,11 +64,11 @@
           "type": "team_member",
           "settings": {
             "name": "Dauwe",
-            "pet_name": "Woof",
+            "pet_name": "Lais",
             "function": "Sales Representative",
             "text": "",
-            "image_1": "shopify:\/\/shop_images\/foto_dauwe.png",
-            "image_2": "shopify:\/\/shop_images\/LUC3318.jpg"
+            "image_1": "shopify:\/\/shop_images\/dauwe.jpg",
+            "image_2": "shopify:\/\/shop_images\/Lais.jpg"
           }
         },
         "f675f9b2-daff-4615-ae99-4faf0de391cb": {
@@ -82,7 +82,7 @@
         "80894804-43e5-46da-88dc-c5e52c4dfc32": {
           "type": "content_block",
           "settings": {
-            "headline": "Developing Gutsy",
+            "headline": "Combining passions",
             "illustration": "shopify:\/\/shop_images\/bowl.png",
             "content": "Recently we found a way to combine these two passions. We are all trying to eat more consciously and ecologically. But what about the food we serve our dogs? We decided to come up with an answer to this question ourselves."
           }
@@ -90,7 +90,7 @@
         "a696a7e2-ae71-4b74-acbe-baa40013382f": {
           "type": "content_block",
           "settings": {
-            "headline": "A result to be proud of",
+            "headline": "Ready to make memories",
             "illustration": "shopify:\/\/shop_images\/dog.png",
             "content": "Gutsy is high-quality insect-based dog food that brings you and your dog closer together and closer to the planet. Because life is about making memories, not footprints."
           }
