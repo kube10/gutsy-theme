@@ -243,12 +243,12 @@ if (!customElements.get("product-form")) {
           this.perMonthInfo.classList.add("hidden");
         }
 
-        const euroLocale = Intl.NumberFormat("de-DE", {
+        const euroLocale = Intl.NumberFormat("nl-BE", {
           style: "currency",
           currency: "EUR",
         });
 
-        const newPriceEU = euroLocale.format(newPrice);
+        const newPriceEU = euroLocale.format(newPrice).replace(/\s/g, "");
 
         this.priceItem.innerHTML = newPriceEU;
         this.calculateTotalPrice(
@@ -263,12 +263,12 @@ if (!customElements.get("product-form")) {
         let unitPrice = parseFloat(unitPriceStr.substr(1).replace(",", "."));
         const quantity = parseFloat(quantityInput.value);
 
-        const euroLocale = Intl.NumberFormat("de-DE", {
+        const euroLocale = Intl.NumberFormat("nl-BE", {
           style: "currency",
           currency: "EUR",
         });
         const totalPrice = parseFloat(unitPrice * quantity);
-        const totalPriceEU = euroLocale.format(totalPrice);
+        const totalPriceEU = euroLocale.format(totalPrice).replace(/\s/g, "");
         totalPriceWrapper.innerHTML = totalPriceEU.replace(".", ",");
       }
 
@@ -290,12 +290,12 @@ if (!customElements.get("product-form")) {
 
           const discounted = fullPriceFloat * 0.9;
 
-          const euroLocale = Intl.NumberFormat("de-DE", {
+          const euroLocale = Intl.NumberFormat("nl-BE", {
             style: "currency",
             currency: "EUR",
           });
 
-          const discountedEU = euroLocale.format(discounted);
+          const discountedEU = euroLocale.format(discounted).replace(/\s/g, "");
           priceWrap.innerHTML = discountedEU.replace(".", ",");
         }
       }

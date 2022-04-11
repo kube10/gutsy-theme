@@ -821,7 +821,7 @@ class VariantSelects extends HTMLElement {
           (variant) => variant.id === this.currentVariant.id
         );
 
-        const euroLocale = Intl.NumberFormat("de-DE", {
+        const euroLocale = Intl.NumberFormat("nl-BE", {
           style: "currency",
           currency: "EUR",
         });
@@ -832,7 +832,9 @@ class VariantSelects extends HTMLElement {
           unitPriceFloat = unitPriceFloat / 2;
         }
 
-        const unitPriceEU = euroLocale.format(unitPriceFloat);
+        const unitPriceEU = euroLocale
+          .format(unitPriceFloat)
+          .replace(/\s/g, "");
 
         this.form.priceItem.innerHTML = unitPriceEU;
         if (this.form.subscriptionSelected) {
