@@ -255,6 +255,7 @@ div.rc_popup {
     justify-content: space-between;
     flex-wrap: wrap;
     position: relative;
+    margin-top: 2rem;
   }
 
   .after-form {
