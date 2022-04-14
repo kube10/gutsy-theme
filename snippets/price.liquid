@@ -23,6 +23,7 @@
 
   for tag in product.tags
     if tag == "sample-box"
+      assign sampleBox = true
       assign price = target.price | divided_by: 2
     endif
   endfor
@@ -60,7 +61,11 @@
     <div class="price__regular">
       <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
       <span class="price-item price-item--regular">
-        {{ money_price }}
+        {%- if sampleBox -%}
+          {{ price | money}}
+          {%- else -%}
+          {{ money_price }}
+        {%- endif -%}
       </span>
     </div>
     <div class="price__sale">

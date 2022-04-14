@@ -203,7 +203,11 @@
             {%- render "icon-success" -%}
             <span class="product-form__success-message">Product was added to cart!</span>
           </div>
-          <div class="product-form__success-close">Close</div>
+          {%- if sampleBox -%}
+            <a href="/discount/SAMPLE_BOX/?redirect=/cart" class="button button-secondary">Cart</a>
+              {%- else  -%}
+            <a href="/cart" class="button button-secondary">Cart</a>
+          {%- endif -%}
         </div>
     </div>
     {%- endform -%}

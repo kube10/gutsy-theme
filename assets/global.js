@@ -837,9 +837,11 @@ class VariantSelects extends HTMLElement {
           .replace(/\s/g, "");
 
         this.form.priceItem.innerHTML = unitPriceEU;
+
         if (this.form.subscriptionSelected) {
           this.form.applyDiscount(this.form.subscriptionSelected);
         }
+
         this.form.calculateTotalPrice(
           this.form.priceItem,
           this.form.quantityInput,
@@ -851,11 +853,8 @@ class VariantSelects extends HTMLElement {
   getSubscriptionPrice(originalUnitPrice, form) {
     const subscriptionField = form.querySelector(".subscriptionCheckBox");
     let newPrice = originalUnitPrice;
-    console.log("Sub price function triggered");
-    console.log("originalUnitPrice: " + originalUnitPrice);
     if (subscriptionField.checked) {
       newPrice = originalUnitPrice * 0.9;
-      console.log("sub field checked");
     }
     return newPrice;
   }

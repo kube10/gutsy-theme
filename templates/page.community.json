@@ -14,8 +14,35 @@
     },
     "1646907174432ba872": {
       "type": "community-insta-feed",
+      "disabled": true,
       "settings": {
         "heading": "The Gutsy Feed"
+      }
+    },
+    "164986457543cf2aab": {
+      "type": "apps",
+      "blocks": {
+        "43e23da4-3a51-46b3-b650-486a0481df8c": {
+          "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "heading_font": "helvetica_n4",
+            "heading_size": 20,
+            "feed_width": 100,
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "43e23da4-3a51-46b3-b650-486a0481df8c"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "164985966146651430": {
+      "type": "instagram-link",
+      "settings": {
+        "instagram_url": "https:\/\/instagram.com"
       }
     },
     "16469071637ea43b4a": {
@@ -105,6 +132,8 @@
     "main",
     "164690718054f1a911",
     "1646907174432ba872",
+    "164986457543cf2aab",
+    "164985966146651430",
     "16469071637ea43b4a",
     "1646907188917c0881"
   ]

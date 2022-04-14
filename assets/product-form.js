@@ -204,7 +204,7 @@ if (!customElements.get("product-form")) {
                 );
               } else {
                 addItemToCart();
-                window.location.href = "/discount/SAMPLE_BOX/?redirect=/cart";
+                // window.location.href = "/discount/SAMPLE_BOX/?redirect=/cart";
               }
             });
         } else {

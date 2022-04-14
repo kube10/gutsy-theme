@@ -45,9 +45,11 @@
     "created_at": "2022-02-10T13:35:38Z",
     "updated_at": "2022-04-09T08:09:40Z",
     "revision_ids": [
-      "vbTd0RM",
+      "akT2zXL",
       "ErTAXoN",
       "OzTXnYd",
+      "evTe9o2",
+      "vbTd0RM",
       "7kTopkP",
       "p4TbZkk",
       "vbTd0wm",
@@ -61,9 +63,9 @@
     ]
   },
   "revision": {
-    "id": "vbTd0RM",
-    "created_at": "2022-04-10T13:05:21Z",
-    "updated_at": "2022-04-10T13:05:21Z",
+    "id": "akT2zXL",
+    "created_at": "2022-04-12T11:08:18Z",
+    "updated_at": "2022-04-12T11:08:18Z",
     "embed_version": "4.10.1",
     "published_at": null,
     "fields": [
@@ -368,12 +370,8 @@
             "label": "Basenji"
           },
           {
-            "value": "Basset",
-            "label": "Basset"
-          },
-          {
-            "value": "Basset Bleu De Gascogne",
-            "label": "Basset Bleu De Gascogne"
+            "value": "Basset Fauve de Bretagne",
+            "label": "Basset Fauve de Bretagne"
           },
           {
             "value": "Basset Griffon Vendeen",
