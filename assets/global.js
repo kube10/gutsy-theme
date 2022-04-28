@@ -781,15 +781,6 @@ class VariantSelects extends HTMLElement {
     const input = this.form.querySelector('input[name="id"]');
     input.value = this.currentVariant.id;
     input.dispatchEvent(new Event("change", { bubbles: true }));
-
-    // const productForm = document.querySelectorAll(
-    //   `#product-form-${this.dataset.product}, #product-form-installment`
-    // );
-    // productForms.forEach((productForm) => {
-    //   const input = productForm.querySelector('input[name="id"]');
-    //   input.value = this.currentVariant.id;
-    //   input.dispatchEvent(new Event("change", { bubbles: true }));
-    // });
   }
 
   updatePickupAvailability() {
@@ -829,7 +820,8 @@ class VariantSelects extends HTMLElement {
         let unitPriceFloat = parseFloat(currentVariant.price / 100);
 
         if (currentVariant.name.indexOf("sample box") > -1) {
-          unitPriceFloat = unitPriceFloat / 2;
+          unitPriceFloat =
+            unitPriceFloat * this.form.dataset.samplebox_discount;
         }
 
         const unitPriceEU = euroLocale

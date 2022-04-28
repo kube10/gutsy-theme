@@ -194,15 +194,7 @@
 
         <div class="product-details-card-bottom">
           <div class="h2 product-details-card-price-wrap">
-            {%- if sampleBox -%}
-                <div class="price">
-                      <div class="price__regular">
-                        <div class="price-item price-item--regular">FROM €8,98</div>
-                      </div>
-                </div>
-              {%- else -%}
-              {% render 'price', product: product_card_product, price_class: '' %}
-            {%- endif -%}
+            {% render 'price', product: product_card_product, price_class: '' %}
           </div>
           <div class="product-details-actions">
             <div class="button-group">

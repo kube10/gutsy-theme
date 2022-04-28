@@ -1,6 +1,7 @@
 {%- assign subscription = true -%}
 {%- for tag in product.tags -%}
   {%- if tag == "sample-box" -%}
+      {%- assign discountDecimal = 1 | minus: product.metafields.my_fields.samplebox_discount -%}
       {%- assign subscription = false -%}
       {%- assign sampleBox = true -%}
   {%- endif -%}
@@ -27,7 +28,9 @@
 
   <product-form productId="{{product.id}}" class="product-form" data-calculator="{%- if subscription -%}
     true
-  {%- endif -%}" data-checkoutBtn="{%- if sampleBox -%}false{%- else -%}true{%- endif -%}" data-handle={{product.handle}}>
+  {%- endif -%}" {%- if sampleBox -%}
+    data-samplebox_discount={{discountDecimal}}
+  {%- endif -%} data-checkoutBtn="{%- if sampleBox -%}false{%- else -%}true{%- endif -%}" data-handle={{product.handle}}>
     {%- form 'product', product, data-productid: product.id, id: product_form_id, class: 'form-grid', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
     <div class="size-quantity">
       {%- unless product.has_only_default_variant -%}

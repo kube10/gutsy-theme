@@ -141,7 +141,8 @@
                     </ul>
                     {%- if sampleBox -%}
                       <div class="sample-box-discount-message">
-                          <strong>50% discount will be calculated at checkout. Use discount code: <span class="color-primary-1">SAMPLE_BOX</span></strong>
+                          {%- assign discountPercentage = item.product.metafields.my_fields.samplebox_discount | times: 100 | round -%}
+                          <strong>{{ discountPercentage }}% discount will be calculated at checkout. Use discount code: <span class="color-primary-1">SAMPLE_BOX</span></strong>
                           <br>
                           <small class="color-primary-1">(Only one use per customer)</small>
                       </div>
