@@ -30,14 +30,14 @@
           "announcement-bar-0": {
             "type": "announcement",
             "settings": {
-              "text": "Preorder now | Shipping 03\/05",
+              "text": "Preorder now | Shipping 16\/05",
               "link": "shopify:\/\/collections\/all"
             }
           },
           "5d831797-9c34-48bc-bf80-db7ca96c9458": {
             "type": "announcement",
             "settings": {
-              "text": "Try now for 50%",
+              "text": "Try now with 75% off",
               "link": "shopify:\/\/products\/gutsy-sample-box"
             }
           }

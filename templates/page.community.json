@@ -42,12 +42,22 @@
     "164985966146651430": {
       "type": "instagram-link",
       "settings": {
-        "instagram_url": "https:\/\/instagram.com"
+        "instagram_url": "https:\/\/www.instagram.com\/gutsy.dog\/"
       }
     },
     "16469071637ea43b4a": {
       "type": "community-news",
       "blocks": {
+        "de08c68c-7dfd-459e-a55a-08ad37a3caae": {
+          "type": "article",
+          "settings": {
+            "heading": "Antwerpse start-up brengt hybride en duurzame dierenvoeding op de markt",
+            "image": "shopify:\/\/shop_images\/antwerpse-start-up-brengt-hybride-en-duurzame-dierenvoeding-op-de-markt.jpg",
+            "content": "<p>Gutsy startte als een onderzoeksproject van UGent-studenten Jack Lathouwers en Achilles Hannecart, maar mondde uit in een start-up die revolutionaire, want hybride en duurzame dierenvoeding ontwikkelt.<\/p>",
+            "tag": "Bloovi",
+            "url": "https:\/\/www.bloovi.be\/artikels\/ondernemersnieuws\/2022\/antwerpse-start-up-brengt-hybride-en-duurzame-dierenvoeding-op-de-markt"
+          }
+        },
         "e0eda9f8-9a16-43b2-b566-6fa46212d183": {
           "type": "article",
           "settings": {
@@ -70,6 +80,7 @@
         }
       },
       "block_order": [
+        "de08c68c-7dfd-459e-a55a-08ad37a3caae",
         "e0eda9f8-9a16-43b2-b566-6fa46212d183",
         "71fa6ec6-4167-4a8b-83c1-c13a429c6a8c"
       ],
